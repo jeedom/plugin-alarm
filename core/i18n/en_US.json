@@ -1,0 +1,21 @@
+{
+    "plugins\/alarm\/core\/class\/alarm.class.php": {
+        "Lancement de l'alarme : ": "Lancement de l'alarme : ",
+        "Lancement du ping de l'alarme : ": "Lancement du ping de l'alarme : ",
+        "Test ping pour : ": "Test ping pour : ",
+        "Ping OK sur : ": "Ping OK sur : ",
+        "Armer": "Armer",
+        "Libérer": "Libérer",
+        "Mode": "Mode",
+        "Vérification de la zone : ": "Vérification de la zone : ",
+        "Vérification de la commande : ": "Vérification de la commande : ",
+        "Remise à zero de l'alarme": "Remise à zero de l'alarme",
+        "Exécution de ": "Exécution de ",
+        " avec les options : ": " avec les options : ",
+        "Remise à zero immédiate de l'alarme": "Remise à zero immédiate de l'alarme",
+        "Alarme en cours": "Alarme en cours",
+        "Mode actif : ": "Mode actif : ",
+        "Déclenchement de l\\alarme": "Déclenchement de l\\alarme",
+        "Exécution de la commande ": "Exécution de la commande "
+    }
+}
