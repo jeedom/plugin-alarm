@@ -1,21 +1,21 @@
 {
     "plugins\/alarm\/core\/class\/alarm.class.php": {
-        "Lancement de l'alarme : ": "Lancement de l'alarme : ",
-        "Lancement du ping de l'alarme : ": "Lancement du ping de l'alarme : ",
-        "Test ping pour : ": "Test ping pour : ",
-        "Ping OK sur : ": "Ping OK sur : ",
-        "Armer": "Armer",
-        "Libérer": "Libérer",
+        "Lancement de l'alarme : ": "Launching of alarm : ",
+        "Lancement du ping de l'alarme : ": "Launching of alarm's ping : ",
+        "Test ping pour : ": "Ping test for : ",
+        "Ping OK sur : ": "Ping OK on : ",
+        "Armer": "Wind on",
+        "Libérer": "Free",
         "Mode": "Mode",
-        "Vérification de la zone : ": "Vérification de la zone : ",
-        "Vérification de la commande : ": "Vérification de la commande : ",
-        "Remise à zero de l'alarme": "Remise à zero de l'alarme",
-        "Exécution de ": "Exécution de ",
-        " avec les options : ": " avec les options : ",
-        "Remise à zero immédiate de l'alarme": "Remise à zero immédiate de l'alarme",
-        "Alarme en cours": "Alarme en cours",
-        "Mode actif : ": "Mode actif : ",
-        "Déclenchement de l\\alarme": "Déclenchement de l\\alarme",
-        "Exécution de la commande ": "Exécution de la commande "
+        "Vérification de la zone : ": "Checking of area : ",
+        "Vérification de la commande : ": "Checking of command : ",
+        "Remise à zero de l'alarme": "Reset alarm",
+        "Exécution de ": "Running of ",
+        " avec les options : ": " with options : ",
+        "Remise à zero immédiate de l'alarme": "Immediate reset of alarm",
+        "Alarme en cours": "Alarm in progress",
+        "Mode actif : ": "Current mode : ",
+        "Déclenchement de l\\alarme": "Triggering the alarm",
+        "Exécution de la commande ": "Running of command "
     }
 }
