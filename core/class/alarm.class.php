@@ -463,8 +463,8 @@ class alarm extends eqLogic {
             if (isset($action['options'])) {
                 $options = $action['options'];
             }
-            log::add('alarm', 'debug', __('Exécution de ', __FILE__) . $cmd->getHumanName() . __(' avec les options : ', __FILE__) . print_r($options, true));
             if (is_object($cmd)) {
+                log::add('alarm', 'debug', __('Exécution de ', __FILE__) . $cmd->getHumanName() . __(' avec les options : ', __FILE__) . print_r($options, true));
                 try {
                     foreach ($options as $key => $value) {
                         $options[$key] = str_replace('"', '', jeedom::evaluateExpression($value));
