@@ -24,7 +24,7 @@ $('#tab_alarm a').click(function (e) {
 
 $('#bt_addZone').on('click', function () {
     bootbox.prompt("{{Nom de la zone ?}}", function (result) {
-        if (result !== null) {
+        if (result !== null && result != '') {
             addZone({name: result});
         }
     });
@@ -34,7 +34,7 @@ $('body').delegate('.rename', 'click', function () {
     var el = $(this);
     var previousName = el.text();
     bootbox.prompt("{{Nouveau nom ?}}", function (result) {
-        if (result !== null) {
+        if (result !== null && result != '') {
             el.text(result);
             el.closest('.panel.panel-default').find('span.name').text(result);
             if (el.hasClass('zoneAttr')) {
@@ -54,7 +54,7 @@ $("#div_zones").delegate('.bt_removeZone', 'click', function () {
 
 $('#bt_addMode').on('click', function () {
     bootbox.prompt("{{Nom du mode ?}}", function (result) {
-        if (result !== null) {
+        if (result !== null && result != '') {
             addMode({name: result});
         }
     });
@@ -401,8 +401,10 @@ function addTrigger(_el, _trigger) {
 }
 
 function addZone(_zone) {
+    if (init(_zone.name) == '') {
+        return;
+    }
     var random = Math.floor((Math.random() * 1000000) + 1);
-
     var div = '<div class="zone panel panel-default">';
     div += '<div class="panel-heading">';
     div += '<h4 class="panel-title">';

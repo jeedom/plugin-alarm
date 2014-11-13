@@ -222,6 +222,7 @@ class alarm extends eqLogic {
 
         if ($this->getConfiguration('always_active') == 1) {
             $cmd_armed = $this->getCmd(null, 'enable');
+            $cmd_armed->event(0);
             $cmd_armed->event(1);
         }
 
