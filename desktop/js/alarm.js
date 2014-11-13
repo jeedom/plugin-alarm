@@ -32,9 +32,9 @@ $('#bt_addZone').on('click', function () {
 
 $('body').delegate('.rename', 'click', function () {
     var el = $(this);
-    var previousName = el.text();
     bootbox.prompt("{{Nouveau nom ?}}", function (result) {
         if (result !== null && result != '') {
+            var previousName = el.text();
             el.text(result);
             el.closest('.panel.panel-default').find('span.name').text(result);
             if (el.hasClass('zoneAttr')) {

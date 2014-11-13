@@ -222,7 +222,6 @@ class alarm extends eqLogic {
 
         if ($this->getConfiguration('always_active') == 1) {
             $cmd_armed = $this->getCmd(null, 'enable');
-            $cmd_armed->event(0);
             $cmd_armed->event(1);
         }
 
@@ -490,7 +489,6 @@ class alarmCmd extends cmd {
     public function execute($_options = array()) {
         $eqLogic = $this->getEqLogic();
         if ($this->getLogicalId() == 'armed' || $this->getLogicalId() == 'released') {
-
             $cmd_armed = $eqLogic->getCmd(null, 'enable');
             $cmd_state = $eqLogic->getCmd(null, 'state');
             $cmd_immediateState = $eqLogic->getCmd(null, 'immediatState');
@@ -558,6 +556,12 @@ class alarmCmd extends cmd {
         if ($this->getConfiguration('mode') == '1') {
             $cmd_zone = $eqLogic->getCmd(null, 'mode');
             $cmd_zone->event($this->getConfiguration('state'));
+            if ($eqLogic->getConfiguration('always_active') == 1) {
+                $cmd_state = $eqLogic->getCmd(null, 'state');
+                $cmd_immediateState = $eqLogic->getCmd(null, 'immediatState');
+                $cmd_state->event(0);
+                $cmd_immediateState->event(0);
+            }
         }
     }
 
