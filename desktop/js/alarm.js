@@ -189,8 +189,9 @@ $("body").delegate('.bt_removeAction', 'click', function () {
 $('body').delegate('.cmdAction.expressionAttr[data-l1key=cmd]', 'focusout', function (event) {
     var type = $(this).attr('data-type')
     var expression = $(this).closest('.' + type).getValues('.expressionAttr');
+    var el = $(this);
     jeedom.cmd.displayActionOption($(this).value(), init(expression[0].options), function (html) {
-        $(this).closest('.' + type).find('.actionOptions').html(html);
+        el.closest('.' + type).find('.actionOptions').html(html);
     })
 });
 
