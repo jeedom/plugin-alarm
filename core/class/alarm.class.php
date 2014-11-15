@@ -526,9 +526,24 @@ class alarmCmd extends cmd {
             if ($eqLogic->getConfiguration('always_active') == 1) {
                 $cmd_state = $eqLogic->getCmd(null, 'state');
                 $cmd_immediateState = $eqLogic->getCmd(null, 'immediatState');
+                 $eqLogic->doAction('release');
+                /* RaZ immediate */
+                if ($cmd_immediateState->execCmd() == 1) {
+                    log::add('alarm', 'debug', __('Remise à zero immédiate de l\'alarme', __FILE__));
+                    $eqLogic->doAction('razImmediate');
+                }
+                /* RaZ */
+                if ($cmd_state->execCmd() == 1) {
+                    log::add('alarm', 'debug', __('Remise à zero de l\'alarme', __FILE__));
+                    $eqLogic->doAction('raz');
+                }
+                log::add('alarm', 'debug', __('Envoi etat alarm ok', __FILE__));
+                $cmd_state->setCollectDate('');
                 $cmd_state->event(0);
+                $cmd_immediateState->setCollectDate('');
                 $cmd_immediateState->event(0);
-                $eqLogic->doAction('release');
+                $eqLogic->setConfiguration('pingState', 1);
+                $eqLogic->save();
             }
         }
     }
