@@ -528,6 +528,7 @@ class alarmCmd extends cmd {
                 $cmd_immediateState = $eqLogic->getCmd(null, 'immediatState');
                 $cmd_state->event(0);
                 $cmd_immediateState->event(0);
+                $eqLogic->doAction('release');
             }
         }
     }
