@@ -80,8 +80,8 @@ sendVarToJS('eqType', 'alarm');
                         <input type="checkbox" class="eqLogicAttr" data-l1key="configuration" data-l2key="immediateState_visible"/>
                     </div>
                 </div>
-                
-                 <div class="form-group">
+
+                <div class="form-group">
                     <label class="col-lg-2 control-label">{{Historiser état et status de l'alarme}}</label>
                     <div class="col-lg-1">
                         <input type="checkbox" class="eqLogicAttr" data-l1key="configuration" data-l2key="historizedState"/>
@@ -117,12 +117,12 @@ sendVarToJS('eqType', 'alarm');
                 <a class='btn btn-warning btn-xs pull-right' id="btn_addRazImmediateAlarm" style="margin-top: 5px;"><i class="fa fa-plus-circle"></i> {{Ajouter réinitialisation immédiate}}</a>
                 <br/><br/>
                 <form class="form-horizontal">
-                    <div id="div_raz"></div>
+                    <div id="div_razImmediate"></div>
                 </form>
                 <hr/>
                 <br/>
                 <form class="form-horizontal">
-                    <div id="div_razImmediate"></div>
+                    <div id="div_raz"></div>
                 </form>
             </div>
 
@@ -149,12 +149,12 @@ sendVarToJS('eqType', 'alarm');
                 <a class='btn btn-warning btn-xs pull-right' id="btn_addActionActivationImmediateOk" style="margin-top: 5px;"><i class="fa fa-plus-circle"></i> {{Ajouter action immediate lors de l'activation}}</a>
                 <br/><br/>
                 <form class="form-horizontal">
-                    <div id="div_activationOk"></div>
+                    <div id="div_activationImmediateOk"></div>
                 </form>
                 <hr/>
                 <br/>
                 <form class="form-horizontal">
-                    <div id="div_activationImmediateOk"></div>
+                    <div id="div_activationOk"></div>
                 </form>
             </div>
         </div>
