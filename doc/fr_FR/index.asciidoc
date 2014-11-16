@@ -1,2 +1,10 @@
-Configuration
-==
+== Alarme
+
+=== Description
+Plugin permetant de creer et gerer une alarme avec Jeedom
+
+=== Configuration
+include::configuration.asciidoc[]
+
+=== Changelog
+include::changelog.asciidoc[]
