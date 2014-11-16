@@ -1,1 +1,3 @@
-TODO
+Sur la page du plugin, vide, il faudra ajouter une Alarme via le bouton +. Il est en effet possible d'avoir plusieurs alarmes, par exemple pour la maison et pour une dépendance...Ou encore, on verra plus tard, pour l'alarme intrusion et l'alarme sécurité incendie...
+
+image::../images/alarme2.png[]

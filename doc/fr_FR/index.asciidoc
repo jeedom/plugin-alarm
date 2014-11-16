@@ -1,7 +1,8 @@
 == Alarme
 
 === Description
-Plugin permetant de creer et gerer une alarme avec Jeedom
+Le plugin Alarme permet à Jeedom d'avoir pour sa domotique un vrai système d'alarme, très simple à utiliser et à configurer. L'installation se fait via le Market et ne nécessite aucune configuration.
+A ce jour aucune box domotique ne permet d'avoir une telle souplesse et simplicité d'utilisation.
 
 === Configuration
 include::configuration.asciidoc[]
