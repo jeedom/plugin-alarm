@@ -137,7 +137,7 @@ class alarm extends eqLogic {
 
         if ($this->getIsEnable() == 1) {
             $cmd_zone = $this->getCmd(null, 'mode');
-            if (is_object($cmd_zone) && $cmd_zone->execCmd() == '') {
+            if (is_object($cmd_zone) && $cmd_zone->execCmd() == '' && isset($value)) {
                 $cmd_zone->setCollectDate('');
                 $cmd_zone->event($value['name']);
             }
