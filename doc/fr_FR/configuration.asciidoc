@@ -76,7 +76,8 @@ Enfin, l'onglet Activation OK va permettre d'avoir des actions dès que l'alarme
 
 image::../images/alarme22.png[]
 
-Voici ce que donne le plugin alarme configuré simplement, sur le Dashboard. Le choix du mode, l'armement et la libération de l'alarme.
+Voici ce que donne le plugin alarme configuré simplement, sur le Dashboard. Le choix du mode, l'armement et la libération de l'alarme. A noter que sur une alarme active en permanence il n'y a pas de bouton activer/desactiver pour la reinitialiser
+il suffit de cliquer sur le mode en cours (ou autre), attention la reinitialisation par clique sur le mode ne marche que pour les alarmes activent en permanence.
 
 image::../images/alarme23.png[]
 
