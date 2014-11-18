@@ -541,6 +541,10 @@ class alarmCmd extends cmd {
                 $cmd_state->event(0);
                 $cmd_immediateState->setCollectDate('');
                 $cmd_immediateState->event(0);
+                $armed = $eqLogic->getCmd(null, 'armed');
+                $armed->setConfiguration('armedComplete', 0);
+                $armed->setConfiguration('armedDatetime', strtotime('now'));
+                $armed->save();
                 $eqLogic->setConfiguration('pingState', 1);
                 $eqLogic->save();
             }
