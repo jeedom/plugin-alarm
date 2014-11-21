@@ -1,5 +1,11 @@
-Peut on mettre les delais en secondes:::
+[panel,primary]
+.Peut on mettre les delais en secondes
+--
 C'est possible pour le "Délai de déclenchement" (il faut mettre des nombre à virgule, ex : 0,5 pour 30 sec) mais pas pour le "Délai d'activation (min)"
+--
 
-Comment rearmer une alarme permanante:::
+[panel,primary]
+.Comment rearmer une alarme permanante
+--
 Il suffit de cliquer sur un des mode de l'alarme (meme celui actif)
+--
