@@ -5,7 +5,7 @@ if (!isConnect('admin')) {
 sendVarToJS('eqType', 'alarm');
 ?>
 <div class="row row-overflow">
-    <div class="col-lg-2">
+    <div class="col-lg-2 col-md-3 col-sm-4">
         <div class="bs-sidebar">
             <ul id="ul_eqLogic" class="nav nav-list bs-sidenav">
                 <a class="btn btn-default eqLogicAction" style="width : 100%;margin-top : 5px;margin-bottom: 5px;" data-action="add"><i class="fa fa-plus-circle"></i> {{Ajouter une alarme}}</a>
@@ -18,20 +18,20 @@ sendVarToJS('eqType', 'alarm');
             </ul>
         </div>
     </div>
-    <div class="col-lg-10 eqLogic" style="border-left: solid 1px #EEE; padding-left: 25px;display: none;">
+    <div class="col-lg-10 col-md-9 col-sm-8 eqLogic" style="border-left: solid 1px #EEE; padding-left: 25px;display: none;">
         <form class="form-horizontal">
             <fieldset>
                 <legend>{{Général}}</legend>
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">{{Nom de l'alarme}}</label>
-                    <div class="col-lg-3">
+                    <label class="col-sm-2 control-label">{{Nom de l'alarme}}</label>
+                    <div class="col-sm-3">
                         <input type="text" class="eqLogicAttr form-control" data-l1key="id" style="display : none;" />
                         <input type="text" class="eqLogicAttr form-control" data-l1key="name" placeholder="Nom de la zone"/>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-2 control-label" >{{Objet parent}}</label>
-                    <div class="col-lg-3">
+                    <label class="col-sm-2 control-label" >{{Objet parent}}</label>
+                    <div class="col-sm-3">
                         <select id="sel_object" class="eqLogicAttr form-control" data-l1key="object_id">
                             <option value="">{{Aucun}}</option>
                             <?php
@@ -43,8 +43,8 @@ sendVarToJS('eqType', 'alarm');
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">{{Catégorie}}</label>
-                    <div class="col-lg-10">
+                    <label class="col-sm-2 control-label">{{Catégorie}}</label>
+                    <div class="col-sm-10">
                         <?php
                         foreach (jeedom::getConfiguration('eqLogic:category') as $key => $value) {
                             echo '<label class="checkbox-inline">';
@@ -56,34 +56,34 @@ sendVarToJS('eqType', 'alarm');
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">{{Activer}}</label>
-                    <div class="col-lg-1">
+                    <label class="col-sm-2 control-label">{{Activer}}</label>
+                    <div class="col-sm-1">
                         <input type="checkbox" class="eqLogicAttr" data-l1key="isEnable" checked/>
                     </div>
-                    <label class="col-lg-2 control-label">{{Visible}}</label>
-                    <div class="col-lg-1">
+                    <label class="col-sm-2 control-label">{{Visible}}</label>
+                    <div class="col-sm-1">
                         <input type="checkbox" class="eqLogicAttr" data-l1key="isVisible" checked/>
                     </div>
                 </div>
 
                 <div class="form-group expertModeVisible">
-                    <label class="col-lg-2 control-label">{{Actif en permanence}}</label>
-                    <div class="col-lg-1">
+                    <label class="col-sm-2 control-label">{{Actif en permanence}}</label>
+                    <div class="col-sm-1">
                         <input type="checkbox" class="eqLogicAttr" data-l1key="configuration" data-l2key="always_active"/>
                     </div>
-                    <label class="col-lg-2 control-label">{{Armement visible}}</label>
-                    <div class="col-lg-1">
+                    <label class="col-sm-2 control-label">{{Armement visible}}</label>
+                    <div class="col-sm-1">
                         <input type="checkbox" class="eqLogicAttr" data-l1key="configuration" data-l2key="armed_visible" checked/>
                     </div>
-                    <label class="col-lg-2 control-label">{{Status immédiat visible}}</label>
-                    <div class="col-lg-1">
+                    <label class="col-sm-2 control-label">{{Status immédiat visible}}</label>
+                    <div class="col-sm-1">
                         <input type="checkbox" class="eqLogicAttr" data-l1key="configuration" data-l2key="immediateState_visible"/>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-lg-2 control-label">{{Historiser état et status de l'alarme}}</label>
-                    <div class="col-lg-1">
+                    <label class="col-sm-2 control-label">{{Historiser état et status de l'alarme}}</label>
+                    <div class="col-sm-1">
                         <input type="checkbox" class="eqLogicAttr" data-l1key="configuration" data-l2key="historizedState"/>
                     </div>
                 </div>
@@ -184,8 +184,8 @@ sendVarToJS('eqType', 'alarm');
             <div class="modal-body">
                 <form class="form-horizontal">
                     <div class="form-group">
-                        <label class="col-lg-4 control-label" >{{Zone}}</label>
-                        <div class="col-lg-8" id="md_addZoneModeSelect">
+                        <label class="col-sm-4 control-label" >{{Zone}}</label>
+                        <div class="col-sm-8" id="md_addZoneModeSelect">
 
                         </div>
                     </div>

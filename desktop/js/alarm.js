@@ -325,17 +325,17 @@ function addAction(_action, _type, _name, _el) {
     }
     var div = '<div class="' + _type + '">';
     div += '<div class="form-group ">';
-    div += '<label class="col-lg-1 control-label">' + _name + '</label>';
-    div += '<div class="col-lg-1">';
+    div += '<label class="col-sm-1 control-label">' + _name + '</label>';
+    div += '<div class="col-sm-1">';
     div += '<a class="btn ' + button + ' btn-sm listCmdAction" data-type="' + _type + '"><i class="fa fa-list-alt"></i></a>';
     div += '</div>';
-    div += '<div class="col-lg-3 ' + input + '">';
+    div += '<div class="col-sm-3 ' + input + '">';
     div += '<input class="expressionAttr form-control input-sm cmdAction" data-l1key="cmd" data-type="' + _type + '" />';
     div += '</div>';
-    div += '<div class="col-lg-6 actionOptions">';
+    div += '<div class="col-sm-6 actionOptions">';
     div += jeedom.cmd.displayActionOption(init(_action.cmd, ''), _action.options);
     div += '</div>';
-    div += '<div class="col-lg-1">';
+    div += '<div class="col-sm-1">';
     div += '<i class="fa fa-minus-circle pull-right cursor bt_removeAction" data-type="' + _type + '"></i>';
     div += '</div>';
     div += '</div>';
@@ -357,14 +357,14 @@ function addPingTest(_pingTest) {
     }
     var div = '<div class="pingTest">';
     div += '<div class="form-group">';
-    div += '<label class="col-lg-1 control-label">{{Equipement à tester}}</label>';
-    div += '<div class="col-lg-1">';
+    div += '<label class="col-sm-1 control-label">{{Equipement à tester}}</label>';
+    div += '<div class="col-sm-1">';
     div += '<a class="btn btn-success btn-sm listEquipement" data-type="pingTest"><i class="fa fa-list-alt"></i></a>';
     div += '</div>';
-    div += '<div class="col-lg-3 has-success">';
+    div += '<div class="col-sm-3 has-success">';
     div += '<input class="expressionAttr form-control input-sm" data-l1key="eqLogic" data-type="pingTest" />';
     div += '</div>';
-    div += '<div class="col-lg-1">';
+    div += '<div class="col-sm-1">';
     div += '<i class="fa fa-minus-circle pull-right cursor bt_removeAction" data-type="pingTest"></i>';
     div += '</div>';
     div += '</div>';
@@ -378,22 +378,22 @@ function addTrigger(_el, _trigger) {
     }
     var div = '<div class="trigger">';
     div += '<div class="form-group">';
-    div += '<label class="col-lg-1 control-label">{{Déclencheur}}</label>';
-    div += '<div class="col-lg-1">';
+    div += '<label class="col-sm-1 control-label">{{Déclencheur}}</label>';
+    div += '<div class="col-sm-1">';
     div += '<a class="btn btn-default btn-sm listCmdInfo btn-success"><i class="fa fa-list-alt"></i></a>';
     div += '</div>';
-    div += '<div class="col-lg-3 has-success">';
+    div += '<div class="col-sm-3 has-success">';
     div += '<input class="triggerAttr form-control input-sm" data-l1key="cmd" />';
     div += '</div>';
-    div += '<label class="col-lg-2 control-label">{{Délai d\'activation (min)}}</label>';
-    div += '<div class="col-lg-1 has-success">';
+    div += '<label class="col-sm-2 control-label">{{Délai d\'activation (min)}}</label>';
+    div += '<div class="col-sm-1 has-success">';
     div += '<input class="triggerAttr form-control input-sm" data-l1key="armedDelay" />';
     div += '</div>';
-    div += '<label class="col-lg-2 control-label">{{Délai de déclenchement (min)}}</label>';
-    div += '<div class="col-lg-1 has-success">';
+    div += '<label class="col-sm-2 control-label">{{Délai de déclenchement (min)}}</label>';
+    div += '<div class="col-sm-1 has-success">';
     div += '<input class="triggerAttr form-control input-sm" data-l1key="waitDelay" />';
     div += '</div>';
-    div += '<div class="col-lg-1">';
+    div += '<div class="col-sm-1">';
     div += '<i class="fa fa-minus-circle pull-right cursor bt_removeTrigger"></i>';
     div += '</div>';
     div += '</div>';
@@ -420,11 +420,11 @@ function addZone(_zone) {
     div += '<div class="well">';
     div += '<form class="form-horizontal" role="form">';
     div += '<div class="form-group">';
-    div += '<label class="col-lg-2 control-label">{{Nom de la zone}}</label>';
-    div += '<div class="col-lg-2">';
+    div += '<label class="col-sm-2 control-label">{{Nom de la zone}}</label>';
+    div += '<div class="col-sm-2">';
     div += '<span class="zoneAttr label label-info rename cursor" data-l1key="name" ></span>';
     div += '</div>';
-    div += '<div class="col-lg-5 col-lg-offset-3">';
+    div += '<div class="col-sm-5 col-sm-offset-3">';
     div += '<i class="fa fa-minus-circle pull-right cursor bt_removeZone"></i>';
     div += '<a class="btn btn-sm bt_addAction btn-danger  pull-right" style="margin-left : 5px;"><i class="fa fa-plus-circle"></i> {{Action}}</a>';
     div += '<a class="btn btn-warning btn-sm bt_addActionImmediate pull-right" style="margin-left : 5px;"><i class="fa fa-plus-circle"></i> {{Action immédiate}}</a>';
@@ -483,11 +483,11 @@ function addMode(_mode) {
     var div = '<div class="mode well">';
     div += '<form class="form-horizontal" role="form">';
     div += '<div class="form-group">';
-    div += '<label class="col-lg-2 control-label">{{Nom du mode}}</label>';
-    div += '<div class="col-lg-2">';
+    div += '<label class="col-sm-2 control-label">{{Nom du mode}}</label>';
+    div += '<div class="col-sm-2">';
     div += '<span class="modeAttr label label-info rename cursor" data-l1key="name" ></span>';
     div += '</div>';
-    div += '<div class="col-lg-2 col-lg-offset-6">';
+    div += '<div class="col-sm-2 col-sm-offset-6">';
     div += '<i class="fa fa-minus-circle pull-right cursor bt_removeMode"></i>';
     div += '<a class="btn btn-default btn-sm bt_addZoneMode pull-right"><i class="fa fa-plus-circle"></i> {{Zone}}</a>';
 
@@ -519,11 +519,11 @@ function addZoneMode(_el, _mode) {
     }
     var div = '<div class="zoneMode">';
     div += '<div class="form-group">';
-    div += '<label class="col-lg-1 control-label">{{Zone}}</label>';
-    div += '<div class="col-lg-3">';
+    div += '<label class="col-sm-1 control-label">{{Zone}}</label>';
+    div += '<div class="col-sm-3">';
     div += '<span class="modeAttr label label-primary" data-l1key="zone"></span>';
     div += '</div>';
-    div += '<div class="col-lg-1 col-lg-offset-7">';
+    div += '<div class="col-sm-1 col-sm-offset-7">';
     div += '<i class="fa fa-minus-circle pull-right cursor bt_removeZoneMode"></i>';
     div += '</div>';
     div += '</div>';
