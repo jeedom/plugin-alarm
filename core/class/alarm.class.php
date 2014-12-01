@@ -382,6 +382,13 @@ class alarm extends eqLogic {
                             log::add('alarm', 'debug', __('Vérification de la zone : ', __FILE__) . $zone['name']);
                             foreach ($zone['triggers'] as $trigger) {
                                 if ($trigger['cmd'] == '#' . $_trigger_id . '#') {
+                                    if (isset($trigger['invert']) && $trigger['invert'] == 1) {
+                                        if ($_value == 1 || $_value) {
+                                            $_value = 0;
+                                        } else {
+                                            $_value = 1;
+                                        }
+                                    }
                                     if ($_value == 1 || $_value) {
                                         if (isset($trigger['armedDelay']) && $trigger['armedDelay'] !== '' && is_numeric(intval($trigger['armedDelay'])) && $trigger['armedDelay'] > 0) {
                                             if (strtotime('now') < (strtotime($cmd_armed->getCollectDate()) + $trigger['armedDelay'] * 60)) {
@@ -495,6 +502,13 @@ class alarmCmd extends cmd {
                                     if (is_object($cmd)) {
                                         log::add('alarm', 'debug', __('Vérification de la commande : ', __FILE__) . $cmd->getHumanName());
                                         $result = $cmd->execCmd();
+                                        if (isset($trigger['invert']) && $trigger['invert'] == 1) {
+                                            if ($result == 1 || $result) {
+                                                $result = 0;
+                                            } else {
+                                                $result = 1;
+                                            }
+                                        }
                                         if ($result == 1) {
                                             log::add('alarm', 'debug', __('La commande est active : ', __FILE__) . $cmd->getHumanName());
                                             if (isset($trigger['armedDelay']) && is_numeric($trigger['armedDelay']) && $trigger['armedDelay'] > 0) {
