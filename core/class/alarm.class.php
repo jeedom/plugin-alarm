@@ -369,7 +369,7 @@ class alarm extends eqLogic {
         log::add('alarm', 'debug', __('Status de l\'alarme : ', __FILE__) . $cmd_state->execCmd());
         if ($cmd_armed->execCmd() == 1 && $cmd_state->execCmd() != 1) {
             $cmd_immediatState = $this->getCmd(null, 'immediatState');
-            log::add('alarm', 'debug', __('Déclenchement de l\'alarme sur évenement', __FILE__));
+            log::add('alarm', 'debug', __('Déclenchement de l\'alarme sur évenement : ', __FILE__) . $_trigger_id);
             $cmd_mode = $this->getCmd(null, 'mode');
             $select_mode = $cmd_mode->execCmd();
             $modes = $this->getConfiguration('modes');
