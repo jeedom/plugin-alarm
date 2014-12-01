@@ -1,0 +1,3 @@
+==== 01/12/2014
+
+- Possibilitée d'inverser la valeur des declencheurs
