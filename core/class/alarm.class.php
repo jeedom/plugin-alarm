@@ -369,7 +369,13 @@ class alarm extends eqLogic {
         log::add('alarm', 'debug', __('Status de l\'alarme : ', __FILE__) . $cmd_state->execCmd());
         if ($cmd_armed->execCmd() == 1 && $cmd_state->execCmd() != 1) {
             $cmd_immediatState = $this->getCmd(null, 'immediatState');
-            log::add('alarm', 'debug', __('Déclenchement de l\'alarme sur évenement : ', __FILE__) . $_trigger_id);
+            $cmd_trigger = cmd::byId($_trigger_id);
+            if (!is_object($cmd_trigger)) {
+                log::add('alarm', 'error', __('Commande déclencheur de l\'alarme non trouvé : ', __FILE__) . $_trigger_id);
+                return;
+            }
+            $trigger_human_name = $cmd_trigger->getHumanName();
+            log::add('alarm', 'debug', __('Déclenchement de l\'alarme sur évenement : ', __FILE__) . $trigger_human_name);
             $cmd_mode = $this->getCmd(null, 'mode');
             $select_mode = $cmd_mode->execCmd();
             $modes = $this->getConfiguration('modes');
@@ -383,11 +389,7 @@ class alarm extends eqLogic {
                             foreach ($zone['triggers'] as $trigger) {
                                 if ($trigger['cmd'] == '#' . $_trigger_id . '#') {
                                     if (isset($trigger['invert']) && $trigger['invert'] == 1) {
-                                        if ($_value == 1 || $_value) {
-                                            $_value = 0;
-                                        } else {
-                                            $_value = 1;
-                                        }
+                                        $result = ($result == 1 || $result) ? 0 : 1;
                                     }
                                     if ($_value == 1 || $_value) {
                                         if (isset($trigger['armedDelay']) && $trigger['armedDelay'] !== '' && is_numeric(intval($trigger['armedDelay'])) && $trigger['armedDelay'] > 0) {
@@ -401,7 +403,13 @@ class alarm extends eqLogic {
                                             $cmd_immediatState->event(1);
                                             foreach ($zone['actionsImmediate'] as $action) {
                                                 try {
-                                                    scenarioExpression::createAndExec('action', $action['cmd'], $action['options']);
+                                                    if (isset($action['options'])) {
+                                                        $options = $action['options'];
+                                                        foreach ($options as $key => $value) {
+                                                            $options[$key] = str_replace('#trigger#', $trigger_human_name, $value);
+                                                        }
+                                                    }
+                                                    scenarioExpression::createAndExec('action', $action['cmd'], $options);
                                                 } catch (Exception $e) {
                                                     log::add('alarm', 'error', __('Erreur lors de l\'éxecution de ', __FILE__) . $action['cmd'] . __('. Détails : ', __FILE__) . $e->getMessage());
                                                 }
@@ -426,7 +434,13 @@ class alarm extends eqLogic {
                                         $cmd_state->event(1);
                                         foreach ($zone['actions'] as $action) {
                                             try {
-                                                scenarioExpression::createAndExec('action', $action['cmd'], $action['options']);
+                                                if (isset($action['options'])) {
+                                                    $options = $action['options'];
+                                                    foreach ($options as $key => $value) {
+                                                        $options[$key] = str_replace('#trigger#', $trigger_human_name, $value);
+                                                    }
+                                                }
+                                                scenarioExpression::createAndExec('action', $action['cmd'], $options);
                                             } catch (Exception $e) {
                                                 log::add('alarm', 'error', __('Erreur lors de l\'éxecution de ', __FILE__) . $action['cmd'] . __('. Détails : ', __FILE__) . $e->getMessage());
                                             }
@@ -503,11 +517,7 @@ class alarmCmd extends cmd {
                                         log::add('alarm', 'debug', __('Vérification de la commande : ', __FILE__) . $cmd->getHumanName());
                                         $result = $cmd->execCmd();
                                         if (isset($trigger['invert']) && $trigger['invert'] == 1) {
-                                            if ($result == 1 || $result) {
-                                                $result = 0;
-                                            } else {
-                                                $result = 1;
-                                            }
+                                            $result = ($result == 1 || $result) ? 0 : 1;
                                         }
                                         if ($result == 1) {
                                             log::add('alarm', 'debug', __('La commande est active : ', __FILE__) . $cmd->getHumanName());

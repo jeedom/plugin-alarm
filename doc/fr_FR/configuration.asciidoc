@@ -42,6 +42,8 @@ image::../images/alarme10.png[]
 
 Et enfin les actions classiques. Celles si seront à réaliser lorsqu'un des déclencheurs configurés pour la zone sera actif. Ces actions tiendront compte des délais précédemment configurés pour chaque déclencheur. Ici lorsque je vais ouvrir la fenêtre cela va m'envoyer un SMS. On peut par exemple déclencher une sirène.
 
+Il est possible d'utiliser le tag : #trigger# dans les options des actions de type message pour que Jeedom vous precise le nom de la commande ayant declenchée l'alarme
+
 image::../images/alarme11.png[]
 
 L'onglet Mode. On va pouvoir ici définir des modes à son alarme. Ce sont ces modes que l'on va activer dans l'alarme. Les modes sont un groupement de zones. Par exemple un mode "total" pour les zones Rdc+Etage, et un mode "partiel" pour la zone Etage
