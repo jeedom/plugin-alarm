@@ -364,6 +364,35 @@ class alarm extends eqLogic {
         $armed->save();
     }
 
+    public function listCmdTrigger() {
+        $result = array();
+        $modes = $this->getConfiguration('modes');
+        $cmd_mode = $this->getCmd(null, 'mode');
+        $select_mode = $cmd_mode->execCmd();
+        foreach ($modes as $mode) {
+            if ($mode['name'] == $select_mode) {
+                $zones = $this->getConfiguration('zones');
+                foreach ($zones as $zone) {
+                    if ((!is_array($mode['zone']) && $zone['name'] == $mode['zone']) || (is_array($mode['zone']) && in_array($zone['name'], $mode['zone']))) {
+                        foreach ($zone['triggers'] as $trigger) {
+                            $cmd = cmd::byId(str_replace('#', '', $trigger['cmd']));
+                            if (is_object($cmd)) {
+                                $value = $cmd->execCmd();
+                                if (isset($trigger['invert']) && $trigger['invert'] == 1) {
+                                    $value = ($value == 1 || $value) ? 0 : 1;
+                                }
+                                if ($value == 1 || $value) {
+                                    $result[] = $cmd->getHumanName();
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return $result;
+    }
+
     public function execute($_trigger_id, $_value) {
         log::add('alarm', 'debug', __('Lancement de l\'alarme : ', __FILE__) . $this->getHumanName());
         $cmd_armed = $this->getCmd(null, 'enable');
@@ -376,8 +405,7 @@ class alarm extends eqLogic {
                 log::add('alarm', 'error', __('Commande déclencheur de l\'alarme non trouvé : ', __FILE__) . $_trigger_id);
                 return;
             }
-            $trigger_human_name = $cmd_trigger->getHumanName();
-            log::add('alarm', 'debug', __('Déclenchement de l\'alarme sur évenement : ', __FILE__) . $trigger_human_name);
+            log::add('alarm', 'debug', __('Déclenchement de l\'alarme sur évenement : ', __FILE__) . $cmd_trigger->getHumanName());
             $cmd_mode = $this->getCmd(null, 'mode');
             $select_mode = $cmd_mode->execCmd();
             $modes = $this->getConfiguration('modes');
@@ -391,7 +419,7 @@ class alarm extends eqLogic {
                             foreach ($zone['triggers'] as $trigger) {
                                 if ($trigger['cmd'] == '#' . $_trigger_id . '#') {
                                     if (isset($trigger['invert']) && $trigger['invert'] == 1) {
-                                        $result = ($result == 1 || $result) ? 0 : 1;
+                                        $_value = ($_value == 1 || $_value) ? 0 : 1;
                                     }
                                     if ($_value == 1 || $_value) {
                                         if (isset($trigger['armedDelay']) && $trigger['armedDelay'] !== '' && is_numeric(intval($trigger['armedDelay'])) && $trigger['armedDelay'] > 0) {
@@ -408,7 +436,7 @@ class alarm extends eqLogic {
                                                     if (isset($action['options'])) {
                                                         $options = $action['options'];
                                                         foreach ($options as $key => $value) {
-                                                            $options[$key] = str_replace('#trigger#', $trigger_human_name, $value);
+                                                            $options[$key] = str_replace('#trigger#', implode(" , ", $this->listCmdTrigger()), $value);
                                                         }
                                                     }
                                                     scenarioExpression::createAndExec('action', $action['cmd'], $options);
@@ -439,7 +467,7 @@ class alarm extends eqLogic {
                                                 if (isset($action['options'])) {
                                                     $options = $action['options'];
                                                     foreach ($options as $key => $value) {
-                                                        $options[$key] = str_replace('#trigger#', $trigger_human_name, $value);
+                                                        $options[$key] = str_replace('#trigger#', implode(" , ", $this->listCmdTrigger()), $value);
                                                     }
                                                 }
                                                 scenarioExpression::createAndExec('action', $action['cmd'], $options);
