@@ -448,7 +448,6 @@ class alarm extends eqLogic {
                                         if (isset($trigger['waitDelay']) && $trigger['waitDelay'] !== '' && is_numeric(intval($trigger['waitDelay'])) && $trigger['waitDelay'] > 0) {
                                             log::add('alarm', 'debug', __('Attente de ' . $trigger['waitDelay'] . ' min avant déclenchement', __FILE__));
                                             sleep($trigger['waitDelay'] * 60);
-                                            log::add('alarm', 'debug', __('Armement de l\'alarme : ', __FILE__) . $cmd_armed->execCmd());
                                             if ($cmd_armed->execCmd() == 0) {
                                                 log::add('alarm', 'debug', __('L\'alarme a été désarmé avant déclenchement', __FILE__));
                                                 return;
@@ -475,6 +474,7 @@ class alarm extends eqLogic {
                                                 log::add('alarm', 'error', __('Erreur lors de l\'éxecution de ', __FILE__) . $action['cmd'] . __('. Détails : ', __FILE__) . $e->getMessage());
                                             }
                                         }
+                                        return;
                                     }
                                 }
                             }
@@ -506,80 +506,74 @@ class alarmCmd extends cmd {
 
     public function execute($_options = array()) {
         $eqLogic = $this->getEqLogic();
-        if ($this->getLogicalId() == 'armed' || $this->getLogicalId() == 'released') {
-            $cmd_armed = $eqLogic->getCmd(null, 'enable');
-            $cmd_state = $eqLogic->getCmd(null, 'state');
-            $cmd_immediateState = $eqLogic->getCmd(null, 'immediatState');
-            $cmd_armed->event($this->getConfiguration('state'));
-            if ($this->getConfiguration('state') == 0) {
-                $eqLogic->doAction('release');
-                /* RaZ immediate */
-                if ($cmd_immediateState->execCmd() == 1) {
-                    log::add('alarm', 'debug', __('Remise à zero immédiate de l\'alarme', __FILE__));
-                    $eqLogic->doAction('razImmediate');
-                }
-                /* RaZ */
-                if ($cmd_state->execCmd() == 1) {
-                    log::add('alarm', 'debug', __('Remise à zero de l\'alarme', __FILE__));
-                    $eqLogic->doAction('raz');
-                }
-
-                log::add('alarm', 'debug', __('Envoi etat alarm ok', __FILE__));
-                $cmd_state->setCollectDate('');
-                $cmd_state->event(0);
-                $cmd_immediateState->setCollectDate('');
-                $cmd_immediateState->event(0);
-                $eqLogic->setConfiguration('pingState', 1);
-                $eqLogic->save();
-            } else {
-                $cmd_mode = $eqLogic->getCmd(null, 'mode');
-                $select_mode = $cmd_mode->execCmd();
-                $modes = $eqLogic->getConfiguration('modes');
-                $zones = $eqLogic->getConfiguration('zones');
-                foreach ($modes as $mode) {
-                    if ($mode['name'] == $select_mode) {
-                        foreach ($zones as $zone) {
-                            if ((!is_array($mode['zone']) && $zone['name'] == $mode['zone']) || (is_array($mode['zone']) && in_array($zone['name'], $mode['zone']))) {
-                                log::add('alarm', 'debug', __('Vérification de la zone : ', __FILE__) . $zone['name']);
-                                foreach ($zone['triggers'] as $trigger) {
-                                    $cmd = cmd::byId(str_replace('#', '', $trigger['cmd']));
-                                    if (is_object($cmd)) {
-                                        log::add('alarm', 'debug', __('Vérification de la commande : ', __FILE__) . $cmd->getHumanName());
-                                        $result = $cmd->execCmd();
-                                        if (isset($trigger['invert']) && $trigger['invert'] == 1) {
-                                            $result = ($result == 1 || $result) ? 0 : 1;
+        $cmd_armed = $eqLogic->getCmd(null, 'enable');
+        $cmd_state = $eqLogic->getCmd(null, 'state');
+        $cmd_immediateState = $eqLogic->getCmd(null, 'immediatState');
+        $cmd_armed->event($this->getConfiguration('state'));
+        if ($this->getLogicalId() == 'released') {
+            $eqLogic->doAction('release');
+            if ($cmd_immediateState->execCmd() == 1) {
+                log::add('alarm', 'debug', __('Remise à zero immédiate de l\'alarme', __FILE__));
+                $eqLogic->doAction('razImmediate');
+            }
+            if ($cmd_state->execCmd() == 1) {
+                log::add('alarm', 'debug', __('Remise à zero de l\'alarme', __FILE__));
+                $eqLogic->doAction('raz');
+            }
+            log::add('alarm', 'debug', __('Envoi etat alarm ok', __FILE__));
+            $cmd_state->setCollectDate('');
+            $cmd_state->event(0);
+            $cmd_immediateState->setCollectDate('');
+            $cmd_immediateState->event(0);
+            $eqLogic->setConfiguration('pingState', 1);
+            $eqLogic->save();
+            return;
+        }
+        if ($this->getLogicalId() == 'armed') {
+            $cmd_mode = $eqLogic->getCmd(null, 'mode');
+            $select_mode = $cmd_mode->execCmd();
+            $modes = $eqLogic->getConfiguration('modes');
+            $zones = $eqLogic->getConfiguration('zones');
+            foreach ($modes as $mode) {
+                if ($mode['name'] == $select_mode) {
+                    foreach ($zones as $zone) {
+                        if ((!is_array($mode['zone']) && $zone['name'] == $mode['zone']) || (is_array($mode['zone']) && in_array($zone['name'], $mode['zone']))) {
+                            log::add('alarm', 'debug', __('Vérification de la zone : ', __FILE__) . $zone['name']);
+                            foreach ($zone['triggers'] as $trigger) {
+                                $cmd = cmd::byId(str_replace('#', '', $trigger['cmd']));
+                                if (is_object($cmd)) {
+                                    log::add('alarm', 'debug', __('Vérification de la commande : ', __FILE__) . $cmd->getHumanName());
+                                    $result = $cmd->execCmd();
+                                    if (isset($trigger['invert']) && $trigger['invert'] == 1) {
+                                        $result = ($result == 1 || $result) ? 0 : 1;
+                                    }
+                                    if ($result == 1) {
+                                        log::add('alarm', 'debug', __('La commande est active : ', __FILE__) . $cmd->getHumanName());
+                                        if (isset($trigger['armedDelay']) && is_numeric($trigger['armedDelay']) && $trigger['armedDelay'] > 0) {
+                                            continue;
                                         }
-                                        if ($result == 1) {
-                                            log::add('alarm', 'debug', __('La commande est active : ', __FILE__) . $cmd->getHumanName());
-                                            if (isset($trigger['armedDelay']) && is_numeric($trigger['armedDelay']) && $trigger['armedDelay'] > 0) {
-                                                continue;
-                                            }
-                                            $eqLogic->launch($cmd->getId(), $result);
-                                            return;
-                                        }
+                                        $eqLogic->launch($cmd->getId(), $result);
+                                        return;
                                     }
                                 }
                             }
                         }
                     }
                 }
-
-                /*                 * *****************Activation reussi***************** */
-                log::add('alarm', 'debug', 'Activation de l\'alarme réussie');
-                $eqLogic->doAction('activationImmediateOk');
-                $this->setConfiguration('armedComplete', 0);
-                $this->setConfiguration('armedDatetime', strtotime('now'));
-                $this->save();
             }
+
+            /*             * *****************Activation reussi***************** */
+            log::add('alarm', 'debug', 'Activation de l\'alarme réussie');
+            $eqLogic->doAction('activationImmediateOk');
+            $this->setConfiguration('armedComplete', 0);
+            $this->setConfiguration('armedDatetime', strtotime('now'));
+            $this->save();
+            return;
         }
-
-
         if ($this->getConfiguration('mode') == '1') {
             $cmd_zone = $eqLogic->getCmd(null, 'mode');
             $cmd_zone->event($this->getConfiguration('state'));
             if ($eqLogic->getConfiguration('always_active') == 1) {
-                $cmd_state = $eqLogic->getCmd(null, 'state');
-                $cmd_immediateState = $eqLogic->getCmd(null, 'immediatState');
                 /* RaZ immediate */
                 if ($cmd_immediateState->execCmd() == 1) {
                     log::add('alarm', 'debug', __('Remise à zero immédiate de l\'alarme', __FILE__));

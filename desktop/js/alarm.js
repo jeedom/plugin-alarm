@@ -428,7 +428,7 @@ function addZone(_zone) {
     div += '<div class="col-sm-2">';
     div += '<span class="zoneAttr label label-info rename cursor" data-l1key="name" ></span>';
     div += '</div>';
-    div += '<div class="col-sm-5 col-sm-offset-3">';
+    div += '<div class="col-sm-6 col-sm-offset-2">';
     div += '<i class="fa fa-minus-circle pull-right cursor bt_removeZone"></i>';
     div += '<a class="btn btn-sm bt_addAction btn-danger  pull-right" style="margin-left : 5px;"><i class="fa fa-plus-circle"></i> {{Action}}</a>';
     div += '<a class="btn btn-warning btn-sm bt_addActionImmediate pull-right" style="margin-left : 5px;"><i class="fa fa-plus-circle"></i> {{Action immédiate}}</a>';
