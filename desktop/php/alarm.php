@@ -121,6 +121,7 @@ $eqLogics = eqLogic::byType('alarm');
             <li><a href="#tab_raz">{{Réinitialisation}}</a></li>
             <li><a href="#tab_ping">{{Pertes de communication}}</a></li>
             <li><a href="#tab_activeOk">{{Activation OK}}</a></li>
+            <li><a href="#tab_activeKo">{{Activation KO}}</a></li>
             <li><a href="#tab_release">{{Désactivation OK}}</a></li>
         </ul>
 
@@ -180,6 +181,13 @@ $eqLogics = eqLogic::byType('alarm');
                 <br/>
                 <form class="form-horizontal">
                     <div id="div_activationOk"></div>
+                </form>
+            </div>
+            <div class="tab-pane" id="tab_activeKo">
+                <a class='btn btn-success btn-xs pull-right' id="btn_addActionActivationKo" style="margin-top: 5px;"><i class="fa fa-plus-circle"></i> {{Ajouter action lors de l'echec d'activation}}</a>
+                <br/><br/>
+                <form class="form-horizontal">
+                    <div id="div_activationKo"></div>
                 </form>
             </div>
         </div>

@@ -141,14 +141,14 @@ $('#btn_addReleaseAlarm').on('click', function () {
 });
 
 
-/**************Activation OK**********************/
+/**************Activation OK/KO**********************/
 
 $('#btn_addActionActivationOk').on('click', function () {
     addAction({}, 'activationOk', '{{Action}}');
 });
 
-$('#btn_addActionActivationImmediateOk').on('click', function () {
-    addAction({}, 'activationImmediateOk', '{{Action Immediate}}');
+$('#btn_addActionActivationKo').on('click', function () {
+    addAction({}, 'activationKo', '{{Action}}');
 });
 
 /**************** PING ***********/
@@ -222,6 +222,7 @@ function saveEqLogic(_eqLogic) {
     _eqLogic.configuration.ping = $('#div_ping .ping').getValues('.expressionAttr');
     _eqLogic.configuration.pingTest = $('#div_pingTest .pingTest').getValues('.expressionAttr');
     _eqLogic.configuration.activationOk = $('#div_activationOk .activationOk').getValues('.expressionAttr');
+    _eqLogic.configuration.activationKo = $('#div_activationKo .activationKo').getValues('.expressionAttr');
     _eqLogic.configuration.activationImmediateOk = $('#div_activationImmediateOk .activationImmediateOk').getValues('.expressionAttr');
 
     return _eqLogic;
@@ -237,6 +238,7 @@ function printEqLogic(_eqLogic) {
     $('#div_ping').empty();
     $('#div_activationOk').empty();
     $('#div_activationImmediateOk').empty();
+    $('#div_activationKo').empty();
     if (isset(_eqLogic.configuration)) {
         if (isset(_eqLogic.configuration.zones)) {
             for (var i in _eqLogic.configuration.zones) {
@@ -283,6 +285,11 @@ function printEqLogic(_eqLogic) {
                 addAction(_eqLogic.configuration.activationImmediateOk[i], 'activationImmediateOk', '{{Action Immediate}}');
             }
         }
+        if (isset(_eqLogic.configuration.activationKo)) {
+            for (var i in _eqLogic.configuration.activationKo) {
+                addAction(_eqLogic.configuration.activationKo[i], 'activationKo', '{{Action}}');
+            }
+        }
     }
 }
 
@@ -316,6 +323,10 @@ function addAction(_action, _type, _name, _el) {
         button = 'btn-warning';
     }
     if (_type == 'activationOk') {
+        input = 'has-success';
+        button = 'btn-success';
+    }
+    if (_type == 'activationKo') {
         input = 'has-success';
         button = 'btn-success';
     }

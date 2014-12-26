@@ -488,6 +488,12 @@ class alarm extends eqLogic {
     public function doAction($_action) {
         foreach ($this->getConfiguration($_action) as $action) {
             try {
+                if (isset($action['options'])) {
+                    $options = $action['options'];
+                    foreach ($options as $key => $value) {
+                        $options[$key] = str_replace('#trigger#', implode(" , ", $this->listCmdTrigger()), $value);
+                    }
+                }
                 scenarioExpression::createAndExec('action', $action['cmd'], $action['options']);
             } catch (Exception $e) {
                 log::add('alarm', 'error', __('Erreur lors de l\'éxecution de ', __FILE__) . $action['cmd'] . __('. Détails : ', __FILE__) . $e->getMessage());
@@ -553,6 +559,7 @@ class alarmCmd extends cmd {
                                         if (isset($trigger['armedDelay']) && is_numeric($trigger['armedDelay']) && $trigger['armedDelay'] > 0) {
                                             continue;
                                         }
+                                        $eqLogic->doAction('activationKo');
                                         $eqLogic->launch($cmd->getId(), $result);
                                         return;
                                     }
