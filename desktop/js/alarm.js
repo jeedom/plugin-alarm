@@ -151,6 +151,10 @@ $('#btn_addActionActivationKo').on('click', function () {
     addAction({}, 'activationKo', '{{Action}}');
 });
 
+$('#btn_addActionActivationImmediateOk').on('click', function () {
+    addAction({}, 'activationImmediateOk', '{{Action Immediate}}');
+});
+
 /**************** PING ***********/
 
 $('#btn_addPingAction').on('click', function () {
