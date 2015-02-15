@@ -463,6 +463,7 @@ class alarm extends eqLogic {
                                         $cmd_state->event(1);
                                         foreach ($zone['actions'] as $action) {
                                             try {
+                                                $options = array();
                                                 if (isset($action['options'])) {
                                                     $options = $action['options'];
                                                     foreach ($options as $key => $value) {
@@ -488,13 +489,14 @@ class alarm extends eqLogic {
     public function doAction($_action) {
         foreach ($this->getConfiguration($_action) as $action) {
             try {
+                $options = array();
                 if (isset($action['options'])) {
                     $options = $action['options'];
                     foreach ($options as $key => $value) {
                         $options[$key] = str_replace('#trigger#', implode(" , ", $this->listCmdTrigger()), $value);
                     }
                 }
-                scenarioExpression::createAndExec('action', $action['cmd'], $action['options']);
+                scenarioExpression::createAndExec('action', $action['cmd'], $options);
             } catch (Exception $e) {
                 log::add('alarm', 'error', __('Erreur lors de l\'éxecution de ', __FILE__) . $action['cmd'] . __('. Détails : ', __FILE__) . $e->getMessage());
             }
