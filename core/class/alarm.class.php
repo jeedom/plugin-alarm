@@ -492,20 +492,21 @@ public function execute($_trigger_id, $_value) {
 
 
 public function doAction($_action) {
+    $trigger = '';
+    $trigger =  implode(" , ", $this->listCmdTrigger());
     foreach ($this->getConfiguration($_action) as $action) {
         try {
             $options = array();
             if (isset($action['options'])) {
                 $options = $action['options'];
                 foreach ($options as $key => $value) {
-                    $options[$key] = str_replace('#trigger#', implode(" , ", $this->listCmdTrigger()), $value);
+                    $options[$key] = str_replace('#trigger#', $trigger, $value);
                 }
             }
             scenarioExpression::createAndExec('action', $action['cmd'], $options);
         } catch (Exception $e) {
             log::add('alarm', 'error', __('Erreur lors de l\'éxecution de ', __FILE__) . $action['cmd'] . __('. Détails : ', __FILE__) . $e->getMessage());
         }
-        scenarioExpression::createAndExec('action', $action['cmd'], $action['options']);
     }
 }
 
