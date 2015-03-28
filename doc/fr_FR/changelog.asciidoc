@@ -1,7 +1,0 @@
-==== 02/12/2014
-
-- Possibilitée d'utiliser le tags #trigger# dans les messages d'action de l'alarme pour avoir plus d'information sur le declencheur de l'alarme
-
-==== 01/12/2014
-
-- Possibilitée d'inverser la valeur des declencheurs
