@@ -115,28 +115,29 @@ class alarm extends eqLogic {
 		$cmdImmediatState->save();
 
 		$existing_mode = array();
-		foreach ($this->getConfiguration('modes') as $key => $value) {
-			$existing_mode[] = $value['name'];
-			$cmd = null;
-			foreach ($this->getCmd() as $cmd_list) {
-				if ($cmd_list->getName() == $value['name']) {
-					$cmd = $cmd_list;
-					break;
+		if (is_array($this->getConfiguration('modes'))) {
+			foreach ($this->getConfiguration('modes') as $key => $value) {
+				$existing_mode[] = $value['name'];
+				$cmd = null;
+				foreach ($this->getCmd() as $cmd_list) {
+					if ($cmd_list->getName() == $value['name']) {
+						$cmd = $cmd_list;
+						break;
+					}
 				}
+				if ($cmd == null) {
+					$cmd = new alarmCmd();
+				}
+				$cmd->setName($value['name']);
+				$cmd->setEqLogic_id($this->id);
+				$cmd->setType('action');
+				$cmd->setSubType('other');
+				$cmd->setorder(4);
+				$cmd->setConfiguration('mode', '1');
+				$cmd->setConfiguration('state', $value['name']);
+				$cmd->save();
 			}
-			if ($cmd == null) {
-				$cmd = new alarmCmd();
-			}
-			$cmd->setName($value['name']);
-			$cmd->setEqLogic_id($this->id);
-			$cmd->setType('action');
-			$cmd->setSubType('other');
-			$cmd->setorder(4);
-			$cmd->setConfiguration('mode', '1');
-			$cmd->setConfiguration('state', $value['name']);
-			$cmd->save();
 		}
-
 		if ($this->getIsEnable() == 1) {
 			$cmd_zone = $this->getCmd(null, 'mode');
 			if (is_object($cmd_zone) && $cmd_zone->execCmd() == '' && isset($value)) {
