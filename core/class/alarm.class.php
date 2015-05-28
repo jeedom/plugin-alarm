@@ -541,7 +541,6 @@ class alarmCmd extends cmd {
 		$info_device['params'][0]['value'] = 1;
 		$info_device['params'][2]['value'] = '#' . $eqLogic->getCmd('info', 'enable')->getId() . '#';
 		$info_device['params'][3]['value'] = '#' . $eqLogic->getCmd('info', 'state')->getId() . '#';
-
 		return $info_device;
 	}
 
