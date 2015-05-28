@@ -514,6 +514,55 @@ class alarm extends eqLogic {
 class alarmCmd extends cmd {
 	/*     * *************************Attributs****************************** */
 
+	public function imperihomeGenerate($ISSStructure) {
+		$eqLogic = $this->getEqLogic();
+		$object = $eqLogic->getObject();
+		$type = 'DevMotion';
+		if ($this->getLogicalId() == 'mode') {
+			$type = 'DevMultiSwitch';
+		}
+		$info_device = array(
+			'id' => $this->getId(),
+			'name' => $eqLogic->getName() . ' ' . $this->getName(),
+			'room' => (is_object($object)) ? $object->getId() : 99999,
+			'type' => $type,
+			'params' => array(),
+		);
+		$info_device['params'] = $ISSStructure[$info_device['type']]['params'];
+		if ($this->getLogicalId() == 'mode') {
+			$info_device['params'][0]['value'] = '#' . $this->getId() . '#';
+			$modes = $eqLogic->getConfiguration('modes');
+			foreach ($modes as $mode) {
+				$info_device['params'][1]['value'] .= $mode['name'] . ',';
+			}
+			$info_device['params'][1]['value'] = trim($info_device['params'][1]['value'], ',');
+			return $info_device;
+		}
+		$info_device['params'][0]['value'] = 1;
+		$info_device['params'][2]['value'] = '#' . $eqLogic->getCmd('info', 'enable')->getId() . '#';
+		$info_device['params'][3]['value'] = '#' . $eqLogic->getCmd('info', 'state')->getId() . '#';
+
+		return $info_device;
+	}
+
+	public function imperihomeAction($_action, $_value) {
+		$eqLogic = $this->getEqLogic();
+		if ($_action == 'setArmed') {
+			if ($_value == 1) {
+				$eqLogic->getCmd('action', 'armed')->execCmd();
+			} else {
+				$eqLogic->getCmd('action', 'released')->execCmd();
+			}
+		}
+		if ($_action == 'setChoice') {
+			foreach ($eqLogic->getCmd() as $cmd) {
+				if ($cmd->getConfiguration('mode') == '1' && $cmd->getConfiguration('state') == $_value) {
+					$cmd->execCmd();
+				}
+			}
+		}
+	}
+
 	public function dontRemoveCmd() {
 		return true;
 	}
