@@ -514,6 +514,47 @@ class alarm extends eqLogic {
 class alarmCmd extends cmd {
 	/*     * *************************Attributs****************************** */
 
+	public function generateImperihome() {
+		$eqLogic = $this->getEqLogic();
+		$return = array('params' => array(), 'actions' => array(), 'cmd_id' => array());
+		if ($this->getLogicalId() == 'state') {
+			$return = array(
+				'ids' => array($eqLogic->getCmd(null, 'state')->getId()),
+				'params' => array(
+					'armable' => array(
+						'Description' => 'Ability to arm the device : 1 = Yes / 0 = No',
+						'type' => 'optionBinary',
+						'equivalent' => '',
+						'value' => 1,
+					),
+					'ackable' => array(
+						'Description' => 'Ability to acknowledge alerts : 1 = Yes / 0 = No',
+						'type' => 'optionBinary',
+						'equivalent' => '',
+						'value' => 0,
+					),
+					'armed' => array(
+						'Description' => 'Current arming status : 1 = On / 0 = Off',
+						'type' => 'infoBinary',
+						'equivalent' => '',
+						'value' => '#' . $eqLogic->getCmd(null, 'state')->getId() . '#',
+					),
+					'tripped' => array(
+						'Description' => 'Ability to arm the device : 1 = Yes / 0 = No',
+						'type' => 'infoBinary',
+						'equivalent' => '',
+						'value' => 0,
+					),
+
+				),
+			);
+		}
+		if ($this->getLogicalId() == 'mode') {
+
+		}
+		return $return;
+	}
+
 	public function dontRemoveCmd() {
 		return true;
 	}
