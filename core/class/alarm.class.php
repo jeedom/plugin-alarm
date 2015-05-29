@@ -523,7 +523,7 @@ class alarmCmd extends cmd {
 		}
 		$info_device = array(
 			'id' => $this->getId(),
-			'name' => $eqLogic->getName() . ' ' . $this->getName(),
+			'name' => $eqLogic->getName(),
 			'room' => (is_object($object)) ? $object->getId() : 99999,
 			'type' => $type,
 			'params' => array(),
