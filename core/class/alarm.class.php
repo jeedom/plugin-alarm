@@ -562,6 +562,20 @@ class alarmCmd extends cmd {
 		}
 	}
 
+	public function imperihomeCmd() {
+		if ($this->getLogicalId() == 'mode') {
+			$eqLogic = $this->getEqLogic();
+			if (count($eqLogic->getConfiguration('modes')) < 2) {
+				return false;
+			}
+			return true;
+		}
+		if ($this->getLogicalId() == 'enable') {
+			return true;
+		}
+		return false;
+	}
+
 	public function dontRemoveCmd() {
 		return true;
 	}
