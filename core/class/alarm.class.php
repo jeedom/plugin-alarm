@@ -433,6 +433,7 @@ class alarm extends eqLogic {
 											}
 										}
 										if ($cmd_immediatState->execCmd() != 1) {
+											log::add('alarm', 'debug', __('Exécution des actions immédiate', __FILE__));
 											$cmd_immediatState->setCollectDate('');
 											$cmd_immediatState->event(1);
 											foreach ($zone['actionsImmediate'] as $action) {
