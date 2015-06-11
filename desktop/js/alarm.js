@@ -408,9 +408,8 @@ function addTrigger(_el, _trigger) {
     div += '<div class="col-sm-1 has-success">';
     div += '<input class="triggerAttr form-control input-sm" data-l1key="waitDelay" />';
     div += '</div>';
-    div += '<label class="col-sm-1 control-label">{{Inverser}}</label>';
     div += '<div class="col-sm-1 has-success">';
-    div += '<input type="checkbox" class="triggerAttr input-sm" data-l1key="invert" />';
+    div += '<input type="checkbox" class="triggerAttr input-sm bootstrapSwitch" data-l1key="invert" data-label-text="{{Inverser}}" />';
     div += '</div>';
     div += '<div class="col-sm-1">';
     div += '<i class="fa fa-minus-circle pull-right cursor bt_removeTrigger"></i>';

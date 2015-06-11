@@ -25,12 +25,12 @@ foreach ($eqLogics as $eqLogic) {
     </legend>
     <div class="eqLogicThumbnailContainer">
       <div class="cursor eqLogicAction" data-action="add" style="background-color : #ffffff; height : 200px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;" >
-         <center>
-            <i class="fa fa-plus-circle" style="font-size : 7em;color:#94ca02;"></i>
-        </center>
-        <span style="font-size : 1.1em;position:relative; top : 23px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;color:#94ca02"><center>Ajouter</center></span>
-    </div>
-    <?php
+       <center>
+        <i class="fa fa-plus-circle" style="font-size : 7em;color:#94ca02;"></i>
+    </center>
+    <span style="font-size : 1.1em;position:relative; top : 23px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;color:#94ca02"><center>Ajouter</center></span>
+</div>
+<?php
 foreach ($eqLogics as $eqLogic) {
 	echo '<div class="eqLogicDisplayCard cursor" data-eqLogic_id="' . $eqLogic->getId() . '" style="background-color : #ffffff; height : 200px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;" >';
 	echo "<center>";
@@ -82,35 +82,32 @@ foreach (jeedom::getConfiguration('eqLogic:category') as $key => $value) {
            </div>
        </div>
        <div class="form-group">
-        <label class="col-sm-2 control-label">{{Activer}}</label>
-        <div class="col-sm-1">
-            <input type="checkbox" class="eqLogicAttr" data-l1key="isEnable" checked/>
-        </div>
-        <label class="col-sm-2 control-label">{{Visible}}</label>
-        <div class="col-sm-1">
-            <input type="checkbox" class="eqLogicAttr" data-l1key="isVisible" checked/>
+        <label class="col-sm-2 control-label"></label>
+        <div class="col-sm-10">
+            <input type="checkbox" class="eqLogicAttr bootstrapSwitch" data-label-text="{{Activer}}" data-l1key="isEnable" checked/>
+            <input type="checkbox" class="eqLogicAttr bootstrapSwitch" data-label-text="{{Visible}}" data-l1key="isVisible" checked/>
         </div>
     </div>
 
     <div class="form-group expertModeVisible">
         <label class="col-sm-2 control-label">{{Actif en permanence}}</label>
         <div class="col-sm-1">
-            <input type="checkbox" class="eqLogicAttr" data-l1key="configuration" data-l2key="always_active"/>
+        <input type="checkbox" class="eqLogicAttr bootstrapSwitch" data-l1key="configuration" data-l2key="always_active"/>
         </div>
         <label class="col-sm-2 control-label">{{Armement visible}}</label>
         <div class="col-sm-1">
-            <input type="checkbox" class="eqLogicAttr" data-l1key="configuration" data-l2key="armed_visible" checked/>
+            <input type="checkbox" class="eqLogicAttr bootstrapSwitch" data-l1key="configuration" data-l2key="armed_visible" checked/>
         </div>
         <label class="col-sm-2 control-label">{{Status immédiat visible}}</label>
         <div class="col-sm-1">
-            <input type="checkbox" class="eqLogicAttr" data-l1key="configuration" data-l2key="immediateState_visible"/>
+            <input type="checkbox" class="eqLogicAttr bootstrapSwitch" data-l1key="configuration" data-l2key="immediateState_visible"/>
         </div>
     </div>
 
     <div class="form-group">
         <label class="col-sm-2 control-label">{{Historiser état et status de l'alarme}}</label>
         <div class="col-sm-1">
-            <input type="checkbox" class="eqLogicAttr" data-l1key="configuration" data-l2key="historizedState"/>
+            <input type="checkbox" class="eqLogicAttr bootstrapSwitch" data-l1key="configuration" data-l2key="historizedState"/>
         </div>
     </div>
 </fieldset>
