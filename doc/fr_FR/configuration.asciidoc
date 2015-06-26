@@ -1,6 +1,6 @@
 === Configuration du plugin
 
-Après téléchargement du plugin, il vous suffit juste d'activer celui-ci, il n'y a aucune configuration à ce niveau
+Après téléchargement du plugin, il vous suffit juste d'activer celui-ci, il n'y a aucune configuration supplémentaire à ce niveau là.
 
 image::../images/alarm1.png[]
 
@@ -18,7 +18,7 @@ image::../images/alarm3.png[]
 [TIP]
 Comme à beaucoup d'endroits sur Jeedom, placer la souris tout à gauche permet de faire apparaître un menu d'accès rapide (vous pouvez, à partir de votre profil, le laisser toujours visible).
 
-Une fois que vous cliquez sur l'un d'eux, vous obtenez : 
+Une fois que vous cliquez sur l'un des équipements, vous obtenez : 
 
 image::../images/alarm4.png[]
 
