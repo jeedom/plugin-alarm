@@ -24,7 +24,7 @@ image::../images/alarm4.png[]
 
 Vous retrouvez ici toute la configuration de votre équipement : 
 
-* *Nom de l'équipement phonemarket* : nom de votre équipement Phonemarket,
+* *Nom de l'équipement alarme* : nom de votre alarme,
 * *Objet parent* : indique l'objet parent auquel appartient l'équipement.
 * *Catégorie* : la categorie de l'équipement (sécurité en générale pour une alarme)
 * *Activer* : permet de rendre votre équipement actif,
