@@ -395,7 +395,7 @@ function addTrigger(_el, _trigger) {
     div += '<div class="form-group">';
     div += '<label class="col-sm-1 control-label">{{Déclencheur}}</label>';
     div += '<div class="col-sm-1">';
-    div += '<a class="btn btn-default btn-sm listCmdInfo btn-success"><i class="fa fa-list-alt"></i></a>';
+    div += '<a class="btn btn-sm listCmdInfo btn-success"><i class="fa fa-list-alt"></i></a>';
     div += '</div>';
     div += '<div class="col-sm-2 has-success">';
     div += '<input class="triggerAttr form-control input-sm" data-l1key="cmd" />';
