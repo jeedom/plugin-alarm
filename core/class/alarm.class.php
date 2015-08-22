@@ -478,7 +478,7 @@ class alarm extends eqLogic {
 												if (isset($action['options'])) {
 													$options = $action['options'];
 													foreach ($options as $key => $value) {
-														$options[$key] = str_replace('#trigger#', implode(" , ", $this->listCmdTrigger()), $value);
+														$options[$key] = str_replace('#trigger#', str_replace('#', '', implode(" , ", $this->listCmdTrigger())), $value);
 													}
 												}
 												scenarioExpression::createAndExec('action', $action['cmd'], $options);
