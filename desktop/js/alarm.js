@@ -16,13 +16,13 @@
  */
 
 
-$('#tab_alarm a').click(function (e) {
+ $('#tab_alarm a').click(function (e) {
     e.preventDefault()
     $(this).tab('show')
 })
 
 
-$('#bt_addZone').on('click', function () {
+ $('#bt_addZone').on('click', function () {
     bootbox.prompt("{{Nom de la zone ?}}", function (result) {
         if (result !== null && result != '') {
             addZone({name: result});
@@ -30,7 +30,7 @@ $('#bt_addZone').on('click', function () {
     });
 });
 
-$('body').delegate('.rename', 'click', function () {
+ $('body').delegate('.rename', 'click', function () {
     var el = $(this);
     bootbox.prompt("{{Nouveau nom ?}}", function (result) {
         if (result !== null && result != '') {
@@ -48,11 +48,11 @@ $('body').delegate('.rename', 'click', function () {
     });
 });
 
-$("#div_zones").delegate('.bt_removeZone', 'click', function () {
+ $("#div_zones").delegate('.bt_removeZone', 'click', function () {
     $(this).closest('.zone').remove();
 });
 
-$('#bt_addMode').on('click', function () {
+ $('#bt_addMode').on('click', function () {
     bootbox.prompt("{{Nom du mode ?}}", function (result) {
         if (result !== null && result != '') {
             addMode({name: result});
@@ -60,11 +60,11 @@ $('#bt_addMode').on('click', function () {
     });
 });
 
-$("#div_modes").delegate('.bt_removeZoneMode', 'click', function () {
+ $("#div_modes").delegate('.bt_removeZoneMode', 'click', function () {
     $(this).closest('.zoneMode').remove();
 });
 
-$("#div_modes").delegate('.bt_addZoneMode', 'click', function () {
+ $("#div_modes").delegate('.bt_addZoneMode', 'click', function () {
     var el = $(this);
     var select = '<select class="form-control">';
     $('#div_zones .zone').each(function () {
@@ -83,34 +83,34 @@ $("#div_modes").delegate('.bt_addZoneMode', 'click', function () {
 });
 
 
-$("#div_modes").delegate('.bt_removeMode', 'click', function () {
+ $("#div_modes").delegate('.bt_removeMode', 'click', function () {
     $(this).closest('.mode').remove();
 });
 
-$("#div_zones").delegate('.bt_addAction', 'click', function () {
+ $("#div_zones").delegate('.bt_addAction', 'click', function () {
     addAction({}, 'action', '{{Action}}', $(this).closest('.zone'));
 });
 
-$("#div_zones").delegate('.bt_addActionImmediate', 'click', function () {
+ $("#div_zones").delegate('.bt_addActionImmediate', 'click', function () {
     addAction({}, 'actionImmediate', '{{Action immédiate}}', $(this).closest('.zone'));
 });
 
-$("#div_zones").delegate('.bt_addTrigger', 'click', function () {
+ $("#div_zones").delegate('.bt_addTrigger', 'click', function () {
     addTrigger($(this).closest('.zone'), '');
 });
 
-$("#div_zones").delegate('.bt_removeTrigger', 'click', function () {
+ $("#div_zones").delegate('.bt_removeTrigger', 'click', function () {
     $(this).closest('.trigger').remove();
 });
 
-$("#div_zones").delegate(".listCmdInfo", 'click', function () {
+ $("#div_zones").delegate(".listCmdInfo", 'click', function () {
     var el = $(this).closest('.trigger').find('.triggerAttr[data-l1key=cmd]');
     jeedom.cmd.getSelectModal({cmd: {type: 'info', subtype: 'binary'}}, function (result) {
         el.value(result.human);
     });
 });
 
-$('#div_zones').delegate('.bt_duplicateZone', 'click', function () {
+ $('#div_zones').delegate('.bt_duplicateZone', 'click', function () {
     var zone = $(this).closest('.zone').clone();
     bootbox.prompt("{{Nom de la zone ?}}", function (result) {
         if (result !== null) {
@@ -125,47 +125,47 @@ $('#div_zones').delegate('.bt_duplicateZone', 'click', function () {
     });
 });
 
-/**************** RAZ Alarm ***********/
+ /**************** RAZ Alarm ***********/
 
-$('#btn_addRazAlarm').on('click', function () {
+ $('#btn_addRazAlarm').on('click', function () {
     addAction({}, 'raz', '{{Réinitialisation}}');
 });
 
-$('#btn_addRazImmediateAlarm').on('click', function () {
+ $('#btn_addRazImmediateAlarm').on('click', function () {
     addAction({}, 'razImmediate', '{{Réinitialisation immédiate}}');
 });
 
-/**************** Release Alarm ***********/
-$('#btn_addReleaseAlarm').on('click', function () {
+ /**************** Release Alarm ***********/
+ $('#btn_addReleaseAlarm').on('click', function () {
     addAction({}, 'release', '{{Libération}}');
 });
 
 
-/**************Activation OK/KO**********************/
+ /**************Activation OK/KO**********************/
 
-$('#btn_addActionActivationOk').on('click', function () {
+ $('#btn_addActionActivationOk').on('click', function () {
     addAction({}, 'activationOk', '{{Action}}');
 });
 
-$('#btn_addActionActivationKo').on('click', function () {
+ $('#btn_addActionActivationKo').on('click', function () {
     addAction({}, 'activationKo', '{{Action}}');
 });
 
-$('#btn_addActionActivationImmediateOk').on('click', function () {
+ $('#btn_addActionActivationImmediateOk').on('click', function () {
     addAction({}, 'activationImmediateOk', '{{Action Immediate}}');
 });
 
-/**************** PING ***********/
+ /**************** PING ***********/
 
-$('#btn_addPingAction').on('click', function () {
+ $('#btn_addPingAction').on('click', function () {
     addAction({}, 'ping', '{{Action}}');
 });
 
-$('#btn_addPingTest').on('click', function () {
+ $('#btn_addPingTest').on('click', function () {
     addPingTest({});
 });
 
-$("body").delegate(".listEquipement", 'click', function () {
+ $("body").delegate(".listEquipement", 'click', function () {
     var type = $(this).attr('data-type');
     var el = $(this).closest('.' + type).find('.expressionAttr[data-l1key=eqLogic]');
     jeedom.eqLogic.getSelectModal({}, function (result) {
@@ -173,8 +173,8 @@ $("body").delegate(".listEquipement", 'click', function () {
     });
 });
 
-/**************** Commun ***********/
-$("body").delegate(".listCmdAction", 'click', function () {
+ /**************** Commun ***********/
+ $("body").delegate(".listCmdAction", 'click', function () {
     var type = $(this).attr('data-type');
     var el = $(this).closest('.' + type).find('.expressionAttr[data-l1key=cmd]');
     jeedom.cmd.getSelectModal({cmd: {type: 'action'}}, function (result) {
@@ -185,12 +185,12 @@ $("body").delegate(".listCmdAction", 'click', function () {
     });
 });
 
-$("body").delegate('.bt_removeAction', 'click', function () {
+ $("body").delegate('.bt_removeAction', 'click', function () {
     var type = $(this).attr('data-type');
     $(this).closest('.' + type).remove();
 });
 
-$('body').delegate('.cmdAction.expressionAttr[data-l1key=cmd]', 'focusout', function (event) {
+ $('body').delegate('.cmdAction.expressionAttr[data-l1key=cmd]', 'focusout', function (event) {
     var type = $(this).attr('data-type')
     var expression = $(this).closest('.' + type).getValues('.expressionAttr');
     var el = $(this);
@@ -199,7 +199,7 @@ $('body').delegate('.cmdAction.expressionAttr[data-l1key=cmd]', 'focusout', func
     })
 });
 
-function saveEqLogic(_eqLogic) {
+ function saveEqLogic(_eqLogic) {
     if (!isset(_eqLogic.configuration)) {
         _eqLogic.configuration = {};
     }
@@ -341,13 +341,15 @@ function addAction(_action, _type, _name, _el) {
     var div = '<div class="' + _type + '">';
     div += '<div class="form-group ">';
     div += '<label class="col-sm-1 control-label">' + _name + '</label>';
-    div += '<div class="col-sm-1">';
-    div += '<a class="btn ' + button + ' btn-sm listCmdAction" data-type="' + _type + '"><i class="fa fa-list-alt"></i></a>';
-    div += '</div>';
     div += '<div class="col-sm-3 ' + input + '">';
+    div += '<div class="input-group">';
     div += '<input class="expressionAttr form-control input-sm cmdAction" data-l1key="cmd" data-type="' + _type + '" />';
+    div += '<span class="input-group-btn">';
+    div += '<a class="btn ' + button + ' btn-sm listCmdAction" data-type="' + _type + '"><i class="fa fa-list-alt"></i></a>';
+    div += '</span>';
     div += '</div>';
-    div += '<div class="col-sm-6 actionOptions">';
+    div += '</div>';
+    div += '<div class="col-sm-7 actionOptions">';
     div += jeedom.cmd.displayActionOption(init(_action.cmd, ''), _action.options);
     div += '</div>';
     div += '<div class="col-sm-1">';
@@ -373,11 +375,13 @@ function addPingTest(_pingTest) {
     var div = '<div class="pingTest">';
     div += '<div class="form-group">';
     div += '<label class="col-sm-1 control-label">{{Equipement à tester}}</label>';
-    div += '<div class="col-sm-1">';
-    div += '<a class="btn btn-success btn-sm listEquipement" data-type="pingTest"><i class="fa fa-list-alt"></i></a>';
-    div += '</div>';
     div += '<div class="col-sm-3 has-success">';
+    div += '<div class="input-group">';
     div += '<input class="expressionAttr form-control input-sm" data-l1key="eqLogic" data-type="pingTest" />';
+    div += '<span class="input-group-btn">';
+    div += '<a class="btn btn-success btn-sm listEquipement" data-type="pingTest"><i class="fa fa-list-alt"></i></a>';
+    div += '</span>';
+    div += '</div>';
     div += '</div>';
     div += '<div class="col-sm-1">';
     div += '<i class="fa fa-minus-circle pull-right cursor bt_removeAction" data-type="pingTest"></i>';
@@ -394,11 +398,13 @@ function addTrigger(_el, _trigger) {
     var div = '<div class="trigger">';
     div += '<div class="form-group">';
     div += '<label class="col-sm-1 control-label">{{Déclencheur}}</label>';
-    div += '<div class="col-sm-1">';
-    div += '<a class="btn btn-sm listCmdInfo btn-success"><i class="fa fa-list-alt"></i></a>';
-    div += '</div>';
-    div += '<div class="col-sm-2 has-success">';
+    div += '<div class="col-sm-3 has-success">';
+    div += '<div class="input-group">';
     div += '<input class="triggerAttr form-control input-sm" data-l1key="cmd" />';
+    div += '<span class="input-group-btn">';
+    div += '<a class="btn btn-sm listCmdInfo btn-success"><i class="fa fa-list-alt"></i></a>';
+    div += '</span>';
+    div += '</div>';
     div += '</div>';
     div += '<label class="col-sm-1 control-label">{{Activation (min)}}</label>';
     div += '<div class="col-sm-1 has-success">';
@@ -408,7 +414,7 @@ function addTrigger(_el, _trigger) {
     div += '<div class="col-sm-1 has-success">';
     div += '<input class="triggerAttr form-control input-sm" data-l1key="waitDelay" />';
     div += '</div>';
-    div += '<div class="col-sm-1 has-success">';
+    div += '<div class="col-sm-2 has-success">';
     div += '<input type="checkbox" class="triggerAttr input-sm bootstrapSwitch" data-l1key="invert" data-label-text="{{Inverser}}" />';
     div += '</div>';
     div += '<div class="col-sm-1">';
@@ -438,11 +444,11 @@ function addZone(_zone) {
     div += '<div class="well">';
     div += '<form class="form-horizontal" role="form">';
     div += '<div class="form-group">';
-    div += '<label class="col-sm-2 control-label">{{Nom de la zone}}</label>';
+    div += '<label class="col-sm-1 control-label">{{Nom de la zone}}</label>';
     div += '<div class="col-sm-2">';
-    div += '<span class="zoneAttr label label-info rename cursor" data-l1key="name" ></span>';
+    div += '<span class="zoneAttr label label-info rename cursor" data-l1key="name" style="font-size : 1em;" ></span>';
     div += '</div>';
-    div += '<div class="col-sm-6 col-sm-offset-2">';
+    div += '<div class="col-sm-9">';
     div += '<i class="fa fa-minus-circle pull-right cursor bt_removeZone"></i>';
     div += '<a class="btn btn-sm bt_addAction btn-danger  pull-right" style="margin-left : 5px;"><i class="fa fa-plus-circle"></i> {{Action}}</a>';
     div += '<a class="btn btn-warning btn-sm bt_addActionImmediate pull-right" style="margin-left : 5px;"><i class="fa fa-plus-circle"></i> {{Action immédiate}}</a>';
@@ -501,11 +507,11 @@ function addMode(_mode) {
     var div = '<div class="mode well">';
     div += '<form class="form-horizontal" role="form">';
     div += '<div class="form-group">';
-    div += '<label class="col-sm-2 control-label">{{Nom du mode}}</label>';
+    div += '<label class="col-sm-1 control-label">{{Nom du mode}}</label>';
     div += '<div class="col-sm-2">';
-    div += '<span class="modeAttr label label-info rename cursor" data-l1key="name" ></span>';
+    div += '<span class="modeAttr label label-info rename cursor" data-l1key="name" style="font-size : 1em;"></span>';
     div += '</div>';
-    div += '<div class="col-sm-2 col-sm-offset-6">';
+    div += '<div class="col-sm-2 col-sm-offset-7">';
     div += '<i class="fa fa-minus-circle pull-right cursor bt_removeMode"></i>';
     div += '<a class="btn btn-default btn-sm bt_addZoneMode pull-right"><i class="fa fa-plus-circle"></i> {{Zone}}</a>';
 
@@ -539,7 +545,7 @@ function addZoneMode(_el, _mode) {
     div += '<div class="form-group">';
     div += '<label class="col-sm-1 control-label">{{Zone}}</label>';
     div += '<div class="col-sm-3">';
-    div += '<span class="modeAttr label label-primary" data-l1key="zone"></span>';
+    div += '<span class="modeAttr label label-primary" data-l1key="zone" style="font-size : 1em;"></span>';
     div += '</div>';
     div += '<div class="col-sm-1 col-sm-offset-7">';
     div += '<i class="fa fa-minus-circle pull-right cursor bt_removeZoneMode"></i>';
