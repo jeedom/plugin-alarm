@@ -362,6 +362,7 @@ class alarm extends eqLogic {
 									}
 									if ($_value == 1 || $_value) {
 										log::add('alarm', 'debug', __('Evenement valide, mise en alerte de l\'alarme sur declencheur : ', __FILE__) . $cmd_trigger->getHumanName() . __(' valeur : ', __FILE__) . $_value);
+										$eqLogic->cleanArmedCompleted();
 										if (isset($trigger['armedDelay']) && $trigger['armedDelay'] !== '' && is_numeric(intval($trigger['armedDelay'])) && $trigger['armedDelay'] > 0) {
 											if (strtotime('now') < (strtotime($cmd_armed->getCollectDate()) + $trigger['armedDelay'] * 60)) {
 												log::add('alarm', 'debug', __('Non déclenchement de l\'alarme car hors delai d\'armement : ', __FILE__) . $cmd_armed->getCollectDate() . ' +' . $trigger['armedDelay'] . 'min');
@@ -448,6 +449,17 @@ class alarm extends eqLogic {
 				scenarioExpression::createAndExec('action', $action['cmd'], $options);
 			} catch (Exception $e) {
 				log::add('alarm', 'error', __('Erreur lors de l\'éxecution de ', __FILE__) . $action['cmd'] . __('. Détails : ', __FILE__) . $e->getMessage());
+			}
+		}
+	}
+
+	public function cleanArmedCompleted() {
+		$crons = cron::searchClassAndFunction('alarm', 'armedComplete', '"alarm_id":' . $this->getId());
+		if (is_array($crons)) {
+			foreach ($crons as $cron) {
+				if ($cron->getState() != 'run') {
+					$cron->remove();
+				}
 			}
 		}
 	}
@@ -544,6 +556,7 @@ class alarmCmd extends cmd {
 				log::add('alarm', 'debug', __('Remise à zero de l\'alarme', __FILE__));
 				$eqLogic->doAction('raz');
 			}
+			$eqLogic->cleanArmedCompleted();
 			return;
 		}
 		if ($this->getLogicalId() == 'armed') {
@@ -585,17 +598,11 @@ class alarmCmd extends cmd {
 					}
 				}
 			}
-			$crons = cron::searchClassAndFunction('alarm', 'armedComplete', '"alarm_id":' . $eqLogic->getId());
-			if (is_array($crons)) {
-				foreach ($crons as $cron) {
-					if ($cron->getState() != 'run') {
-						$cron->remove();
-					}
-				}
-			}
+
 			if ($armedCompleteDatetime > 0 && $armedCompleteDatetime < (strtotime('now') + 60)) {
 				$armedCompleteDatetime = strtotime('now') + 60;
 			}
+			$eqLogic->cleanArmedCompleted();
 			if ($armedCompleteDatetime > 0) {
 				$cron = new cron();
 				$cron->setClass('alarm');
