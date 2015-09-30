@@ -118,7 +118,6 @@ foreach (jeedom::getConfiguration('eqLogic:category') as $key => $value) {
     <li class="active"><a href="#tab_zones">{{Zones}}</a></li>
     <li><a href="#tab_modes">{{Modes}}</a></li>
     <li><a href="#tab_raz">{{Réinitialisation}}</a></li>
-    <li><a href="#tab_ping">{{Pertes de communication}}</a></li>
     <li><a href="#tab_activeOk">{{Activation OK}}</a></li>
     <li><a href="#tab_activeKo">{{Activation KO}}</a></li>
     <li><a href="#tab_release">{{Désactivation OK}}</a></li>
@@ -156,16 +155,6 @@ foreach (jeedom::getConfiguration('eqLogic:category') as $key => $value) {
         <br/><br/>
         <form class="form-horizontal">
             <div id="div_release"></div>
-        </form>
-    </div>
-
-    <div class="tab-pane" id="tab_ping">
-        <a class='btn btn-warning btn-xs pull-right' id="btn_addPingAction" style="margin-top: 5px;"><i class="fa fa-plus-circle"></i> {{Ajouter action perte de communication}}</a>
-        <a class='btn btn-success btn-xs pull-right' id="btn_addPingTest" style="margin-top: 5px;"><i class="fa fa-plus-circle"></i> {{Ajouter équipement à tester}}</a>
-        <br/><br/>
-        <form class="form-horizontal">
-            <div id="div_pingTest"></div>
-            <div id="div_ping"></div>
         </form>
     </div>
 

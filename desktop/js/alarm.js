@@ -155,24 +155,6 @@
     addAction({}, 'activationImmediateOk', '{{Action Immediate}}');
 });
 
- /**************** PING ***********/
-
- $('#btn_addPingAction').on('click', function () {
-    addAction({}, 'ping', '{{Action}}');
-});
-
- $('#btn_addPingTest').on('click', function () {
-    addPingTest({});
-});
-
- $("body").delegate(".listEquipement", 'click', function () {
-    var type = $(this).attr('data-type');
-    var el = $(this).closest('.' + type).find('.expressionAttr[data-l1key=eqLogic]');
-    jeedom.eqLogic.getSelectModal({}, function (result) {
-        el.value(result.human);
-    });
-});
-
  /**************** Commun ***********/
  $("body").delegate(".listCmdAction", 'click', function () {
     var type = $(this).attr('data-type');
@@ -223,8 +205,6 @@
     _eqLogic.configuration.release = $('#div_release .release').getValues('.expressionAttr');
     _eqLogic.configuration.raz = $('#div_raz .raz').getValues('.expressionAttr');
     _eqLogic.configuration.razImmediate = $('#div_razImmediate .razImmediate').getValues('.expressionAttr');
-    _eqLogic.configuration.ping = $('#div_ping .ping').getValues('.expressionAttr');
-    _eqLogic.configuration.pingTest = $('#div_pingTest .pingTest').getValues('.expressionAttr');
     _eqLogic.configuration.activationOk = $('#div_activationOk .activationOk').getValues('.expressionAttr');
     _eqLogic.configuration.activationKo = $('#div_activationKo .activationKo').getValues('.expressionAttr');
     _eqLogic.configuration.activationImmediateOk = $('#div_activationImmediateOk .activationImmediateOk').getValues('.expressionAttr');
@@ -238,8 +218,6 @@ function printEqLogic(_eqLogic) {
     $('#div_raz').empty();
     $('#div_release').empty();
     $('#div_razImmediate').empty();
-    $('#div_pingTest').empty();
-    $('#div_ping').empty();
     $('#div_activationOk').empty();
     $('#div_activationImmediateOk').empty();
     $('#div_activationKo').empty();
@@ -267,16 +245,6 @@ function printEqLogic(_eqLogic) {
         if (isset(_eqLogic.configuration.razImmediate)) {
             for (var i in _eqLogic.configuration.razImmediate) {
                 addAction(_eqLogic.configuration.razImmediate[i], 'razImmediate', '{{Réinitialisation immédiate}}');
-            }
-        }
-        if (isset(_eqLogic.configuration.ping)) {
-            for (var i in _eqLogic.configuration.ping) {
-                addAction(_eqLogic.configuration.ping[i], 'ping', '{{Action}}');
-            }
-        }
-        if (isset(_eqLogic.configuration.pingTest)) {
-            for (var i in _eqLogic.configuration.pingTest) {
-                addPingTest(_eqLogic.configuration.pingTest[i]);
             }
         }
         if (isset(_eqLogic.configuration.activationOk)) {
@@ -322,10 +290,6 @@ function addAction(_action, _type, _name, _el) {
         input = 'has-warning';
         button = 'btn-warning';
     }
-    if (_type == 'ping') {
-        input = 'has-warning';
-        button = 'btn-warning';
-    }
     if (_type == 'activationOk') {
         input = 'has-success';
         button = 'btn-success';
@@ -363,32 +327,6 @@ function addAction(_action, _type, _name, _el) {
         $('#div_' + _type).append(div);
         $('#div_' + _type + ' .' + _type + ':last').setValues(_action, '.expressionAttr');
     }
-}
-
-function addPingTest(_pingTest) {
-    if (!isset(_pingTest)) {
-        _pingTest = {};
-    }
-    if (!isset(_pingTest.options)) {
-        _pingTest.options = {};
-    }
-    var div = '<div class="pingTest">';
-    div += '<div class="form-group">';
-    div += '<label class="col-sm-1 control-label">{{Equipement à tester}}</label>';
-    div += '<div class="col-sm-4 has-success">';
-    div += '<div class="input-group">';
-    div += '<span class="input-group-btn">';
-    div += '<a class="btn btn-default bt_removeAction btn-sm" data-type="pingTest"><i class="fa fa-minus-circle"></i></a>';
-    div += '</span>';
-    div += '<input class="expressionAttr form-control input-sm" data-l1key="eqLogic" data-type="pingTest" />';
-    div += '<span class="input-group-btn">';
-    div += '<a class="btn btn-success btn-sm listEquipement" data-type="pingTest"><i class="fa fa-list-alt"></i></a>';
-    div += '</span>';
-    div += '</div>';
-    div += '</div>';
-    div += '</div>';
-    $('#div_pingTest').append(div);
-    $('#div_pingTest .pingTest:last').setValues(_pingTest, '.expressionAttr');
 }
 
 function addTrigger(_el, _trigger) {

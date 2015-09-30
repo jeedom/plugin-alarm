@@ -1,6 +1,5 @@
 {
     "plugins\/alarm\/core\/class\/alarm.class.php": {
-        "Lancement du ping de l'alarme : ": "Lancement du ping de l'alarme : ",
         "Lancement de l'alarme : ": "Lancement de l'alarme : ",
         "Status de l'alarme : ": "Status de l'alarme : ",
         "Déclenchement de l'alarme sur évenement : ": "Déclenchement de l'alarme sur évenement : ",

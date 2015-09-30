@@ -38,7 +38,6 @@ class alarm extends eqLogic {
 		foreach (eqLogic::byType('alarm') as $eqLogic) {
 			$cmd_armed = $eqLogic->getCmd(null, 'enable');
 			if (is_object($cmd_armed) && $cmd_armed->execCmd() == 1) {
-				$eqLogic->ping();
 				$eqLogic->checkActivationOk();
 			}
 		}
@@ -300,39 +299,6 @@ class alarm extends eqLogic {
 		}
 	}
 
-	public function ping() {
-		if ($this->getConfiguration('pingState', 1) != 1) {
-			return true;
-		}
-		log::add('alarm', 'debug', __('Lancement du ping de l\'alarme : ', __FILE__) . $this->getHumanName());
-		foreach ($this->getConfiguration('pingTest') as $pingTest) {
-			$eqLogic = eqLogic::byId(str_replace(array('#', 'eqLogic'), '', $pingTest['eqLogic']));
-			if (!is_object($eqLogic)) {
-				continue;
-			}
-			log::add('alarm', 'debug', __('Test ping pour : ', __FILE__) . $eqLogic->getHumanName());
-			if ($eqLogic->getIsEnable() == 1 && method_exists($eqLogic, 'ping')) {
-				try {
-					$ping = $eqLogic->ping();
-				} catch (Exception $e) {
-					$ping = true;
-				}
-				if (!$ping) {
-					log::add('alarm', 'debug', __('Ping NOK sur : ', __FILE__) . $eqLogic->getHumanName());
-					$this->setConfiguration('pingState', 0);
-					$this->save();
-					log::add('alarm', 'debug', __('Alert perte ping éxecution des actions', __FILE__));
-					$eqLogic->doAction('ping');
-					break;
-				} else {
-					log::add('alarm', 'debug', __('Ping OK sur : ', __FILE__) . $eqLogic->getHumanName());
-				}
-			} else {
-				log::add('alarm', 'debug', __('Aucune méthode de ping pour : ', __FILE__) . $eqLogic->getHumanName());
-			}
-		}
-	}
-
 	public function checkActivationOk() {
 		$armed = $this->getCmd(null, 'armed');
 		if (!is_object($armed)) {
@@ -442,7 +408,7 @@ class alarm extends eqLogic {
 													if (isset($action['options'])) {
 														$options = $action['options'];
 														foreach ($options as $key => $value) {
-															$options[$key] = str_replace('#trigger#', implode(" , ", $this->listCmdTrigger()), $value);
+															$options[$key] = str_replace('#trigger#', str_replace('#', '', implode(" , ", $this->listCmdTrigger())), $value);
 														}
 													}
 													scenarioExpression::createAndExec('action', $action['cmd'], $options);
@@ -608,8 +574,6 @@ class alarmCmd extends cmd {
 				log::add('alarm', 'debug', __('Remise à zero de l\'alarme', __FILE__));
 				$eqLogic->doAction('raz');
 			}
-			$eqLogic->setConfiguration('pingState', 1);
-			$eqLogic->save();
 			return;
 		}
 		if ($this->getLogicalId() == 'armed') {
@@ -658,7 +622,6 @@ class alarmCmd extends cmd {
 		if ($this->getConfiguration('mode') == '1') {
 			$cmd_zone = $eqLogic->getCmd(null, 'mode');
 			$cmd_zone->event($this->getConfiguration('state'));
-			//if ($eqLogic->getConfiguration('always_active') == 1) {
 			/* RaZ immediate */
 			if ($cmd_immediateState->execCmd() == 1) {
 				log::add('alarm', 'debug', __('Remise à zero immédiate de l\'alarme', __FILE__));
@@ -678,9 +641,6 @@ class alarmCmd extends cmd {
 			$armed->setConfiguration('armedComplete', 0);
 			$armed->setConfiguration('armedDatetime', strtotime('now'));
 			$armed->save();
-			$eqLogic->setConfiguration('pingState', 1);
-			$eqLogic->save();
-			//}
 		}
 	}
 

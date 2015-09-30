@@ -91,12 +91,6 @@ image::../images/alarm7.png[]
 
 Cette partie vous permet de définir les actions à faire lorsque l'alarme est déclenchée puis désactivée. Ici aussi il y a des actions immédiates et différées. Voici un exemple : vous rentrez chez vous, les délais d'activation sont passés, mais en ouvrant la porte cela déclenche l'alarme. Si vous la désactiver (avant les délais de déclenchement) alors les actions de réinitialisation immédiate seront exécutées, mais pas celles de réinitialisation normale. Si vous la désactivez après les délais de déclenchement, alors les actions de réinitialisation immédiate et normale seront exécutées.
 
-== Perte de communication
-
-image::../images/alarm8.png[]
-
-Dans cette partie, vous allez pouvoir configurer un ping (qui vérifie si le module est vivant) et les actions à faire en cas de perte du module. Attention il faut toujours tester un périphérique alimenté (exemple une prise Z-Wave) sous peine de voir la batterie de votre module se vider.
-
 == Activation OK
 
 image::../images/alarm9.png[]
