@@ -34,11 +34,15 @@ class alarm extends eqLogic {
 		}
 	}
 
-	public static function cron() {
-		foreach (eqLogic::byType('alarm') as $eqLogic) {
+	public static function armedComplete($_params) {
+		$eqLogic = eqLogic::byId($_params['alarm_id']);
+		if (is_object($eqLogic)) {
 			$cmd_armed = $eqLogic->getCmd(null, 'enable');
 			if (is_object($cmd_armed) && $cmd_armed->execCmd() == 1) {
-				$eqLogic->checkActivationOk();
+				log::add('alarm', 'debug', __('Activation OK éxécution des actions', __FILE__));
+				$eqLogic->doAction('activationOk');
+				$cmd_armed->setConfiguration('armedComplete', 1);
+				$cmd_armed->save();
 			}
 		}
 	}
@@ -299,40 +303,6 @@ class alarm extends eqLogic {
 		}
 	}
 
-	public function checkActivationOk() {
-		$armed = $this->getCmd(null, 'armed');
-		if (!is_object($armed)) {
-			return;
-		}
-		if ($armed->getConfiguration('armedComplete') == 1) {
-			return;
-		}
-		$cmd_mode = $this->getCmd(null, 'mode');
-		$select_mode = $cmd_mode->execCmd();
-		$modes = $this->getConfiguration('modes');
-		$armedComplete = true;
-		foreach ($modes as $mode) {
-			if ($mode['name'] == $select_mode) {
-				$zones = $this->getConfiguration('zones');
-				foreach ($zones as $zone) {
-					if ((!is_array($mode['zone']) && $zone['name'] == $mode['zone']) || (is_array($mode['zone']) && in_array($zone['name'], $mode['zone']))) {
-						foreach ($zone['triggers'] as $trigger) {
-							if (isset($trigger['armedDelay']) && is_numeric(intval($trigger['armedDelay'])) && $trigger['armedDelay'] > 0) {
-								if (strtotime('now') < ($armed->getConfiguration('armedDatetime') + ($trigger['armedDelay'] * 60))) {
-									return;
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-		log::add('alarm', 'debug', __('Activation OK éxécution des actions', __FILE__));
-		$this->doAction('activationOk');
-		$armed->setConfiguration('armedComplete', 1);
-		$armed->save();
-	}
-
 	public function listCmdTrigger() {
 		$result = array();
 		$modes = $this->getConfiguration('modes');
@@ -582,6 +552,7 @@ class alarmCmd extends cmd {
 			$select_mode = $cmd_mode->execCmd();
 			$modes = $eqLogic->getConfiguration('modes');
 			$zones = $eqLogic->getConfiguration('zones');
+			$armedCompleteDatetime = -1;
 			foreach ($modes as $mode) {
 				if ($mode['name'] == $select_mode) {
 					foreach ($zones as $zone) {
@@ -591,15 +562,19 @@ class alarmCmd extends cmd {
 								$cmd = cmd::byId(str_replace('#', '', $trigger['cmd']));
 								if (is_object($cmd)) {
 									log::add('alarm', 'debug', __('Vérification de la commande : ', __FILE__) . $cmd->getHumanName());
+									if (isset($trigger['armedDelay']) && is_numeric($trigger['armedDelay']) && $trigger['armedDelay'] > 0) {
+										$armedCompleteDatetimeTemp = strtotime('now') + $trigger['armedDelay'] * 60;
+										if ($armedCompleteDatetime < $armedCompleteDatetimeTemp) {
+											$armedCompleteDatetime = $armedCompleteDatetimeTemp;
+										}
+										continue;
+									}
 									$result = $cmd->execCmd();
 									if (isset($trigger['invert']) && $trigger['invert'] == 1) {
 										$result = ($result == 1 || $result) ? 0 : 1;
 									}
 									if ($result == 1) {
 										log::add('alarm', 'debug', __('La commande est active : ', __FILE__) . $cmd->getHumanName());
-										if (isset($trigger['armedDelay']) && is_numeric($trigger['armedDelay']) && $trigger['armedDelay'] > 0) {
-											continue;
-										}
 										$eqLogic->doAction('activationKo');
 										$eqLogic->launch($cmd->getId(), $result);
 										return;
@@ -609,6 +584,32 @@ class alarmCmd extends cmd {
 						}
 					}
 				}
+			}
+			$crons = cron::searchClassAndFunction('alarm', 'armedComplete', '"alarm_id":' . $eqLogic->getId());
+			if (is_array($crons)) {
+				foreach ($crons as $cron) {
+					if ($cron->getState() != 'run') {
+						$cron->remove();
+					}
+				}
+			}
+			if ($armedCompleteDatetime > 0 && $armedCompleteDatetime < (strtotime('now') + 60)) {
+				$armedCompleteDatetime = strtotime('now') + 60;
+			}
+			if ($armedCompleteDatetime > 0) {
+				$cron = new cron();
+				$cron->setClass('alarm');
+				$cron->setFunction('armedComplete');
+				$cron->setOption(array('alarm_id' => intval($eqLogic->getId())));
+				$cron->setLastRun(date('Y-m-d H:i:s'));
+				$cron->setOnce(1);
+				$cron->setSchedule(date('i', $armedCompleteDatetime) . ' ' . date('H', $armedCompleteDatetime) . ' ' . date('d', $armedCompleteDatetime) . ' ' . date('m', $armedCompleteDatetime) . ' * ' . date('Y', $armedCompleteDatetime));
+				$cron->save();
+			} else {
+				log::add('alarm', 'debug', __('Activation OK éxécution des actions', __FILE__));
+				$eqLogic->doAction('activationOk');
+				$cmd_armed->setConfiguration('armedComplete', 1);
+				$cmd_armed->save();
 			}
 
 			/*             * *****************Activation reussi***************** */
