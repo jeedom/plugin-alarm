@@ -41,8 +41,6 @@ class alarm extends eqLogic {
 			if (is_object($cmd_armed) && $cmd_armed->execCmd() == 1) {
 				log::add('alarm', 'debug', __('Activation OK éxécution des actions', __FILE__));
 				$eqLogic->doAction('activationOk');
-				$cmd_armed->setConfiguration('armedComplete', 1);
-				$cmd_armed->save();
 			}
 		}
 	}
@@ -615,16 +613,11 @@ class alarmCmd extends cmd {
 			} else {
 				log::add('alarm', 'debug', __('Activation OK éxécution des actions', __FILE__));
 				$eqLogic->doAction('activationOk');
-				$cmd_armed->setConfiguration('armedComplete', 1);
-				$cmd_armed->save();
 			}
 
 			/*             * *****************Activation reussi***************** */
 			log::add('alarm', 'debug', 'Activation de l\'alarme réussie');
 			$eqLogic->doAction('activationImmediateOk');
-			$this->setConfiguration('armedComplete', 0);
-			$this->setConfiguration('armedDatetime', strtotime('now'));
-			$this->save();
 			return;
 		}
 		if ($this->getConfiguration('mode') == '1') {
@@ -645,10 +638,6 @@ class alarmCmd extends cmd {
 			$cmd_state->event(0);
 			$cmd_immediateState->setCollectDate('');
 			$cmd_immediateState->event(0);
-			$armed = $eqLogic->getCmd(null, 'armed');
-			$armed->setConfiguration('armedComplete', 0);
-			$armed->setConfiguration('armedDatetime', strtotime('now'));
-			$armed->save();
 		}
 	}
 
