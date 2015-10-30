@@ -73,6 +73,9 @@ Petit exemple pour bien comprendre : sur le premier déclencheur (#[Salon][Oeil]
 
 Comme décrit plus haut, ce sont des actions qui se déclenchent dès le déclenchement en ne tenant pas compte du délai de déclenchement (mais en tenant compte quand même du délai d'activation). Vous avez juste à sélectionner la commande d'action voulue puis en fonction de celle-ci remplir les paramètres d'exécution.
 
+[NOTE]
+Lorsque plusieures zones sont déclenchées successivement, seules les actions immédiates de la 1ere zone déclenchée sont exécutées.
+
 == Modes
 
 image::../images/alarm6.png[]
