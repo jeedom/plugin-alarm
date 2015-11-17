@@ -14,7 +14,12 @@
  * You should have received a copy of the GNU General Public License
  * along with Jeedom. If not, see <http://www.gnu.org/licenses/>.
  */
-
+ $("#div_raz").sortable({axis: "y", cursor: "move", items: ".raz", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
+ $("#div_razImmediate").sortable({axis: "y", cursor: "move", items: ".razImmediate", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
+ $("#div_release").sortable({axis: "y", cursor: "move", items: ".release", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
+ $("#div_activationOk").sortable({axis: "y", cursor: "move", items: ".activationOk", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
+ $("#div_activationKo").sortable({axis: "y", cursor: "move", items: ".activationKo", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
+ $("#div_activationImmediateOk").sortable({axis: "y", cursor: "move", items: ".activationImmediateOk", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
 
  $('#tab_alarm a').click(function (e) {
     e.preventDefault()
@@ -441,6 +446,13 @@ function addZone(_zone) {
     }
 
     $('.collapse').collapse();
+
+    $("#div_zones .zone:last .div_action").each(function(){
+        $(this).sortable({axis: "y", cursor: "move", items: ".action", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
+    });
+    $("#div_zones .zone:last .div_actionImmediate").each(function(){
+        $(this).sortable({axis: "y", cursor: "move", items: ".actionImmediate", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
+    });
 }
 
 function addMode(_mode) {
