@@ -446,13 +446,8 @@ function addZone(_zone) {
     }
 
     $('.collapse').collapse();
-
-    $("#div_zones .zone:last .div_action").each(function(){
-        $(this).sortable({axis: "y", cursor: "move", items: ".action", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
-    });
-    $("#div_zones .zone:last .div_actionImmediate").each(function(){
-        $(this).sortable({axis: "y", cursor: "move", items: ".actionImmediate", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
-    });
+    $("#div_zones .zone:last .div_action").sortable({axis: "y", cursor: "move", items: ".action", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
+    $("#div_zones .zone:last .div_actionImmediate").sortable({axis: "y", cursor: "move", items: ".actionImmediate", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
 }
 
 function addMode(_mode) {
