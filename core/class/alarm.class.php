@@ -34,11 +34,52 @@ class alarm extends eqLogic {
 		}
 	}
 
+	public static function checkDetector($_params) {
+		log::add('alarm', 'debug', __('Lancement de la vérification des detecteurs post activation', __FILE__));
+		$eqLogic = eqLogic::byId($_params['alarm_id']);
+		if (is_object($eqLogic)) {
+			$cmd_armed = $eqLogic->getCmd(null, 'enable');
+			$cmd_state = $eqLogic->getCmd(null, 'state');
+			if (is_object($cmd_armed) && is_object($cmd_state) && $cmd_armed->execCmd() == 1 && ($cmd_state->execCmd() == 0 || $eqLogic->getConfiguration('autorearm', 0) == 1)) {
+				$cmd = cmd::byId($_params['cmd_id']);
+				if (!is_object($cmd)) {
+					return;
+				}
+				$cmd_mode = $eqLogic->getCmd(null, 'mode');
+				$select_mode = $cmd_mode->execCmd();
+				$modes = $eqLogic->getConfiguration('modes');
+				foreach ($modes as $mode) {
+					if ($mode['name'] == $select_mode) {
+						$zones = $eqLogic->getConfiguration('zones');
+						foreach ($zones as $zone) {
+							if ((!is_array($mode['zone']) && $zone['name'] == $mode['zone']) || (is_array($mode['zone']) && in_array($zone['name'], $mode['zone']))) {
+								foreach ($zone['triggers'] as $trigger) {
+									if ($trigger['cmd'] == '#' . $cmd->getId() . '#') {
+										log::add('alarm', 'debug', __('Verification de ', __FILE__) . $cmd->getHumanName());
+										$result = $cmd->execCmd();
+										if (isset($trigger['invert']) && $trigger['invert'] == 1) {
+											$result = ($result == 1 || $result) ? 0 : 1;
+										}
+										if ($result == 1) {
+											$eqLogic->launch($cmd->getId(), $result);
+											return;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
 	public static function armedComplete($_params) {
 		$eqLogic = eqLogic::byId($_params['alarm_id']);
 		if (is_object($eqLogic)) {
 			$cmd_armed = $eqLogic->getCmd(null, 'enable');
-			if (is_object($cmd_armed) && $cmd_armed->execCmd() == 1) {
+			$cmd_state = $eqLogic->getCmd(null, 'state');
+			if (is_object($cmd_armed) && is_object($cmd_state) && $cmd_armed->execCmd() == 1 && $cmd_state->execCmd() == 0) {
 				log::add('alarm', 'debug', __('Activation OK éxécution des actions', __FILE__));
 				$eqLogic->doAction('activationOk');
 			}
@@ -579,6 +620,17 @@ class alarmCmd extends cmd {
 										if ($armedCompleteDatetime < $armedCompleteDatetimeTemp) {
 											$armedCompleteDatetime = $armedCompleteDatetimeTemp;
 										}
+										if ($armedCompleteDatetimeTemp > 0 && $armedCompleteDatetimeTemp < (strtotime('now') + 60)) {
+											$armedCompleteDatetimeTemp = strtotime('now') + 60;
+										}
+										$cron = new cron();
+										$cron->setClass('alarm');
+										$cron->setFunction('checkDetector');
+										$cron->setOption(array('alarm_id' => intval($eqLogic->getId()), 'cmd_id' => intval($cmd->getId())));
+										$cron->setLastRun(date('Y-m-d H:i:s'));
+										$cron->setOnce(1);
+										$cron->setSchedule(date('i', $armedCompleteDatetimeTemp) . ' ' . date('H', $armedCompleteDatetimeTemp) . ' ' . date('d', $armedCompleteDatetimeTemp) . ' ' . date('m', $armedCompleteDatetimeTemp) . ' * ' . date('Y', $armedCompleteDatetimeTemp));
+										$cron->save();
 										continue;
 									}
 									$result = $cmd->execCmd();
