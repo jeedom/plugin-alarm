@@ -25,12 +25,12 @@ foreach ($eqLogics as $eqLogic) {
     <legend>{{Mes équipements alarmes}}</legend>
     <div class="eqLogicThumbnailContainer">
       <div class="cursor eqLogicAction" data-action="add" style="background-color : #ffffff; height : 200px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;" >
-       <center>
-        <i class="fa fa-plus-circle" style="font-size : 7em;color:#94ca02;"></i>
-    </center>
-    <span style="font-size : 1.1em;position:relative; top : 23px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;color:#94ca02"><center>Ajouter</center></span>
-</div>
-<?php
+         <center>
+            <i class="fa fa-plus-circle" style="font-size : 7em;color:#94ca02;"></i>
+        </center>
+        <span style="font-size : 1.1em;position:relative; top : 23px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;color:#94ca02"><center>Ajouter</center></span>
+    </div>
+    <?php
 foreach ($eqLogics as $eqLogic) {
 	$opacity = ($eqLogic->getIsEnable()) ? '' : jeedom::getConfiguration('eqLogic:style:noactive');
 	echo '<div class="eqLogicDisplayCard cursor" data-eqLogic_id="' . $eqLogic->getId() . '" style="background-color : #ffffff; height : 200px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;' . $opacity . '" >';
@@ -93,7 +93,7 @@ foreach (jeedom::getConfiguration('eqLogic:category') as $key => $value) {
     <div class="form-group expertModeVisible">
         <label class="col-sm-2 control-label">{{Actif en permanence}}</label>
         <div class="col-sm-1">
-        <input type="checkbox" class="eqLogicAttr bootstrapSwitch" data-l1key="configuration" data-l2key="always_active"/>
+            <input type="checkbox" class="eqLogicAttr bootstrapSwitch" data-l1key="configuration" data-l2key="always_active"/>
         </div>
         <label class="col-sm-2 control-label">{{Armement visible}}</label>
         <div class="col-sm-1">
@@ -106,6 +106,10 @@ foreach (jeedom::getConfiguration('eqLogic:category') as $key => $value) {
     </div>
 
     <div class="form-group">
+        <label class="col-sm-2 control-label">{{Réarmement automatique}}</label>
+        <div class="col-sm-1">
+        <input type="checkbox" class="eqLogicAttr bootstrapSwitch" data-l1key="configuration" data-l2key="autorearm"/>
+        </div>
         <label class="col-sm-2 control-label">{{Historiser état et status de l'alarme}}</label>
         <div class="col-sm-1">
             <input type="checkbox" class="eqLogicAttr bootstrapSwitch" data-l1key="configuration" data-l2key="historizedState"/>
