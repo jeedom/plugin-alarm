@@ -61,6 +61,7 @@ class alarm extends eqLogic {
 											$result = ($result == 1 || $result) ? 0 : 1;
 										}
 										if ($result == 1) {
+											sleep(30);
 											$eqLogic->launch($cmd->getId(), $result);
 											return;
 										}
