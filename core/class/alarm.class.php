@@ -61,7 +61,11 @@ class alarm extends eqLogic {
 											$result = ($result == 1 || $result) ? 0 : 1;
 										}
 										if ($result == 1) {
-											sleep(30);
+											if (isset($trigger['armedDelay']) && $trigger['armedDelay'] !== '' && is_numeric(intval($trigger['armedDelay'])) && $trigger['armedDelay'] > 0) {
+												if (strtotime('now') < (strtotime($cmd_armed->getCollectDate()) + $trigger['armedDelay'] * 60)) {
+													sleep((strtotime($cmd_armed->getCollectDate()) + $trigger['armedDelay'] * 60) - strtotime('now'));
+												}
+											}
 											$eqLogic->launch($cmd->getId(), $result);
 											return;
 										}
@@ -402,13 +406,13 @@ class alarm extends eqLogic {
 									}
 									if ($_value == 1 || $_value) {
 										log::add('alarm', 'debug', __('Evenement valide, mise en alerte de l\'alarme sur declencheur : ', __FILE__) . $cmd_trigger->getHumanName() . __(' valeur : ', __FILE__) . $_value);
-										$this->cleanArmedCompleted();
 										if (isset($trigger['armedDelay']) && $trigger['armedDelay'] !== '' && is_numeric(intval($trigger['armedDelay'])) && $trigger['armedDelay'] > 0) {
 											if (strtotime('now') < (strtotime($cmd_armed->getCollectDate()) + $trigger['armedDelay'] * 60)) {
 												log::add('alarm', 'debug', __('Non déclenchement de l\'alarme car hors delai d\'armement : ', __FILE__) . $cmd_armed->getCollectDate() . ' +' . $trigger['armedDelay'] . 'min');
 												return;
 											}
 										}
+										$this->cleanArmedCompleted();
 										if ($cmd_immediatState->execCmd() != 1) {
 											log::add('alarm', 'debug', __('Exécution des actions immédiates', __FILE__));
 											$cmd_immediatState->setCollectDate('');
