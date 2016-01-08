@@ -380,7 +380,7 @@ class alarm extends eqLogic {
 		log::add('alarm', 'debug', __('Lancement de l\'alarme : ', __FILE__) . $this->getHumanName());
 		$cmd_armed = $this->getCmd(null, 'enable');
 		$cmd_state = $this->getCmd(null, 'state');
-		log::add('alarm', 'debug', __('Status de l\'alarme : ', __FILE__) . $cmd_state->execCmd());
+		log::add('alarm', 'debug', __('Status de l\'alarme : ', __FILE__) . $cmd_state->execCmd() . __(' , armement : ', __FILE__) . $cmd_armed->execCmd());
 		if ($cmd_armed->execCmd() == 1 && ($cmd_state->execCmd() != 1 || $this->getConfiguration('autorearm', 0) == 1)) {
 			$cmd_immediatState = $this->getCmd(null, 'immediatState');
 			$cmd_trigger = cmd::byId($_trigger_id);
@@ -446,7 +446,7 @@ class alarm extends eqLogic {
 												return;
 											}
 										}
-										log::add('alarm', 'debug', __('Status de l\'alarme : ', __FILE__) . $cmd_state->execCmd());
+										log::add('alarm', 'debug', __('Status de l\'alarme (2) : ', __FILE__) . $cmd_state->execCmd() . __(' , armement : ', __FILE__) . $cmd_armed->execCmd());
 										if ($cmd_state->execCmd() == 1 && $this->getConfiguration('autorearm', 0) == 0) {
 											log::add('alarm', 'debug', __('L\'alarme est deja en cours', __FILE__));
 											return;
