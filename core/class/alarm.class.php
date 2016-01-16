@@ -611,6 +611,7 @@ class alarmCmd extends cmd {
 			$modes = $eqLogic->getConfiguration('modes');
 			$zones = $eqLogic->getConfiguration('zones');
 			$armedCompleteDatetime = -1;
+			$eqLogic->cleanArmedCompleted();
 			foreach ($modes as $mode) {
 				if ($mode['name'] == $select_mode) {
 					foreach ($zones as $zone) {
@@ -654,11 +655,14 @@ class alarmCmd extends cmd {
 					}
 				}
 			}
+			/*             * *****************Activation reussi***************** */
+			log::add('alarm', 'debug', 'Activation de l\'alarme réussie');
+			$eqLogic->doAction('activationImmediateOk');
 
 			if ($armedCompleteDatetime > 0 && $armedCompleteDatetime < (strtotime('now') + 60)) {
 				$armedCompleteDatetime = strtotime('now') + 60;
 			}
-			$eqLogic->cleanArmedCompleted();
+
 			if ($armedCompleteDatetime > 0) {
 				$cron = new cron();
 				$cron->setClass('alarm');
@@ -673,9 +677,6 @@ class alarmCmd extends cmd {
 				$eqLogic->doAction('activationOk');
 			}
 
-			/*             * *****************Activation reussi***************** */
-			log::add('alarm', 'debug', 'Activation de l\'alarme réussie');
-			$eqLogic->doAction('activationImmediateOk');
 			return;
 		}
 		if ($this->getConfiguration('mode') == '1') {
