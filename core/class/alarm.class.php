@@ -106,7 +106,6 @@ class alarm extends eqLogic {
 	}
 
 	public function postSave() {
-
 		$cmdArmed = $this->getCmd(null, 'enable');
 		if (!is_object($cmdArmed)) {
 			$cmdArmed = new alarmCmd();
