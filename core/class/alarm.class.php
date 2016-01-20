@@ -202,6 +202,7 @@ class alarm extends eqLogic {
 		foreach ($this->getCmd() as $cmd) {
 			if ($cmd->getName() == __('Mode', __FILE__)) {
 				$cmd->setLogicalId('mode');
+				$cmd->setDisplay('generic_type', 'ALARM_MODE');
 				$cmd->save();
 				$cmd_find['mode'] = true;
 			}
