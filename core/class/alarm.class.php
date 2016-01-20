@@ -121,6 +121,7 @@ class alarm extends eqLogic {
 		$cmdArmed->setEventOnly(1);
 		$cmdArmed->setIsVisible(1 - $this->getConfiguration('armed_visible'));
 		$cmdArmed->setIsHistorized($this->getConfiguration('historizedState'));
+		$cmdArmed->setDisplay('generic_type', 'ALARM_ENABLE_STATE');
 		$cmdArmed->save();
 
 		$cmdState = $this->getCmd(null, 'state');
@@ -137,7 +138,7 @@ class alarm extends eqLogic {
 		$cmdState->setSubType('binary');
 		$cmdState->setEventOnly(1);
 		$cmdState->setDisplay('invertBinary', 1);
-
+		$cmdState->setDisplay('generic_type', 'ALARM_STATE');
 		$cmdState->setIsHistorized($this->getConfiguration('historizedState'));
 		$cmdState->save();
 
@@ -156,7 +157,7 @@ class alarm extends eqLogic {
 		$cmdImmediatState->setIsVisible($this->getConfiguration('immediateState_visible'));
 		$cmdImmediatState->setEventOnly(1);
 		$cmdImmediatState->setDisplay('invertBinary', 1);
-
+		$cmdImmediatState->setDisplay('generic_type', 'ALARM_STATE');
 		$cmdImmediatState->setIsHistorized($this->getConfiguration('historizedState'));
 		$cmdImmediatState->save();
 
@@ -181,6 +182,7 @@ class alarm extends eqLogic {
 				$cmd->setorder(4);
 				$cmd->setConfiguration('mode', '1');
 				$cmd->setConfiguration('state', $value['name']);
+				$cmd->setDisplay('generic_type', 'ALARM_SET_MODE');
 				$cmd->save();
 			}
 		}
@@ -220,6 +222,7 @@ class alarm extends eqLogic {
 		$armed->setConfiguration('state', '1');
 		$armed->setConfiguration('armed', '1');
 		$armed->setValue($this->getCmd(null, 'enable')->getId());
+		$armed->setDisplay('generic_type', 'ALARM_ARMED');
 		if ($this->getConfiguration('always_active') == 1) {
 			$armed->setIsVisible(0);
 		} else {
@@ -242,6 +245,7 @@ class alarm extends eqLogic {
 		$released->setConfiguration('state', '0');
 		$released->setConfiguration('armed', '1');
 		$released->setValue($this->getCmd(null, 'enable')->getId());
+		$released->setDisplay('generic_type', 'ALARM_RELEASED');
 		if ($this->getConfiguration('always_active') == 1) {
 			$released->setIsVisible(0);
 		} else {
@@ -254,6 +258,7 @@ class alarm extends eqLogic {
 			$cmd->setName(__('Mode', __FILE__));
 			$cmd->setEqLogic_id($this->id);
 			$cmd->setType('info');
+			$cmd->setDisplay('generic_type', 'ALARM_MODE');
 			$cmd->setLogicalId('mode');
 			$cmd->setSubType('string');
 			$cmd->setEventOnly(1);
