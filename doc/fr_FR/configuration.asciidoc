@@ -88,6 +88,9 @@ Il est possible de renommer le mode en cliquant sur le nom de celui-ci (en face 
 [NOTE]
 Lors du renommage d'un mode, il faut sur le widget de l'alarme recliquer sur le mode en question pour une prise en compte complete (sinon jeedom reste sur l'ancien mode)
 
+[IMPORTANT]
+Il faut absolument creer au moins un mode et lui affecter des zones sinon votre alarme ne marchera pas.
+
 === Réinitialisation
 
 image::../images/alarm7.png[]
