@@ -118,7 +118,6 @@ class alarm extends eqLogic {
 		$cmdArmed->setTemplate('mobile', 'lock');
 		$cmdArmed->setOrder(1);
 		$cmdArmed->setSubType('binary');
-		$cmdArmed->setEventOnly(1);
 		$cmdArmed->setIsVisible(1 - $this->getConfiguration('armed_visible'));
 		$cmdArmed->setIsHistorized($this->getConfiguration('historizedState'));
 		$cmdArmed->setDisplay('generic_type', 'ALARM_ENABLE_STATE');
@@ -136,7 +135,6 @@ class alarm extends eqLogic {
 		$cmdState->setType('info');
 		$cmdState->setOrder(2);
 		$cmdState->setSubType('binary');
-		$cmdState->setEventOnly(1);
 		$cmdState->setDisplay('invertBinary', 1);
 		$cmdState->setDisplay('generic_type', 'ALARM_STATE');
 		$cmdState->setIsHistorized($this->getConfiguration('historizedState'));
@@ -155,7 +153,6 @@ class alarm extends eqLogic {
 		$cmdImmediatState->setorder(2);
 		$cmdImmediatState->setSubType('binary');
 		$cmdImmediatState->setIsVisible($this->getConfiguration('immediateState_visible'));
-		$cmdImmediatState->setEventOnly(1);
 		$cmdImmediatState->setDisplay('invertBinary', 1);
 		$cmdImmediatState->setDisplay('generic_type', 'ALARM_STATE');
 		$cmdImmediatState->setIsHistorized($this->getConfiguration('historizedState'));
@@ -262,7 +259,6 @@ class alarm extends eqLogic {
 			$cmd->setDisplay('generic_type', 'ALARM_MODE');
 			$cmd->setLogicalId('mode');
 			$cmd->setSubType('string');
-			$cmd->setEventOnly(1);
 			$cmd->setorder(3);
 			$cmd->save();
 		}
