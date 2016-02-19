@@ -698,6 +698,7 @@ class alarmCmd extends cmd {
 			$cmd_state->event(0);
 			$cmd_immediateState->setCollectDate('');
 			$cmd_immediateState->event(0);
+			$eqLogic->getCmd(null, 'armed')->execCmd();
 		}
 	}
 
