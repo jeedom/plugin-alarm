@@ -110,7 +110,7 @@
 
  $("#div_zones").delegate(".listCmdInfo", 'click', function () {
     var el = $(this).closest('.trigger').find('.triggerAttr[data-l1key=cmd]');
-    jeedom.cmd.getSelectModal({cmd: {type: 'info', subtype: 'binary'}}, function (result) {
+    jeedom.cmd.getSelectModal({cmd: {type: 'info', subType: 'binary'}}, function (result) {
         el.value(result.human);
     });
 });
