@@ -91,7 +91,7 @@ Lors du renommage d'un mode, il faut sur le widget de l'alarme recliquer sur le 
 [IMPORTANT]
 Il faut absolument creer au moins un mode et lui affecter des zones sinon votre alarme ne marchera pas.
 
-=== Réinitialisation
+== Réinitialisation
 
 image::../images/alarm7.png[]
 

@@ -108,7 +108,7 @@ foreach (jeedom::getConfiguration('eqLogic:category') as $key => $value) {
     <div class="form-group">
         <label class="col-sm-2 control-label">{{Réarmement automatique}}</label>
         <div class="col-sm-1">
-        <input type="checkbox" class="eqLogicAttr bootstrapSwitch" data-l1key="configuration" data-l2key="autorearm"/>
+            <input type="checkbox" class="eqLogicAttr bootstrapSwitch" data-l1key="configuration" data-l2key="autorearm"/>
         </div>
         <label class="col-sm-2 control-label">{{Historiser état et status de l'alarme}}</label>
         <div class="col-sm-1">
@@ -129,59 +129,67 @@ foreach (jeedom::getConfiguration('eqLogic:category') as $key => $value) {
 
 <div class="tab-content">
     <div class="tab-pane active" id="tab_zones">
-        <a class="btn btn-success btn-xs pull-right" id="bt_addZone" style="margin-top: 5px;"><i class="fa fa-plus-circle"></i> {{Ajouter zone}}</a>
-        <br/><br/>
+        <br/>
+        <div class="alert alert-info">{{Une zone décris les capteurs que l'alarme doit surveiller ainsi que les actions à faire en cas de déclenchement.}} <a class="btn btn-success btn-xs pull-right" id="bt_addZone"><i class="fa fa-plus-circle"></i> {{Ajouter zone}}</a></div>
         <div class="panel-group" id="div_zones"></div>
     </div>
 
     <div class="tab-pane" id="tab_modes">
-        <a class="btn btn-success btn-xs pull-right" id="bt_addMode" style="margin-top: 5px;"><i class="fa fa-plus-circle"></i> {{Ajouter mode}}</a>
-        <br/><br/>
-        <div id="div_modes"></div>
-    </div>
+       <br/>
+       <div class="alert alert-info">{{Les modes permettent d'activer les zones. Il vous en faut absolument un.}} <a class="btn btn-success btn-xs pull-right" id="bt_addMode"><i class="fa fa-plus-circle"></i> {{Ajouter mode}}</a></div>
+       <div id="div_modes"></div>
+   </div>
 
-    <div class="tab-pane" id="tab_raz">
-        <a class='btn btn-success btn-xs pull-right' id="btn_addRazAlarm" style="margin-top: 5px;"><i class="fa fa-plus-circle"></i> {{Ajouter réinitialisation}}</a>
-        <a class='btn btn-warning btn-xs pull-right' id="btn_addRazImmediateAlarm" style="margin-top: 5px;"><i class="fa fa-plus-circle"></i> {{Ajouter réinitialisation immédiate}}</a>
-        <br/><br/>
-        <form class="form-horizontal">
-            <div id="div_razImmediate"></div>
-        </form>
-        <hr/>
-        <br/>
-        <form class="form-horizontal">
-            <div id="div_raz"></div>
-        </form>
-    </div>
+   <div class="tab-pane" id="tab_raz">
+       <br/>
+       <div class="alert alert-info">{{C'est ici que vous devez mettre les actions à faire lorsque l’alarme est déclenchée puis désactivée}}
+           <a class='btn btn-success btn-xs pull-right' id="btn_addRazAlarm"><i class="fa fa-plus-circle"></i> {{Ajouter réinitialisation}}</a>
+           <a class='btn btn-warning btn-xs pull-right' id="btn_addRazImmediateAlarm"><i class="fa fa-plus-circle"></i> {{Ajouter réinitialisation immédiate}}</a>
+       </div>
+       <form class="form-horizontal">
+        <div id="div_razImmediate"></div>
+    </form>
+    <hr/>
+    <br/>
+    <form class="form-horizontal">
+        <div id="div_raz"></div>
+    </form>
+</div>
 
-    <div class="tab-pane" id="tab_release">
-        <a class='btn btn-success btn-xs pull-right' id="btn_addReleaseAlarm" style="margin-top: 5px;"><i class="fa fa-plus-circle"></i> {{Ajouter action de désactivation OK}}</a>
-        <br/><br/>
-        <form class="form-horizontal">
-            <div id="div_release"></div>
-        </form>
+<div class="tab-pane" id="tab_release">
+    <br/>
+    <div class="alert alert-info">{{C'est ici que vous devez mettre les actions à faire lorsque l’alarme est désactivée et qu’elle n’est pas déclenchée}}
+        <a class='btn btn-success btn-xs pull-right' id="btn_addReleaseAlarm"><i class="fa fa-plus-circle"></i> {{Ajouter action de désactivation OK}}</a>
     </div>
+    <form class="form-horizontal">
+        <div id="div_release"></div>
+    </form>
+</div>
 
-    <div class="tab-pane" id="tab_activeOk">
-        <a class='btn btn-success btn-xs pull-right' id="btn_addActionActivationOk" style="margin-top: 5px;"><i class="fa fa-plus-circle"></i> {{Ajouter action lors de l'activation}}</a>
-        <a class='btn btn-warning btn-xs pull-right' id="btn_addActionActivationImmediateOk" style="margin-top: 5px;"><i class="fa fa-plus-circle"></i> {{Ajouter action immediate lors de l'activation}}</a>
-        <br/><br/>
-        <form class="form-horizontal">
-            <div id="div_activationImmediateOk"></div>
-        </form>
-        <hr/>
-        <br/>
-        <form class="form-horizontal">
-            <div id="div_activationOk"></div>
-        </form>
+<div class="tab-pane" id="tab_activeOk">
+    <br/>
+    <div class="alert alert-info">{{C'est ici que vous devez mettre les actions à faire lors d'une activation réussie de l'alarme}}
+        <a class='btn btn-success btn-xs pull-right' id="btn_addActionActivationOk"><i class="fa fa-plus-circle"></i> {{Ajouter action lors de l'activation}}</a>
+        <a class='btn btn-warning btn-xs pull-right' id="btn_addActionActivationImmediateOk"><i class="fa fa-plus-circle"></i> {{Ajouter action immediate lors de l'activation}}</a>
     </div>
-    <div class="tab-pane" id="tab_activeKo">
-        <a class='btn btn-success btn-xs pull-right' id="btn_addActionActivationKo" style="margin-top: 5px;"><i class="fa fa-plus-circle"></i> {{Ajouter action lors de l'echec d'activation}}</a>
-        <br/><br/>
-        <form class="form-horizontal">
-            <div id="div_activationKo"></div>
-        </form>
+    <form class="form-horizontal">
+        <div id="div_activationImmediateOk"></div>
+    </form>
+    <hr/>
+    <br/>
+    <form class="form-horizontal">
+        <div id="div_activationOk"></div>
+    </form>
+</div>
+<div class="tab-pane" id="tab_activeKo">
+    <br/>
+    <div class="alert alert-info">{{C'est ici que vous devez mettre les actions à faire lorsque l'activation de l'alarme à échouée}}
+        <a class='btn btn-success btn-xs pull-right' id="btn_addActionActivationKo"><i class="fa fa-plus-circle"></i> {{Ajouter action lors de l'echec d'activation}}</a>
     </div>
+    <form class="form-horizontal">
+        <div id="div_activationKo"></div>
+    </form>
+</div>
 </div>
 
 <br/><br/>
