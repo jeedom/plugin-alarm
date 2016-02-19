@@ -366,6 +366,7 @@ function addTrigger(_el, _trigger) {
     div += '</div>';
     _el.find('.div_triggers').append(div);
     _el.find('.trigger:last').setValues(_trigger, '.triggerAttr');
+    initCheckBox();
 }
 
 function addZone(_zone) {
