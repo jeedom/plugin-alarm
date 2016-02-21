@@ -254,6 +254,8 @@ class alarm extends eqLogic {
 		if (!$cmd_find['mode']) {
 			$cmd = new alarmCmd();
 			$cmd->setName(__('Mode', __FILE__));
+			$cmd->setTemplate('dashboard', 'lock');
+			$cmd->setTemplate('mobile', 'lock');
 			$cmd->setEqLogic_id($this->id);
 			$cmd->setType('info');
 			$cmd->setDisplay('generic_type', 'ALARM_MODE');
