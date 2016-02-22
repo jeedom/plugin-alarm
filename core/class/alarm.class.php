@@ -590,6 +590,7 @@ class alarmCmd extends cmd {
 		$cmd_armed = $eqLogic->getCmd(null, 'enable');
 		$cmd_state = $eqLogic->getCmd(null, 'state');
 		$cmd_immediateState = $eqLogic->getCmd(null, 'immediatState');
+		$cmd_mode = $eqLogic->getCmd(null, 'mode');
 
 		if ($this->getLogicalId() == 'released') {
 			$cmd_armed->event(0);
@@ -607,12 +608,18 @@ class alarmCmd extends cmd {
 				$eqLogic->doAction('raz');
 			}
 			$eqLogic->cleanArmedCompleted();
+			$eqLogic->setConfiguration('previousMode', $cmd_mode->execCmd());
+			$eqLogic->save();
+			$cmd_mode->event(__('Aucun', __FILE__));
 			return;
 		}
 		if ($this->getLogicalId() == 'armed') {
 			$cmd_armed->event(1);
-			$cmd_mode = $eqLogic->getCmd(null, 'mode');
 			$select_mode = $cmd_mode->execCmd();
+			if ($select_mode == __('Aucun', __FILE__) && $eqLogic->getConfiguration('previousMode', '') != '') {
+				$cmd_mode->event($eqLogic->getConfiguration('previousMode', ''));
+				$select_mode = $cmd_mode->execCmd();
+			}
 			$modes = $eqLogic->getConfiguration('modes');
 			$zones = $eqLogic->getConfiguration('zones');
 			$armedCompleteDatetime = -1;
@@ -685,8 +692,7 @@ class alarmCmd extends cmd {
 			return;
 		}
 		if ($this->getConfiguration('mode') == '1') {
-			$cmd_zone = $eqLogic->getCmd(null, 'mode');
-			$cmd_zone->event($this->getConfiguration('state'));
+			$cmd_mode->event($this->getConfiguration('state'));
 			/* RaZ immediate */
 			if ($cmd_immediateState->execCmd() == 1) {
 				log::add('alarm', 'debug', __('Remise à zero immédiate de l\'alarme', __FILE__));
