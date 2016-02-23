@@ -489,6 +489,10 @@ class alarm extends eqLogic {
 		$trigger = implode(" , ", $this->listCmdTrigger());
 		foreach ($this->getConfiguration($_action) as $action) {
 			try {
+				$cmd = cmd::byId(str_replace('#', '', $action['cmd']));
+				if (is_object($cmd) && $this->getId() == $cmd->getEqLogic_id()) {
+					continue;
+				}
 				$options = array();
 				if (isset($action['options'])) {
 					$options = $action['options'];
