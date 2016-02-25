@@ -624,6 +624,9 @@ class alarmCmd extends cmd {
 				$cmd_mode->event($eqLogic->getConfiguration('previousMode', ''));
 				$select_mode = $cmd_mode->execCmd();
 			}
+			if ($select_mode == '') {
+				throw new Exception(__('Aucun mode sélectionné', __FILE__));
+			}
 			$modes = $eqLogic->getConfiguration('modes');
 			$zones = $eqLogic->getConfiguration('zones');
 			$armedCompleteDatetime = -1;
