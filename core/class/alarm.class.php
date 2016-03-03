@@ -163,6 +163,7 @@ class alarm extends eqLogic {
 			$mode = new alarmCmd();
 			$mode->setTemplate('dashboard', 'lock');
 			$mode->setTemplate('mobile', 'lock');
+			$mode->setName(__('Mode', __FILE__));
 			$mode->setorder(3);
 		}
 		$mode->setEqLogic_id($this->id);
