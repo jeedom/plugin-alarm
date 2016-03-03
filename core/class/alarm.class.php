@@ -158,6 +158,21 @@ class alarm extends eqLogic {
 		$cmdImmediatState->setIsHistorized($this->getConfiguration('historizedState'));
 		$cmdImmediatState->save();
 
+		$mode = $this->getCmd(null, 'mode');
+		if (!is_object($mode)) {
+			$mode = new alarmCmd();
+			$mode->setTemplate('dashboard', 'lock');
+			$mode->setTemplate('mobile', 'lock');
+			$mode->setorder(3);
+		}
+		$mode->setEqLogic_id($this->id);
+		$mode->setType('info');
+		$mode->setDisplay('generic_type', 'ALARM_MODE');
+		$mode->setLogicalId('mode');
+		$mode->setSubType('string');
+		$mode->setorder(3);
+		$mode->save();
+
 		$existing_mode = array();
 		if (is_array($this->getConfiguration('modes'))) {
 			foreach ($this->getConfiguration('modes') as $key => $value) {
@@ -180,28 +195,16 @@ class alarm extends eqLogic {
 				$cmd->setConfiguration('mode', '1');
 				$cmd->setConfiguration('state', $value['name']);
 				$cmd->setDisplay('generic_type', 'ALARM_SET_MODE');
+				if (is_object($mode)) {
+					$cmd->setValue($mode->getId());
+				}
 				$cmd->save();
 			}
 		}
 		if ($this->getIsEnable() == 1) {
-			$cmd_zone = $this->getCmd(null, 'mode');
-			if (is_object($cmd_zone) && $cmd_zone->execCmd() == '' && isset($value)) {
-				$cmd_zone->setCollectDate('');
-				$cmd_zone->event($value['name']);
-			}
-		}
-
-		$cmd_find = array(
-			'armed' => false,
-			'released' => false,
-			'mode' => false,
-		);
-		foreach ($this->getCmd() as $cmd) {
-			if ($cmd->getName() == __('Mode', __FILE__)) {
-				$cmd->setLogicalId('mode');
-				$cmd->setDisplay('generic_type', 'ALARM_MODE');
-				$cmd->save();
-				$cmd_find['mode'] = true;
+			if (is_object($mode) && $mode->execCmd() == '' && isset($value)) {
+				$mode->setCollectDate('');
+				$mode->event($value['name']);
 			}
 		}
 
@@ -250,20 +253,6 @@ class alarm extends eqLogic {
 			$released->setIsVisible($this->getConfiguration('armed_visible', 1));
 		}
 		$released->save();
-
-		if (!$cmd_find['mode']) {
-			$cmd = new alarmCmd();
-			$cmd->setName(__('Mode', __FILE__));
-			$cmd->setTemplate('dashboard', 'lock');
-			$cmd->setTemplate('mobile', 'lock');
-			$cmd->setEqLogic_id($this->id);
-			$cmd->setType('info');
-			$cmd->setDisplay('generic_type', 'ALARM_MODE');
-			$cmd->setLogicalId('mode');
-			$cmd->setSubType('string');
-			$cmd->setorder(3);
-			$cmd->save();
-		}
 
 		foreach ($this->getCmd() as $cmd) {
 			if ($cmd->getType() == 'action' && !in_array($cmd->getName(), $existing_mode) &&
