@@ -405,7 +405,7 @@ class alarm extends eqLogic {
 												return;
 											}
 										}
-										if ($cmd_immediatState->execCmd() == 1) {
+										if ($cmd_immediatState->execCmd() == 1 && $this->getConfiguration('autorearm', 0) == 0) {
 											log::add('alarm', 'debug', __('Alarme déjà en cours', __FILE__));
 											return;
 										}
