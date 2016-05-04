@@ -154,7 +154,6 @@ class alarm extends eqLogic {
 		$cmdImmediatState->setSubType('binary');
 		$cmdImmediatState->setIsVisible($this->getConfiguration('immediateState_visible'));
 		$cmdImmediatState->setDisplay('invertBinary', 1);
-		$cmdImmediatState->setDisplay('generic_type', 'ALARM_STATE');
 		$cmdImmediatState->setIsHistorized($this->getConfiguration('historizedState'));
 		$cmdImmediatState->save();
 
