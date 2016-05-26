@@ -339,8 +339,14 @@ class alarm extends eqLogic {
 		}
 	}
 
-	public function listCmdTrigger() {
+	public function listCmdTrigger($_trigger_id = null) {
 		$result = array();
+		if ($_trigger_id !== null) {
+			$cmd = cmd::byId(str_replace('#', '', $_trigger_id));
+			if (is_object($cmd)) {
+				$result[] = str_replace('#', '', $cmd->getHumanName());
+			}
+		}
 		$modes = $this->getConfiguration('modes');
 		$cmd_mode = $this->getCmd(null, 'mode');
 		$select_mode = $cmd_mode->execCmd();
@@ -357,7 +363,7 @@ class alarm extends eqLogic {
 									$value = ($value == 1 || $value) ? 0 : 1;
 								}
 								if ($value == 1 || $value) {
-									$result[] = $cmd->getHumanName();
+									$result[] = str_replace('#', '', $cmd->getHumanName());
 								}
 							}
 						}
@@ -419,7 +425,7 @@ class alarm extends eqLogic {
 													if (isset($action['options'])) {
 														$options = $action['options'];
 														foreach ($options as $key => $value) {
-															$options[$key] = str_replace('#trigger#', str_replace('#', '', implode(" , ", $this->listCmdTrigger())), $value);
+															$options[$key] = str_replace('#trigger#', implode(" , ", $this->listCmdTrigger($_trigger_id)), $value);
 														}
 													}
 													scenarioExpression::createAndExec('action', $action['cmd'], $options);
@@ -455,7 +461,7 @@ class alarm extends eqLogic {
 												if (isset($action['options'])) {
 													$options = $action['options'];
 													foreach ($options as $key => $value) {
-														$options[$key] = str_replace('#trigger#', str_replace('#', '', implode(" , ", $this->listCmdTrigger())), $value);
+														$options[$key] = str_replace('#trigger#', str_replace('#', '', implode(" , ", $this->listCmdTrigger($_trigger_id))), $value);
 													}
 												}
 												log::add('alarm', 'debug', __('Execution de ', __FILE__) . $action['cmd'] . ' => ' . print_r($options, true));
