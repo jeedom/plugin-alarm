@@ -94,7 +94,7 @@ class alarm extends eqLogic {
 	/*     * *********************Methode d'instance************************* */
 
 	public function launch($_trigger_id, $_value) {
-		$cmd = 'nohup php ' . dirname(__FILE__) . '/../../core/php/jeeAlarm.php ';
+		$cmd = 'php ' . dirname(__FILE__) . '/../../core/php/jeeAlarm.php ';
 		$cmd .= ' eqLogic_id=' . $this->getId() . ' trigger_id=' . $_trigger_id . ' value=' . $_value;
 		$cmd .= ' >> ' . log::getPathToLog('alarm') . ' 2>&1 &';
 		shell_exec($cmd);
