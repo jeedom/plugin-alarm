@@ -588,6 +588,17 @@ class alarmCmd extends cmd {
 		return true;
 	}
 
+	public function formatValueWidget($_value) {
+		if ($this->getLogicalId() == 'mode') {
+			$eqLogic = $this->getEqLogic();
+			$cmd_armed = $eqLogic->getCmd(null, 'enable');
+			if ($cmd_armed->execCmd() == 0) {
+				return __('Aucun', __FILE__);
+			}
+		}
+		return $_value;
+	}
+
 	public function execute($_options = array()) {
 		$eqLogic = $this->getEqLogic();
 		$cmd_armed = $eqLogic->getCmd(null, 'enable');
@@ -611,18 +622,12 @@ class alarmCmd extends cmd {
 				$eqLogic->doAction('raz');
 			}
 			$eqLogic->cleanArmedCompleted();
-			$eqLogic->setConfiguration('previousMode', $cmd_mode->execCmd());
 			$eqLogic->save();
-			$cmd_mode->event(__('Aucun', __FILE__));
 			return;
 		}
 		if ($this->getLogicalId() == 'armed') {
 			$cmd_armed->event(1);
 			$select_mode = $cmd_mode->execCmd();
-			if ($select_mode == __('Aucun', __FILE__) && $eqLogic->getConfiguration('previousMode', '') != '') {
-				$cmd_mode->event($eqLogic->getConfiguration('previousMode', ''));
-				$select_mode = $cmd_mode->execCmd();
-			}
 			if ($select_mode == '') {
 				throw new Exception(__('Aucun mode sélectionné', __FILE__));
 			}
