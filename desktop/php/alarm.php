@@ -85,36 +85,21 @@ foreach (jeedom::getConfiguration('eqLogic:category') as $key => $value) {
        <div class="form-group">
         <label class="col-sm-2 control-label"></label>
         <div class="col-sm-10">
-            <input type="checkbox" class="eqLogicAttr bootstrapSwitch" data-label-text="{{Activer}}" data-l1key="isEnable" checked/>
-            <input type="checkbox" class="eqLogicAttr bootstrapSwitch" data-label-text="{{Visible}}" data-l1key="isVisible" checked/>
+            <label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="isEnable" checked/>{{Activer}}</label>
+            <label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="isVisible" checked/>{{Visible}}</label>
         </div>
     </div>
 
     <div class="form-group expertModeVisible">
-        <label class="col-sm-2 control-label">{{Actif en permanence}}</label>
-        <div class="col-sm-1">
-            <input type="checkbox" class="eqLogicAttr bootstrapSwitch" data-l1key="configuration" data-l2key="always_active"/>
-        </div>
-        <label class="col-sm-2 control-label">{{Armement visible}}</label>
-        <div class="col-sm-1">
-            <input type="checkbox" class="eqLogicAttr bootstrapSwitch" data-l1key="configuration" data-l2key="armed_visible" checked/>
-        </div>
-        <label class="col-sm-2 control-label">{{Status immédiat visible}}</label>
-        <div class="col-sm-1">
-            <input type="checkbox" class="eqLogicAttr bootstrapSwitch" data-l1key="configuration" data-l2key="immediateState_visible"/>
-        </div>
+        <label class="col-sm-2 control-label"></label>
+        <div class="col-sm-10">
+            <label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="configuration" data-l2key="always_active"/>{{Actif en permanence}}</label>
+            <label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="configuration" data-l2key="armed_visible" checked/>{{Armement visible}} </label>
+            <label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="configuration" data-l2key="immediateState_visible"/>{{Status immédiat visible}}</label>
+             <label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="configuration" data-l2key="autorearm"/>{{Réarmement automatique}}</label>
+              <label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="configuration" data-l2key="historizedState"/>{{Historiser état et status de l'alarme}}</label>
     </div>
-
-    <div class="form-group">
-        <label class="col-sm-2 control-label">{{Réarmement automatique}}</label>
-        <div class="col-sm-1">
-            <input type="checkbox" class="eqLogicAttr bootstrapSwitch" data-l1key="configuration" data-l2key="autorearm"/>
-        </div>
-        <label class="col-sm-2 control-label">{{Historiser état et status de l'alarme}}</label>
-        <div class="col-sm-1">
-            <input type="checkbox" class="eqLogicAttr bootstrapSwitch" data-l1key="configuration" data-l2key="historizedState"/>
-        </div>
-    </div>
+</div>
 </fieldset>
 </form>
 

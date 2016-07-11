@@ -361,7 +361,7 @@ function addTrigger(_el, _trigger) {
     div += '<input class="triggerAttr form-control input-sm" data-l1key="waitDelay" />';
     div += '</div>';
     div += '<div class="col-sm-2 has-success">';
-    div += '<input type="checkbox" class="triggerAttr input-sm bootstrapSwitch" data-l1key="invert" data-label-text="{{Inverser}}" />';
+    div += '<label><input type="checkbox" class="triggerAttr checkbox-inline" data-l1key="invert" />{{Inverser}}</label>';
     div += '</div>';
     div += '</div>';
     _el.find('.div_triggers').append(div);
