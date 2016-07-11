@@ -508,7 +508,7 @@ class alarm extends eqLogic {
 
 	public function cleanArmedCompleted() {
 		$crons = cron::searchClassAndFunction('alarm', 'armedComplete', '"alarm_id":' . $this->getId());
-		if (is_array($crons)) {
+		if (is_array($crons) && count($crons) > 0) {
 			foreach ($crons as $cron) {
 				if ($cron->getState() != 'run') {
 					$cron->remove();
@@ -622,7 +622,6 @@ class alarmCmd extends cmd {
 				$eqLogic->doAction('raz');
 			}
 			$eqLogic->cleanArmedCompleted();
-			$eqLogic->save();
 			return;
 		}
 		if ($this->getLogicalId() == 'armed') {
