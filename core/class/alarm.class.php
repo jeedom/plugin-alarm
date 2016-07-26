@@ -648,8 +648,8 @@ class alarmCmd extends cmd {
 										if ($armedCompleteDatetime < $armedCompleteDatetimeTemp) {
 											$armedCompleteDatetime = $armedCompleteDatetimeTemp;
 										}
-										if ($armedCompleteDatetimeTemp > 0 && $armedCompleteDatetimeTemp < (strtotime('now') + 60)) {
-											$armedCompleteDatetimeTemp = strtotime('now') + 60;
+										if ($armedCompleteDatetimeTemp > 0 && $armedCompleteDatetimeTemp < (strtotime('now') + 120)) {
+											$armedCompleteDatetimeTemp = strtotime('now') + 120;
 										}
 										$cron = new cron();
 										$cron->setClass('alarm');
