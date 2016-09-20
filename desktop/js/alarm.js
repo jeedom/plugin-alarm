@@ -352,11 +352,11 @@ function addTrigger(_el, _trigger) {
     div += '</span>';
     div += '</div>';
     div += '</div>';
-    div += '<label class="col-sm-1 control-label">{{Activation (min)}}</label>';
+    div += '<label class="col-sm-1 control-label">{{Activation (min pleine)}}</label>';
     div += '<div class="col-sm-1 has-success">';
     div += '<input class="triggerAttr form-control input-sm" data-l1key="armedDelay" />';
     div += '</div>';
-    div += '<label class="col-sm-2 control-label">{{Déclenchement (min)}}</label>';
+    div += '<label class="col-sm-2 control-label">{{Déclenchement (min, décimal possible)}}</label>';
     div += '<div class="col-sm-1 has-success">';
     div += '<input class="triggerAttr form-control input-sm" data-l1key="waitDelay" />';
     div += '</div>';
