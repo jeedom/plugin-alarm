@@ -432,8 +432,8 @@ class alarm extends eqLogic {
 										}
 										if (isset($trigger['waitDelay']) && $trigger['waitDelay'] !== '' && is_numeric(intval($trigger['waitDelay'])) && $trigger['waitDelay'] > 0) {
 											log::add('alarm', 'debug', __('Attente de ' . $trigger['waitDelay'] . ' min avant déclenchement', __FILE__));
-											for ($i = 0; $i < ($trigger['waitDelay'] * 6); $i++) {
-												sleep(10);
+											for ($i = 0; $i < ($trigger['waitDelay'] * 60); $i++) {
+												sleep(1);
 												if ($cmd_armed->execCmd() == 0) {
 													log::add('alarm', 'debug', __('L\'alarme a été désarmé avant déclenchement', __FILE__));
 													return;
