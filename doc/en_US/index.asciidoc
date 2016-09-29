@@ -5,3 +5,7 @@ The Alarm plugin allows Jeedom to have a real alarm system for its automation, e
 include::configuration.asciidoc[]
 
 include::faq.asciidoc[]
+
+'''
+
+include::changelog.asciidoc[]
