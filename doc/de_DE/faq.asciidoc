@@ -1,0 +1,14 @@
+== FAQ
+
+Wie kann ich dauerhaft einen Alarm zurücksetzen ?::
+Klicken Sie einfach auf einen der Alarm-Modi (auch was aktiv ist).
+
+'''
+
+Kann man die Zeiten in den Sekunden eingeben?::
+Das ist für die "Auslösungsfrist" möglich (man muß die Zahl mit einem Komma eingeben, z.B : 0.5 für 30 Sekunden) aber nicht für die "Aktivierungsfrist" (für diesen Parameter keine Zahlen mit Komma eingeben).
+
+'''
+
+Je ne comprends pas mon alarme ne fait rien ::
+Vérifiez que l'alarme à bien un mode d'actif
