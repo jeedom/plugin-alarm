@@ -47,33 +47,47 @@ foreach ($eqLogics as $eqLogic) {
 </div>
 
 <div class="col-lg-10 col-md-9 col-sm-8 eqLogic" style="border-left: solid 1px #EEE; padding-left: 25px;display: none;">
-    <form class="form-horizontal">
-        <fieldset>
-            <legend><i class="fa fa-arrow-circle-left eqLogicAction cursor" data-action="returnToThumbnailDisplay"></i> {{Général}}<i class='fa fa-cogs eqLogicAction pull-right cursor expertModeVisible' data-action='configure'></i></legend>
-            <div class="form-group">
-                <label class="col-sm-2 control-label">{{Nom de l'alarme}}</label>
-                <div class="col-sm-3">
-                    <input type="text" class="eqLogicAttr form-control" data-l1key="id" style="display : none;" />
-                    <input type="text" class="eqLogicAttr form-control" data-l1key="name" placeholder="Nom de la zone"/>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label" >{{Objet parent}}</label>
-                <div class="col-sm-3">
-                    <select id="sel_object" class="eqLogicAttr form-control" data-l1key="object_id">
-                        <option value="">{{Aucun}}</option>
-                        <?php
+
+    <ul class="nav nav-tabs" id="tab_alarm">
+        <li class="active"><a href="#eqlogictab" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-tachometer"></i> {{Equipement}}</a></li>
+        <li><a href="#tab_zones" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-th-list" aria-hidden="true"></i> {{Zones}}</a></li>
+        <li><a href="#tab_modes" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-modx" aria-hidden="true"></i> {{Modes}}</a></li>
+        <li><a href="#tab_raz" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-refresh" aria-hidden="true"></i> {{Réinitialisation}}</a></li>
+        <li><a href="#tab_activeOk" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-check" aria-hidden="true"></i> {{Activation OK}}</a></li>
+        <li><a href="#tab_activeKo" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-times" aria-hidden="true"></i> {{Activation KO}}</a></li>
+        <li><a href="#tab_release" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-exclamation" aria-hidden="true"></i> {{Désactivation OK}}</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="eqlogictab">
+
+            <form class="form-horizontal">
+                <fieldset>
+                    <legend><i class="fa fa-arrow-circle-left eqLogicAction cursor" data-action="returnToThumbnailDisplay"></i> {{Général}}<i class='fa fa-cogs eqLogicAction pull-right cursor expertModeVisible' data-action='configure'></i></legend>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">{{Nom de l'alarme}}</label>
+                        <div class="col-sm-3">
+                            <input type="text" class="eqLogicAttr form-control" data-l1key="id" style="display : none;" />
+                            <input type="text" class="eqLogicAttr form-control" data-l1key="name" placeholder="Nom de la zone"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" >{{Objet parent}}</label>
+                        <div class="col-sm-3">
+                            <select id="sel_object" class="eqLogicAttr form-control" data-l1key="object_id">
+                                <option value="">{{Aucun}}</option>
+                                <?php
 foreach (object::all() as $object) {
 	echo '<option value="' . $object->getId() . '">' . $object->getName() . '</option>';
 }
 ?>
-                   </select>
-               </div>
-           </div>
-           <div class="form-group">
-            <label class="col-sm-2 control-label">{{Catégorie}}</label>
-            <div class="col-sm-10">
-                <?php
+                           </select>
+                       </div>
+                   </div>
+                   <div class="form-group">
+                    <label class="col-sm-2 control-label">{{Catégorie}}</label>
+                    <div class="col-sm-10">
+                        <?php
 foreach (jeedom::getConfiguration('eqLogic:category') as $key => $value) {
 	echo '<label class="checkbox-inline">';
 	echo '<input type="checkbox" class="eqLogicAttr" data-l1key="category" data-l2key="' . $key . '" />' . $value['name'];
@@ -81,65 +95,56 @@ foreach (jeedom::getConfiguration('eqLogic:category') as $key => $value) {
 }
 ?>
 
-           </div>
-       </div>
-       <div class="form-group">
-        <label class="col-sm-2 control-label"></label>
-        <div class="col-sm-10">
-            <label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="isEnable" checked/>{{Activer}}</label>
-            <label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="isVisible" checked/>{{Visible}}</label>
-        </div>
-    </div>
+                   </div>
+               </div>
+               <div class="form-group">
+                <label class="col-sm-2 control-label"></label>
+                <div class="col-sm-10">
+                    <label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="isEnable" checked/>{{Activer}}</label>
+                    <label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="isVisible" checked/>{{Visible}}</label>
+                </div>
+            </div>
 
-    <div class="form-group expertModeVisible">
-        <label class="col-sm-2 control-label"></label>
-        <div class="col-sm-10">
-            <label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="configuration" data-l2key="always_active"/>{{Actif en permanence}}</label>
-            <label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="configuration" data-l2key="armed_visible" checked/>{{Armement visible}} </label>
-            <label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="configuration" data-l2key="immediateState_visible"/>{{Status immédiat visible}}</label>
-             <label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="configuration" data-l2key="autorearm"/>{{Réarmement automatique}}</label>
-              <label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="configuration" data-l2key="historizedState"/>{{Historiser état et status de l'alarme}}</label>
-    </div>
+            <div class="form-group expertModeVisible">
+                <label class="col-sm-2 control-label"></label>
+                <div class="col-sm-10">
+                    <label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="configuration" data-l2key="always_active"/>{{Actif en permanence}}</label>
+                    <label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="configuration" data-l2key="armed_visible" checked/>{{Armement visible}} </label>
+                    <label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="configuration" data-l2key="immediateState_visible"/>{{Status immédiat visible}}</label>
+                    <label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="configuration" data-l2key="autorearm"/>{{Réarmement automatique}}</label>
+                    <label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="configuration" data-l2key="historizedState"/>{{Historiser état et status de l'alarme}}</label>
+                </div>
+            </div>
+        </fieldset>
+    </form>
 </div>
-</fieldset>
-</form>
 
-<ul class="nav nav-tabs" id="tab_alarm">
-    <li class="active"><a href="#tab_zones">{{Zones}}</a></li>
-    <li><a href="#tab_modes">{{Modes}}</a></li>
-    <li><a href="#tab_raz">{{Réinitialisation}}</a></li>
-    <li><a href="#tab_activeOk">{{Activation OK}}</a></li>
-    <li><a href="#tab_activeKo">{{Activation KO}}</a></li>
-    <li><a href="#tab_release">{{Désactivation OK}}</a></li>
-</ul>
-
-<div class="tab-content">
-    <div class="tab-pane active" id="tab_zones">
-        <br/>
-        <div class="alert alert-info">{{Une zone décris les capteurs que l'alarme doit surveiller ainsi que les actions à faire en cas de déclenchement.}} <a class="btn btn-success btn-xs pull-right" id="bt_addZone"><i class="fa fa-plus-circle"></i> {{Ajouter zone}}</a></div>
-        <div class="panel-group" id="div_zones"></div>
-    </div>
-
-    <div class="tab-pane" id="tab_modes">
-       <br/>
-       <div class="alert alert-info">{{Les modes permettent d'activer les zones. Il vous en faut absolument un.}} <a class="btn btn-success btn-xs pull-right" id="bt_addMode"><i class="fa fa-plus-circle"></i> {{Ajouter mode}}</a></div>
-       <div id="div_modes"></div>
-   </div>
-
-   <div class="tab-pane" id="tab_raz">
-       <br/>
-       <div class="alert alert-info">{{C'est ici que vous devez mettre les actions à faire lorsque l’alarme est déclenchée puis désactivée}}
-           <a class='btn btn-success btn-xs pull-right' id="btn_addRazAlarm"><i class="fa fa-plus-circle"></i> {{Ajouter réinitialisation}}</a>
-           <a class='btn btn-warning btn-xs pull-right' id="btn_addRazImmediateAlarm"><i class="fa fa-plus-circle"></i> {{Ajouter réinitialisation immédiate}}</a>
-       </div>
-       <form class="form-horizontal">
-        <div id="div_razImmediate"></div>
-    </form>
-    <hr/>
+<div class="tab-pane" id="tab_zones">
     <br/>
-    <form class="form-horizontal">
-        <div id="div_raz"></div>
-    </form>
+    <div class="alert alert-info">{{Une zone décris les capteurs que l'alarme doit surveiller ainsi que les actions à faire en cas de déclenchement.}} <a class="btn btn-success btn-xs pull-right" id="bt_addZone"><i class="fa fa-plus-circle"></i> {{Ajouter zone}}</a></div>
+    <div class="panel-group" id="div_zones"></div>
+</div>
+
+<div class="tab-pane" id="tab_modes">
+   <br/>
+   <div class="alert alert-info">{{Les modes permettent d'activer les zones. Il vous en faut absolument un.}} <a class="btn btn-success btn-xs pull-right" id="bt_addMode"><i class="fa fa-plus-circle"></i> {{Ajouter mode}}</a></div>
+   <div id="div_modes"></div>
+</div>
+
+<div class="tab-pane" id="tab_raz">
+   <br/>
+   <div class="alert alert-info">{{C'est ici que vous devez mettre les actions à faire lorsque l’alarme est déclenchée puis désactivée}}
+       <a class='btn btn-success btn-xs pull-right' id="btn_addRazAlarm"><i class="fa fa-plus-circle"></i> {{Ajouter réinitialisation}}</a>
+       <a class='btn btn-warning btn-xs pull-right' id="btn_addRazImmediateAlarm"><i class="fa fa-plus-circle"></i> {{Ajouter réinitialisation immédiate}}</a>
+   </div>
+   <form class="form-horizontal">
+    <div id="div_razImmediate"></div>
+</form>
+<hr/>
+<br/>
+<form class="form-horizontal">
+    <div id="div_raz"></div>
+</form>
 </div>
 
 <div class="tab-pane" id="tab_release">
