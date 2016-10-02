@@ -1,1 +1,3 @@
 == Changelog
+
+- Amélioration de l'interface de configuration
