@@ -1,3 +1,5 @@
 == Changelog
 
+- Ajout commande pause/reprise
+
 - Amélioration de l'interface de configuration
