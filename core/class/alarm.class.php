@@ -114,7 +114,7 @@ class alarm extends eqLogic {
 			$cmdArmed->setTemplate('mobile', 'lock');
 		}
 		$cmdArmed->setName(__('Actif', __FILE__));
-		$cmdArmed->setEqLogic_id($this->id);
+		$cmdArmed->setEqLogic_id($this->getId());
 		$cmdArmed->setLogicalId('enable');
 		$cmdArmed->setType('info');
 		$cmdArmed->setSubType('binary');
@@ -122,6 +122,48 @@ class alarm extends eqLogic {
 		$cmdArmed->setIsHistorized($this->getConfiguration('historizedState'));
 		$cmdArmed->setDisplay('generic_type', 'ALARM_ENABLE_STATE');
 		$cmdArmed->save();
+
+		$statePause = $this->getCmd(null, 'statePause');
+		if (!is_object($statePause)) {
+			$statePause = new alarmCmd();
+			$statePause->setOrder(2);
+			$statePause->setIsVisible(0);
+			$statePause->setLogicalId('statePause');
+		}
+		$statePause->setName(__('Statut pause', __FILE__));
+		$statePause->setEqLogic_id($this->getId());
+		$statePause->setType('info');
+		$statePause->setSubType('binary');
+		$statePause->setIsHistorized($this->getConfiguration('historizedState'));
+		$statePause->save();
+
+		$cmdPauseOn = $this->getCmd(null, 'pauseOn');
+		if (!is_object($cmdPauseOn)) {
+			$cmdPauseOn = new alarmCmd();
+			$cmdPauseOn->setOrder(5);
+			$cmdPauseOn->setLogicalId('pauseOn');
+			$cmdPauseOn->setIsVisible(0);
+		}
+		$cmdPauseOn->setName(__('Pause', __FILE__));
+		$cmdPauseOn->setEqLogic_id($this->getId());
+		$cmdPauseOn->setType('action');
+		$cmdPauseOn->setSubType('other');
+		$cmdPauseOn->setValue($statePause->getId());
+		$cmdPauseOn->save();
+
+		$cmdPauseOff = $this->getCmd(null, 'pauseOff');
+		if (!is_object($cmdPauseOff)) {
+			$cmdPauseOff = new alarmCmd();
+			$cmdPauseOff->setOrder(5);
+			$cmdPauseOff->setLogicalId('pauseOff');
+			$cmdPauseOff->setIsVisible(0);
+		}
+		$cmdPauseOff->setName(__('Reprise', __FILE__));
+		$cmdPauseOff->setEqLogic_id($this->getId());
+		$cmdPauseOff->setType('action');
+		$cmdPauseOff->setSubType('other');
+		$cmdPauseOff->setValue($statePause->getId());
+		$cmdPauseOff->save();
 
 		$cmdState = $this->getCmd(null, 'state');
 		if (!is_object($cmdState)) {
@@ -131,7 +173,7 @@ class alarm extends eqLogic {
 			$cmdState->setOrder(2);
 		}
 		$cmdState->setName(__('Statut', __FILE__));
-		$cmdState->setEqLogic_id($this->id);
+		$cmdState->setEqLogic_id($this->getId());
 		$cmdState->setLogicalId('state');
 		$cmdState->setType('info');
 		$cmdState->setSubType('binary');
@@ -149,7 +191,7 @@ class alarm extends eqLogic {
 		}
 		$cmdImmediatState->setName(__('Immédiat', __FILE__));
 		$cmdImmediatState->setLogicalId('immediatState');
-		$cmdImmediatState->setEqLogic_id($this->id);
+		$cmdImmediatState->setEqLogic_id($this->getId());
 		$cmdImmediatState->setType('info');
 		$cmdImmediatState->setSubType('binary');
 		$cmdImmediatState->setIsVisible($this->getConfiguration('immediateState_visible'));
@@ -165,7 +207,7 @@ class alarm extends eqLogic {
 			$mode->setName(__('Mode', __FILE__));
 			$mode->setorder(3);
 		}
-		$mode->setEqLogic_id($this->id);
+		$mode->setEqLogic_id($this->getId());
 		$mode->setType('info');
 		$mode->setDisplay('generic_type', 'ALARM_MODE');
 		$mode->setLogicalId('mode');
@@ -189,7 +231,7 @@ class alarm extends eqLogic {
 					$cmd->setorder(4);
 				}
 				$cmd->setName($value['name']);
-				$cmd->setEqLogic_id($this->id);
+				$cmd->setEqLogic_id($this->getId());
 				$cmd->setType('action');
 				$cmd->setSubType('other');
 				$cmd->setConfiguration('mode', '1');
@@ -215,8 +257,8 @@ class alarm extends eqLogic {
 			$armed->setTemplate('mobile', 'lock');
 			$armed->setorder(0);
 		}
-		$armed->setName('lock');
-		$armed->setEqLogic_id($this->id);
+		$armed->setName('Activer');
+		$armed->setEqLogic_id($this->getId());
 		$armed->setType('action');
 		$armed->setLogicalId('armed');
 		$armed->setSubType('other');
@@ -238,8 +280,8 @@ class alarm extends eqLogic {
 			$released->setTemplate('mobile', 'lock');
 			$released->setorder(0);
 		}
-		$released->setName('unlock');
-		$released->setEqLogic_id($this->id);
+		$released->setName('Désactiver');
+		$released->setEqLogic_id($this->getId());
 		$released->setType('action');
 		$released->setLogicalId('released');
 		$released->setSubType('other');
@@ -256,7 +298,7 @@ class alarm extends eqLogic {
 
 		foreach ($this->getCmd() as $cmd) {
 			if ($cmd->getType() == 'action' && !in_array($cmd->getName(), $existing_mode) &&
-				$cmd->getLogicalId() != 'mode' && $cmd->getLogicalId() != 'released' && $cmd->getLogicalId() != 'armed') {
+				$cmd->getLogicalId() != 'mode' && $cmd->getLogicalId() != 'released' && $cmd->getLogicalId() != 'armed' && $cmd->getLogicalId() != 'pauseOn' && $cmd->getLogicalId() != 'pauseOff') {
 				$cmd->remove();
 			}
 		}
@@ -376,6 +418,11 @@ class alarm extends eqLogic {
 
 	public function execute($_trigger_id, $_value) {
 		log::add('alarm', 'debug', __('Lancement de l\'alarme : ', __FILE__) . $this->getHumanName());
+		$cmd_state_pause = $eqLogic->getCmd(null, 'statePause');
+		if ($cmd_state_pause->execCmd() == 1) {
+			log::add('alarm', 'debug', __('L\'alarme est en pause', __FILE__) . $this->getHumanName());
+			return;
+		}
 		$cmd_armed = $this->getCmd(null, 'enable');
 		$cmd_state = $this->getCmd(null, 'state');
 		log::add('alarm', 'debug', __('Status de l\'alarme : ', __FILE__) . $cmd_state->execCmd() . __(' , armement : ', __FILE__) . $cmd_armed->execCmd());
@@ -599,6 +646,7 @@ class alarmCmd extends cmd {
 		$eqLogic = $this->getEqLogic();
 		$cmd_armed = $eqLogic->getCmd(null, 'enable');
 		$cmd_state = $eqLogic->getCmd(null, 'state');
+		$cmd_state_pause = $eqLogic->getCmd(null, 'statePause');
 		$cmd_immediateState = $eqLogic->getCmd(null, 'immediatState');
 		$cmd_mode = $eqLogic->getCmd(null, 'mode');
 
@@ -620,7 +668,16 @@ class alarmCmd extends cmd {
 			$eqLogic->cleanArmedCompleted();
 			return;
 		}
+		if ($this->getLogicalId() == 'pauseOn') {
+			$cmd_state_pause->event(1);
+			return;
+		}
+		if ($this->getLogicalId() == 'pauseOff') {
+			$cmd_state_pause->event(0);
+			return;
+		}
 		if ($this->getLogicalId() == 'armed') {
+			$cmd_state_pause->event(0);
 			$cmd_armed->event(1);
 			$select_mode = $cmd_mode->execCmd();
 			if ($select_mode == '') {
@@ -699,12 +756,10 @@ class alarmCmd extends cmd {
 		}
 		if ($this->getConfiguration('mode') == '1') {
 			$cmd_mode->event($this->getConfiguration('state'));
-			/* RaZ immediate */
 			if ($cmd_immediateState->execCmd() == 1) {
 				log::add('alarm', 'debug', __('Remise à zero immédiate de l\'alarme', __FILE__));
 				$eqLogic->doAction('razImmediate');
 			}
-			/* RaZ */
 			if ($cmd_state->execCmd() == 1) {
 				log::add('alarm', 'debug', __('Remise à zero de l\'alarme', __FILE__));
 				$eqLogic->doAction('raz');
