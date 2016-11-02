@@ -26,12 +26,12 @@ foreach ($eqLogics as $eqLogic) {
     <legend>{{Mes équipements alarmes}}</legend>
     <div class="eqLogicThumbnailContainer">
       <div class="cursor eqLogicAction" data-action="add" style="background-color : #ffffff; height : 200px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;" >
-         <center>
-            <i class="fa fa-plus-circle" style="font-size : 7em;color:#94ca02;"></i>
-        </center>
-        <span style="font-size : 1.1em;position:relative; top : 23px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;color:#94ca02"><center>Ajouter</center></span>
-    </div>
-    <?php
+       <center>
+        <i class="fa fa-plus-circle" style="font-size : 7em;color:#94ca02;"></i>
+    </center>
+    <span style="font-size : 1.1em;position:relative; top : 23px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;color:#94ca02"><center>Ajouter</center></span>
+</div>
+<?php
 foreach ($eqLogics as $eqLogic) {
 	$opacity = ($eqLogic->getIsEnable()) ? '' : jeedom::getConfiguration('eqLogic:style:noactive');
 	echo '<div class="eqLogicDisplayCard cursor" data-eqLogic_id="' . $eqLogic->getId() . '" style="background-color : #ffffff; height : 200px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;' . $opacity . '" >';
@@ -47,8 +47,11 @@ foreach ($eqLogics as $eqLogic) {
 </div>
 
 <div class="col-lg-10 col-md-9 col-sm-8 eqLogic" style="border-left: solid 1px #EEE; padding-left: 25px;display: none;">
-
+    <a class="btn btn-success eqLogicAction pull-right" data-action="save"><i class="fa fa-check-circle"></i> {{Sauvegarder}}</a>
+    <a class="btn btn-danger eqLogicAction pull-right" data-action="remove"><i class="fa fa-minus-circle"></i> {{Supprimer}}</a>
+    <a class="btn btn-default eqLogicAction pull-right" data-action="configure"><i class="fa fa-cogs"></i> {{Configuration avancée}}</a>
     <ul class="nav nav-tabs" id="tab_alarm">
+        <li><a href="#" class="eqLogicAction" aria-controls="home" role="tab" data-toggle="tab" data-action="returnToThumbnailDisplay"><i class="fa fa-arrow-circle-left"></i></a></li>
         <li class="active"><a href="#eqlogictab" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-tachometer"></i> {{Equipement}}</a></li>
         <li><a href="#tab_zones" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-th-list" aria-hidden="true"></i> {{Zones}}</a></li>
         <li><a href="#tab_modes" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-modx" aria-hidden="true"></i> {{Modes}}</a></li>
@@ -57,13 +60,11 @@ foreach ($eqLogics as $eqLogic) {
         <li><a href="#tab_activeKo" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-times" aria-hidden="true"></i> {{Activation KO}}</a></li>
         <li><a href="#tab_release" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-exclamation" aria-hidden="true"></i> {{Désactivation OK}}</a></li>
     </ul>
-
     <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="eqlogictab">
-
+            <br/>
             <form class="form-horizontal">
                 <fieldset>
-                    <legend><i class="fa fa-arrow-circle-left eqLogicAction cursor" data-action="returnToThumbnailDisplay"></i> {{Général}}<i class='fa fa-cogs eqLogicAction pull-right cursor expertModeVisible' data-action='configure'></i></legend>
                     <div class="form-group">
                         <label class="col-sm-2 control-label">{{Nom de l'alarme}}</label>
                         <div class="col-sm-3">
@@ -126,18 +127,18 @@ foreach (jeedom::getConfiguration('eqLogic:category') as $key => $value) {
 </div>
 
 <div class="tab-pane" id="tab_modes">
-   <br/>
-   <div class="alert alert-info">{{Les modes permettent d'activer les zones. Il vous en faut absolument un.}} <a class="btn btn-success btn-xs pull-right" id="bt_addMode"><i class="fa fa-plus-circle"></i> {{Ajouter mode}}</a></div>
-   <div id="div_modes"></div>
+ <br/>
+ <div class="alert alert-info">{{Les modes permettent d'activer les zones. Il vous en faut absolument un.}} <a class="btn btn-success btn-xs pull-right" id="bt_addMode"><i class="fa fa-plus-circle"></i> {{Ajouter mode}}</a></div>
+ <div id="div_modes"></div>
 </div>
 
 <div class="tab-pane" id="tab_raz">
-   <br/>
-   <div class="alert alert-info">{{C'est ici que vous devez mettre les actions à faire lorsque l’alarme est déclenchée puis désactivée}}
-       <a class='btn btn-success btn-xs pull-right' id="btn_addRazAlarm"><i class="fa fa-plus-circle"></i> {{Ajouter réinitialisation}}</a>
-       <a class='btn btn-warning btn-xs pull-right' id="btn_addRazImmediateAlarm"><i class="fa fa-plus-circle"></i> {{Ajouter réinitialisation immédiate}}</a>
-   </div>
-   <form class="form-horizontal">
+ <br/>
+ <div class="alert alert-info">{{C'est ici que vous devez mettre les actions à faire lorsque l’alarme est déclenchée puis désactivée}}
+     <a class='btn btn-success btn-xs pull-right' id="btn_addRazAlarm"><i class="fa fa-plus-circle"></i> {{Ajouter réinitialisation}}</a>
+     <a class='btn btn-warning btn-xs pull-right' id="btn_addRazImmediateAlarm"><i class="fa fa-plus-circle"></i> {{Ajouter réinitialisation immédiate}}</a>
+ </div>
+ <form class="form-horizontal">
     <div id="div_razImmediate"></div>
 </form>
 <hr/>
@@ -182,18 +183,6 @@ foreach (jeedom::getConfiguration('eqLogic:category') as $key => $value) {
     </form>
 </div>
 </div>
-
-<br/><br/>
-<hr/>
-<form class="form-horizontal">
-    <fieldset>
-        <div class="form-actions">
-            <a class="btn btn-danger eqLogicAction" data-action="remove"><i class="fa fa-minus-circle"></i> {{Supprimer}}</a>
-            <a class="btn btn-success eqLogicAction" data-action="save"><i class="fa fa-check-circle"></i> {{Sauvegarder}}</a>
-        </div>
-    </fieldset>
-</form>
-
 </div>
 </div>
 
