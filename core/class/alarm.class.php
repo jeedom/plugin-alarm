@@ -725,11 +725,9 @@ class alarmCmd extends cmd {
 			/*             * *****************Activation reussi***************** */
 			log::add('alarm', 'debug', 'Activation de l\'alarme réussie');
 			$eqLogic->doAction('activationImmediateOk');
-
 			if ($armedCompleteDatetime > 0 && $armedCompleteDatetime < (strtotime('now') + 60)) {
 				$armedCompleteDatetime = strtotime('now') + 60;
 			}
-
 			if ($armedCompleteDatetime > 0) {
 				$cron = new cron();
 				$cron->setClass('alarm');
@@ -743,7 +741,6 @@ class alarmCmd extends cmd {
 				log::add('alarm', 'debug', __('Activation OK éxécution des actions', __FILE__));
 				$eqLogic->doAction('activationOk');
 			}
-
 			return;
 		}
 		if ($this->getConfiguration('mode') == '1') {
