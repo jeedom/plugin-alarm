@@ -245,7 +245,6 @@ class alarm extends eqLogic {
 		}
 		if ($this->getIsEnable() == 1) {
 			if (is_object($mode) && $mode->execCmd() == '' && isset($value)) {
-				$mode->setCollectDate('');
 				$mode->event($value['name']);
 			}
 		}
@@ -365,17 +364,14 @@ class alarm extends eqLogic {
 		if ($this->getIsEnable() == 1) {
 			$cmd_state = $this->getCmd(null, 'state');
 			if (is_object($cmd_state) && $cmd_state->execCmd() == '') {
-				$cmd_state->setCollectDate('');
 				$cmd_state->event(0);
 			}
 			$cmd_immediatState = $this->getCmd(null, 'immediatState');
 			if (is_object($cmd_immediatState) && $cmd_immediatState->execCmd() == '') {
-				$cmd_immediatState->setCollectDate('');
 				$cmd_immediatState->event(0);
 			}
 			$cmd_armed = $this->getCmd(null, 'enable');
 			if (is_object($cmd_armed) && $cmd_armed->execCmd() == '') {
-				$cmd_armed->setCollectDate('');
 				$cmd_armed->event(0);
 			}
 		}
@@ -460,7 +456,6 @@ class alarm extends eqLogic {
 										$this->cleanArmedCompleted();
 										if ($this->getConfiguration('autorearm', 0) == 1 || $cmd_immediatState->execCmd() != 1) {
 											log::add('alarm', 'debug', __('Exécution des actions immédiates', __FILE__));
-											$cmd_immediatState->setCollectDate('');
 											$cmd_immediatState->event(1);
 											foreach ($zone['actionsImmediate'] as $action) {
 												try {
@@ -497,7 +492,6 @@ class alarm extends eqLogic {
 											return;
 										}
 										log::add('alarm', 'debug', __('Déclenchement de l\'alarme', __FILE__));
-										$cmd_state->setCollectDate('');
 										$cmd_state->event(1);
 										foreach ($zone['actions'] as $action) {
 											try {
@@ -654,13 +648,11 @@ class alarmCmd extends cmd {
 			$cmd_armed->event(0);
 			$eqLogic->doAction('release');
 			if ($cmd_immediateState->execCmd() == 1) {
-				$cmd_immediateState->setCollectDate('');
 				$cmd_immediateState->event(0);
 				log::add('alarm', 'debug', __('Remise à zero immédiate de l\'alarme', __FILE__));
 				$eqLogic->doAction('razImmediate');
 			}
 			if ($cmd_state->execCmd() == 1) {
-				$cmd_state->setCollectDate('');
 				$cmd_state->event(0);
 				log::add('alarm', 'debug', __('Remise à zero de l\'alarme', __FILE__));
 				$eqLogic->doAction('raz');
@@ -765,9 +757,7 @@ class alarmCmd extends cmd {
 				$eqLogic->doAction('raz');
 			}
 			log::add('alarm', 'debug', __('Envoi etat alarm ok', __FILE__));
-			$cmd_state->setCollectDate('');
 			$cmd_state->event(0);
-			$cmd_immediateState->setCollectDate('');
 			$cmd_immediateState->event(0);
 			$eqLogic->getCmd(null, 'armed')->execCmd();
 		}
