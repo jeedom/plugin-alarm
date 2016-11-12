@@ -414,7 +414,7 @@ class alarm extends eqLogic {
 
 	public function execute($_trigger_id, $_value) {
 		log::add('alarm', 'debug', __('Lancement de l\'alarme : ', __FILE__) . $this->getHumanName());
-		$cmd_state_pause = $eqLogic->getCmd(null, 'statePause');
+		$cmd_state_pause = $this->getCmd(null, 'statePause');
 		if ($cmd_state_pause->execCmd() == 1) {
 			log::add('alarm', 'debug', __('L\'alarme est en pause', __FILE__) . $this->getHumanName());
 			return;
