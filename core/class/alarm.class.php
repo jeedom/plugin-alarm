@@ -626,17 +626,6 @@ class alarmCmd extends cmd {
 		return true;
 	}
 
-	public function formatValueWidget($_value) {
-		if ($this->getLogicalId() == 'mode') {
-			$eqLogic = $this->getEqLogic();
-			$cmd_armed = $eqLogic->getCmd(null, 'enable');
-			if ($cmd_armed->execCmd() == 0) {
-				return __('Aucun', __FILE__);
-			}
-		}
-		return $_value;
-	}
-
 	public function execute($_options = array()) {
 		$eqLogic = $this->getEqLogic();
 		$cmd_armed = $eqLogic->getCmd(null, 'enable');
