@@ -15,7 +15,24 @@
         "Actif": "Attiva",
         "Statut": "Stato",
         "Immédiat": "Immediato",
-        "Mode": "Modalità"
+        "Mode": "Modalità",
+        "Envoi etat alarm ok": "Invio stato allarme OK",
+        "Aucun": "Nessuno",
+        "Lancement de la vérification des detecteurs post activation": "Lancement de la vérification des detecteurs post activation",
+        "Verification de ": "Verification de",
+        " , armement : ": ", armement :",
+        " valeur : ": "valore :",
+        "Evenement valide, mise en alerte de l'alarme sur declencheur : ": "Evento valido, imposta l\\'allarme su avviso inserimento :",
+        "Exécution des actions immédiates": "Esegui le azioni immediate",
+        "Status de l'alarme (2) : ": "Status de l'alarme (2) :",
+        "Déclenchement de l'alarme": "Innesco allarme",
+        "Execution de ": "Esecuzione di",
+        "Remise à zero de l'alarme": "Reset allarme",
+        "Non déclenchement car la valeur n'est pas une alerte": "Non déclenchement car la valeur n'est pas une alerte",
+        "Alarme déjà en cours": "Alarme déjà en cours",
+        "Statut pause": "Statut pause",
+        "Pause": "Pausa",
+        "Reprise": "Ripristina"
     },
     "plugins/alarm/desktop/php/alarm.php": {
         "Ajouter une alarme": "Aggiungi allarme",
@@ -53,10 +70,44 @@
         "Sauvegarder": "Salva",
         "Zone": "Zona",
         "Annuler": "Cancella",
-        "Valider": "Convalida"
+        "Valider": "Convalida",
+        "Réarmement automatique": "Réarmement automatique",
+        "Une zone décris les capteurs que l'alarme doit surveiller ainsi que les actions à faire en cas de déclenchement.": "Une zone décris les capteurs que l'alarme doit surveiller ainsi que les actions à faire en cas de déclenchement.",
+        "Les modes permettent d'activer les zones. Il vous en faut absolument un.": "Les modes permettent d'activer les zones. Il vous en faut absolument un.",
+        "C'est ici que vous devez mettre les actions à faire lorsque l’alarme est déclenchée puis désactivée": "C'est ici que vous devez mettre les actions à faire lorsque l’alarme est déclenchée puis désactivée",
+        "C'est ici que vous devez mettre les actions à faire lorsque l’alarme est désactivée et qu’elle n’est pas déclenchée": "C'est ici que vous devez mettre les actions à faire lorsque l’alarme est désactivée et qu’elle n’est pas déclenchée",
+        "C'est ici que vous devez mettre les actions à faire lors d'une activation réussie de l'alarme": "C'est ici que vous devez mettre les actions à faire lors d'une activation réussie de l'alarme",
+        "C'est ici que vous devez mettre les actions à faire lorsque l'activation de l'alarme à échouée": "C'est ici que vous devez mettre les actions à faire lorsque l'activation de l'alarme à échouée",
+        "Configuration avancée": "Configurazione avanzata",
+        "Equipement": "Dispositivo"
     },
     "plugins/alarm/plugin_info/info.xml": {
         "Plugin pour la gestion de la sécurité": "Plugin per gestione sicurezza",
         "Aucune": "Nessuno"
+    },
+    "plugins/alarm/desktop/js/alarm.js": {
+        "Nom de la zone ?": "Nome della zona ?",
+        "Nouveau nom ?": "Nuovo nome ?",
+        "Nom du mode ?": "Nome modalità ?",
+        "Action": "Azione",
+        "Action immédiate": "Azione immediata",
+        "Réinitialisation": "Reset",
+        "Réinitialisation immédiate": "Reset immediato",
+        "Libération": "Rilascio",
+        "Action Immediate": "Azione immediata",
+        "Déclencheur": "Innesco",
+        "Activation (min)": "Attivazione (min)",
+        "Déclenchement (min)": "Innesco (min)",
+        "Inverser": "Inverti",
+        "Nom de la zone": "Nome zona",
+        "Supprimer": "Elimina",
+        "Dupliquer": "Duplica",
+        "Nom du mode": "Nome modalità",
+        "Zone": "Zona",
+        "Activation (min pleine)": "Activation (min pleine)",
+        "Déclenchement (min, décimal possible)": "Déclenchement (min, décimal possible)"
+    },
+    "plugins/alarm/plugin_info/info.json": {
+        "Plugin pour la gestion de la sécurité": "Plugin per gestione sicurezza"
     }
 }

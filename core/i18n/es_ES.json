@@ -15,7 +15,24 @@
         "Actif": "Activo",
         "Statut": "Estado",
         "Immédiat": "Inmediato",
-        "Mode": "Modo"
+        "Mode": "Modo",
+        "Envoi etat alarm ok": "Envio de estado de alarma ok",
+        "Aucun": "Ningún",
+        "Lancement de la vérification des detecteurs post activation": "Ejecutando verificación de los detectores tras la activación",
+        "Verification de ": "Verificación de",
+        " , armement : ": ", armamento:",
+        " valeur : ": "Valor:",
+        "Evenement valide, mise en alerte de l'alarme sur declencheur : ": "Evento válido, programación de la alerta de la alarma sobre disparado :",
+        "Exécution des actions immédiates": "ejecución una acción inmediata",
+        "Status de l'alarme (2) : ": "Estado de la alarma (2) :",
+        "Déclenchement de l'alarme": "Disparo de la alarma",
+        "Execution de ": "Ejecución de",
+        "Remise à zero de l'alarme": "Puesta a cero de la alarma",
+        "Non déclenchement car la valeur n'est pas une alerte": "No se ha disparado debido a que el valor no es una alerta",
+        "Alarme déjà en cours": "Alarma en curso",
+        "Statut pause": "Statut pause",
+        "Pause": "Pausa",
+        "Reprise": "Reanudación"
     },
     "plugins/alarm/desktop/php/alarm.php": {
         "Ajouter une alarme": "Añadir una alarma",
@@ -53,10 +70,44 @@
         "Sauvegarder": "Guardar",
         "Zone": "Zona",
         "Annuler": "Cancelar",
-        "Valider": "Validar"
+        "Valider": "Validar",
+        "Réarmement automatique": "Rearme automático",
+        "Une zone décris les capteurs que l'alarme doit surveiller ainsi que les actions à faire en cas de déclenchement.": "Un área que describe que sensores de alarma supervisar y las acciones que hacer cuando se activan.",
+        "Les modes permettent d'activer les zones. Il vous en faut absolument un.": "Los modos permitirán activar las zonas. Necesita al menos una.",
+        "C'est ici que vous devez mettre les actions à faire lorsque l’alarme est déclenchée puis désactivée": "Aquí es donde debe especificar las acciones a realizar cuando la alarma se active y se desactive",
+        "C'est ici que vous devez mettre les actions à faire lorsque l’alarme est désactivée et qu’elle n’est pas déclenchée": "Aquí es donde debe especificar las acciones a realizar cuando la alarma se desactive y no se dispare",
+        "C'est ici que vous devez mettre les actions à faire lors d'une activation réussie de l'alarme": "Aquí es donde debe especificar las acciones a realizar cuando la activación de la alarma sea correcta",
+        "C'est ici que vous devez mettre les actions à faire lorsque l'activation de l'alarme à échouée": "Aquí es donde debe especificar las acciones a realizar cuando falle la activación de la alarma",
+        "Configuration avancée": "Configuración avanzada",
+        "Equipement": "Dispositivos"
     },
     "plugins/alarm/plugin_info/info.xml": {
         "Plugin pour la gestion de la sécurité": "Plugin para la gestión de la seguridad",
         "Aucune": "Ninguna"
+    },
+    "plugins/alarm/desktop/js/alarm.js": {
+        "Nom de la zone ?": "Nombre de la zona ?",
+        "Nouveau nom ?": "¿ Nuevo nombre ?",
+        "Nom du mode ?": "¿Nombre del modo?",
+        "Action": "Acción",
+        "Action immédiate": "Acción inmediata",
+        "Réinitialisation": "Reinicialización",
+        "Réinitialisation immédiate": "Reinicialización inmediata",
+        "Libération": "Liberación",
+        "Action Immediate": "Acción inmediata",
+        "Déclencheur": "Disparador",
+        "Activation (min)": "Activación (min)",
+        "Déclenchement (min)": "Disparador (min)",
+        "Inverser": "Invertir",
+        "Nom de la zone": "Nombre de la zona",
+        "Supprimer": "Borrar",
+        "Dupliquer": "Duplicar",
+        "Nom du mode": "Nombre del modo",
+        "Zone": "Zona",
+        "Activation (min pleine)": "Activation (min pleine)",
+        "Déclenchement (min, décimal possible)": "Déclenchement (min, décimal possible)"
+    },
+    "plugins/alarm/plugin_info/info.json": {
+        "Plugin pour la gestion de la sécurité": "Plugin para la gestión de la seguridad"
     }
 }
