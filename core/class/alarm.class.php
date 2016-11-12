@@ -207,6 +207,7 @@ class alarm extends eqLogic {
 			$mode->setName(__('Mode', __FILE__));
 			$mode->setorder(3);
 		}
+		$mode->setConfiguration('repeatEventManagement', 'always');
 		$mode->setEqLogic_id($this->getId());
 		$mode->setType('info');
 		$mode->setDisplay('generic_type', 'ALARM_MODE');
@@ -643,9 +644,9 @@ class alarmCmd extends cmd {
 		$cmd_state_pause = $eqLogic->getCmd(null, 'statePause');
 		$cmd_immediateState = $eqLogic->getCmd(null, 'immediatState');
 		$cmd_mode = $eqLogic->getCmd(null, 'mode');
-
 		if ($this->getLogicalId() == 'released') {
 			$cmd_armed->event(0);
+			$cmd_mode->event($cmd_mode->execCmd());
 			$eqLogic->doAction('release');
 			if ($cmd_immediateState->execCmd() == 1) {
 				$cmd_immediateState->event(0);
@@ -675,6 +676,7 @@ class alarmCmd extends cmd {
 			if ($select_mode == '') {
 				throw new Exception(__('Aucun mode sélectionné', __FILE__));
 			}
+			$cmd_mode->event($select_mode);
 			$modes = $eqLogic->getConfiguration('modes');
 			$zones = $eqLogic->getConfiguration('zones');
 			$armedCompleteDatetime = -1;
