@@ -30,7 +30,7 @@
         "Remise à zero de l'alarme": "Reset alarm",
         "Non déclenchement car la valeur n'est pas une alerte": "Not trigger because the value is not an alert\n",
         "Alarme déjà en cours": "Alarm underway",
-        "Statut pause": "Statut pause",
+        "Statut pause": "Pause status",
         "Pause": "Pause",
         "Reprise": "Recovery"
     },
@@ -104,8 +104,8 @@
         "Dupliquer": "Duplicate",
         "Nom du mode": "Mode name",
         "Zone": "Zone",
-        "Activation (min pleine)": "Activation (min pleine)",
-        "Déclenchement (min, décimal possible)": "Déclenchement (min, décimal possible)"
+        "Activation (min pleine)": "Activation (integer - in minutes)",
+        "Déclenchement (min, décimal possible)": "Trigger (in minutes, floating number allowed)"
     },
     "plugins/alarm/plugin_info/info.json": {
         "Plugin pour la gestion de la sécurité": "Plugin for security management"
