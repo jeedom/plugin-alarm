@@ -1,6 +1,6 @@
 == FAQ
 
-Comment réarmer une alarme permanente ?::
+How to rearm an permanent alarm ?::
 Il suffit de cliquer sur un des modes de l’alarme (même celui actif).
 
 '''

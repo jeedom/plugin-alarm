@@ -43,13 +43,13 @@ Cette notion immédiate permet de déclencher des actions bien spécifiques. Par
 
 Cette notion se retrouve dans différents types d'actions, à chaque fois son principe sera détaillé.
 
-== Zones
+== Areas
 
 image::../images/alarm5.png[]
 
 Partie principale de l'alarme. C'est ici que vous configurez les différentes zones et les actions (immédiates et différées) à faire en cas de déclenchement. Une zone peut aussi bien être volumétrique (pour la journée par exemple) que périmétrique (pour la nuit) ou aussi des zones de la maison (garage, chambre, dépendances....). 
 
-Un bouton en haut à droite vous permet d'en ajouter autant que vous voulez.
+A button at the top right allows you to add as many as you want.
 
 [TIP]
 Il est possible d'éditer le nom de la zone en cliquant sur le nom de celle-ci (en face du label "Nom de la zone").
