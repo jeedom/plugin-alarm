@@ -1,5 +1,5 @@
-== Changelog
+== Änderungsprotokoll
 
-- Ajout commande pause/reprise
+- Pause/Weiter Befehl hinzugefügt
 
-- Amélioration de l'interface de configuration
+- Verbesserte Konfigurationsoberfläche
