@@ -320,6 +320,9 @@ class alarm extends eqLogic {
 			$zones = $this->getConfiguration('zones');
 			foreach ($zones as $zone) {
 				foreach ($zone['triggers'] as $trigger) {
+					if (isset($trigger['enable']) && $trigger['enable'] == 0) {
+						continue;
+					}
 					$cmd = cmd::byId(str_replace('#', '', $trigger['cmd']));
 					if (!is_object($cmd)) {
 						throw new Exception(__('Commande déclencheur inconnue : ' . $trigger['cmd'], __FILE__));
@@ -525,6 +528,9 @@ class alarm extends eqLogic {
 		$trigger = '';
 		$trigger = implode(" , ", $this->listCmdTrigger());
 		foreach ($this->getConfiguration($_action) as $action) {
+			if (isset($action['enable']) && $action['enable'] == 1) {
+				continue;
+			}
 			try {
 				$cmd = cmd::byId(str_replace('#', '', $action['cmd']));
 				if (is_object($cmd) && $this->getId() == $cmd->getEqLogic_id()) {
