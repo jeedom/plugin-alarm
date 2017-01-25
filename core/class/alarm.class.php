@@ -528,7 +528,7 @@ class alarm extends eqLogic {
 		$trigger = '';
 		$trigger = implode(" , ", $this->listCmdTrigger());
 		foreach ($this->getConfiguration($_action) as $action) {
-			if (isset($action['enable']) && $action['enable'] == 1) {
+			if (isset($action['enable']) && $action['enable'] == 0) {
 				continue;
 			}
 			try {
