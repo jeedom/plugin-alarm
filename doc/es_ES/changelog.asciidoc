@@ -1,5 +1,5 @@
 == Changelog
 
-- Ajout commande pause/reprise
+-Agregado comando pausa/repetición
 
-- Amélioration de l'interface de configuration
+-Interfaz de configuración mejorada

@@ -1,82 +1,82 @@
-== Configuration du plugin
+== Configuración del plugin
 
-Après téléchargement du plugin, il vous suffit juste d'activer celui-ci, il n'y a aucune configuration supplémentaire à ce niveau là.
+Después de descargar el plugin, simplemente hay que activarlo, no hay ninguna otra configuración adicional aquí.
 
 image::../images/alarm1.png[]
 
-== Configuration des équipements
+== Configuración de dispositivos
 
-La configuration des équipements Alarme est accessible à partir du menu plugin : 
+La configuración de los dispositivos de alarma esta accesible desde el menu plugin: 
 
 image::../images/alarm2.png[]
 
-Voilà à quoi ressemble la page du plugin Alarme (ici avec déjà 1 équipement) : 
+Esta es la página del plugin de alarma (aquí ya con 1 equipo): 
 
 image::../images/alarm3.png[]
 
 [TIP]
-Comme à beaucoup d'endroits sur Jeedom, placer la souris tout à gauche permet de faire apparaître un menu d'accès rapide (vous pouvez, à partir de votre profil, le laisser toujours visible).
+Como en muchos sitios en Jeedom, posicionar el ratón a la izquierda muestra un menú de acceso rápido (desde el perfil puedes dejarlo siempre visible).
 
-Une fois que vous cliquez sur l'un des équipements, vous obtenez : 
+Una vez que haces clic en uno de los equipos, se muestra: 
 
 image::../images/alarm4.png[]
 
-Vous retrouvez ici toute la configuration de votre équipement : 
+Aquí encontrará toda la configuración del dispositivo : 
 
-* *Nom de l'équipement alarme* : nom de votre alarme,
-* *Objet parent* : indique l'objet parent auquel appartient l'équipement,
-* *Catégorie* : la catégorie de l'équipement (sécurité en général pour une alarme),
-* *Activer* : permet de rendre votre équipement actif,
-* *Visible* : rend votre équipement visible sur le dashboard,
-* *Actif en permanence* : indique que l'alarme sera en permanence active (par exemple pour une alarme de détection d'incendie),
-* *Armement visible* : permet de rendre visible ou non la commande d'armement de l'alarme sur le widget,
-* *Statut immédiat visible* : permet de rendre le statut immédiat de l'alarme visible (voir plus bas pour l'explication),
-* *Historiser état et statut de l'alarme* : permet d'historiser ou non l'état et le statut de l'alarme.
+* *Nombre del dispositivo de la alarma* : nombre de la alarma.
+* *Objeto primario* : indica el objeto primario que pertenece al equipo.
+* *Categoría* : la categoría del dispositivo (seguridad en general para una alarma).
+* *Activar* : permite activar el dispositivo.
+* *Visible* : hace visible el dispositivo en el Dashboard.
+* *Activo permanentemente* : indica que la alarma esta activa permanentemente (por ejemplo una alarma de detección de incendio).
+* *Armamento visible* : permite hacer visible o no la ordem de activación de la alarma en el widget.
+* *Estado inmediato visible* : permite hacer visible el estado inmediato de la alarma (véase abajo la explicación).
+* * Histórico del estatus del estado de la alarma *: permite registrar el estatus o el estado de la alarma.
 
-== Notion immédiate
+== Concepto inmediato
 
-C'est une notion très importante sur le plugin alarme et il est important de bien la bien comprendre. Pour schématiser c'est comme si vous aviez 2 alarmes, la première : l'alarme immédiate qui ne tient pas compte des délais de déclenchement (attention elle prend bien en compte les délais d'activation) et une 2ème alarme qui, elle, prend en compte les délais de déclenchement.
+Es un concepto muy importante en el plugin de alarma y es importante entenderlo bien. En pocas palabras es como si tuvieras 2 alarmas, la primera: alarma inmediata que no conlleva retrasos de activación (**atención ella tarda mucho en tiempos de activación de cuenta**) y  la segunda, que conlleva retardo en la comunicación tras el disparo o activación.
 
-*Pourquoi cette notion immédiate ?*
+*¿Por qué este concepto de inmediata?*
 
-Cette notion immédiate permet de déclencher des actions bien spécifiques. Par exemple : vous rentrez chez vous et vous n'avez pas désactiver l'alarme, avant de déclencher la sirène il peut être bon de diffuser un message rappellant de bien désactiver l'alarme et si ce n'est pas fait 1 minute plus tard (délai d'activation de 1 minute donc) d'activer la sirène.
+Es concepto es el plazo inmediato para activar acciones específicas. Por ejemplo: llega a casa y si no desconecta la alarma, antes de accionar la sirena, puede ser bueno para difundir un mensaje recordando que debe desconectar la alarma y si no se hace 1 minuto más tarde (retardo de 1 minuto así) se activa la sirena.
 
-Cette notion se retrouve dans différents types d'actions, à chaque fois son principe sera détaillé.
+Este concepto se encuentra en diferentes tipos de acción, à chaque fois son principe sera détaillé.
 
-== Zones
+== Zonas
 
 image::../images/alarm5.png[]
 
-Partie principale de l'alarme. C'est ici que vous configurez les différentes zones et les actions (immédiates et différées) à faire en cas de déclenchement. Une zone peut aussi bien être volumétrique (pour la journée par exemple) que périmétrique (pour la nuit) ou aussi des zones de la maison (garage, chambre, dépendances....). 
+Parte principal de la alarma. Aquí es donde puede configurar las distintas zonas y acciones (inmediatas y diferidas) a la activación. Una zona puede ser por ejemplo: volumétrica (por el día) y Perimetral (por la noche), también para configurar las zonas de la casa (garaje, habitaciones...). 
 
-Un bouton en haut à droite vous permet d'en ajouter autant que vous voulez.
+Un botón en la parte superior derecha permite añadir tantas como quieras.
 
 [TIP]
-Il est possible d'éditer le nom de la zone en cliquant sur le nom de celle-ci (en face du label "Nom de la zone").
+Es posible editar el nombre de la zona haciendo clic en el nombre del mismo (encima de la etiqueta "Nombre de la zone").
 
-Une zone est constituée de différents éléments : 
-- déclencheur,
-- action immédiate,
-- action.
+Una zona se compone de diferentes elementos: 
+-Disparador,
+-acción inmediata,
+-acción.
 
-=== Déclencheur
+=== Disparador
 
-Un déclencheur est une commande binaire, qui lorsqu'elle vaut 1 va déclencher l'alarme. Il est possible d'inverser le déclencheur, pour que ça soit l'état 0 du capteur qui déclenche l'alarme, en mettant "inverser" sur OUI.
-Une fois votre déclencheur choisi, vous pouvez spécifier un délai d'activiation en minute (il n'est pas possible de descendre en-dessous de la minute). Ce délai permet par exemple, si vous activer l'alarme avant de sortir de chez vous, de ne pas déclencher l'alarme avant une minute (le temps de vous laisser sortir). Autre cas, certains détecteurs de mouvement restent en mode déclenché (valeur 1) pendant un certain temps même si il n'y a aucune détection, par exemple 4 minutes, il est donc bon de décaler l'activation de ces capteurs de 4 ou 5 min pour que l'alarme ne se déclenche pas immédiatement après l'activation.
-Ensuite vous avez le délai de déclenchement, à la difference du délai d'activation qui n'a lieu que une fois lors de l'activation de l'alarme, celui-ci est mis en place après chaque déclenchement d'un capteur. La cinématique est la suivante lors du déclenchement du capteur (ouverture de porte, détection de présence), si les délais d'activation sont passés,  l'alarme va déclencher les actions immédiates mais va attendre que le délai d'activation soit fini avant de déchencher les actions.
-Enfin vous avez le bouton "inverser" qui permet d'inverser l'état déclencheur du capteur (0 au lieu de 1).
+Un disparador es una orden binaria, que cuando el valor es 1 se activará la alarma. Es posible revertir el disparador, para que sea el estado 0 del sensor el que dispare la alarma, poniendo "invertir" en SI.
+Una vez que haya escogido el disparador, puede especificar un retraso de la activación en minutos (no es posible indicar por debajo del minuto). Esto permite por ejemplo, si quieres activar la alarma antes de que salgas de casa, no active la alarma antes de un minuto (El tiempo que tardes en salir). Otro caso, algunos sensores de movimiento permanecen en modo activado (valor 1) por un período de tiempo, incluso si no hay ninguna detección, por ejemplo, 4 minutos, así que es recomendable cambiar la activación de estos sensores a 4 o 5 min para que la alarma no se disparé inmediatamente después de la activación.
+Una vez se tiene el tiempo de retardo, la diferencia de retardo de la activación que indicó una vez cuando la alarma se activa, se aplica después de disparar cada sensor. La operación es la siguiente: El sensor (apertura de la puerta, detección de presencia), si los retardos de activación se sobrepasan, la alarma disparará las acciones inmediatas, la alarma activará una acción inmediata pero esperará hasta que el retardo expire para la activación de las acciones.
+Por último tienes el botón "Invertir" que permite invertir el disparador del estado del sensor (0 1).
 
-Petit exemple pour bien comprendre : sur le premier déclencheur (#[Salon][Oeil][Présence]#) j'ai ici un délai d'activation de 5 minutes et de déclenchement de 1 minute. Cela veut dire que lorsque j'active l'alarme, pendant les 5 premières minutes aucun déclenchement de l'alarme ne pourra avoir lieu à cause de ce capteur. Passé ce délai de 5 minutes, si un mouvement est détecté par le capteur, l'alarme va attendre 1 minute (le temps de me laisser désactiver l'alarme) avant de déclencher les actions. Si j'avais eu des actions immédiates celles-ci se seraient déclenchées immédiatement sans attendre la fin du délai d'activation, les actions non immédiates auraient eu lieu après (1 minute après les actions immédiates).
+Un pequeño ejemplo para comprenderlo: sobre el primer disparador (#[Salon][Oeil][Présence]#) aquí tengo un retraso de de activación de 5 minutos y  de disparo de 1 . Esto significa que cuando activo la alarma, durante los primeros 5 minutos no hay activación, la alarma no se disparará desde este sensor. Después de 5 minutos, si hay movimiento detectado por el sensor, la alarma esperará 1 minuto (el tiempo que necesito para desactivar la alarma) antes de ser disparada. Si tuviera acciones inmediatas se activará inmediatamente, sin esperar a que termine el retardo de activación, las acciones no inmediatas no se activaran ( hasta 1 minuto después de la acción inmediata).
 
 
-=== Action immédiate
+=== Acción inmediata
 
-Comme décrit plus haut, ce sont des actions qui se déclenchent dès le déclenchement en ne tenant pas compte du délai de déclenchement (mais en tenant compte quand même du délai d'activation). Vous avez juste à sélectionner la commande d'action voulue puis en fonction de celle-ci remplir les paramètres d'exécution.
+Como se describió anteriormente, estas son acciones que se activan tan pronto haya un disparo,  no teniendo en cuenta el tiempo de retardo (pero teniendo en cuenta incluso cuando se demora la activación). Sólo tienes que seleccionar el comando de acción deseada y por lo tanto completar los parámetros de ejecución.
 
-[NOTE]
-Lorsque plusieures zones sont déclenchées successivement, seules les actions immédiates de la 1ere zone déclenchée sont exécutées.
+[NOTA]
+Cuando varias zonas se activan sucesivamente, sólo las acciones inmediatas de la 1 º zona activada serán ejecutadas.
 
-== Modes
+== Modos
 
 image::../images/alarm6.png[]
 
@@ -85,7 +85,7 @@ Les modes sont assez simples à configurer, il suffit juste d'indiquer les zones
 [TIP]
 Il est possible de renommer le mode en cliquant sur le nom de celui-ci (en face du label "Nom du mode").
 
-[NOTE]
+[NOTA]
 Lors du renommage d'un mode, il faut sur le widget de l'alarme recliquer sur le mode en question pour une prise en compte complete (sinon jeedom reste sur l'ancien mode)
 
 [IMPORTANT]
