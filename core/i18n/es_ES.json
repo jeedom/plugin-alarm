@@ -30,7 +30,7 @@
         "Remise à zero de l'alarme": "Puesta a cero de la alarma",
         "Non déclenchement car la valeur n'est pas une alerte": "No se ha disparado debido a que el valor no es una alerta",
         "Alarme déjà en cours": "Alarma en curso",
-        "Statut pause": "Statut pause",
+        "Statut pause": "Estado pausado",
         "Pause": "Pausa",
         "Reprise": "Reanudación"
     },
@@ -104,8 +104,8 @@
         "Dupliquer": "Duplicar",
         "Nom du mode": "Nombre del modo",
         "Zone": "Zona",
-        "Activation (min pleine)": "Activation (min pleine)",
-        "Déclenchement (min, décimal possible)": "Déclenchement (min, décimal possible)"
+        "Activation (min pleine)": "Activación (min completo)",
+        "Déclenchement (min, décimal possible)": "Disparo (min, decimal posible)"
     },
     "plugins/alarm/plugin_info/info.json": {
         "Plugin pour la gestion de la sécurité": "Plugin para la gestión de la seguridad"
