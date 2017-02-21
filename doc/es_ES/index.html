@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.3.dev">
-<title>Alarme</title>
+<title>Alarma</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -412,7 +412,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
-<h1>Alarme</h1>
+<h1>Alarma</h1>
 <div id="toc" class="toc2">
 <div id="toctitle">Table des matières</div>
 <ul class="sectlevel1">
@@ -426,10 +426,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </ul>
 </li>
 <li><a href="#_modos">5. Modos</a></li>
-<li><a href="#_réinitialisation">6. Réinitialisation</a></li>
-<li><a href="#_activation_ok">7. Activation OK</a></li>
+<li><a href="#_reinicialización">6. Reinicialización</a></li>
+<li><a href="#_activación_ok">7. Activación OK</a></li>
 <li><a href="#_activation_ko">8. Activation KO</a></li>
-<li><a href="#_désactivation_ok">9. Désactivation OK</a></li>
+<li><a href="#_desactivación_ok">9. Desactivación OK</a></li>
 <li><a href="#_widget">10. Widget</a></li>
 <li><a href="#_faq">11. FAQ</a></li>
 <li><a href="#_changelog">12. Changelog</a></li>
@@ -440,7 +440,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Le plugin Alarme permet à Jeedom d&#8217;avoir un vrai système d&#8217;alarme pour sa domotique, très simple à utiliser et à configurer.</p>
+<p>El plugin de alarma permite tener en Jeedom un sistema alarma para su hogar, muy fácil de usar y configurar.</p>
 </div>
 </div>
 </div>
@@ -613,7 +613,7 @@ Por último tienes el botón "Invertir" que permite invertir el disparador del e
 </div>
 </div>
 <div class="paragraph">
-<p>Les modes sont assez simples à configurer, il suffit juste d&#8217;indiquer les zones actives en fonction du mode.</p>
+<p>Los modos son bastante simples de configurar, simplemente especifique áreas activas dependiendo de la modalidad.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -622,30 +622,21 @@ Por último tienes el botón "Invertir" que permite invertir el disparador del e
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-Il est possible de renommer le mode en cliquant sur le nom de celui-ci (en face du label "Nom du mode").
+Es posible cambiar el modo pulsando sobre el nombre del mismo (frente a la etiqueta "Nombre").
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Lors du renommage d&#8217;un mode, il faut sur le widget de l&#8217;alarme recliquer sur le mode en question pour une prise en compte complete (sinon jeedom reste sur l&#8217;ancien mode)</p>
+<p>Al retomar un modo, desde el widget de la alarma, haz click sobre el modo en cuestión para una toma completa (de lo contrario jeedom permanece en el modo antiguo)</p>
 </div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-Il faut absolument creer au moins un mode et lui affecter des zones sinon votre alarme ne marchera pas.
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p>Necesitamos obligatoriamente crear al menos un modo y asignar zonas , si no alarma no funciona.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_réinitialisation">6. Réinitialisation</h2>
+<h2 id="_reinicialización">6. Reinicialización</h2>
 <div class="sectionbody">
 <div class="imageblock">
 <div class="content">
@@ -653,12 +644,12 @@ Il faut absolument creer au moins un mode et lui affecter des zones sinon votre 
 </div>
 </div>
 <div class="paragraph">
-<p>Cette partie vous permet de définir les actions à faire lorsque l&#8217;alarme est déclenchée puis désactivée. Ici aussi il y a des actions immédiates et différées. Voici un exemple : vous rentrez chez vous, les délais d&#8217;activation sont passés, mais en ouvrant la porte cela déclenche l&#8217;alarme. Si vous la désactiver (avant les délais de déclenchement) alors les actions de réinitialisation immédiate seront exécutées, mais pas celles de réinitialisation normale. Si vous la désactivez après les délais de déclenchement, alors les actions de réinitialisation immédiate et normale seront exécutées.</p>
+<p>Esta sección le permite definir las acciones cuando la alarma se ha disparado y es desactivada. Aquí también hay acciones inmediatas y diferidas. Por ejemplo: vuelves a casa, los tiempos de activación han pasado, pero al abrir la puerta se dispara la alarma. Si la desactivas (antes de tiempo del disparo) entonces se realizarán las acciones de reinialización inmediato, pero no los de reinialización normal. Si desactivas después del disparo,  entonces se realizarán las acciones de reinialización inmediata y normal.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_activation_ok">7. Activation OK</h2>
+<h2 id="_activación_ok">7. Activación OK</h2>
 <div class="sectionbody">
 <div class="imageblock">
 <div class="content">
@@ -666,22 +657,13 @@ Il faut absolument creer au moins un mode et lui affecter des zones sinon votre 
 </div>
 </div>
 <div class="paragraph">
-<p>Cette partie permet de définir les actions à faire suite à une activation de l&#8217;alarme. Ici encore, vous retrouverez la notion immédiate qui représente les actions à faire toute de suite après armement de l&#8217;alarme, ensuite viennent les actions d&#8217;activation qui elles sont exécutées après les délais de déclenchement.</p>
+<p>Esta sección permite definir las acciones que se harán después de la activación de la alarma. Aquí encontrará una idea rápida, que representa las acciones que se realizan inmediatamente después de la activación de la alarma, después vienen las acciones de activación que son ejecutadas con retardos programados.</p>
 </div>
 <div class="paragraph">
-<p>Dans l&#8217;exemple, ici j&#8217;allume par exemple une lampe en rouge pour signaler que l&#8217;armement a bien été pris en compte et je l&#8217;éteinds une fois l&#8217;armement complet (car normalement il n&#8217;y a plus personne dans le périmètre de l&#8217;alarme, sinon ça la déclenche).</p>
+<p>En el ejemplo, una vez finalizado el armamento, se enciende una bombilla en rojo para indicar que la alarma se armó correctamente (normalmente, indicar que no hay nadie más en el perímetro, de lo contrario se arma)</p>
 </div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-Les actions d&#8217;activation OK ne prennent pas en compte les délais d&#8217;activation. Si vous avez un délai sur l&#8217;activation d&#8217;un capteur d&#8217;ouverture, même si votre porte est ouverte les actions d&#8217;activation seront exécutées.
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p>Las acciones de activiación OK no tienen en cuenta en la activación los retardos. Si tienes un retardo de activación en un sensor abierto, incluso si la puerta esta abierta, la acción de activación será ejecutada.</p>
 </div>
 </div>
 </div>
@@ -694,12 +676,12 @@ Les actions d&#8217;activation OK ne prennent pas en compte les délais d&#8217;
 </div>
 </div>
 <div class="paragraph">
-<p>Ces actions sont exécutées si un capteur est déclenché et que celui-ci n&#8217;a pas de délai d&#8217;activation. Il est à noter que dans ce cas les actions de déclenchement immédiates seront aussi exécutées. La différence entre les deux, c&#8217;est que les actions d&#8217;activation KO ne peuvent être exécutées que lors de l&#8217;activation.</p>
+<p>Estas acciones se realizan si un sensor se activa y no tiene ningún retardo de activación. Cabe destacar que en este caso las acciones de disparador inmediato también se realizarán. La diferencia entre los dos es que no se puede realizar acciones de activación KO durante la activación.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_désactivation_ok">9. Désactivation OK</h2>
+<h2 id="_desactivación_ok">9. Desactivación OK</h2>
 <div class="sectionbody">
 <div class="imageblock">
 <div class="content">
@@ -707,7 +689,7 @@ Les actions d&#8217;activation OK ne prennent pas en compte les délais d&#8217;
 </div>
 </div>
 <div class="paragraph">
-<p>Ces actions sont exécutées lorsque l&#8217;alarme est désactivée et qu&#8217;elle n&#8217;est pas déclenchée. Exemple vous rentrez chez vous, en ouvrant la porte cela déclenche l&#8217;alarme, mais vous avez mis un délai de déclenchement sur le capteur et vous coupez l&#8217;alarme avant la fin du délai, les actions de désactivation OK seront exécutées. Si par contre vous aviez arrêté l&#8217;alarme après la fin de délai de déclenchement cela n&#8217;aurait pas été le cas.</p>
+<p>Estas acciones se realizan cuando la alarma es desactivada. por ejemplo, llegua a casa, abre la puerta y activa la alarma, pero le puso un tiempo de retardo en el sensor y desarmó la alarma antes del final del tiempo de retardo se realizarán las acciones de desactivación OK. Si por el contrario detienes la alarma después del tiempo de retardo, no se hubiera ejecutado.</p>
 </div>
 </div>
 </div>
@@ -720,7 +702,7 @@ Les actions d&#8217;activation OK ne prennent pas en compte les délais d&#8217;
 </div>
 </div>
 <div class="paragraph">
-<p>Voilà un exemple du widget, vous retrouvez dessus l&#8217;activation de l&#8217;alarme (ici actif), pour la désactiver il suffit de cliquer sur le cadenas. Le statut actuel, ici non déclenchée, ainsi que le mode, ici normal. En dessous, vous avez les boutons pour changer de mode si vous en avez plusieurs.</p>
+<p>Este es un ejemplo del widget, encontrará en la parte superior la activación de la alarma (activa), para desactivar simplemente haga clic en el candado. La situación actual, no disparado, así como el modo, (normal). A continuación, tienes los botones para cambiar el modo si tienes varios.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -729,13 +711,13 @@ Les actions d&#8217;activation OK ne prennent pas en compte les délais d&#8217;
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-Si votre alarme est déclenchée et que vous cliquez sur un mode cela aura pour effet de la désactiver/réactiver.
+Si la alarma esta activa y hace clic en un modo, esto tendrá el efecto de desactivar/reactivar.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>Voilà un autre exemple de widget en fonction des différentes options :</p>
+<p>Este es otro ejemplo de widget basado en las diferentes opciones:</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -749,27 +731,27 @@ Si votre alarme est déclenchée et que vous cliquez sur un mode cela aura pour 
 <div class="sectionbody">
 <div class="dlist">
 <dl>
-<dt class="hdlist1">Comment réarmer une alarme permanente ?</dt>
+<dt class="hdlist1">¿Como rearmar una alarma permanente? </dt>
 <dd>
-<p>Il suffit de cliquer sur un des modes de l’alarme (même celui actif).</p>
+<p>Simplemente haga clic en uno de los modos de la alarma (incluso si está activa).</p>
 </dd>
 </dl>
 </div>
 <hr>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">Peut-on mettre les délais en secondes ?</dt>
+<dt class="hdlist1">¿Podemos poner el tiempo en segundos?</dt>
 <dd>
-<p>C’est possible pour le "Délai de déclenchement" (il faut mettre des nombres à virgule, ex : 0.5 pour 30 secondes) mais pas pour le "Délai d’activation" (ne pas mettre de chiffres à virgule pour ce paramètre).</p>
+<p>Es posible para el "retardo de disparo" (deben ser números con punto, e,: 0.5 para 30 segundos) pero no para el "retardo de activación" (no poner números en decimal en este parámetro).</p>
 </dd>
 </dl>
 </div>
 <hr>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">Je ne comprends pas mon alarme ne fait rien </dt>
+<dt class="hdlist1">No entiendo porqué mi alarma no hace nada </dt>
 <dd>
-<p>Vérifiez que l&#8217;alarme à bien un mode d&#8217;actif</p>
+<p>Asegúrese de que la alarma tiene un modo activo</p>
 </dd>
 </dl>
 </div>

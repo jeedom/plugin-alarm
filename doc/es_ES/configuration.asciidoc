@@ -80,55 +80,55 @@ Cuando varias zonas se activan sucesivamente, sólo las acciones inmediatas de l
 
 image::../images/alarm6.png[]
 
-Les modes sont assez simples à configurer, il suffit juste d'indiquer les zones actives en fonction du mode.
+Los modos son bastante simples de configurar, simplemente especifique áreas activas dependiendo de la modalidad.
 
 [TIP]
-Il est possible de renommer le mode en cliquant sur le nom de celui-ci (en face du label "Nom du mode").
+Es posible cambiar el modo pulsando sobre el nombre del mismo (frente a la etiqueta "Nombre").
 
 [NOTA]
-Lors du renommage d'un mode, il faut sur le widget de l'alarme recliquer sur le mode en question pour une prise en compte complete (sinon jeedom reste sur l'ancien mode)
+Al retomar un modo, desde el widget de la alarma, haz click sobre el modo en cuestión para una toma completa (de lo contrario jeedom permanece en el modo antiguo)
 
-[IMPORTANT]
-Il faut absolument creer au moins un mode et lui affecter des zones sinon votre alarme ne marchera pas.
+[IMPORTANTE]
+Necesitamos obligatoriamente crear al menos un modo y asignar zonas , si no alarma no funciona.
 
-== Réinitialisation
+== Reinicialización
 
 image::../images/alarm7.png[]
 
-Cette partie vous permet de définir les actions à faire lorsque l'alarme est déclenchée puis désactivée. Ici aussi il y a des actions immédiates et différées. Voici un exemple : vous rentrez chez vous, les délais d'activation sont passés, mais en ouvrant la porte cela déclenche l'alarme. Si vous la désactiver (avant les délais de déclenchement) alors les actions de réinitialisation immédiate seront exécutées, mais pas celles de réinitialisation normale. Si vous la désactivez après les délais de déclenchement, alors les actions de réinitialisation immédiate et normale seront exécutées.
+Esta sección le permite definir las acciones cuando la alarma se ha disparado y es desactivada. Aquí también hay acciones inmediatas y diferidas. Por ejemplo: vuelves a casa, los tiempos de activación han pasado, pero al abrir la puerta se dispara la alarma. Si la desactivas (antes de tiempo del disparo) entonces se realizarán las acciones de reinialización inmediato, pero no los de reinialización normal. Si desactivas después del disparo,  entonces se realizarán las acciones de reinialización inmediata y normal.
 
-== Activation OK
+== Activación OK
 
 image::../images/alarm9.png[]
 
-Cette partie permet de définir les actions à faire suite à une activation de l'alarme. Ici encore, vous retrouverez la notion immédiate qui représente les actions à faire toute de suite après armement de l'alarme, ensuite viennent les actions d'activation qui elles sont exécutées après les délais de déclenchement. 
+Esta sección permite definir las acciones que se harán después de la activación de la alarma. Aquí encontrará una idea rápida, que representa las acciones que se realizan inmediatamente después de la activación de la alarma, después vienen las acciones de activación que son ejecutadas con retardos programados. 
 
-Dans l'exemple, ici j'allume par exemple une lampe en rouge pour signaler que l'armement a bien été pris en compte et je l'éteinds une fois l'armement complet (car normalement il n'y a plus personne dans le périmètre de l'alarme, sinon ça la déclenche).
+En el ejemplo, una vez finalizado el armamento, se enciende una bombilla en rojo para indicar que la alarma se armó correctamente (normalmente, indicar que no hay nadie más en el perímetro, de lo contrario se arma)
 
-[IMPORTANT]
-Les actions d'activation OK ne prennent pas en compte les délais d'activation. Si vous avez un délai sur l'activation d'un capteur d'ouverture, même si votre porte est ouverte les actions d'activation seront exécutées.
+[IMPORTANTE]
+Las acciones de activiación OK no tienen en cuenta en la activación los retardos. Si tienes un retardo de activación en un sensor abierto, incluso si la puerta esta abierta, la acción de activación será ejecutada.
 
 == Activation KO
 
 image::../images/alarm10.png[]
 
-Ces actions sont exécutées si un capteur est déclenché et que celui-ci n'a pas de délai d'activation. Il est à noter que dans ce cas les actions de déclenchement immédiates seront aussi exécutées. La différence entre les deux, c'est que les actions d'activation KO ne peuvent être exécutées que lors de l'activation.
+Estas acciones se realizan si un sensor se activa y no tiene ningún retardo de activación. Cabe destacar que en este caso las acciones de disparador inmediato también se realizarán. La diferencia entre los dos es que no se puede realizar acciones de activación KO durante la activación.
 
-== Désactivation OK
+== Desactivación OK
 
 image::../images/alarm11.png[]
 
-Ces actions sont exécutées lorsque l'alarme est désactivée et qu'elle n'est pas déclenchée. Exemple vous rentrez chez vous, en ouvrant la porte cela déclenche l'alarme, mais vous avez mis un délai de déclenchement sur le capteur et vous coupez l'alarme avant la fin du délai, les actions de désactivation OK seront exécutées. Si par contre vous aviez arrêté l'alarme après la fin de délai de déclenchement cela n'aurait pas été le cas.
+Estas acciones se realizan cuando la alarma es desactivada. por ejemplo, llegua a casa, abre la puerta y activa la alarma, pero le puso un tiempo de retardo en el sensor y desarmó la alarma antes del final del tiempo de retardo se realizarán las acciones de desactivación OK. Si por el contrario detienes la alarma después del tiempo de retardo, no se hubiera ejecutado.
 
 == Widget
 
 image::../images/alarm12.png[]
 
-Voilà un exemple du widget, vous retrouvez dessus l'activation de l'alarme (ici actif), pour la désactiver il suffit de cliquer sur le cadenas. Le statut actuel, ici non déclenchée, ainsi que le mode, ici normal. En dessous, vous avez les boutons pour changer de mode si vous en avez plusieurs.
+Este es un ejemplo del widget, encontrará en la parte superior la activación de la alarma (activa), para desactivar simplemente haga clic en el candado. La situación actual, no disparado, así como el modo, (normal). A continuación, tienes los botones para cambiar el modo si tienes varios.
 
 [TIP]
-Si votre alarme est déclenchée et que vous cliquez sur un mode cela aura pour effet de la désactiver/réactiver.
+Si la alarma esta activa y hace clic en un modo, esto tendrá el efecto de desactivar/reactivar.
 
-Voilà un autre exemple de widget en fonction des différentes options :
+Este es otro ejemplo de widget basado en las diferentes opciones:
 
 image::../images/alarm_screenshot3.png[]

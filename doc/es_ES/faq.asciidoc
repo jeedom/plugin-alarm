@@ -1,14 +1,14 @@
 == FAQ
 
-Comment réarmer une alarme permanente ?::
-Il suffit de cliquer sur un des modes de l’alarme (même celui actif).
+¿Como rearmar una alarma permanente? ::
+Simplemente haga clic en uno de los modos de la alarma (incluso si está activa).
 
 '''
 
-Peut-on mettre les délais en secondes ?::
-C’est possible pour le "Délai de déclenchement" (il faut mettre des nombres à virgule, ex : 0.5 pour 30 secondes) mais pas pour le "Délai d’activation" (ne pas mettre de chiffres à virgule pour ce paramètre).
+¿Podemos poner el tiempo en segundos?::
+Es posible para el "retardo de disparo" (deben ser números con punto, e,: 0.5 para 30 segundos) pero no para el "retardo de activación" (no poner números en decimal en este parámetro).
 
 '''
 
-Je ne comprends pas mon alarme ne fait rien ::
-Vérifiez que l'alarme à bien un mode d'actif
+No entiendo porqué mi alarma no hace nada ::
+Asegúrese de que la alarma tiene un modo activo
