@@ -345,7 +345,7 @@ function addTrigger(_el, _trigger) {
     div += '<div class="col-sm-4 has-success">';
     div += '<div class="input-group">';
     div += '<span class="input-group-btn">';
-    div += '<input type="checkbox" class="expressionAttr" data-l1key="enable" checked />';
+    div += '<input type="checkbox" class="triggerAttr" data-l1key="enable" checked />';
     div += '<a class="btn btn-default bt_removeTrigger btn-sm"><i class="fa fa-minus-circle"></i></a>';
     div += '</span>';
     div += '<input class="triggerAttr form-control input-sm" data-l1key="cmd" />';
