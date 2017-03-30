@@ -288,9 +288,7 @@ function printEqLogic(_eqLogic) {
       },
       success : function(data){
         for(var i in data){
-            if(data[i].html != ''){
-                $('#'+data[i].id).append(data[i].html.html);
-            }
+            $('#'+data[i].id).append(data[i].html.html);
         }
     }
 });
