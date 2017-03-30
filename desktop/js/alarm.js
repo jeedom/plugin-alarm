@@ -348,22 +348,21 @@ function addAction(_action, _type, _name, _el) {
     div += '</span>';
     div += '</div>';
     div += '</div>';
-    div += '<div class="col-sm-7 actionOptions">';
+    var actionOption_id = uniqId();
+    div += '<div class="col-sm-7 actionOptions" id="'+actionOption_id+'">';
     div += '</div>';
     div += '</div>';
     if (isset(_el)) {
         _el.find('.div_' + _type).append(div);
         _el.find('.' + _type + ':last').setValues(_action, '.expressionAttr');
-        htmlActionEl = _el.find('.' + _type + ':last .actionOptions').uniqueId();
     } else {
         $('#div_' + _type).append(div);
         $('#div_' + _type + ' .' + _type + ':last').setValues(_action, '.expressionAttr');
-        htmlActionEl = $('#div_' + _type + ' .' + _type + ':last .actionOptions').uniqueId();
     }
     actionOptions.push({
         expression : init(_action.cmd, ''),
         options : _action.options,
-        id : htmlActionEl.attr('id')
+        id : actionOption_id
     });
 }
 
