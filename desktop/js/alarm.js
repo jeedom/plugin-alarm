@@ -179,8 +179,8 @@
     el.value(result.human);
     jeedom.cmd.displayActionOption(el.value(), '', function (html) {
       el.closest('.' + type).find('.actionOptions').html(html);
-    });
   });
+});
 });
 
  $("body").delegate('.bt_removeAction', 'click', function () {
@@ -229,6 +229,7 @@
 }
 
 function printEqLogic(_eqLogic) {
+    actionOptions = []
     $('#div_zones').empty();
     $('#div_modes').empty();
     $('#div_raz').empty();
@@ -279,6 +280,19 @@ function printEqLogic(_eqLogic) {
             }
         }
     }
+    jeedom.cmd.displayActionsOption({
+        params : actionOptions,
+        error: function (error) {
+          $('#div_alert').showAlert({message: error.message, level: 'danger'});
+      },
+      success : function(data){
+        for(var i in data){
+            if(data[i].html != ''){
+                $('#'+data[i].id).append(data[i].html.html);
+            }
+        }
+    }
+});
 }
 
 function addAction(_action, _type, _name, _el) {
@@ -335,16 +349,22 @@ function addAction(_action, _type, _name, _el) {
     div += '</div>';
     div += '</div>';
     div += '<div class="col-sm-7 actionOptions">';
-    div += jeedom.cmd.displayActionOption(init(_action.cmd, ''), _action.options);
     div += '</div>';
     div += '</div>';
     if (isset(_el)) {
         _el.find('.div_' + _type).append(div);
         _el.find('.' + _type + ':last').setValues(_action, '.expressionAttr');
+        htmlActionEl = _el.find('.' + _type + ':last .actionOptions').uniqueId();
     } else {
         $('#div_' + _type).append(div);
         $('#div_' + _type + ' .' + _type + ':last').setValues(_action, '.expressionAttr');
+        htmlActionEl = $('#div_' + _type + ' .' + _type + ':last .actionOptions').uniqueId();
     }
+    actionOptions.push({
+        expression : init(_action.cmd, ''),
+        options : _action.options,
+        id : htmlActionEl.attr('id')
+    });
 }
 
 function addTrigger(_el, _trigger) {
