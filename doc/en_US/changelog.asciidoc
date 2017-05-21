@@ -1,5 +1,5 @@
 == Changelog
 
-- Ajout commande pause/reprise
+- Ad command stop/resumption
 
-- Amélioration de l'interface de configuration
+- Upgrade of configuration interface

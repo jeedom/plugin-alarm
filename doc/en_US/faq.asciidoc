@@ -1,14 +1,14 @@
 == FAQ
 
 How to rearm an permanent alarm ?::
-Il suffit de cliquer sur un des modes de l’alarme (même celui actif).
+You just need to click on one mode of the Alarm (Also the one which is active)
 
 '''
 
-Peut-on mettre les délais en secondes ?::
+Can I put the deadline in seconds
 C’est possible pour le "Délai de déclenchement" (il faut mettre des nombres à virgule, ex : 0.5 pour 30 secondes) mais pas pour le "Délai d’activation" (ne pas mettre de chiffres à virgule pour ce paramètre).
 
 '''
 
-Je ne comprends pas mon alarme ne fait rien ::
-Vérifiez que l'alarme à bien un mode d'actif
+I don't understand my alarm does nothing ::
+Check the Alarm has an active mode
