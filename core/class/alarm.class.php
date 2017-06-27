@@ -386,7 +386,7 @@ class alarm extends eqLogic {
 		if ($_trigger_id !== null) {
 			$cmd = cmd::byId(str_replace('#', '', $_trigger_id));
 			if (is_object($cmd)) {
-				$result[] = str_replace('#', '', $cmd->getHumanName());
+				$result[$cmd->getId()] = str_replace('#', '', $cmd->getHumanName());
 			}
 		}
 		$modes = $this->getConfiguration('modes');
@@ -405,7 +405,7 @@ class alarm extends eqLogic {
 									$value = ($value == 1 || $value) ? 0 : 1;
 								}
 								if ($value == 1 || $value) {
-									$result[] = str_replace('#', '', $cmd->getHumanName());
+									$result[$cmd->getId()] = str_replace('#', '', $cmd->getHumanName());
 								}
 							}
 						}
