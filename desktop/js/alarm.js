@@ -203,8 +203,7 @@
     }
     _eqLogic.configuration.zones = [];
     $('#div_zones .zone').each(function () {
-        var zone = $(this).getValues('.zoneAttr');
-        zone = zone[0];
+        var zone = $(this).getValues('.zoneAttr')[0];
         zone.actions = $(this).find('.action').getValues('.expressionAttr');
         zone.actionsImmediate = $(this).find('.actionImmediate').getValues('.expressionAttr');
         zone.triggers = $(this).find('.trigger').getValues('.triggerAttr');
@@ -213,8 +212,7 @@
 
     _eqLogic.configuration.modes = [];
     $('#div_modes .mode').each(function () {
-        var mode = $(this).getValues('.modeAttr');
-        mode = mode[0];
+        var mode = $(this).getValues('.modeAttr')[0];
         _eqLogic.configuration.modes.push(mode);
     });
 
@@ -334,10 +332,21 @@ function addAction(_action, _type, _name, _el) {
     var div = '<div class="' + _type + '">';
     div += '<div class="form-group ">';
     div += '<label class="col-sm-1 control-label">' + _name + '</label>';
+    div += '<div class="col-sm-2">';
+    div += '<input type="checkbox" class="expressionAttr" data-l1key="enable" checked />';
+    div += '<select class="expressionAttr form-control input-sm selectMode" data-l1key="onMode" style="width:calc(100% - 30px);display:inline-block">';
+    div += '<option value="all">{{Tous les modes}}</option>';
+    $('#div_modes .mode').each(function () {
+        var mode = $(this).getValues('.modeAttr')[0];
+        div += '<option value="'+mode.name+'">'+mode.name+'</option>';
+    });
+
+    div += '</select>';
+    div += '</div>';
     div += '<div class="col-sm-4 ' + input + '">';
     div += '<div class="input-group">';
     div += '<span class="input-group-btn">';
-    div += '<input type="checkbox" class="expressionAttr" data-l1key="enable" checked />';
+
     div += '<a class="btn btn-default bt_removeAction btn-sm" data-type="' + _type + '"><i class="fa fa-minus-circle"></i></a>';
     div += '</span>';
     div += '<input class="expressionAttr form-control input-sm cmdAction" data-l1key="cmd" data-type="' + _type + '" />';
@@ -348,7 +357,7 @@ function addAction(_action, _type, _name, _el) {
     div += '</div>';
     div += '</div>';
     var actionOption_id = uniqId();
-    div += '<div class="col-sm-7 actionOptions" id="'+actionOption_id+'">';
+    div += '<div class="col-sm-5 actionOptions" id="'+actionOption_id+'">';
     div += '</div>';
     div += '</div>';
     if (isset(_el)) {
@@ -362,6 +371,20 @@ function addAction(_action, _type, _name, _el) {
         expression : init(_action.cmd, ''),
         options : _action.options,
         id : actionOption_id
+    });
+}
+
+function updateSelectMode(){
+    $('select.selectMode').each(function () {
+        var value = $(this).val();
+        $(this).empty();
+        var options = '<option value="all">{{Tous les modes}}</option>';
+        $('#div_modes .mode').each(function () {
+            var mode = $(this).getValues('.modeAttr')[0];
+            options += '<option value="'+mode.name+'">'+mode.name+'</option>';
+        });
+        $(this).append(options);
+        $(this).val(value);
     });
 }
 
@@ -514,6 +537,7 @@ function addMode(_mode) {
             addZoneMode($('#div_modes .mode:last'), {zone: _mode.zone});
         }
     }
+    updateSelectMode();
 }
 
 function addZoneMode(_el, _mode) {

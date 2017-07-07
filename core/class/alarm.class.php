@@ -525,11 +525,19 @@ class alarm extends eqLogic {
 		}
 	}
 
-	public function doAction($_action) {
+	public function doAction($_action, $_mode = null) {
 		$trigger = '';
 		$trigger = implode(" , ", $this->listCmdTrigger());
+
+		if ($_mode === null) {
+			$cmd_mode = $this->getCmd(null, 'mode');
+			$_mode = $cmd_mode->execCmd();
+		}
 		foreach ($this->getConfiguration($_action) as $action) {
 			if (isset($action['enable']) && $action['enable'] == 0) {
+				continue;
+			}
+			if (isset($action['onMode']) && $action['onMode'] != 'all' && $action['onMode'] != $_mode) {
 				continue;
 			}
 			try {
@@ -643,16 +651,16 @@ class alarmCmd extends cmd {
 		if ($this->getLogicalId() == 'released') {
 			$cmd_armed->event(0);
 			$cmd_mode->event($cmd_mode->execCmd());
-			$eqLogic->doAction('release');
+			$eqLogic->doAction('release', $cmd_mode->execCmd());
 			if ($cmd_immediateState->execCmd() == 1) {
 				$cmd_immediateState->event(0);
 				log::add('alarm', 'debug', __('Remise à zero immédiate de l\'alarme', __FILE__));
-				$eqLogic->doAction('razImmediate');
+				$eqLogic->doAction('razImmediate', $cmd_mode->execCmd());
 			}
 			if ($cmd_state->execCmd() == 1) {
 				$cmd_state->event(0);
 				log::add('alarm', 'debug', __('Remise à zero de l\'alarme', __FILE__));
-				$eqLogic->doAction('raz');
+				$eqLogic->doAction('raz', $cmd_mode->execCmd());
 			}
 			$eqLogic->cleanArmedCompleted();
 			return;
@@ -710,7 +718,7 @@ class alarmCmd extends cmd {
 									}
 									if ($value == 1) {
 										log::add('alarm', 'debug', __('La commande est active : ', __FILE__) . $cmd->getHumanName());
-										$eqLogic->doAction('activationKo');
+										$eqLogic->doAction('activationKo', $select_mode);
 										$eqLogic->launch($cmd->getId(), $result);
 										return;
 									}
@@ -722,7 +730,7 @@ class alarmCmd extends cmd {
 			}
 			/*             * *****************Activation reussi***************** */
 			log::add('alarm', 'debug', 'Activation de l\'alarme réussie');
-			$eqLogic->doAction('activationImmediateOk');
+			$eqLogic->doAction('activationImmediateOk', $select_mode);
 			if ($armedCompleteDatetime > 0 && $armedCompleteDatetime < (strtotime('now') + 60)) {
 				$armedCompleteDatetime = strtotime('now') + 60;
 			}
@@ -737,7 +745,7 @@ class alarmCmd extends cmd {
 				$cron->save();
 			} else {
 				log::add('alarm', 'debug', __('Activation OK éxécution des actions', __FILE__));
-				$eqLogic->doAction('activationOk');
+				$eqLogic->doAction('activationOk', $select_mode);
 			}
 			return;
 		}
