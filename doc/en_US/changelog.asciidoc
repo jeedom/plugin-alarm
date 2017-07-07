@@ -1,5 +1,7 @@
 == Changelog
 
+- Possibilité de filtrer la réalisation des actions par rapport au mode de l'alarme
+
 - Ad command stop/resumption
 
 - Upgrade of configuration interface

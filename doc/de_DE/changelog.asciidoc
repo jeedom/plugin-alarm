@@ -1,5 +1,7 @@
 == Änderungsprotokoll
 
+- Possibilité de filtrer la réalisation des actions par rapport au mode de l'alarme
+
 - Pause/Weiter Befehl hinzugefügt
 
 - Verbesserte Konfigurationsoberfläche
