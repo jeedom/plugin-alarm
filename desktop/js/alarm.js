@@ -237,14 +237,14 @@ function printEqLogic(_eqLogic) {
     $('#div_activationImmediateOk').empty();
     $('#div_activationKo').empty();
     if (isset(_eqLogic.configuration)) {
-        if (isset(_eqLogic.configuration.zones)) {
-            for (var i in _eqLogic.configuration.zones) {
-                addZone(_eqLogic.configuration.zones[i]);
-            }
-        }
         if (isset(_eqLogic.configuration.modes)) {
             for (var i in _eqLogic.configuration.modes) {
                 addMode(_eqLogic.configuration.modes[i]);
+            }
+        }
+        if (isset(_eqLogic.configuration.zones)) {
+            for (var i in _eqLogic.configuration.zones) {
+                addZone(_eqLogic.configuration.zones[i]);
             }
         }
         if (isset(_eqLogic.configuration.release)) {
