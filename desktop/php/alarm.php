@@ -3,8 +3,8 @@ if (!isConnect('admin')) {
 	throw new Exception('{{Error 401 Unauthorized}}');
 }
 $plugin = plugin::byId('alarm');
-sendVarToJS('eqType', 'alarm');
-$eqLogics = eqLogic::byType('alarm');
+sendVarToJS('eqType', $plugin->getId());
+$eqLogics = eqLogic::byType($plugin->getId());
 ?>
 <div class="row row-overflow">
     <div class="col-lg-2 col-md-3 col-sm-4">
