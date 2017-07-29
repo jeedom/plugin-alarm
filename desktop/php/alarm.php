@@ -23,7 +23,7 @@ foreach ($eqLogics as $eqLogic) {
    </div>
 
    <div class="col-lg-10 col-md-9 col-sm-8 eqLogicThumbnailDisplay" style="border-left: solid 1px #EEE; padding-left: 25px;">
-    <legend>{{Mes équipements alarmes}}</legend>
+    <legend><i class="icon jeedom-alerte"></i>  {{Mes Alarmes}}</legend>
     <div class="eqLogicThumbnailContainer">
       <div class="cursor eqLogicAction" data-action="add" style="background-color : #ffffff; height : 200px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;" >
        <center>
@@ -51,7 +51,7 @@ foreach ($eqLogics as $eqLogic) {
     <a class="btn btn-danger eqLogicAction pull-right" data-action="remove"><i class="fa fa-minus-circle"></i> {{Supprimer}}</a>
     <a class="btn btn-default eqLogicAction pull-right" data-action="configure"><i class="fa fa-cogs"></i> {{Configuration avancée}}</a>
     <ul class="nav nav-tabs" id="tab_alarm">
-        <li><a href="#" class="eqLogicAction" aria-controls="home" role="tab" data-toggle="tab" data-action="returnToThumbnailDisplay"><i class="fa fa-arrow-circle-left"></i></a></li>
+        <li><a href="#home" class="eqLogicAction" aria-controls="home" role="tab" data-toggle="tab" data-action="returnToThumbnailDisplay"><i class="fa fa-arrow-circle-left"></i></a></li>
         <li class="active"><a href="#eqlogictab" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-tachometer"></i> {{Equipement}}</a></li>
         <li><a href="#tab_zones" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-th-list" aria-hidden="true"></i> {{Zones}}</a></li>
         <li><a href="#tab_modes" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-modx" aria-hidden="true"></i> {{Modes}}</a></li>
