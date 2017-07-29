@@ -549,7 +549,6 @@ class alarm extends eqLogic {
 				if (isset($action['options'])) {
 					$options = $action['options'];
 					foreach ($options as $key => $value) {
-						log::add('alarm','error', $key);
 						$options[$key] = str_replace('#mode#', $_mode, str_replace('#trigger#', $trigger, $value));
 					}
 				}
