@@ -721,7 +721,7 @@ class alarmCmd extends cmd {
 									if ($value == 1) {
 										log::add('alarm', 'debug', __('La commande est active : ', __FILE__) . $cmd->getHumanName());
 										$eqLogic->doAction('activationKo', $select_mode);
-										$eqLogic->launch($cmd->getId(), $result);
+										$cmd_armed->event(0);
 										return;
 									}
 								}
