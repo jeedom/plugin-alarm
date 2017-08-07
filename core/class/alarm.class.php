@@ -714,9 +714,7 @@ class alarmCmd extends cmd {
 									}
 									$result = $cmd->execCmd();
 									if (isset($trigger['invert']) && $trigger['invert'] == 1) {
-										$value = ($result == 1 || $result) ? 0 : 1;
-									} else {
-										$value = $result;
+										$result = ($result == 1 || $result) ? 0 : 1;
 									}
 									if ($value == 1) {
 										log::add('alarm', 'debug', __('La commande est active : ', __FILE__) . $cmd->getHumanName());
