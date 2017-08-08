@@ -20,6 +20,10 @@
  $("#div_activationOk").sortable({axis: "y", cursor: "move", items: ".activationOk", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
  $("#div_activationKo").sortable({axis: "y", cursor: "move", items: ".activationKo", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
  $("#div_activationImmediateOk").sortable({axis: "y", cursor: "move", items: ".activationImmediateOk", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
+ $("#div_releaseImmediate").sortable({axis: "y", cursor: "move", items: ".activationKo", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
+ $("#div_release").sortable({axis: "y", cursor: "move", items: ".activationImmediateOk", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
+
+
 
  $('#tab_alarm a').click(function (e) {
     e.preventDefault()
@@ -160,6 +164,16 @@
     addAction({}, 'activationImmediateOk', '{{Action Immediate}}');
 });
 
+ /**************outbreak**********************/
+
+ $('#btn_addActionOutbreak').on('click', function () {
+    addAction({}, 'outbreak', '{{Action}}');
+});
+
+ $('#btn_addActionOutbreakImmediate').on('click', function () {
+    addAction({}, 'outbreakImmediate', '{{Action}}');
+});
+
  /**************** Commun ***********/
  $("body").delegate(".listCmdAction", 'click', function () {
     var type = $(this).attr('data-type');
@@ -222,6 +236,8 @@
     _eqLogic.configuration.activationOk = $('#div_activationOk .activationOk').getValues('.expressionAttr');
     _eqLogic.configuration.activationKo = $('#div_activationKo .activationKo').getValues('.expressionAttr');
     _eqLogic.configuration.activationImmediateOk = $('#div_activationImmediateOk .activationImmediateOk').getValues('.expressionAttr');
+    _eqLogic.configuration.outbreak = $('#div_outbreak .outbreak').getValues('.expressionAttr');
+    _eqLogic.configuration.outbreakImmediate = $('#div_outbreakImmediate .outbreakImmediate').getValues('.expressionAttr');
 
     return _eqLogic;
 }
@@ -236,6 +252,8 @@ function printEqLogic(_eqLogic) {
     $('#div_activationOk').empty();
     $('#div_activationImmediateOk').empty();
     $('#div_activationKo').empty();
+    $('#div_outbreak').empty();
+    $('#div_outbreakImmediate').empty();
     if (isset(_eqLogic.configuration)) {
         if (isset(_eqLogic.configuration.modes)) {
             for (var i in _eqLogic.configuration.modes) {
@@ -275,6 +293,16 @@ function printEqLogic(_eqLogic) {
         if (isset(_eqLogic.configuration.activationKo)) {
             for (var i in _eqLogic.configuration.activationKo) {
                 addAction(_eqLogic.configuration.activationKo[i], 'activationKo', '{{Action}}');
+            }
+        }
+        if (isset(_eqLogic.configuration.outbreak)) {
+            for (var i in _eqLogic.configuration.outbreak) {
+                addAction(_eqLogic.configuration.outbreak[i], 'outbreak', '{{Action}}');
+            }
+        }
+        if (isset(_eqLogic.configuration.outbreakImmediate)) {
+            for (var i in _eqLogic.configuration.outbreakImmediate) {
+                addAction(_eqLogic.configuration.outbreakImmediate[i], 'outbreakImmediate', '{{Action}}');
             }
         }
     }
@@ -328,6 +356,18 @@ function addAction(_action, _type, _name, _el) {
     if (_type == 'activationImmediateOk') {
         input = 'has-warning';
         button = 'btn-warning';
+    }
+    if (_type == 'outbreak') {
+        input = 'has-error';
+        button = 'btn-danger';
+    }
+    if (_type == 'outbreakImmediate') {
+        input = 'has-warning';
+        button = 'btn-warning';
+    }
+     if (_type == 'release') {
+        input = 'has-success';
+        button = 'btn-success';
     }
     var div = '<div class="' + _type + '">';
     div += '<div class="form-group ">';

@@ -66,7 +66,7 @@ class alarm extends eqLogic {
 													sleep((strtotime($cmd_armed->getCollectDate()) + $trigger['armedDelay'] * 60) - strtotime('now'));
 												}
 											}
-											$eqLogic->launch($cmd->getId(), $result);
+											$eqLogic->execute($cmd->getId(), $result);
 											return;
 										}
 									}
@@ -92,14 +92,6 @@ class alarm extends eqLogic {
 	}
 
 	/*     * *********************Methode d'instance************************* */
-
-	public function launch($_trigger_id, $_value) {
-		$cmd = 'php ' . dirname(__FILE__) . '/../../core/php/jeeAlarm.php ';
-		$cmd .= ' eqLogic_id=' . $this->getId() . ' trigger_id=' . $_trigger_id . ' value=' . $_value;
-		$cmd .= ' >> ' . log::getPathToLog('alarm') . ' 2>&1 &';
-		shell_exec($cmd);
-		return true;
-	}
 
 	public function preInsert() {
 		$this->setCategory('security', 1);
@@ -464,6 +456,7 @@ class alarm extends eqLogic {
 									if ($this->getConfiguration('autorearm', 0) == 1 || $cmd_immediatState->execCmd() != 1) {
 										log::add('alarm', 'debug', __('Exécution des actions immédiates', __FILE__));
 										$cmd_immediatState->event(1);
+										$this->doAction('outbreakImmediate');
 										foreach ($zone['actionsImmediate'] as $action) {
 											try {
 												$options = array();
@@ -500,6 +493,7 @@ class alarm extends eqLogic {
 									}
 									log::add('alarm', 'debug', __('Déclenchement de l\'alarme', __FILE__));
 									$cmd_state->event(1);
+									$this->doAction('outbreak');
 									foreach ($zone['actions'] as $action) {
 										try {
 											if (isset($action['options'])) {
@@ -528,7 +522,6 @@ class alarm extends eqLogic {
 	public function doAction($_action, $_mode = null) {
 		$trigger = '';
 		$trigger = implode(" , ", $this->listCmdTrigger());
-
 		if ($_mode === null) {
 			$cmd_mode = $this->getCmd(null, 'mode');
 			$_mode = $cmd_mode->execCmd();

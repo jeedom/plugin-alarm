@@ -52,13 +52,14 @@ foreach ($eqLogics as $eqLogic) {
     <a class="btn btn-default eqLogicAction pull-right" data-action="configure"><i class="fa fa-cogs"></i> {{Configuration avancée}}</a>
     <ul class="nav nav-tabs" id="tab_alarm">
         <li><a href="#home" class="eqLogicAction" aria-controls="home" role="tab" data-toggle="tab" data-action="returnToThumbnailDisplay"><i class="fa fa-arrow-circle-left"></i></a></li>
-        <li class="active"><a href="#eqlogictab" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-tachometer"></i> {{Equipement}}</a></li>
-        <li><a href="#tab_zones" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-th-list" aria-hidden="true"></i> {{Zones}}</a></li>
-        <li><a href="#tab_modes" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-modx" aria-hidden="true"></i> {{Modes}}</a></li>
-        <li><a href="#tab_raz" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-refresh" aria-hidden="true"></i> {{Réinitialisation}}</a></li>
-        <li><a href="#tab_activeOk" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-check" aria-hidden="true"></i> {{Activation OK}}</a></li>
-        <li><a href="#tab_activeKo" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-times" aria-hidden="true"></i> {{Activation KO}}</a></li>
-        <li><a href="#tab_release" aria-controls="home" role="tab" data-toggle="tab"><i class="fa fa-exclamation" aria-hidden="true"></i> {{Désactivation OK}}</a></li>
+        <li class="active"><a href="#eqlogictab" aria-controls="home" role="tab" data-toggle="tab" style="padding:10px 5px !important"><i class="fa fa-tachometer"></i> {{Equipement}}</a></li>
+        <li><a href="#tab_zones" aria-controls="home" role="tab" data-toggle="tab" style="padding:10px 5px !important"><i class="fa fa-th-list" aria-hidden="true"></i> {{Zones}}</a></li>
+        <li><a href="#tab_modes" aria-controls="home" role="tab" data-toggle="tab" style="padding:10px 5px !important"><i class="fa fa-modx" aria-hidden="true"></i> {{Modes}}</a></li>
+        <li><a href="#tab_activeOk" aria-controls="home" role="tab" data-toggle="tab" style="padding:10px 5px !important"><i class="fa fa-check" aria-hidden="true"></i> {{Activation OK}}</a></li>
+        <li><a href="#tab_activeKo" aria-controls="home" role="tab" data-toggle="tab" style="padding:10px 5px !important"><i class="fa fa-exclamation" aria-hidden="true"></i> {{Activation KO}}</a></li>
+        <li><a href="#tab_outbreak" aria-controls="home" role="tab" data-toggle="tab" style="padding:10px 5px !important"><i class="fa fa-bell" aria-hidden="true"></i> {{Déclenchement}}</a></li>
+        <li><a href="#tab_release" aria-controls="home" role="tab" data-toggle="tab" style="padding:10px 5px !important"><i class="fa fa-times" aria-hidden="true"></i> {{Désactivation OK}}</a></li>
+        <li><a href="#tab_raz" aria-controls="home" role="tab" data-toggle="tab" style="padding:10px 5px !important"><i class="fa fa-refresh" aria-hidden="true"></i> {{Réinitialisation}}</a></li>
     </ul>
     <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="eqlogictab">
@@ -171,6 +172,21 @@ foreach (jeedom::getConfiguration('eqLogic:category') as $key => $value) {
     <br/>
     <form class="form-horizontal">
         <div id="div_activationOk"></div>
+    </form>
+</div>
+<div class="tab-pane" id="tab_outbreak">
+    <br/>
+    <div class="alert alert-info">{{C'est ici que vous devez mettre les actions à faire lorsque l'alarme se déclenche (à noter que vous pouvez aussi le faire par zone)}}
+        <a class='btn btn-danger btn-xs pull-right' id="btn_addActionOutbreak"><i class="fa fa-plus-circle"></i> {{Ajouter action de déclechement}}</a>
+        <a class='btn btn-warning btn-xs pull-right' id="btn_addActionOutbreakImmediate"><i class="fa fa-plus-circle"></i> {{Ajouter action immediate de déclenchement}}</a>
+    </div>
+    <form class="form-horizontal">
+        <div id="div_outbreakImmediate"></div>
+    </form>
+    <hr/>
+    <br/>
+    <form class="form-horizontal">
+        <div id="div_outbreak"></div>
     </form>
 </div>
 <div class="tab-pane" id="tab_activeKo">
