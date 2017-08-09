@@ -2,26 +2,21 @@
 
 Después de descargar el plugin, simplemente hay que activarlo, no hay ninguna otra configuración adicional aquí.
 
-image::../images/alarm1.png[]
+== Concepto inmediato
 
-== Configuración de dispositivos
+Es un concepto muy importante en el plugin de alarma y es importante entenderlo bien. En pocas palabras es como si tuvieras 2 alarmas, la primera: alarma inmediata que no conlleva retrasos de activación (**atención ella tarda mucho en tiempos de activación de cuenta**) y  la segunda, que conlleva retardo en la comunicación tras el disparo o activación.
 
-La configuración de los dispositivos de alarma esta accesible desde el menu plugin: 
+*¿Por qué este concepto de inmediata?*
 
-image::../images/alarm2.png[]
+Es concepto es el plazo inmediato para activar acciones específicas. Por ejemplo: llega a casa y si no desconecta la alarma, antes de accionar la sirena, puede ser bueno para difundir un mensaje recordando que debe desconectar la alarma y si no se hace 1 minuto más tarde (retardo de 1 minuto así) se activa la sirena.
 
-Esta es la página del plugin de alarma (aquí ya con 1 equipo): 
+Este concepto se encuentra en diferentes tipos de acción, à chaque fois son principe sera détaillé.
 
-image::../images/alarm3.png[]
+== Equipements
 
-[TIP]
-Como en muchos sitios en Jeedom, posicionar el ratón a la izquierda muestra un menú de acceso rápido (desde el perfil puedes dejarlo siempre visible).
+La configuration des équipements Alarme est accessible à partir du menu plugin (dans sécurité). 
 
-Una vez que haces clic en uno de los equipos, se muestra: 
-
-image::../images/alarm4.png[]
-
-Aquí encontrará toda la configuración del dispositivo : 
+Une fois une alarme ajoutée vous vous retrouvez avec : 
 
 * *Nombre del dispositivo de la alarma* : nombre de la alarma.
 * *Objeto primario* : indica el objeto primario que pertenece al equipo.
@@ -33,21 +28,12 @@ Aquí encontrará toda la configuración del dispositivo :
 * *Estado inmediato visible* : permite hacer visible el estado inmediato de la alarma (véase abajo la explicación).
 * * Histórico del estatus del estado de la alarma *: permite registrar el estatus o el estado de la alarma.
 
-== Concepto inmediato
-
-Es un concepto muy importante en el plugin de alarma y es importante entenderlo bien. En pocas palabras es como si tuvieras 2 alarmas, la primera: alarma inmediata que no conlleva retrasos de activación (**atención ella tarda mucho en tiempos de activación de cuenta**) y  la segunda, que conlleva retardo en la comunicación tras el disparo o activación.
-
-*¿Por qué este concepto de inmediata?*
-
-Es concepto es el plazo inmediato para activar acciones específicas. Por ejemplo: llega a casa y si no desconecta la alarma, antes de accionar la sirena, puede ser bueno para difundir un mensaje recordando que debe desconectar la alarma y si no se hace 1 minuto más tarde (retardo de 1 minuto así) se activa la sirena.
-
-Este concepto se encuentra en diferentes tipos de acción, à chaque fois son principe sera détaillé.
+[TIP]
+Pour chaque action il est possible de spécifier le mode dans lequel elle doit s'executer ou dans tous les modes
 
 == Zonas
 
-image::../images/alarm5.png[]
-
-Parte principal de la alarma. Aquí es donde puede configurar las distintas zonas y acciones (inmediatas y diferidas) a la activación. Una zona puede ser por ejemplo: volumétrica (por el día) y Perimetral (por la noche), también para configurar las zonas de la casa (garaje, habitaciones...). 
+Partie principale de l'alarme. C'est ici que vous configurez les différentes zones et les actions (immédiates et différées par zone, à noter qu'il est aussi possible de les configurer globalement) à faire en cas de déclenchement. Une zone peut aussi bien être volumétrique (pour la journée par exemple) que périmétrique (pour la nuit) ou aussi des zones de la maison (garage, chambre, dépendances....). 
 
 Un botón en la parte superior derecha permite añadir tantas como quieras.
 
@@ -78,8 +64,6 @@ Cuando varias zonas se activan sucesivamente, sólo las acciones inmediatas de l
 
 == Modos
 
-image::../images/alarm6.png[]
-
 Los modos son bastante simples de configurar, simplemente especifique áreas activas dependiendo de la modalidad.
 
 [TIP]
@@ -91,15 +75,7 @@ Al retomar un modo, desde el widget de la alarma, haz click sobre el modo en cue
 [IMPORTANTE]
 Necesitamos obligatoriamente crear al menos un modo y asignar zonas , si no alarma no funciona.
 
-== Reinicialización
-
-image::../images/alarm7.png[]
-
-Esta sección le permite definir las acciones cuando la alarma se ha disparado y es desactivada. Aquí también hay acciones inmediatas y diferidas. Por ejemplo: vuelves a casa, los tiempos de activación han pasado, pero al abrir la puerta se dispara la alarma. Si la desactivas (antes de tiempo del disparo) entonces se realizarán las acciones de reinialización inmediato, pero no los de reinialización normal. Si desactivas después del disparo,  entonces se realizarán las acciones de reinialización inmediata y normal.
-
 == Activación OK
-
-image::../images/alarm9.png[]
 
 Esta sección permite definir las acciones que se harán después de la activación de la alarma. Aquí encontrará una idea rápida, que representa las acciones que se realizan inmediatamente después de la activación de la alarma, después vienen las acciones de activación que son ejecutadas con retardos programados. 
 
@@ -110,25 +86,16 @@ Las acciones de activiación OK no tienen en cuenta en la activación los retard
 
 == Activation KO
 
-image::../images/alarm10.png[]
+Ces actions sont exécutées si un capteur est déclenché et que celui-ci n'a pas de délai d'activation.
 
-Estas acciones se realizan si un sensor se activa y no tiene ningún retardo de activación. Cabe destacar que en este caso las acciones de disparador inmediato también se realizarán. La diferencia entre los dos es que no se puede realizar acciones de activación KO durante la activación.
+== Déclenchement
+
+Permet de configurer les actions globals à faire lors d'un déclenchement de l'alarme. Vous n'etes pas obliger d'en ajouter si vous avez configurez des actions spécifique par zone.
 
 == Desactivación OK
 
-image::../images/alarm11.png[]
-
 Estas acciones se realizan cuando la alarma es desactivada. por ejemplo, llegua a casa, abre la puerta y activa la alarma, pero le puso un tiempo de retardo en el sensor y desarmó la alarma antes del final del tiempo de retardo se realizarán las acciones de desactivación OK. Si por el contrario detienes la alarma después del tiempo de retardo, no se hubiera ejecutado.
 
-== Widget
+== Reinicialización
 
-image::../images/alarm12.png[]
-
-Este es un ejemplo del widget, encontrará en la parte superior la activación de la alarma (activa), para desactivar simplemente haga clic en el candado. La situación actual, no disparado, así como el modo, (normal). A continuación, tienes los botones para cambiar el modo si tienes varios.
-
-[TIP]
-Si la alarma esta activa y hace clic en un modo, esto tendrá el efecto de desactivar/reactivar.
-
-Este es otro ejemplo de widget basado en las diferentes opciones:
-
-image::../images/alarm_screenshot3.png[]
+Esta sección le permite definir las acciones cuando la alarma se ha disparado y es desactivada. Aquí también hay acciones inmediatas y diferidas. Por ejemplo: vuelves a casa, los tiempos de activación han pasado, pero al abrir la puerta se dispara la alarma. Si la desactivas (antes de tiempo del disparo) entonces se realizarán las acciones de reinialización inmediato, pero no los de reinialización normal. Si desactivas después del disparo,  entonces se realizarán las acciones de reinialización inmediata y normal.

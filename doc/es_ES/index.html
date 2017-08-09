@@ -417,8 +417,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="toctitle">Table des matières</div>
 <ul class="sectlevel1">
 <li><a href="#_configuración_del_plugin">1. Configuración del plugin</a></li>
-<li><a href="#_configuración_de_dispositivos">2. Configuración de dispositivos</a></li>
-<li><a href="#_concepto_inmediato">3. Concepto inmediato</a></li>
+<li><a href="#_concepto_inmediato">2. Concepto inmediato</a></li>
+<li><a href="#_equipements">3. Equipements</a></li>
 <li><a href="#_zonas">4. Zonas</a>
 <ul class="sectlevel2">
 <li><a href="#_disparador">4.1. Disparador</a></li>
@@ -426,11 +426,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </ul>
 </li>
 <li><a href="#_modos">5. Modos</a></li>
-<li><a href="#_reinicialización">6. Reinicialización</a></li>
-<li><a href="#_activación_ok">7. Activación OK</a></li>
-<li><a href="#_activation_ko">8. Activation KO</a></li>
+<li><a href="#_activación_ok">6. Activación OK</a></li>
+<li><a href="#_activation_ko">7. Activation KO</a></li>
+<li><a href="#_déclenchement">8. Déclenchement</a></li>
 <li><a href="#_desactivación_ok">9. Desactivación OK</a></li>
-<li><a href="#_widget">10. Widget</a></li>
+<li><a href="#_reinicialización">10. Reinicialización</a></li>
 <li><a href="#_faq">11. FAQ</a></li>
 <li><a href="#_changelog">12. Changelog</a></li>
 </ul>
@@ -450,54 +450,33 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="paragraph">
 <p>Después de descargar el plugin, simplemente hay que activarlo, no hay ninguna otra configuración adicional aquí.</p>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/alarm1.png" alt="alarm1">
 </div>
+</div>
+<div class="sect1">
+<h2 id="_concepto_inmediato">2. Concepto inmediato</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Es un concepto muy importante en el plugin de alarma y es importante entenderlo bien. En pocas palabras es como si tuvieras 2 alarmas, la primera: alarma inmediata que no conlleva retrasos de activación (<strong>atención ella tarda mucho en tiempos de activación de cuenta</strong>) y  la segunda, que conlleva retardo en la comunicación tras el disparo o activación.</p>
+</div>
+<div class="paragraph">
+<p><strong>¿Por qué este concepto de inmediata?</strong></p>
+</div>
+<div class="paragraph">
+<p>Es concepto es el plazo inmediato para activar acciones específicas. Por ejemplo: llega a casa y si no desconecta la alarma, antes de accionar la sirena, puede ser bueno para difundir un mensaje recordando que debe desconectar la alarma y si no se hace 1 minuto más tarde (retardo de 1 minuto así) se activa la sirena.</p>
+</div>
+<div class="paragraph">
+<p>Este concepto se encuentra en diferentes tipos de acción, à chaque fois son principe sera détaillé.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_configuración_de_dispositivos">2. Configuración de dispositivos</h2>
+<h2 id="_equipements">3. Equipements</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>La configuración de los dispositivos de alarma esta accesible desde el menu plugin:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/alarm2.png" alt="alarm2">
-</div>
+<p>La configuration des équipements Alarme est accessible à partir du menu plugin (dans sécurité).</p>
 </div>
 <div class="paragraph">
-<p>Esta es la página del plugin de alarma (aquí ya con 1 equipo):</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/alarm3.png" alt="alarm3">
-</div>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-Como en muchos sitios en Jeedom, posicionar el ratón a la izquierda muestra un menú de acceso rápido (desde el perfil puedes dejarlo siempre visible).
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Una vez que haces clic en uno de los equipos, se muestra:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/alarm4.png" alt="alarm4">
-</div>
-</div>
-<div class="paragraph">
-<p>Aquí encontrará toda la configuración del dispositivo :</p>
+<p>Une fois une alarme ajoutée vous vous retrouvez avec :</p>
 </div>
 <div class="ulist">
 <ul>
@@ -530,35 +509,25 @@ Como en muchos sitios en Jeedom, posicionar el ratón a la izquierda muestra un 
 </li>
 </ul>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_concepto_inmediato">3. Concepto inmediato</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Es un concepto muy importante en el plugin de alarma y es importante entenderlo bien. En pocas palabras es como si tuvieras 2 alarmas, la primera: alarma inmediata que no conlleva retrasos de activación (<strong>atención ella tarda mucho en tiempos de activación de cuenta</strong>) y  la segunda, que conlleva retardo en la comunicación tras el disparo o activación.</p>
-</div>
-<div class="paragraph">
-<p><strong>¿Por qué este concepto de inmediata?</strong></p>
-</div>
-<div class="paragraph">
-<p>Es concepto es el plazo inmediato para activar acciones específicas. Por ejemplo: llega a casa y si no desconecta la alarma, antes de accionar la sirena, puede ser bueno para difundir un mensaje recordando que debe desconectar la alarma y si no se hace 1 minuto más tarde (retardo de 1 minuto así) se activa la sirena.</p>
-</div>
-<div class="paragraph">
-<p>Este concepto se encuentra en diferentes tipos de acción, à chaque fois son principe sera détaillé.</p>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Pour chaque action il est possible de spécifier le mode dans lequel elle doit s&#8217;executer ou dans tous les modes
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_zonas">4. Zonas</h2>
 <div class="sectionbody">
-<div class="imageblock">
-<div class="content">
-<img src="../images/alarm5.png" alt="alarm5">
-</div>
-</div>
 <div class="paragraph">
-<p>Parte principal de la alarma. Aquí es donde puede configurar las distintas zonas y acciones (inmediatas y diferidas) a la activación. Una zona puede ser por ejemplo: volumétrica (por el día) y Perimetral (por la noche), también para configurar las zonas de la casa (garaje, habitaciones&#8230;&#8203;).</p>
+<p>Partie principale de l&#8217;alarme. C&#8217;est ici que vous configurez les différentes zones et les actions (immédiates et différées par zone, à noter qu&#8217;il est aussi possible de les configurer globalement) à faire en cas de déclenchement. Une zone peut aussi bien être volumétrique (pour la journée par exemple) que périmétrique (pour la nuit) ou aussi des zones de la maison (garage, chambre, dépendances&#8230;&#8203;.).</p>
 </div>
 <div class="paragraph">
 <p>Un botón en la parte superior derecha permite añadir tantas como quieras.</p>
@@ -607,11 +576,6 @@ Por último tienes el botón "Invertir" que permite invertir el disparador del e
 <div class="sect1">
 <h2 id="_modos">5. Modos</h2>
 <div class="sectionbody">
-<div class="imageblock">
-<div class="content">
-<img src="../images/alarm6.png" alt="alarm6">
-</div>
-</div>
 <div class="paragraph">
 <p>Los modos son bastante simples de configurar, simplemente especifique áreas activas dependiendo de la modalidad.</p>
 </div>
@@ -636,26 +600,8 @@ Es posible cambiar el modo pulsando sobre el nombre del mismo (frente a la etiqu
 </div>
 </div>
 <div class="sect1">
-<h2 id="_reinicialización">6. Reinicialización</h2>
+<h2 id="_activación_ok">6. Activación OK</h2>
 <div class="sectionbody">
-<div class="imageblock">
-<div class="content">
-<img src="../images/alarm7.png" alt="alarm7">
-</div>
-</div>
-<div class="paragraph">
-<p>Esta sección le permite definir las acciones cuando la alarma se ha disparado y es desactivada. Aquí también hay acciones inmediatas y diferidas. Por ejemplo: vuelves a casa, los tiempos de activación han pasado, pero al abrir la puerta se dispara la alarma. Si la desactivas (antes de tiempo del disparo) entonces se realizarán las acciones de reinialización inmediato, pero no los de reinialización normal. Si desactivas después del disparo,  entonces se realizarán las acciones de reinialización inmediata y normal.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_activación_ok">7. Activación OK</h2>
-<div class="sectionbody">
-<div class="imageblock">
-<div class="content">
-<img src="../images/alarm9.png" alt="alarm9">
-</div>
-</div>
 <div class="paragraph">
 <p>Esta sección permite definir las acciones que se harán después de la activación de la alarma. Aquí encontrará una idea rápida, que representa las acciones que se realizan inmediatamente después de la activación de la alarma, después vienen las acciones de activación que son ejecutadas con retardos programados.</p>
 </div>
@@ -668,61 +614,34 @@ Es posible cambiar el modo pulsando sobre el nombre del mismo (frente a la etiqu
 </div>
 </div>
 <div class="sect1">
-<h2 id="_activation_ko">8. Activation KO</h2>
+<h2 id="_activation_ko">7. Activation KO</h2>
 <div class="sectionbody">
-<div class="imageblock">
-<div class="content">
-<img src="../images/alarm10.png" alt="alarm10">
-</div>
-</div>
 <div class="paragraph">
-<p>Estas acciones se realizan si un sensor se activa y no tiene ningún retardo de activación. Cabe destacar que en este caso las acciones de disparador inmediato también se realizarán. La diferencia entre los dos es que no se puede realizar acciones de activación KO durante la activación.</p>
+<p>Ces actions sont exécutées si un capteur est déclenché et que celui-ci n&#8217;a pas de délai d&#8217;activation.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_déclenchement">8. Déclenchement</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Permet de configurer les actions globals à faire lors d&#8217;un déclenchement de l&#8217;alarme. Vous n&#8217;etes pas obliger d&#8217;en ajouter si vous avez configurez des actions spécifique par zone.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_desactivación_ok">9. Desactivación OK</h2>
 <div class="sectionbody">
-<div class="imageblock">
-<div class="content">
-<img src="../images/alarm11.png" alt="alarm11">
-</div>
-</div>
 <div class="paragraph">
 <p>Estas acciones se realizan cuando la alarma es desactivada. por ejemplo, llegua a casa, abre la puerta y activa la alarma, pero le puso un tiempo de retardo en el sensor y desarmó la alarma antes del final del tiempo de retardo se realizarán las acciones de desactivación OK. Si por el contrario detienes la alarma después del tiempo de retardo, no se hubiera ejecutado.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_widget">10. Widget</h2>
+<h2 id="_reinicialización">10. Reinicialización</h2>
 <div class="sectionbody">
-<div class="imageblock">
-<div class="content">
-<img src="../images/alarm12.png" alt="alarm12">
-</div>
-</div>
 <div class="paragraph">
-<p>Este es un ejemplo del widget, encontrará en la parte superior la activación de la alarma (activa), para desactivar simplemente haga clic en el candado. La situación actual, no disparado, así como el modo, (normal). A continuación, tienes los botones para cambiar el modo si tienes varios.</p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-Si la alarma esta activa y hace clic en un modo, esto tendrá el efecto de desactivar/reactivar.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Este es otro ejemplo de widget basado en las diferentes opciones:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/alarm_screenshot3.png" alt="alarm screenshot3">
-</div>
+<p>Esta sección le permite definir las acciones cuando la alarma se ha disparado y es desactivada. Aquí también hay acciones inmediatas y diferidas. Por ejemplo: vuelves a casa, los tiempos de activación han pasado, pero al abrir la puerta se dispara la alarma. Si la desactivas (antes de tiempo del disparo) entonces se realizarán las acciones de reinialización inmediato, pero no los de reinialización normal. Si desactivas después del disparo,  entonces se realizarán las acciones de reinialización inmediata y normal.</p>
 </div>
 </div>
 </div>
@@ -763,6 +682,12 @@ Si la alarma esta activa y hace clic en un modo, esto tendrá el efecto de desac
 <div class="sectionbody">
 <div class="ulist">
 <ul>
+<li>
+<p>Ajout d&#8217;action de déclenchement globale (plus filtrée par zone, il est conseillé d&#8217;utiliser celle-ci plutot que les actions de déclenchement par zone)</p>
+</li>
+<li>
+<p>Optimisation du code</p>
+</li>
 <li>
 <p>Possibilité de filtrer la réalisation des actions par rapport au mode de l&#8217;alarme</p>
 </li>

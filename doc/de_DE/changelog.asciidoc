@@ -1,5 +1,9 @@
 == Änderungsprotokoll
 
+- Ajout d'action de déclenchement globale (plus filtrée par zone, il est conseillé d'utiliser celle-ci plutot que les actions de déclenchement par zone)
+- Optimisation du code
+
+
 - Possibilité de filtrer la réalisation des actions par rapport au mode de l'alarme
 
 - Pause/Weiter Befehl hinzugefügt

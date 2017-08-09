@@ -2,26 +2,21 @@
 
 After downloading the plugin, you just have to activate it, there is no additional configuration at this level.
 
-image::../images/alarm1.png[]
+== Notion immédiate
 
-== Equipment configuration
+C'est une notion très importante sur le plugin alarme et il est important de bien la bien comprendre. Pour schématiser c'est comme si vous aviez 2 alarmes, la première : l'alarme immédiate qui ne tient pas compte des délais de déclenchement (attention elle prend bien en compte les délais d'activation) et une 2ème alarme qui, elle, prend en compte les délais de déclenchement.
 
-Equipement configuration is available from the plugin menu 
+*Pourquoi cette notion immédiate ?*
 
-image::../images/alarm2.png[]
+Cette notion immédiate permet de déclencher des actions bien spécifiques. Par exemple : vous rentrez chez vous et vous n'avez pas désactiver l'alarme, avant de déclencher la sirène il peut être bon de diffuser un message rappellant de bien désactiver l'alarme et si ce n'est pas fait 1 minute plus tard (délai d'activation de 1 minute donc) d'activer la sirène.
 
-This is how looks like the menu of the alarm plugin (here we have one equipement already created) 
+Cette notion se retrouve dans différents types d'actions, à chaque fois son principe sera détaillé.
 
-image::../images/alarm3.png[]
+== Equipements
 
-[TIP]
-As many menus in Jeedom, put your mouse on the left side in order to make the quick access menu appears (you can set it always on, from your profil menu)
+La configuration des équipements Alarme est accessible à partir du menu plugin (dans sécurité). 
 
-When you click on an equipment, you get : 
-
-image::../images/alarm4.png[]
-
-Here you have the entire configuration menu of your equipment : 
+Une fois une alarme ajoutée vous vous retrouvez avec : 
 
 Alarm Name : Choose a name for your alarm
 * *Parent Object* : means the parent object the equipment depend
@@ -33,21 +28,12 @@ Permanently Enable : Make your alarm permanently enable (generally for Fire or F
 * *Statut immédiat visible* : permet de rendre le statut immédiat de l'alarme visible (voir plus bas pour l'explication),
 * *Historiser état et statut de l'alarme* : permet d'historiser ou non l'état et le statut de l'alarme.
 
-== Notion immédiate
-
-C'est une notion très importante sur le plugin alarme et il est important de bien la bien comprendre. Pour schématiser c'est comme si vous aviez 2 alarmes, la première : l'alarme immédiate qui ne tient pas compte des délais de déclenchement (attention elle prend bien en compte les délais d'activation) et une 2ème alarme qui, elle, prend en compte les délais de déclenchement.
-
-*Pourquoi cette notion immédiate ?*
-
-Cette notion immédiate permet de déclencher des actions bien spécifiques. Par exemple : vous rentrez chez vous et vous n'avez pas désactiver l'alarme, avant de déclencher la sirène il peut être bon de diffuser un message rappellant de bien désactiver l'alarme et si ce n'est pas fait 1 minute plus tard (délai d'activation de 1 minute donc) d'activer la sirène.
-
-Cette notion se retrouve dans différents types d'actions, à chaque fois son principe sera détaillé.
+[TIP]
+Pour chaque action il est possible de spécifier le mode dans lequel elle doit s'executer ou dans tous les modes
 
 == Areas
 
-image::../images/alarm5.png[]
-
-Partie principale de l'alarme. C'est ici que vous configurez les différentes zones et les actions (immédiates et différées) à faire en cas de déclenchement. Une zone peut aussi bien être volumétrique (pour la journée par exemple) que périmétrique (pour la nuit) ou aussi des zones de la maison (garage, chambre, dépendances....). 
+Partie principale de l'alarme. C'est ici que vous configurez les différentes zones et les actions (immédiates et différées par zone, à noter qu'il est aussi possible de les configurer globalement) à faire en cas de déclenchement. Une zone peut aussi bien être volumétrique (pour la journée par exemple) que périmétrique (pour la nuit) ou aussi des zones de la maison (garage, chambre, dépendances....). 
 
 A button at the top right allows you to add as many as you want.
 
@@ -78,8 +64,6 @@ Lorsque plusieures zones sont déclenchées successivement, seules les actions i
 
 == Modes
 
-image::../images/alarm6.png[]
-
 Les modes sont assez simples à configurer, il suffit juste d'indiquer les zones actives en fonction du mode.
 
 [TIP]
@@ -91,15 +75,7 @@ Lors du renommage d'un mode, il faut sur le widget de l'alarme recliquer sur le 
 [IMPORTANT]
 You need to create at least one mode, and set it "zones". If not, your alarm will not work correctly
 
-== Reset
-
-image::../images/alarm7.png[]
-
-Cette partie vous permet de définir les actions à faire lorsque l'alarme est déclenchée puis désactivée. Ici aussi il y a des actions immédiates et différées. Voici un exemple : vous rentrez chez vous, les délais d'activation sont passés, mais en ouvrant la porte cela déclenche l'alarme. Si vous la désactiver (avant les délais de déclenchement) alors les actions de réinitialisation immédiate seront exécutées, mais pas celles de réinitialisation normale. Si vous la désactivez après les délais de déclenchement, alors les actions de réinitialisation immédiate et normale seront exécutées.
-
 == Activation OK
-
-image::../images/alarm9.png[]
 
 Cette partie permet de définir les actions à faire suite à une activation de l'alarme. Ici encore, vous retrouverez la notion immédiate qui représente les actions à faire toute de suite après armement de l'alarme, ensuite viennent les actions d'activation qui elles sont exécutées après les délais de déclenchement. 
 
@@ -110,25 +86,16 @@ Les actions d'activation OK ne prennent pas en compte les délais d'activation. 
 
 == Enable KO
 
-image::../images/alarm10.png[]
+Ces actions sont exécutées si un capteur est déclenché et que celui-ci n'a pas de délai d'activation.
 
-These actions are executed if a sensor is triggered and don't have enable delay. In this case the immediate trigger actions will also be executed. The difference with Enable OK is that the Enable KO actions can be executed only when you set alarm enable .
+== Déclenchement
+
+Permet de configurer les actions globals à faire lors d'un déclenchement de l'alarme. Vous n'etes pas obliger d'en ajouter si vous avez configurez des actions spécifique par zone.
 
 == Disable OK
 
-image::../images/alarm11.png[]
-
 These actions are executed when the alarm is disabled and not triggered. For example, you get back to your home , open the door triggers the alarm, but you set a trigger delay on the sensor and you turn off the alarm before the end of this delay , disable OK actions will be executed. But If you stopped the alarm after the end of trigger delay disable OK actions won't be executed.
 
-== Widget
+== Reset
 
-image::../images/alarm12.png[]
-
-This is an example of widget , you find on it the activation of the alarm ( enabled here) , to disable it, just click on the padlock . The current status (not triggered here), and the mode (normal here) . Right below , you can switch modes (if you have several).
-
-[TIP]
-If your alarm is triggered then you click on a mode, it will disable / re-enable the alarm
-
-This is another widget example with other options
-
-image::../images/alarm_screenshot3.png[]
+Cette partie vous permet de définir les actions à faire lorsque l'alarme est déclenchée puis désactivée. Ici aussi il y a des actions immédiates et différées. Voici un exemple : vous rentrez chez vous, les délais d'activation sont passés, mais en ouvrant la porte cela déclenche l'alarme. Si vous la désactiver (avant les délais de déclenchement) alors les actions de réinitialisation immédiate seront exécutées, mais pas celles de réinitialisation normale. Si vous la désactivez après les délais de déclenchement, alors les actions de réinitialisation immédiate et normale seront exécutées.

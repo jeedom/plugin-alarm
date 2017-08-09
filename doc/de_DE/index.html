@@ -417,8 +417,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="toctitle">Table des matières</div>
 <ul class="sectlevel1">
 <li><a href="#_plugin_konfiguration">1. Plugin Konfiguration</a></li>
-<li><a href="#_geräte_konfiguration">2. Geräte Konfiguration</a></li>
-<li><a href="#_notion_immédiate">3. Notion immédiate</a></li>
+<li><a href="#_notion_immédiate">2. Notion immédiate</a></li>
+<li><a href="#_equipements">3. Equipements</a></li>
 <li><a href="#_bereiche">4. Bereiche</a>
 <ul class="sectlevel2">
 <li><a href="#_auslöser">4.1. Auslöser</a></li>
@@ -426,11 +426,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </ul>
 </li>
 <li><a href="#_modus">5. Modus</a></li>
-<li><a href="#_réinitialisation">6. Réinitialisation</a></li>
-<li><a href="#_aktivierung_ok">7. Aktivierung OK</a></li>
-<li><a href="#_aktivierung_ko">8. Aktivierung KO</a></li>
+<li><a href="#_aktivierung_ok">6. Aktivierung OK</a></li>
+<li><a href="#_aktivierung_ko">7. Aktivierung KO</a></li>
+<li><a href="#_déclenchement">8. Déclenchement</a></li>
 <li><a href="#_deaktivierung_ok">9. Deaktivierung OK</a></li>
-<li><a href="#_widget">10. Widget</a></li>
+<li><a href="#_réinitialisation">10. Réinitialisation</a></li>
 <li><a href="#_faq">11. FAQ</a></li>
 <li><a href="#_Änderungsprotokoll">12. Änderungsprotokoll</a></li>
 </ul>
@@ -450,54 +450,33 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="paragraph">
 <p>Nachdem das Plugin heruntergeladen ist, müssen Sie es nur aktivieren, es gibt keine zusätzliche Konfiguration auf dieser Ebene.</p>
 </div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/alarm1.png" alt="alarm1">
 </div>
+</div>
+<div class="sect1">
+<h2 id="_notion_immédiate">2. Notion immédiate</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>C&#8217;est une notion très importante sur le plugin alarme et il est important de bien la bien comprendre. Pour schématiser c&#8217;est comme si vous aviez 2 alarmes, la première : l&#8217;alarme immédiate qui ne tient pas compte des délais de déclenchement (attention elle prend bien en compte les délais d&#8217;activation) et une 2ème alarme qui, elle, prend en compte les délais de déclenchement.</p>
+</div>
+<div class="paragraph">
+<p><strong>Pourquoi cette notion immédiate ?</strong></p>
+</div>
+<div class="paragraph">
+<p>Cette notion immédiate permet de déclencher des actions bien spécifiques. Par exemple : vous rentrez chez vous et vous n&#8217;avez pas désactiver l&#8217;alarme, avant de déclencher la sirène il peut être bon de diffuser un message rappellant de bien désactiver l&#8217;alarme et si ce n&#8217;est pas fait 1 minute plus tard (délai d&#8217;activation de 1 minute donc) d&#8217;activer la sirène.</p>
+</div>
+<div class="paragraph">
+<p>Cette notion se retrouve dans différents types d&#8217;actions, à chaque fois son principe sera détaillé.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_geräte_konfiguration">2. Geräte Konfiguration</h2>
+<h2 id="_equipements">3. Equipements</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Die Konfiguration der Alarmanlagen ist erreichbar über das Menü  Plugin :</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/alarm2.png" alt="alarm2">
-</div>
+<p>La configuration des équipements Alarme est accessible à partir du menu plugin (dans sécurité).</p>
 </div>
 <div class="paragraph">
-<p>So sieht die Seite des Alarm-Plugin aus (hier bereits mit 1 Gerät) :</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/alarm3.png" alt="alarm3">
-</div>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-Wie an vielen Stellen in Jeedom kann mit dem Mauszeiger ganz links, ein Menü mit Schnellzugriff aufgerufen werden (Sie können in Ihrem Profil immer sichtbar einstellen).
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Sobald Sie auf ein Gerät klicken, erhalten Sie :</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/alarm4.png" alt="alarm4">
-</div>
-</div>
-<div class="paragraph">
-<p>Hier finden sie die ganze Konfiguration Ihrer Geräte:</p>
+<p>Une fois une alarme ajoutée vous vous retrouvez avec :</p>
 </div>
 <div class="ulist">
 <ul>
@@ -530,35 +509,25 @@ Wie an vielen Stellen in Jeedom kann mit dem Mauszeiger ganz links, ein Menü mi
 </li>
 </ul>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_notion_immédiate">3. Notion immédiate</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>C&#8217;est une notion très importante sur le plugin alarme et il est important de bien la bien comprendre. Pour schématiser c&#8217;est comme si vous aviez 2 alarmes, la première : l&#8217;alarme immédiate qui ne tient pas compte des délais de déclenchement (attention elle prend bien en compte les délais d&#8217;activation) et une 2ème alarme qui, elle, prend en compte les délais de déclenchement.</p>
-</div>
-<div class="paragraph">
-<p><strong>Pourquoi cette notion immédiate ?</strong></p>
-</div>
-<div class="paragraph">
-<p>Cette notion immédiate permet de déclencher des actions bien spécifiques. Par exemple : vous rentrez chez vous et vous n&#8217;avez pas désactiver l&#8217;alarme, avant de déclencher la sirène il peut être bon de diffuser un message rappellant de bien désactiver l&#8217;alarme et si ce n&#8217;est pas fait 1 minute plus tard (délai d&#8217;activation de 1 minute donc) d&#8217;activer la sirène.</p>
-</div>
-<div class="paragraph">
-<p>Cette notion se retrouve dans différents types d&#8217;actions, à chaque fois son principe sera détaillé.</p>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Pour chaque action il est possible de spécifier le mode dans lequel elle doit s&#8217;executer ou dans tous les modes
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_bereiche">4. Bereiche</h2>
 <div class="sectionbody">
-<div class="imageblock">
-<div class="content">
-<img src="../images/alarm5.png" alt="alarm5">
-</div>
-</div>
 <div class="paragraph">
-<p>Partie principale de l&#8217;alarme. C&#8217;est ici que vous configurez les différentes zones et les actions (immédiates et différées) à faire en cas de déclenchement. Une zone peut aussi bien être volumétrique (pour la journée par exemple) que périmétrique (pour la nuit) ou aussi des zones de la maison (garage, chambre, dépendances&#8230;&#8203;.).</p>
+<p>Partie principale de l&#8217;alarme. C&#8217;est ici que vous configurez les différentes zones et les actions (immédiates et différées par zone, à noter qu&#8217;il est aussi possible de les configurer globalement) à faire en cas de déclenchement. Une zone peut aussi bien être volumétrique (pour la journée par exemple) que périmétrique (pour la nuit) ou aussi des zones de la maison (garage, chambre, dépendances&#8230;&#8203;.).</p>
 </div>
 <div class="paragraph">
 <p>Un bouton en haut à droite vous permet d&#8217;en ajouter autant que vous voulez.</p>
@@ -616,11 +585,6 @@ Lorsque plusieures zones sont déclenchées successivement, seules les actions i
 <div class="sect1">
 <h2 id="_modus">5. Modus</h2>
 <div class="sectionbody">
-<div class="imageblock">
-<div class="content">
-<img src="../images/alarm6.png" alt="alarm6">
-</div>
-</div>
 <div class="paragraph">
 <p>Les modes sont assez simples à configurer, il suffit juste d&#8217;indiquer les zones actives en fonction du mode.</p>
 </div>
@@ -663,26 +627,8 @@ Il faut absolument creer au moins un mode et lui affecter des zones sinon votre 
 </div>
 </div>
 <div class="sect1">
-<h2 id="_réinitialisation">6. Réinitialisation</h2>
+<h2 id="_aktivierung_ok">6. Aktivierung OK</h2>
 <div class="sectionbody">
-<div class="imageblock">
-<div class="content">
-<img src="../images/alarm7.png" alt="alarm7">
-</div>
-</div>
-<div class="paragraph">
-<p>Cette partie vous permet de définir les actions à faire lorsque l&#8217;alarme est déclenchée puis désactivée. Ici aussi il y a des actions immédiates et différées. Voici un exemple : vous rentrez chez vous, les délais d&#8217;activation sont passés, mais en ouvrant la porte cela déclenche l&#8217;alarme. Si vous la désactiver (avant les délais de déclenchement) alors les actions de réinitialisation immédiate seront exécutées, mais pas celles de réinitialisation normale. Si vous la désactivez après les délais de déclenchement, alors les actions de réinitialisation immédiate et normale seront exécutées.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_aktivierung_ok">7. Aktivierung OK</h2>
-<div class="sectionbody">
-<div class="imageblock">
-<div class="content">
-<img src="../images/alarm9.png" alt="alarm9">
-</div>
-</div>
 <div class="paragraph">
 <p>Cette partie permet de définir les actions à faire suite à une activation de l&#8217;alarme. Ici encore, vous retrouverez la notion immédiate qui représente les actions à faire toute de suite après armement de l&#8217;alarme, ensuite viennent les actions d&#8217;activation qui elles sont exécutées après les délais de déclenchement.</p>
 </div>
@@ -704,61 +650,34 @@ Les actions d&#8217;activation OK ne prennent pas en compte les délais d&#8217;
 </div>
 </div>
 <div class="sect1">
-<h2 id="_aktivierung_ko">8. Aktivierung KO</h2>
+<h2 id="_aktivierung_ko">7. Aktivierung KO</h2>
 <div class="sectionbody">
-<div class="imageblock">
-<div class="content">
-<img src="../images/alarm10.png" alt="alarm10">
-</div>
-</div>
 <div class="paragraph">
-<p>Ces actions sont exécutées si un capteur est déclenché et que celui-ci n&#8217;a pas de délai d&#8217;activation. Il est à noter que dans ce cas les actions de déclenchement immédiates seront aussi exécutées. La différence entre les deux, c&#8217;est que les actions d&#8217;activation KO ne peuvent être exécutées que lors de l&#8217;activation.</p>
+<p>Ces actions sont exécutées si un capteur est déclenché et que celui-ci n&#8217;a pas de délai d&#8217;activation.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_déclenchement">8. Déclenchement</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Permet de configurer les actions globals à faire lors d&#8217;un déclenchement de l&#8217;alarme. Vous n&#8217;etes pas obliger d&#8217;en ajouter si vous avez configurez des actions spécifique par zone.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_deaktivierung_ok">9. Deaktivierung OK</h2>
 <div class="sectionbody">
-<div class="imageblock">
-<div class="content">
-<img src="../images/alarm11.png" alt="alarm11">
-</div>
-</div>
 <div class="paragraph">
 <p>Ces actions sont exécutées lorsque l&#8217;alarme est désactivée et qu&#8217;elle n&#8217;est pas déclenchée. Exemple vous rentrez chez vous, en ouvrant la porte cela déclenche l&#8217;alarme, mais vous avez mis un délai de déclenchement sur le capteur et vous coupez l&#8217;alarme avant la fin du délai, les actions de désactivation OK seront exécutées. Si par contre vous aviez arrêté l&#8217;alarme après la fin de délai de déclenchement cela n&#8217;aurait pas été le cas.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_widget">10. Widget</h2>
+<h2 id="_réinitialisation">10. Réinitialisation</h2>
 <div class="sectionbody">
-<div class="imageblock">
-<div class="content">
-<img src="../images/alarm12.png" alt="alarm12">
-</div>
-</div>
 <div class="paragraph">
-<p>Voilà un exemple du widget, vous retrouvez dessus l&#8217;activation de l&#8217;alarme (ici actif), pour la désactiver il suffit de cliquer sur le cadenas. Le statut actuel, ici non déclenchée, ainsi que le mode, ici normal. En dessous, vous avez les boutons pour changer de mode si vous en avez plusieurs.</p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-Si votre alarme est déclenchée et que vous cliquez sur un mode cela aura pour effet de la désactiver/réactiver.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Voilà un autre exemple de widget en fonction des différentes options :</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/alarm_screenshot3.png" alt="alarm screenshot3">
-</div>
+<p>Cette partie vous permet de définir les actions à faire lorsque l&#8217;alarme est déclenchée puis désactivée. Ici aussi il y a des actions immédiates et différées. Voici un exemple : vous rentrez chez vous, les délais d&#8217;activation sont passés, mais en ouvrant la porte cela déclenche l&#8217;alarme. Si vous la désactiver (avant les délais de déclenchement) alors les actions de réinitialisation immédiate seront exécutées, mais pas celles de réinitialisation normale. Si vous la désactivez après les délais de déclenchement, alors les actions de réinitialisation immédiate et normale seront exécutées.</p>
 </div>
 </div>
 </div>
@@ -799,6 +718,12 @@ Si votre alarme est déclenchée et que vous cliquez sur un mode cela aura pour 
 <div class="sectionbody">
 <div class="ulist">
 <ul>
+<li>
+<p>Ajout d&#8217;action de déclenchement globale (plus filtrée par zone, il est conseillé d&#8217;utiliser celle-ci plutot que les actions de déclenchement par zone)</p>
+</li>
+<li>
+<p>Optimisation du code</p>
+</li>
 <li>
 <p>Possibilité de filtrer la réalisation des actions par rapport au mode de l&#8217;alarme</p>
 </li>
