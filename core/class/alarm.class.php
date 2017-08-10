@@ -64,11 +64,18 @@ class alarm extends eqLogic {
 											if (isset($trigger['armedDelay']) && $trigger['armedDelay'] !== '' && is_numeric(intval($trigger['armedDelay'])) && $trigger['armedDelay'] > 0) {
 												if (strtotime('now') < (strtotime($cmd_armed->getCollectDate()) + $trigger['armedDelay'] * 60)) {
 													sleep((strtotime($cmd_armed->getCollectDate()) + $trigger['armedDelay'] * 60) - strtotime('now'));
+													$result = $cmd->execCmd();
+													if (isset($trigger['invert']) && $trigger['invert'] == 1) {
+														$result = ($result == 1 || $result) ? 0 : 1;
+													}
+													if ($result == 0) {
+														return;
+													}
 												}
 											}
 											$eqLogic->execute($cmd->getId(), $result);
-											return;
 										}
+										return;
 									}
 								}
 							}
@@ -692,8 +699,8 @@ class alarmCmd extends cmd {
 										if ($armedCompleteDatetime < $armedCompleteDatetimeTemp) {
 											$armedCompleteDatetime = $armedCompleteDatetimeTemp;
 										}
-										if ($armedCompleteDatetimeTemp > 0 && $armedCompleteDatetimeTemp < (strtotime('now') + 120)) {
-											$armedCompleteDatetimeTemp = strtotime('now') + 120;
+										if ($armedCompleteDatetimeTemp > 0 && $armedCompleteDatetimeTemp < (strtotime('now') + 70)) {
+											$armedCompleteDatetimeTemp = strtotime('now') + 70;
 										}
 										$cron = new cron();
 										$cron->setClass('alarm');
@@ -701,7 +708,7 @@ class alarmCmd extends cmd {
 										$cron->setOption(array('alarm_id' => intval($eqLogic->getId()), 'cmd_id' => intval($cmd->getId())));
 										$cron->setLastRun(date('Y-m-d H:i:s'));
 										$cron->setOnce(1);
-										$cron->setSchedule(date('i', $armedCompleteDatetimeTemp) . ' ' . date('H', $armedCompleteDatetimeTemp) . ' ' . date('d', $armedCompleteDatetimeTemp) . ' ' . date('m', $armedCompleteDatetimeTemp) . ' * ' . date('Y', $armedCompleteDatetimeTemp));
+										$cron->setSchedule(cron::convertDateToCron($armedCompleteDatetimeTemp));
 										$cron->save();
 										continue;
 									}
@@ -724,9 +731,6 @@ class alarmCmd extends cmd {
 			/*             * *****************Activation reussi***************** */
 			log::add('alarm', 'debug', 'Activation de l\'alarme réussie');
 			$eqLogic->doAction('activationImmediateOk', $select_mode);
-			if ($armedCompleteDatetime > 0 && $armedCompleteDatetime < (strtotime('now') + 60)) {
-				$armedCompleteDatetime = strtotime('now') + 60;
-			}
 			if ($armedCompleteDatetime > 0) {
 				$cron = new cron();
 				$cron->setClass('alarm');
@@ -734,7 +738,7 @@ class alarmCmd extends cmd {
 				$cron->setOption(array('alarm_id' => intval($eqLogic->getId())));
 				$cron->setLastRun(date('Y-m-d H:i:s'));
 				$cron->setOnce(1);
-				$cron->setSchedule(date('i', $armedCompleteDatetime) . ' ' . date('H', $armedCompleteDatetime) . ' ' . date('d', $armedCompleteDatetime) . ' ' . date('m', $armedCompleteDatetime) . ' * ' . date('Y', $armedCompleteDatetime));
+				$cron->setSchedule(cron::convertDateToCron($armedCompleteDatetime));
 				$cron->save();
 			} else {
 				log::add('alarm', 'debug', __('Activation OK éxécution des actions', __FILE__));
