@@ -1,5 +1,6 @@
 == Changelog
 
+- Si lors de l'activation un capteur est en alerte et n'a pas de délai d'activation alors l'alarme s'arme quand meme en ignorant ce capteur (a moins qu'il revienne au repos)
 - Ajout d'action de déclenchement globale (plus filtrée par zone, il est conseillé d'utiliser celle-ci plutot que les actions de déclenchement par zone)
 - Optimisation du code
 
