@@ -214,6 +214,12 @@
     })
 });
 
+ $('.nav-tabs li a').on('click',function(){
+   setTimeout(function(){ 
+    taAutosize();
+}, 50);
+})
+
  function saveEqLogic(_eqLogic) {
     if (!isset(_eqLogic.configuration)) {
         _eqLogic.configuration = {};
