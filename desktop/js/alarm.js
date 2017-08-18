@@ -182,6 +182,7 @@
         el.value(result.human);
         jeedom.cmd.displayActionOption(el.value(), '', function (html) {
             el.closest('.' + type).find('.actionOptions').html(html);
+            taAutosize();
         });
     });
 });
@@ -193,6 +194,7 @@
     el.value(result.human);
     jeedom.cmd.displayActionOption(el.value(), '', function (html) {
       el.closest('.' + type).find('.actionOptions').html(html);
+      taAutosize();
   });
 });
 });
@@ -208,6 +210,7 @@
     var el = $(this);
     jeedom.cmd.displayActionOption($(this).value(), init(expression[0].options), function (html) {
         el.closest('.' + type).find('.actionOptions').html(html);
+        taAutosize();
     })
 });
 
@@ -316,6 +319,7 @@ function printEqLogic(_eqLogic) {
         for(var i in data){
             $('#'+data[i].id).append(data[i].html.html);
         }
+        taAutosize();
     }
 });
 }
@@ -365,7 +369,7 @@ function addAction(_action, _type, _name, _el) {
         input = 'has-warning';
         button = 'btn-warning';
     }
-     if (_type == 'release') {
+    if (_type == 'release') {
         input = 'has-success';
         button = 'btn-success';
     }

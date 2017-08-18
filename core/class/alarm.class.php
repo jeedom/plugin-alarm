@@ -681,7 +681,7 @@ class alarmCmd extends cmd {
 			$cmd_mode->event($select_mode);
 			$armedCompleteDatetime = -1;
 			$eqLogic->cleanArmedCompleted();
-			$zones = $this->getZoneOfMode($select_mode);
+			$zones = $eqLogic->getZoneOfMode($select_mode);
 			$disable_trigger = array();
 			foreach ($zones as $zone) {
 				log::add('alarm', 'debug', __('Vérification de la zone : ', __FILE__) . $zone['name']);
