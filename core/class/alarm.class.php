@@ -711,16 +711,19 @@ class alarmCmd extends cmd {
 						if (isset($trigger['invert']) && $trigger['invert'] == 1) {
 							$result = ($result == 1 || $result) ? 0 : 1;
 						}
-						if ($value == 1) {
+						if ($result == 1) {
 							log::add('alarm', 'debug', __('La commande est active : ', __FILE__) . $cmd->getHumanName());
-							$eqLogic->doAction('activationKo', $select_mode);
 							$disable_trigger[$cmd->getId()] = $cmd->getId();
 						}
 					}
 				}
 			}
 			$eqLogic->setCache('disable_trigger', $disable_trigger);
-			log::add('alarm', 'debug', __('Trigger désactivé : ', __FILE__) . print_r($disable_trigger, true));
+			if (count($disable_trigger) > 0) {
+				log::add('alarm', 'debug', __('Trigger désactivé : ', __FILE__) . print_r($disable_trigger, true));
+				log::add('alarm', 'debug', __('Lancement des actions d\'activation ko', __FILE__));
+				$eqLogic->doAction('activationKo', $select_mode);
+			}
 
 			/*             * *****************Activation reussi***************** */
 			log::add('alarm', 'debug', __('Activation de l\'alarme réussie', __FILE__));
