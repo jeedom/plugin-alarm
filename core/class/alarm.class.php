@@ -475,8 +475,10 @@ class alarm extends eqLogic {
 						if ($this->getConfiguration('autorearm', 0) == 1 || $cmd_immediatState->execCmd() != 1) {
 							log::add('alarm', 'debug', __('Exécution des actions immédiates', __FILE__));
 							$cmd_immediatState->event(1);
-							$this->doAction('outbreakImmediate', $select_mode);
-							$this->doZoneAction($zone['actionsImmediate'], $select_mode);
+							if (isset($trigger['waitDelay']) && $trigger['waitDelay'] !== '' && is_numeric(intval($trigger['waitDelay'])) && $trigger['waitDelay'] > 0) {
+								$this->doAction('outbreakImmediate', $select_mode);
+								$this->doZoneAction($zone['actionsImmediate'], $select_mode);
+							}
 						}
 						if (isset($trigger['waitDelay']) && $trigger['waitDelay'] !== '' && is_numeric(intval($trigger['waitDelay'])) && $trigger['waitDelay'] > 0) {
 							log::add('alarm', 'debug', __('Attente de ' . $trigger['waitDelay'] . ' min avant déclenchement', __FILE__));
