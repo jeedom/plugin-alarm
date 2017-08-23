@@ -21,7 +21,7 @@
  $("#div_activationKo").sortable({axis: "y", cursor: "move", items: ".activationKo", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
  $("#div_activationImmediateOk").sortable({axis: "y", cursor: "move", items: ".activationImmediateOk", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
  $("#div_releaseImmediate").sortable({axis: "y", cursor: "move", items: ".activationKo", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
- $("#div_release").sortable({axis: "y", cursor: "move", items: ".activationImmediateOk", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
+ $("#div_release").sortable({axis: "y", cursor: "move", items: ".release", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
 
 
 
