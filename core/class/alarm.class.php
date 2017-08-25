@@ -534,9 +534,6 @@ class alarm extends eqLogic {
 			$_mode = $this->getCmd(null, 'mode')->execCmd();
 		}
 		foreach ($this->getConfiguration($_action) as $action) {
-			if (isset($action['enable']) && $action['enable'] == 0) {
-				continue;
-			}
 			if (isset($action['onMode']) && $action['onMode'] != 'all' && $action['onMode'] != $_mode) {
 				continue;
 			}

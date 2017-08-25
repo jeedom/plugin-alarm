@@ -383,7 +383,7 @@ function addAction(_action, _type, _name, _el) {
     div += '<div class="form-group ">';
     div += '<label class="col-sm-1 control-label">' + _name + '</label>';
     div += '<div class="col-sm-2">';
-    div += '<input type="checkbox" class="expressionAttr" data-l1key="enable" checked title="{{Décocher pour desactiver l\'action}}" />';
+    div += '<input type="checkbox" class="expressionAttr" data-l1key="options" data-l2key="enable" checked title="{{Décocher pour desactiver l\'action}}" />';
     div += '<input type="checkbox" class="expressionAttr" data-l1key="options" data-l2key="background" title="{{Cocher pour que la commande s\'éxecute en parrallele des autres actions}}" />';
     div += '<select class="expressionAttr form-control input-sm selectMode" data-l1key="onMode" style="width:calc(100% - 50px);display:inline-block">';
     div += '<option value="all">{{Tous les modes}}</option>';
