@@ -123,7 +123,7 @@ foreach (jeedom::getConfiguration('eqLogic:category') as $key => $value) {
 
 <div class="tab-pane" id="tab_zones">
     <br/>
-    <div class="alert alert-info">{{Une zone décris les capteurs que l'alarme doit surveiller ainsi que les actions à faire en cas de déclenchement.}} <a class="btn btn-success btn-xs pull-right" id="bt_addZone"><i class="fa fa-plus-circle"></i> {{Ajouter zone}}</a></div>
+    <div class="alert alert-info">{{Une zone décrit les capteurs que l'alarme doit surveiller ainsi que les actions à faire en cas de déclenchement.}} <a class="btn btn-success btn-xs pull-right" id="bt_addZone"><i class="fa fa-plus-circle"></i> {{Ajouter zone}}</a></div>
     <div class="panel-group" id="div_zones"></div>
 </div>
 
