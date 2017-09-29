@@ -471,7 +471,6 @@ class alarm extends eqLogic {
 								return;
 							}
 						}
-						log::add('alarm', 'debug', print_r($zone, true));
 						$this->cleanArmedCompleted();
 						if ($this->getConfiguration('autorearm', 0) == 1 || $cmd_immediatState->execCmd() != 1) {
 							log::add('alarm', 'debug', __('Exécution des actions immédiates', __FILE__));
@@ -509,7 +508,6 @@ class alarm extends eqLogic {
 		}
 		$trigger = '';
 		$trigger = implode(" , ", $this->listCmdTrigger());
-		log::add('alarm', 'debug', print_r($_actions, true));
 		foreach ($_actions as $action) {
 			try {
 				if (isset($action['onMode']) && $action['onMode'] != 'all' && $action['onMode'] != $_mode) {
