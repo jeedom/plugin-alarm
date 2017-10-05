@@ -686,34 +686,35 @@ class alarmCmd extends cmd {
 				log::add('alarm', 'debug', __('Vérification de la zone : ', __FILE__) . $zone['name']);
 				foreach ($zone['triggers'] as $trigger) {
 					$cmd = cmd::byId(str_replace('#', '', $trigger['cmd']));
-					if (is_object($cmd)) {
-						log::add('alarm', 'debug', __('Vérification de la commande : ', __FILE__) . $cmd->getHumanName());
-						if (isset($trigger['armedDelay']) && is_numeric($trigger['armedDelay']) && $trigger['armedDelay'] > 0) {
-							$armedCompleteDatetimeTemp = strtotime('now') + $trigger['armedDelay'] * 60;
-							if ($armedCompleteDatetime < $armedCompleteDatetimeTemp) {
-								$armedCompleteDatetime = $armedCompleteDatetimeTemp;
-							}
-							if ($armedCompleteDatetimeTemp > 0 && $armedCompleteDatetimeTemp < (strtotime('now') + 70)) {
-								$armedCompleteDatetimeTemp = strtotime('now') + 70;
-							}
-							$cron = new cron();
-							$cron->setClass('alarm');
-							$cron->setFunction('checkDetector');
-							$cron->setOption(array('alarm_id' => intval($eqLogic->getId()), 'cmd_id' => intval($cmd->getId())));
-							$cron->setLastRun(date('Y-m-d H:i:s'));
-							$cron->setOnce(1);
-							$cron->setSchedule(cron::convertDateToCron($armedCompleteDatetimeTemp));
-							$cron->save();
-							continue;
+					if (!is_object($cmd)) {
+						continue;
+					}
+					log::add('alarm', 'debug', __('Vérification de la commande : ', __FILE__) . $cmd->getHumanName());
+					if (isset($trigger['armedDelay']) && is_numeric($trigger['armedDelay']) && $trigger['armedDelay'] > 0) {
+						$armedCompleteDatetimeTemp = strtotime('now') + $trigger['armedDelay'] * 60;
+						if ($armedCompleteDatetime < $armedCompleteDatetimeTemp) {
+							$armedCompleteDatetime = $armedCompleteDatetimeTemp;
 						}
-						$result = $cmd->execCmd();
-						if (isset($trigger['invert']) && $trigger['invert'] == 1) {
-							$result = ($result == 1 || $result) ? 0 : 1;
+						if ($armedCompleteDatetimeTemp > 0 && $armedCompleteDatetimeTemp < (strtotime('now') + 70)) {
+							$armedCompleteDatetimeTemp = strtotime('now') + 70;
 						}
-						if ($result == 1) {
-							log::add('alarm', 'debug', __('La commande est active : ', __FILE__) . $cmd->getHumanName());
-							$disable_trigger[$cmd->getId()] = $cmd->getId();
-						}
+						$cron = new cron();
+						$cron->setClass('alarm');
+						$cron->setFunction('checkDetector');
+						$cron->setOption(array('alarm_id' => intval($eqLogic->getId()), 'cmd_id' => intval($cmd->getId())));
+						$cron->setLastRun(date('Y-m-d H:i:s'));
+						$cron->setOnce(1);
+						$cron->setSchedule(cron::convertDateToCron($armedCompleteDatetimeTemp));
+						$cron->save();
+						continue;
+					}
+					$result = $cmd->execCmd();
+					if (isset($trigger['invert']) && $trigger['invert'] == 1) {
+						$result = ($result == 1 || $result) ? 0 : 1;
+					}
+					if ($result == 1) {
+						log::add('alarm', 'debug', __('La commande est active : ', __FILE__) . $cmd->getHumanName());
+						$disable_trigger[$cmd->getId()] = $cmd->getId();
 					}
 				}
 			}
