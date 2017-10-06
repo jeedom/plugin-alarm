@@ -387,8 +387,16 @@ class alarm extends eqLogic {
 		foreach ($modes as $mode) {
 			if ($mode['name'] == $_select_mode) {
 				foreach ($zones as $zone) {
-					if ((!is_array($mode['zone']) && $zone['name'] == $mode['zone']) || (is_array($mode['zone']) && in_array($zone['name'], $mode['zone']))) {
-						$return[] = $zone;
+					if (!is_array($mode['zone'])) {
+						if (trim($zone['name']) == trim($mode['zone'])) {
+							$return[] = $zone;
+						}
+					} else {
+						foreach ($mode['zone'] as $mzone) {
+							if (trim($zone['name']) == trim($mzone)) {
+								$return[] = $zone;
+							}
+						}
 					}
 				}
 			}
