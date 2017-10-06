@@ -1,12 +1,12 @@
 == Changelog
 
-- Si lors de l'activation un capteur est en alerte et n'a pas de délai d'activation alors l'alarme s'arme quand meme en ignorant ce capteur (a moins qu'il revienne au repos)
-- Ajout d'action de déclenchement globale (plus filtrée par zone, il est conseillé d'utiliser celle-ci plutot que les actions de déclenchement par zone)
-- Optimisation du code
-- ATTENTION : l'alarme n'execute plus les actions immediates si il n'y a pas de délai de déclenchement !!!!!!
+-Si al activar un sensor está en alerta y no tiene tiempo de activación, la alarma ignorará este sensor al armarse (a menos que vuelva a reposo)
+-Añadido acción global desencadenante (más filtrado por zona, es recomendable utilizar éste en lugar de las acciones de desencadenado por zona)
+-Optimización del código
+-ADVERTENCIA : ¡¡¡¡ La alarma ya no ejecutará las acciones inmediatas si no hay retardo del disparador !!!!
 
 
-- Possibilité de filtrer la réalisation des actions par rapport au mode de l'alarme
+- Posibilidad de filtrar la realización de las acciones en relación al modo de la alarma
 
 -Agregado comando pausa/repetición
 
