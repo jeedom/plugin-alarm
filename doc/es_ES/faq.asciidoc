@@ -11,4 +11,4 @@ Es posible para el "retardo de disparo" (deben ser números con punto, e,: 0.5 p
 '''
 
 No entiendo porqué mi alarma no hace nada ::
-Asegúrese de que la alarma tiene un modo activo
+Vérifiez que l'alarme a bien un mode d'actif

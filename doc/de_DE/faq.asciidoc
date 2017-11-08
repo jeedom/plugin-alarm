@@ -11,4 +11,4 @@ Das ist für die "Auslösungsfrist" möglich (man muß die Zahl mit einem Komma 
 '''
 
 Je ne comprends pas mon alarme ne fait rien ::
-Vérifiez que l'alarme à bien un mode d'actif
+Vérifiez que l'alarme a bien un mode d'actif

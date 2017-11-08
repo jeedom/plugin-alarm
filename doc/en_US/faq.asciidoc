@@ -11,4 +11,4 @@ C’est possible pour le "Délai de déclenchement" (il faut mettre des nombres 
 '''
 
 I don't understand my alarm does nothing ::
-Check the Alarm has an active mode
+Vérifiez que l'alarme a bien un mode d'actif
