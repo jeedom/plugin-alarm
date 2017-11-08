@@ -14,7 +14,7 @@ Cette notion se retrouve dans différents types d'actions, à chaque fois son pr
 
 == Equipements
 
-La configuration des équipements Alarme est accessible à partir du menu plugin (dans sécurité). 
+La configuration des équipements Alarme est accessible à partir du menu Plugin > Sécurité. 
 
 Une fois une alarme ajoutée vous vous retrouvez avec : 
 
