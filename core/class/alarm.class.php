@@ -472,6 +472,7 @@ class alarm extends eqLogic {
 							log::add('alarm', 'debug', __('Non déclenchement car la valeur n\'est pas une alerte : ', __FILE__) . print_r($_value, true));
 							continue;
 						}
+						$triggerStr = implode(" , ", $this->listCmdTrigger());
 						log::add('alarm', 'debug', __('Evenement valide, mise en alerte de l\'alarme sur declencheur : ', __FILE__) . $cmd_trigger->getHumanName() . __(' valeur : ', __FILE__) . $_value);
 						if (isset($trigger['armedDelay']) && $trigger['armedDelay'] !== '' && is_numeric(intval($trigger['armedDelay'])) && $trigger['armedDelay'] > 0) {
 							if (strtotime('now') < (strtotime($cmd_armed->getCollectDate()) + $trigger['armedDelay'] * 60)) {
@@ -483,8 +484,8 @@ class alarm extends eqLogic {
 						if ($this->getConfiguration('autorearm', 0) == 1 || $cmd_immediatState->execCmd() != 1) {
 							log::add('alarm', 'debug', __('Exécution des actions immédiates', __FILE__));
 							$cmd_immediatState->event(1);
-							$this->doAction('outbreakImmediate', $select_mode);
-							$this->doZoneAction($zone['actionsImmediate'], $select_mode);
+							$this->doAction('outbreakImmediate', $select_mode, $triggerStr);
+							$this->doZoneAction($zone['actionsImmediate'], $select_mode, $triggerStr);
 						}
 						if (isset($trigger['waitDelay']) && $trigger['waitDelay'] !== '' && is_numeric(intval($trigger['waitDelay'])) && $trigger['waitDelay'] > 0) {
 							log::add('alarm', 'debug', __('Attente de ' . $trigger['waitDelay'] . ' min avant déclenchement', __FILE__));
@@ -498,8 +499,8 @@ class alarm extends eqLogic {
 						if ($this->getConfiguration('autorearm', 0) == 1 || $cmd_state->execCmd() != 1) {
 							log::add('alarm', 'debug', __('Déclenchement de l\'alarme', __FILE__));
 							$cmd_state->event(1);
-							$this->doAction('outbreak', $select_mode);
-							$this->doZoneAction($zone['actions'], $select_mode);
+							$this->doAction('outbreak', $select_mode, $triggerStr);
+							$this->doZoneAction($zone['actions'], $select_mode, $triggerStr);
 						}
 						return;
 					}
@@ -508,12 +509,13 @@ class alarm extends eqLogic {
 		}
 	}
 
-	public function doZoneAction($_actions, $_mode = null) {
+	public function doZoneAction($_actions, $_mode = null, $_trigger = '') {
 		if ($_mode === null) {
 			$_mode = $this->getCmd(null, 'mode')->execCmd();
 		}
-		$trigger = '';
-		$trigger = implode(" , ", $this->listCmdTrigger());
+		if ($_trigger == '') {
+			$_trigger = implode(" , ", $this->listCmdTrigger());
+		}
 		foreach ($_actions as $action) {
 			try {
 				if (isset($action['onMode']) && $action['onMode'] != 'all' && $action['onMode'] != $_mode) {
@@ -522,7 +524,7 @@ class alarm extends eqLogic {
 				if (isset($action['options'])) {
 					$options = $action['options'];
 					foreach ($options as $key => $value) {
-						$options[$key] = str_replace('#mode#', $_mode, str_replace('#trigger#', $trigger, $value));
+						$options[$key] = str_replace('#mode#', $_mode, str_replace('#trigger#', $_trigger, $value));
 					}
 				}
 				log::add('alarm', 'debug', __('Execution de ', __FILE__) . $action['cmd'] . ' => ' . print_r($options, true));
@@ -533,9 +535,10 @@ class alarm extends eqLogic {
 		}
 	}
 
-	public function doAction($_action, $_mode = null) {
-		$trigger = '';
-		$trigger = implode(" , ", $this->listCmdTrigger());
+	public function doAction($_action, $_mode = null, $_trigger = '') {
+		if ($_trigger == '') {
+			$_trigger = implode(" , ", $this->listCmdTrigger());
+		}
 		if ($_mode === null) {
 			$_mode = $this->getCmd(null, 'mode')->execCmd();
 		}
@@ -552,7 +555,7 @@ class alarm extends eqLogic {
 				if (isset($action['options'])) {
 					$options = $action['options'];
 					foreach ($options as $key => $value) {
-						$options[$key] = str_replace('#mode#', $_mode, str_replace('#trigger#', $trigger, $value));
+						$options[$key] = str_replace('#mode#', $_mode, str_replace('#trigger#', $_trigger, $value));
 					}
 				}
 				scenarioExpression::createAndExec('action', $action['cmd'], $options);
