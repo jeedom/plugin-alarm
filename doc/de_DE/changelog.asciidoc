@@ -1,9 +1,11 @@
 == Änderungsprotokoll
 
+- Retour en arriere sur le non déclenchement des actions immédiates si le délai d'activation est vide ou nul
+
 - Wenn ein Sensor bei der Aktivierung auf der Hut ist und keine Aktivierungsfrist dann hat, bewaffnet sich der Alarm, wenn diesen Sensor nicht wissend (Sonst er in die Ruhe zurückkehrt)
 - Ajout d'action de déclenchement globale (plus filtrée par zone, il est conseillé d'utiliser celle-ci plutot que les actions de déclenchement par zone)
 - Optimierung des Kodes
-- ATTENTION : l'alarme n'execute plus les actions immediates si il n'y a pas de délai de déclenchement !!!!!!
+- ATTENTION : l'alarme n'execute plus les actions immediates si il n'y a pas de délai de déclenchement !!!!!! => Annulé
 
 
 - Possibilité de filtrer la réalisation des actions par rapport au mode de l'alarme
