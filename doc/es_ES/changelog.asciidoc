@@ -1,5 +1,7 @@
 == Changelog
 
+- Gestion des secondes sur le delai d'activatio (JEED-63)
+
 - Retour en arriere sur le non déclenchement des actions immédiates si le délai d'activation est vide ou nul
 
 -Si al activar un sensor está en alerta y no tiene tiempo de activación, la alarma ignorará este sensor al armarse (a menos que vuelva a reposo)

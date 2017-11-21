@@ -1,5 +1,7 @@
 == Änderungsprotokoll
 
+- Gestion des secondes sur le delai d'activatio (JEED-63)
+
 - Retour en arriere sur le non déclenchement des actions immédiates si le délai d'activation est vide ou nul
 
 - Wenn ein Sensor bei der Aktivierung auf der Hut ist und keine Aktivierungsfrist dann hat, bewaffnet sich der Alarm, wenn diesen Sensor nicht wissend (Sonst er in die Ruhe zurückkehrt)
