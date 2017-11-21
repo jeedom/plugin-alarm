@@ -710,9 +710,6 @@ class alarmCmd extends cmd {
 						if ($armedCompleteDatetime < $armedCompleteDatetimeTemp) {
 							$armedCompleteDatetime = $armedCompleteDatetimeTemp;
 						}
-						if ($armedCompleteDatetimeTemp > 0 && $armedCompleteDatetimeTemp < (strtotime('now') + 70)) {
-							$armedCompleteDatetimeTemp = strtotime('now') + 70;
-						}
 						$cron = new cron();
 						$cron->setClass('alarm');
 						$cron->setFunction('checkDetector');
