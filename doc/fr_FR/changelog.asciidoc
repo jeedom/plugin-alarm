@@ -1,5 +1,7 @@
 == Changelog
 
+- Gestion des secondes sur le delai d'activatio (JEED-63)
+
 - Retour en arriere sur le non déclenchement des actions immédiates si le délai d'activation est vide ou nul
 
 - Si lors de l'activation un capteur est en alerte et n'a pas de délai d'activation alors l'alarme s'arme quand meme en ignorant ce capteur (a moins qu'il revienne au repos)

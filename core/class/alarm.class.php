@@ -45,6 +45,9 @@ class alarm extends eqLogic {
 				if (!is_object($cmd)) {
 					return;
 				}
+				if (isset($_params['delay']) && $_params['delay'] > 0) {
+					sleep($_params['delay']);
+				}
 				$cmd_mode = $eqLogic->getCmd(null, 'mode');
 				$select_mode = $cmd_mode->execCmd();
 				$modes = $eqLogic->getConfiguration('modes');
@@ -92,6 +95,9 @@ class alarm extends eqLogic {
 			$cmd_armed = $eqLogic->getCmd(null, 'enable');
 			$cmd_state = $eqLogic->getCmd(null, 'state');
 			if (is_object($cmd_armed) && is_object($cmd_state) && $cmd_armed->execCmd() == 1 && $cmd_state->execCmd() == 0) {
+				if (isset($_params['delay']) && $_params['delay'] > 0) {
+					sleep($_params['delay']);
+				}
 				log::add('alarm', 'debug', __('Activation OK éxécution des actions', __FILE__));
 				$eqLogic->doAction('activationOk');
 			}
@@ -710,7 +716,7 @@ class alarmCmd extends cmd {
 						$cron = new cron();
 						$cron->setClass('alarm');
 						$cron->setFunction('checkDetector');
-						$cron->setOption(array('alarm_id' => intval($eqLogic->getId()), 'cmd_id' => intval($cmd->getId())));
+						$cron->setOption(array('alarm_id' => intval($eqLogic->getId()), 'cmd_id' => intval($cmd->getId()), 'delay' => date('s', $armedCompleteDatetime)));
 						$cron->setLastRun(date('Y-m-d H:i:s'));
 						$cron->setOnce(1);
 						$cron->setSchedule(cron::convertDateToCron($armedCompleteDatetimeTemp));
@@ -741,7 +747,7 @@ class alarmCmd extends cmd {
 				$cron = new cron();
 				$cron->setClass('alarm');
 				$cron->setFunction('armedComplete');
-				$cron->setOption(array('alarm_id' => intval($eqLogic->getId())));
+				$cron->setOption(array('alarm_id' => intval($eqLogic->getId()), 'delay' => date('s', $armedCompleteDatetime)));
 				$cron->setLastRun(date('Y-m-d H:i:s'));
 				$cron->setOnce(1);
 				$cron->setSchedule(cron::convertDateToCron($armedCompleteDatetime));
