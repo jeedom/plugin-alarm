@@ -58,6 +58,9 @@ class alarm extends eqLogic {
 							if ((!is_array($mode['zone']) && $zone['name'] == $mode['zone']) || (is_array($mode['zone']) && in_array($zone['name'], $mode['zone']))) {
 								foreach ($zone['triggers'] as $trigger) {
 									if ($trigger['cmd'] == '#' . $cmd->getId() . '#') {
+										if (isset($trigger['enable']) && $trigger['enable'] == 0) {
+											continue;
+										}
 										log::add('alarm', 'debug', __('Verification de ', __FILE__) . $cmd->getHumanName());
 										$result = $cmd->execCmd();
 										if (isset($trigger['invert']) && $trigger['invert'] == 1) {
@@ -421,6 +424,9 @@ class alarm extends eqLogic {
 		$zones = $this->getZoneOfMode($this->getCmd(null, 'mode')->execCmd());
 		foreach ($zones as $zone) {
 			foreach ($zone['triggers'] as $trigger) {
+				if (isset($trigger['enable']) && $trigger['enable'] == 0) {
+					continue;
+				}
 				$cmd = cmd::byId(str_replace('#', '', $trigger['cmd']));
 				if (is_object($cmd)) {
 					$value = $cmd->execCmd();
@@ -461,6 +467,9 @@ class alarm extends eqLogic {
 			foreach ($zones as $zone) {
 				log::add('alarm', 'debug', __('Vérification de la zone : ', __FILE__) . $zone['name']);
 				foreach ($zone['triggers'] as $trigger) {
+					if (isset($trigger['enable']) && $trigger['enable'] == 0) {
+						continue;
+					}
 					if ($trigger['cmd'] == '#' . $_trigger_id . '#') {
 						if (isset($trigger['invert']) && $trigger['invert'] == 1) {
 							$_value = ($_value == 1 || $_value) ? 0 : 1;
@@ -700,6 +709,9 @@ class alarmCmd extends cmd {
 			foreach ($zones as $zone) {
 				log::add('alarm', 'debug', __('Vérification de la zone : ', __FILE__) . $zone['name']);
 				foreach ($zone['triggers'] as $trigger) {
+					if (isset($trigger['enable']) && $trigger['enable'] == 0) {
+						continue;
+					}
 					$cmd = cmd::byId(str_replace('#', '', $trigger['cmd']));
 					if (!is_object($cmd)) {
 						continue;
