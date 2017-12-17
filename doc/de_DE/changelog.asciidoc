@@ -1,5 +1,7 @@
 == Änderungsprotokoll
 
+- Correction d'un bug sur la désactivation des détecteurs
+
 - Verwaltung der Sekunden für die Aktivierungsverzögerung (JEED-63)
 
 - Retour en arriere sur le non déclenchement des actions immédiates si le délai d'activation est vide ou nul

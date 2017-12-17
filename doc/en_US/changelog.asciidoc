@@ -1,5 +1,7 @@
 == Changelog
 
+- Correction d'un bug sur la désactivation des détecteurs
+
 - Gestion des secondes sur le delai d'activatio (JEED-63)
 
 - Retour en arriere sur le non déclenchement des actions immédiates si le délai d'activation est vide ou nul
