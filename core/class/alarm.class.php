@@ -738,7 +738,7 @@ class alarmCmd extends cmd {
 					}
 					if ($result == 1) {
 						log::add('alarm', 'debug', __('La commande est active : ', __FILE__) . $cmd->getHumanName());
-						$disable_trigger[$cmd->getId()] = $cmd->getId();
+						$disable_trigger[$cmd->getId()] = $cmd->getHumanName();
 					}
 				}
 			}
@@ -746,7 +746,7 @@ class alarmCmd extends cmd {
 			if (count($disable_trigger) > 0) {
 				log::add('alarm', 'debug', __('Trigger désactivé : ', __FILE__) . print_r($disable_trigger, true));
 				log::add('alarm', 'debug', __('Lancement des actions d\'activation ko', __FILE__));
-				$eqLogic->doAction('activationKo', $select_mode);
+				$eqLogic->doAction('activationKo', $select_mode, implode(',', $disable_trigger));
 			}
 
 			/*             * *****************Activation reussi***************** */
