@@ -312,8 +312,7 @@ class alarm extends eqLogic {
 		}
 
 		if ($this->getConfiguration('always_active') == 1) {
-			$cmd_armed = $this->getCmd(null, 'enable');
-			$cmd_armed->event(1);
+			$this->getCmd(null, 'enable')->event(1);
 		}
 
 		if ($this->getIsEnable() == 1) {
@@ -505,7 +504,7 @@ class alarm extends eqLogic {
 						if (isset($trigger['waitDelay']) && $trigger['waitDelay'] !== '' && is_numeric(intval($trigger['waitDelay'])) && $trigger['waitDelay'] > 0) {
 							log::add('alarm', 'debug', __('Attente de ' . $trigger['waitDelay'] . ' min avant déclenchement', __FILE__));
 							sleep($trigger['waitDelay'] * 60);
-							if ($cmd_armed->execCmd() == 0) {
+							if ($cmd_armed->execCmd() == 0 && $cmd_immediatState->execCmd() == 1) {
 								log::add('alarm', 'debug', __('L\'alarme a été désarmé avant déclenchement', __FILE__));
 								return;
 							}
