@@ -18,7 +18,7 @@
         "Mode": "Modus",
         "Envoi etat alarm ok": "Alarmzustand Senden Ok",
         "Aucun": "Ohne",
-        "Lancement de la vérification des detecteurs post activation": "Lancement de la vérification des detecteurs post activation",
+        "Lancement de la vérification des detecteurs post activation": "Start der Überprüfung Post Aktivierung Detektoren",
         "Verification de ": "Überprüfung",
         " , armement : ": ", Ausrüstung :",
         " valeur : ": "Wert :",
@@ -28,9 +28,9 @@
         "Déclenchement de l'alarme": "Alarmauslösung",
         "Execution de ": "Ausführung",
         "Remise à zero de l'alarme": "Alarmrückstellung-Null",
-        "Non déclenchement car la valeur n'est pas une alerte": "Non déclenchement car la valeur n'est pas une alerte",
+        "Non déclenchement car la valeur n'est pas une alerte": "Kein Trigger, da der Wert nicht eine Warnung ist",
         "Alarme déjà en cours": "Alarm bereits ausgelöst",
-        "Statut pause": "Statut pause",
+        "Statut pause": "Pause Status",
         "Pause": "Pause",
         "Reprise": "Wiederherstellung"
     },
@@ -72,12 +72,12 @@
         "Annuler": "Abbrechen",
         "Valider": "Prüfen",
         "Réarmement automatique": "Automatischer Reset",
-        "Une zone décris les capteurs que l'alarme doit surveiller ainsi que les actions à faire en cas de déclenchement.": "Une zone décris les capteurs que l'alarme doit surveiller ainsi que les actions à faire en cas de déclenchement.",
-        "Les modes permettent d'activer les zones. Il vous en faut absolument un.": "Les modes permettent d'activer les zones. Il vous en faut absolument un.",
-        "C'est ici que vous devez mettre les actions à faire lorsque l’alarme est déclenchée puis désactivée": "C'est ici que vous devez mettre les actions à faire lorsque l’alarme est déclenchée puis désactivée",
-        "C'est ici que vous devez mettre les actions à faire lorsque l’alarme est désactivée et qu’elle n’est pas déclenchée": "C'est ici que vous devez mettre les actions à faire lorsque l’alarme est désactivée et qu’elle n’est pas déclenchée",
-        "C'est ici que vous devez mettre les actions à faire lors d'une activation réussie de l'alarme": "C'est ici que vous devez mettre les actions à faire lors d'une activation réussie de l'alarme",
-        "C'est ici que vous devez mettre les actions à faire lorsque l'activation de l'alarme à échouée": "C'est ici que vous devez mettre les actions à faire lorsque l'activation de l'alarme à échouée",
+        "Une zone décris les capteurs que l'alarme doit surveiller ainsi que les actions à faire en cas de déclenchement.": "Beschreiben Sie einen Flächensensor, der der Alarm sowie Maßnahmen zu überwachen, wenn sie ausgelöst zu tun.",
+        "Les modes permettent d'activer les zones. Il vous en faut absolument un.": "Die Modi können aktiviert Bereiche werden. Es wird absolut sein.",
+        "C'est ici que vous devez mettre les actions à faire lorsque l’alarme est déclenchée puis désactivée": "Dies ist, wo Sie müssen Maßnahmen setzen, um zu tun, wenn der Alarm aktiviert und deaktiviert wird",
+        "C'est ici que vous devez mettre les actions à faire lorsque l’alarme est désactivée et qu’elle n’est pas déclenchée": "Dies ist, wo Sie müssen Maßnahmen setzen, um zu tun, wenn der Alarm deaktiviert ist, und es wird nicht ausgelöst",
+        "C'est ici que vous devez mettre les actions à faire lors d'une activation réussie de l'alarme": "Dies ist, wo Sie brauchen Aktionen setzen bei erfolgreicher Aktivierung des Alarms zu tun",
+        "C'est ici que vous devez mettre les actions à faire lorsque l'activation de l'alarme à échouée": "Dies ist, wo Sie müssen Maßnahmen setzen, um zu tun, wenn die Aktivierung der Alarm ausgefallen",
         "Configuration avancée": "Erweiterte Konfiguration",
         "Equipement": "Gerät"
     },
@@ -104,8 +104,8 @@
         "Dupliquer": "Kopieren",
         "Nom du mode": "Modus Name",
         "Zone": "Bereich",
-        "Activation (min pleine)": "Activation (min pleine)",
-        "Déclenchement (min, décimal possible)": "Déclenchement (min, décimal possible)"
+        "Activation (min pleine)": "Die Aktivierung (Voll Minuten)",
+        "Déclenchement (min, décimal possible)": "Auslösen (min decimal möglich)"
     },
     "plugins/alarm/plugin_info/info.json": {
         "Plugin pour la gestion de la sécurité": "Plugin für das Sicherheitsmanagement"
