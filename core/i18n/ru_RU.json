@@ -32,7 +32,14 @@
         "Alarme déjà en cours": "Сигнализация уже идет",
         "Statut pause": "статус Pause",
         "Pause": "Пауза",
-        "Reprise": "Возобновление"
+        "Reprise": "Возобновление",
+        "Non déclenchement car la valeur n'est pas une alerte : ": "Non déclenchement car la valeur n'est pas une alerte :",
+        "Trigger désactivé : ": "Trigger désactivé :",
+        "Activation de l'alarme réussie": "Activation de l'alarme réussie",
+        "Zones : ": "Zones :",
+        "Lancement des actions d'activation ko": "Lancement des actions d'activation ko",
+        "Non déclenchement car le capteur est inactif (car il était en alerte à l'activation) : ": "Non déclenchement car le capteur est inactif (car il était en alerte à l'activation) :",
+        "Supression du capteur de la liste de capteur inactif à l'activation": "Supression du capteur de la liste de capteur inactif à l'activation"
     },
     "plugins/alarm/desktop/php/alarm.php": {
         "Ajouter une alarme": "Добавить тревогу",
@@ -79,7 +86,17 @@
         "C'est ici que vous devez mettre les actions à faire lors d'une activation réussie de l'alarme": "Здесь вам нужно положить действия, чтобы сделать после успешной активации тревоги",
         "C'est ici que vous devez mettre les actions à faire lorsque l'activation de l'alarme à échouée": "Здесь вам нужно положить действия делать при активации тревоги не удалось",
         "Configuration avancée": "Расширенные настройки",
-        "Equipement": "Оборудование"
+        "Equipement": "Оборудование",
+        "Mes Alarmes": "Mes Alarmes",
+        "Déclenchement": "Déclenchement",
+        "C'est ici que vous devez mettre les actions à faire lorsque l'alarme se déclenche (à noter que vous pouvez aussi le faire par zone dans l'onglet zone)": "C'est ici que vous devez mettre les actions à faire lorsque l'alarme se déclenche (à noter que vous pouvez aussi le faire par zone dans l'onglet zone)",
+        "Ajouter action lors du déclechement": "Ajouter action lors du déclechement",
+        "Ajouter action immediate lors du déclenchement": "Ajouter action immediate lors du déclenchement",
+        "Ajouter action de déclechement": "Ajouter action de déclechement",
+        "Ajouter action immediate de déclenchement": "Ajouter action immediate de déclenchement",
+        "C'est ici que vous devez mettre les actions à faire lorsque l'alarme se déclenche (à noter que vous pouvez aussi le faire par zone)": "C'est ici que vous devez mettre les actions à faire lorsque l'alarme se déclenche (à noter que vous pouvez aussi le faire par zone)",
+        "Une zone décrit les capteurs que l'alarme doit surveiller ainsi que les actions à faire en cas de déclenchement.": "Une zone décrit les capteurs que l'alarme doit surveiller ainsi que les actions à faire en cas de déclenchement.",
+        "Gestion": "Управление"
     },
     "plugins/alarm/plugin_info/info.xml": {
         "Plugin pour la gestion de la sécurité": "Плагин для управления безопасностью",
@@ -105,7 +122,11 @@
         "Nom du mode": "Название режима",
         "Zone": "Зона",
         "Activation (min pleine)": "Активация (полные минуты)",
-        "Déclenchement (min, décimal possible)": "Срабатывание (мин десятичной возможно)"
+        "Déclenchement (min, décimal possible)": "Срабатывание (мин десятичной возможно)",
+        "Sélectionner un mot-clé": "Выберите ключевое слово",
+        "Tous les modes": "Tous les modes",
+        "Décocher pour desactiver l\\'action": "Décocher pour desactiver l\\'action",
+        "Cocher pour que la commande s\\'éxecute en parrallele des autres actions": "Cocher pour que la commande s\\'éxecute en parrallele des autres actions"
     },
     "plugins/alarm/plugin_info/info.json": {
         "Plugin pour la gestion de la sécurité": "Плагин для управления безопасностью"
