@@ -125,8 +125,8 @@
         "Déclenchement (min, décimal possible)": "Açılma (min, virgüllü ondalık mümkün)",
         "Sélectionner un mot-clé": "Anahtar kelime seçin",
         "Tous les modes": "Tous les modes",
-        "Décocher pour desactiver l\\'action": "Décocher pour desactiver l\\'action",
-        "Cocher pour que la commande s\\'éxecute en parrallele des autres actions": "Cocher pour que la commande s\\'éxecute en parrallele des autres actions"
+        "Décocher pour desactiver l\\'action": "\\ 'ın Eylem devre dışı bırakmak için işaretini kaldırın",
+        "Cocher pour que la commande s\\'éxecute en parrallele des autres actions": "denetleyin diğer eylemlere ilişkin olarak yürütülen sipariş \\ 'ın"
     },
     "plugins/alarm/plugin_info/info.json": {
         "Plugin pour la gestion de la sécurité": "Güvenliğin yönetimi için eklenti"

@@ -125,8 +125,8 @@
         "Déclenchement (min, décimal possible)": "Memicu (min desimal mungkin)",
         "Sélectionner un mot-clé": "Pilih kata kunci",
         "Tous les modes": "Tous les modes",
-        "Décocher pour desactiver l\\'action": "Décocher pour desactiver l\\'action",
-        "Cocher pour que la commande s\\'éxecute en parrallele des autres actions": "Cocher pour que la commande s\\'éxecute en parrallele des autres actions"
+        "Décocher pour desactiver l\\'action": "Hapus tanda centang untuk menonaktifkan \\ 's Aksi",
+        "Cocher pour que la commande s\\'éxecute en parrallele des autres actions": "Periksa untuk urutan \\ 's dieksekusi secara paralel untuk tindakan lainnya"
     },
     "plugins/alarm/plugin_info/info.json": {
         "Plugin pour la gestion de la sécurité": "Plugin untuk manajemen keamanan"

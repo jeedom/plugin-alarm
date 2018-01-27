@@ -35,10 +35,10 @@
         "Reprise": "Wiederherstellung",
         "Non déclenchement car la valeur n'est pas une alerte : ": "Non déclenchement car la valeur n'est pas une alerte :",
         "Trigger désactivé : ": "Trigger désactivé :",
-        "Activation de l'alarme réussie": "Activation de l'alarme réussie",
-        "Zones : ": "Zones :",
+        "Activation de l'alarme réussie": "Aktivierung des Alarms erfolgreich",
+        "Zones : ": "Bereich :",
         "Lancement des actions d'activation ko": "Lancement des actions d'activation ko",
-        "Non déclenchement car le capteur est inactif (car il était en alerte à l'activation) : ": "Non déclenchement car le capteur est inactif (car il était en alerte à l'activation) :",
+        "Non déclenchement car le capteur est inactif (car il était en alerte à l'activation) : ": "Nicht ausgelöst, weil der Sensor inaktiv ist (denn er war bei der Aktivierung in Alarm) :",
         "Supression du capteur de la liste de capteur inactif à l'activation": "Supression du capteur de la liste de capteur inactif à l'activation"
     },
     "plugins/alarm/desktop/php/alarm.php": {
@@ -87,10 +87,10 @@
         "C'est ici que vous devez mettre les actions à faire lorsque l'activation de l'alarme à échouée": "Dies ist, wo Sie müssen Maßnahmen setzen, um zu tun, wenn die Aktivierung der Alarm ausgefallen",
         "Configuration avancée": "Erweiterte Konfiguration",
         "Equipement": "Gerät",
-        "Mes Alarmes": "Mes Alarmes",
-        "Déclenchement": "Déclenchement",
-        "C'est ici que vous devez mettre les actions à faire lorsque l'alarme se déclenche (à noter que vous pouvez aussi le faire par zone dans l'onglet zone)": "C'est ici que vous devez mettre les actions à faire lorsque l'alarme se déclenche (à noter que vous pouvez aussi le faire par zone dans l'onglet zone)",
-        "Ajouter action lors du déclechement": "Ajouter action lors du déclechement",
+        "Mes Alarmes": "Mein Alarm",
+        "Déclenchement": "Auslösung",
+        "C'est ici que vous devez mettre les actions à faire lorsque l'alarme se déclenche (à noter que vous pouvez aussi le faire par zone dans l'onglet zone)": "Hier müssen Sie die Aktionen festlegen, die ausgeführt werden sollen, wenn der Alarm ausgelöst wird (beachten Sie, dass Sie dies auch über die Zone in der Zonen-Registerkarte tun können)",
+        "Ajouter action lors du déclechement": "Aktion bei Auslösung hinzufügen",
         "Ajouter action immediate lors du déclenchement": "Ajouter action immediate lors du déclenchement",
         "Ajouter action de déclechement": "Ajouter action de déclechement",
         "Ajouter action immediate de déclenchement": "Ajouter action immediate de déclenchement",
@@ -124,9 +124,9 @@
         "Activation (min pleine)": "Die Aktivierung (Voll Minuten)",
         "Déclenchement (min, décimal possible)": "Auslösen (min decimal möglich)",
         "Sélectionner un mot-clé": "Schlüsselwort auswählen",
-        "Tous les modes": "Tous les modes",
-        "Décocher pour desactiver l\\'action": "Décocher pour desactiver l\\'action",
-        "Cocher pour que la commande s\\'éxecute en parrallele des autres actions": "Cocher pour que la commande s\\'éxecute en parrallele des autres actions"
+        "Tous les modes": "Alle Modi",
+        "Décocher pour desactiver l\\'action": "Deaktivieren Sie diese Option, um die Aktion zu deaktivieren",
+        "Cocher pour que la commande s\\'éxecute en parrallele des autres actions": "Überprüfen Sie, ob der Befehl parallel zu den anderen Aktionen ausgeführt wird"
     },
     "plugins/alarm/plugin_info/info.json": {
         "Plugin pour la gestion de la sécurité": "Plugin für das Sicherheitsmanagement"

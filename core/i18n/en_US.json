@@ -125,8 +125,8 @@
         "Déclenchement (min, décimal possible)": "Trigger (in minutes, floating number allowed)",
         "Sélectionner un mot-clé": "Select a keyword",
         "Tous les modes": "Tous les modes",
-        "Décocher pour desactiver l\\'action": "Décocher pour desactiver l\\'action",
-        "Cocher pour que la commande s\\'éxecute en parrallele des autres actions": "Cocher pour que la commande s\\'éxecute en parrallele des autres actions"
+        "Décocher pour desactiver l\\'action": "Uncheck to disable the action",
+        "Cocher pour que la commande s\\'éxecute en parrallele des autres actions": "Check for the order to be executed in parallel with other actions"
     },
     "plugins/alarm/plugin_info/info.json": {
         "Plugin pour la gestion de la sécurité": "Plugin for security management"
