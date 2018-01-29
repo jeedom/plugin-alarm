@@ -215,10 +215,10 @@
 });
 
  $('.nav-tabs li a').on('click',function(){
-   setTimeout(function(){ 
-    taAutosize();
-}, 50);
-})
+     setTimeout(function(){ 
+        taAutosize();
+    }, 50);
+ })
 
  function saveEqLogic(_eqLogic) {
     if (!isset(_eqLogic.configuration)) {
@@ -446,7 +446,7 @@ function addTrigger(_el, _trigger) {
     var div = '<div class="trigger">';
     div += '<div class="form-group">';
     div += '<label class="col-sm-1 control-label">{{Déclencheur}}</label>';
-    div += '<div class="col-sm-4 has-success">';
+    div += '<div class="col-sm-3 has-success">';
     div += '<div class="input-group">';
     div += '<span class="input-group-btn">';
     div += '<input type="checkbox" class="triggerAttr" data-l1key="enable" checked />';
@@ -457,6 +457,10 @@ function addTrigger(_el, _trigger) {
     div += '<a class="btn btn-sm listCmdInfo btn-success"><i class="fa fa-list-alt"></i></a>';
     div += '</span>';
     div += '</div>';
+    div += '</div>';
+    div += '<label class="col-sm-1 control-label">{{Maintient (s)}}</label>';
+    div += '<div class="col-sm-1 has-success">';
+    div += '<input class="triggerAttr form-control input-sm" data-l1key="triggerHold" value="0" />';
     div += '</div>';
     div += '<label class="col-sm-1 control-label">{{Activation (min pleine)}}</label>';
     div += '<div class="col-sm-1 has-success">';

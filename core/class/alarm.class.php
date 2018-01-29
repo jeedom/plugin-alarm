@@ -451,76 +451,87 @@ class alarm extends eqLogic {
 		$cmd_armed = $this->getCmd(null, 'enable');
 		$cmd_state = $this->getCmd(null, 'state');
 		log::add('alarm', 'debug', __('Status de l\'alarme : ', __FILE__) . $cmd_state->execCmd() . __(' , armement : ', __FILE__) . $cmd_armed->execCmd());
-		if ($cmd_armed->execCmd() == 1 && ($cmd_state->execCmd() != 1 || $this->getConfiguration('autorearm', 0) == 1)) {
-			$cmd_immediatState = $this->getCmd(null, 'immediatState');
-			$cmd_trigger = cmd::byId($_trigger_id);
-			if (!is_object($cmd_trigger)) {
-				log::add('alarm', 'error', __('Commande déclencheur de l\'alarme non trouvé : ', __FILE__) . $_trigger_id);
-				return;
-			}
-			log::add('alarm', 'debug', __('Déclenchement de l\'alarme sur évenement : ', __FILE__) . $cmd_trigger->getHumanName() . __(' valeur : ', __FILE__) . $_value);
-			$select_mode = $this->getCmd(null, 'mode')->execCmd();
-			log::add('alarm', 'debug', __('Mode actif : ', __FILE__) . $select_mode);
-			$zones = $this->getZoneOfMode($select_mode);
-			$disable_trigger = $this->getCache('disable_trigger', array());
-			foreach ($zones as $zone) {
-				log::add('alarm', 'debug', __('Vérification de la zone : ', __FILE__) . $zone['name']);
-				foreach ($zone['triggers'] as $trigger) {
-					if (isset($trigger['enable']) && $trigger['enable'] == 0) {
-						continue;
+		if ($cmd_armed->execCmd() != 1 || ($cmd_state->execCmd() == 1 && $this->getConfiguration('autorearm', 0) == 0)) {
+			return;
+		}
+		$cmd_immediatState = $this->getCmd(null, 'immediatState');
+		$cmd_trigger = cmd::byId($_trigger_id);
+		if (!is_object($cmd_trigger)) {
+			log::add('alarm', 'error', __('Commande déclencheur de l\'alarme non trouvé : ', __FILE__) . $_trigger_id);
+			return;
+		}
+		log::add('alarm', 'debug', __('Déclenchement de l\'alarme sur évenement : ', __FILE__) . $cmd_trigger->getHumanName() . __(' valeur : ', __FILE__) . $_value);
+		$select_mode = $this->getCmd(null, 'mode')->execCmd();
+		log::add('alarm', 'debug', __('Mode actif : ', __FILE__) . $select_mode);
+		$zones = $this->getZoneOfMode($select_mode);
+		$disable_trigger = $this->getCache('disable_trigger', array());
+		foreach ($zones as $zone) {
+			log::add('alarm', 'debug', __('Vérification de la zone : ', __FILE__) . $zone['name']);
+			foreach ($zone['triggers'] as $trigger) {
+				if (isset($trigger['enable']) && $trigger['enable'] == 0) {
+					continue;
+				}
+				if ($trigger['cmd'] != '#' . $_trigger_id . '#') {
+					continue;
+				}
+				if (isset($trigger['invert']) && $trigger['invert'] == 1) {
+					$_value = ($_value == 1 || $_value) ? 0 : 1;
+				}
+				if (in_array($_trigger_id, $disable_trigger)) {
+					log::add('alarm', 'debug', __('Non déclenchement car le capteur est inactif (car il était en alerte à l\'activation) : ', __FILE__) . print_r($disable_trigger, true));
+					if ($_value != 1 && !$_value) {
+						unset($disable_trigger[$_trigger_id]);
+						$this->setCache('disable_trigger', $disable_trigger);
+						log::add('alarm', 'debug', __('Supression du capteur de la liste de capteur inactif à l\'activation', __FILE__));
 					}
-					if ($trigger['cmd'] == '#' . $_trigger_id . '#') {
-						if (isset($trigger['invert']) && $trigger['invert'] == 1) {
-							$_value = ($_value == 1 || $_value) ? 0 : 1;
-						}
-						if (in_array($_trigger_id, $disable_trigger)) {
-							log::add('alarm', 'debug', __('Non déclenchement car le capteur est inactif (car il était en alerte à l\'activation) : ', __FILE__) . print_r($disable_trigger, true));
-							if ($_value != 1 && !$_value) {
-								unset($disable_trigger[$_trigger_id]);
-								$this->setCache('disable_trigger', $disable_trigger);
-								log::add('alarm', 'debug', __('Supression du capteur de la liste de capteur inactif à l\'activation', __FILE__));
-							}
-							continue;
-						}
-						if ($_value != 1 && !$_value) {
-							log::add('alarm', 'debug', __('Non déclenchement car la valeur n\'est pas une alerte : ', __FILE__) . print_r($_value, true));
-							continue;
-						}
-						$triggerStr = implode(" , ", $this->listCmdTrigger());
-						log::add('alarm', 'debug', __('Evenement valide, mise en alerte de l\'alarme sur declencheur : ', __FILE__) . $cmd_trigger->getHumanName() . __(' valeur : ', __FILE__) . $_value);
-						if (isset($trigger['armedDelay']) && $trigger['armedDelay'] !== '' && is_numeric(intval($trigger['armedDelay'])) && $trigger['armedDelay'] > 0) {
-							if (strtotime('now') < (strtotime($cmd_armed->getCollectDate()) + $trigger['armedDelay'] * 60)) {
-								log::add('alarm', 'debug', __('Non déclenchement de l\'alarme car hors delai d\'armement : ', __FILE__) . $cmd_armed->getCollectDate() . ' +' . $trigger['armedDelay'] . 'min');
-								return;
-							}
-						}
-						$this->cleanArmedCompleted();
-						if ($this->getConfiguration('autorearm', 0) == 1 || $cmd_immediatState->execCmd() != 1) {
-							log::add('alarm', 'debug', __('Exécution des actions immédiates', __FILE__));
-							$cmd_immediatState->event(1);
-							$this->doAction('outbreakImmediate', $select_mode, $triggerStr);
-							$this->doZoneAction($zone['actionsImmediate'], $select_mode, $triggerStr);
-						}
-						if (isset($trigger['waitDelay']) && $trigger['waitDelay'] !== '' && is_numeric(intval($trigger['waitDelay'])) && $trigger['waitDelay'] > 0) {
-							log::add('alarm', 'debug', __('Attente de ' . $trigger['waitDelay'] . ' min avant déclenchement', __FILE__));
-							sleep($trigger['waitDelay'] * 60);
-							if ($cmd_armed->execCmd() == 0 || $cmd_immediatState->execCmd() == 0) {
-								log::add('alarm', 'debug', __('L\'alarme a été désarmé avant déclenchement', __FILE__));
-								return;
-							}
-						}
-						log::add('alarm', 'debug', __('Status de l\'alarme (2) : ', __FILE__) . $cmd_state->execCmd() . __(' , armement : ', __FILE__) . $cmd_armed->execCmd());
-						if ($this->getConfiguration('autorearm', 0) == 1 || $cmd_state->execCmd() != 1) {
-							log::add('alarm', 'debug', __('Déclenchement de l\'alarme', __FILE__));
-							$cmd_state->event(1);
-							$this->doAction('outbreak', $select_mode, $triggerStr);
-							$this->doZoneAction($zone['actions'], $select_mode, $triggerStr);
-						}
+					continue;
+				}
+				if (isset($trigger['triggerHold']) && $trigger['triggerHold'] != '' && $trigger['triggerHold'] > 0) {
+					sleep($trigger['triggerHold']);
+					$_value = $cmd_trigger->execCmd();
+					if (isset($trigger['invert']) && $trigger['invert'] == 1) {
+						$_value = ($_value == 1 || $_value) ? 0 : 1;
+					}
+
+				}
+				if ($_value != 1 && !$_value) {
+					log::add('alarm', 'debug', __('Non déclenchement car la valeur n\'est pas une alerte : ', __FILE__) . print_r($_value, true));
+					continue;
+				}
+				$triggerStr = implode(" , ", $this->listCmdTrigger());
+				log::add('alarm', 'debug', __('Evenement valide, mise en alerte de l\'alarme sur declencheur : ', __FILE__) . $cmd_trigger->getHumanName() . __(' valeur : ', __FILE__) . $_value);
+				if (isset($trigger['armedDelay']) && $trigger['armedDelay'] !== '' && is_numeric(intval($trigger['armedDelay'])) && $trigger['armedDelay'] > 0) {
+					if (strtotime('now') < (strtotime($cmd_armed->getCollectDate()) + $trigger['armedDelay'] * 60)) {
+						log::add('alarm', 'debug', __('Non déclenchement de l\'alarme car hors delai d\'armement : ', __FILE__) . $cmd_armed->getCollectDate() . ' +' . $trigger['armedDelay'] . 'min');
 						return;
 					}
 				}
+				$this->cleanArmedCompleted();
+				if ($this->getConfiguration('autorearm', 0) == 1 || $cmd_immediatState->execCmd() != 1) {
+					log::add('alarm', 'debug', __('Exécution des actions immédiates', __FILE__));
+					$cmd_immediatState->event(1);
+					$this->doAction('outbreakImmediate', $select_mode, $triggerStr);
+					$this->doZoneAction($zone['actionsImmediate'], $select_mode, $triggerStr);
+				}
+				if (isset($trigger['waitDelay']) && $trigger['waitDelay'] !== '' && is_numeric(intval($trigger['waitDelay'])) && $trigger['waitDelay'] > 0) {
+					log::add('alarm', 'debug', __('Attente de ' . $trigger['waitDelay'] . ' min avant déclenchement', __FILE__));
+					sleep($trigger['waitDelay'] * 60);
+					if ($cmd_armed->execCmd() == 0 || $cmd_immediatState->execCmd() == 0) {
+						log::add('alarm', 'debug', __('L\'alarme a été désarmé avant déclenchement', __FILE__));
+						return;
+					}
+				}
+				log::add('alarm', 'debug', __('Status de l\'alarme (2) : ', __FILE__) . $cmd_state->execCmd() . __(' , armement : ', __FILE__) . $cmd_armed->execCmd());
+				if ($this->getConfiguration('autorearm', 0) == 1 || $cmd_state->execCmd() != 1) {
+					log::add('alarm', 'debug', __('Déclenchement de l\'alarme', __FILE__));
+					$cmd_state->event(1);
+					$this->doAction('outbreak', $select_mode, $triggerStr);
+					$this->doZoneAction($zone['actions'], $select_mode, $triggerStr);
+				}
+				return;
 			}
 		}
+
 	}
 
 	public function doZoneAction($_actions, $_mode = null, $_trigger = '') {
