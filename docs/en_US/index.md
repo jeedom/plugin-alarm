@@ -14,7 +14,7 @@ account of the triggering delays (be careful it takes into account
 activation times) and a second alarm which, in turn, takes into account
 the trigger times.
 
-** Why this immediate notion? **
+**Why this immediate notion?**
 
 This immediate notion allows triggering actions well
 specific. For example: you go home and you do not have
@@ -42,23 +42,23 @@ Once an alarm is added you are left with:
 -   **Category** : This is the category of the equipment (generally "security" for alarms
     for an alarm),
 
--   ** Enable **: to make your equipment active,
+-   **Enable**: to make your equipment active,
 
--   ** Visible **: makes your equipment visible on the dashboard,
+-   **Visible**: makes your equipment visible on the dashboard,
 
--   ** Always active **: indicates that the alarm will be permanently
+-   **Always active**: indicates that the alarm will be permanently
     active (for example for a fire alarm),
 
--   ** Arming visible **: makes it possible to make visible or not the order
+-   **Arming visible**: makes it possible to make visible or not the order
     arming the alarm on the widget,
 
--   ** Immediate status visible **: allows to make the immediate status of
+-   **Immediate status visible**: allows to make the immediate status of
     the visible alarm (see below for the explanation),
 
--   ** History and status of the alarm **: allows you to log or
+-   **History and status of the alarm**: allows you to log or
     not the state and status of the alarm.
 
-> ** Tip **
+> **Tip**
 >
 > For each action it is possible to specify the mode in which
 > it must be executed or in all modes
@@ -76,7 +76,7 @@ areas of the house (garage, bedroom, outbuildings ....).
 A button at the top right allows you to add as many as you
 want.
 
-> ** Tip **
+> **Tip**
 >
 > It is possible to edit the name of the zone by clicking on the name of the
 > this one (in front of the label "Name of the zone").
@@ -130,7 +130,7 @@ taking into account any activation delay). You just have to
 select the desired action command and then according to it
 fill in the execution parameters.
 
-> ** Note **
+> **Note**
 >
 > When more than one zone is triggered successively, only the
 > immediate actions of the 1st triggered zone are executed.
@@ -141,18 +141,18 @@ Modes
 The modes are simple enough to configure, just indicate
 active zones according to the mode.
 
-> ** Tip **
+> **Tip**
 >
 > It is possible to rename the mode by clicking on the name of it
 > (opposite the "Mode name" label).
 
-> ** Note **
+> **Note**
 >
 > When renaming a mode, you need the alarm widget
 > recliquer on the mode in question for a complete account
 > (otherwise jeedom stays on the old mode)
 
-> ** Important **
+> **Important**
 >
 > You must create at least one mode and assign zones
 > otherwise your alarm will not work.
@@ -171,7 +171,7 @@ signal that the armament has been taken into account and I turn it off a
 times the complete armament (because normally there is no one in the
 perimeter of the alarm, otherwise it triggers it).
 
-> ** Important **
+> **Important**
 >
 > OK activation actions do not take into account deadlines
 > activation. If you have a delay on activating a sensor
