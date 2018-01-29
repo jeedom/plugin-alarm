@@ -109,6 +109,8 @@ immediately but will wait until the activation delay is over before
 to unearth the actions. Finally you have the "invert" button that allows
 reverse the trigger state of the sensor (0 instead of 1).
 
+Vous avez aussi un paramètre **Maintient** qui permet de spécifier un délai de maintient du déclencheur avant de déclencher l'alarme. Ex si vous avez un detecteur de fumer qui remonte desfois des fausses alarmes vous pouvez specifier un délai de 2s. Lors du declenchement de l'alarme Jeedom va attendre 2s et verifier que le detecteur de fumée est toujours en alerte si c'est pas le cas il ne déclenchera pas l'alarme.  
+
 Small example to understand: on the first trigger
 (* \ [Salon \] \ [Eye \] \ [Presence \] *) Here I have an activation time of 5
 minutes and 1 minute trigger. It means that when

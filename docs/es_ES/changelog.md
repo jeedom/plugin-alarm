@@ -1,6 +1,8 @@
 
-Changelog 
-=========
+
+- Possibilité d'ajouter un délai de maintient d'un déclencheur avant activation de l'alarme
+
+# 01/12/2017
 
 -   Correction d’un bug sur la désactivation des détecteurs
 

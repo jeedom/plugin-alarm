@@ -112,6 +112,8 @@ immédiates mais va attendre que le délai d’activation soit fini avant de
 déchencher les actions. Enfin vous avez le bouton "inverser" qui permet
 d’inverser l’état déclencheur du capteur (0 au lieu de 1).
 
+Vous avez aussi un paramètre **Maintient** qui permet de spécifier un délai de maintient du déclencheur avant de déclencher l'alarme. Ex si vous avez un detecteur de fumer qui remonte desfois des fausses alarmes vous pouvez specifier un délai de 2s. Lors du declenchement de l'alarme Jeedom va attendre 2s et verifier que le detecteur de fumée est toujours en alerte si c'est pas le cas il ne déclenchera pas l'alarme.  
+
 Petit exemple pour bien comprendre : sur le premier déclencheur
 (*\[Salon\]\[Oeil\]\[Présence\]*) j’ai ici un délai d’activation de 5
 minutes et de déclenchement de 1 minute. Cela veut dire que lorsque
