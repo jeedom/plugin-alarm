@@ -531,7 +531,6 @@ class alarm extends eqLogic {
 				return;
 			}
 		}
-
 	}
 
 	public function doZoneAction($_actions, $_mode = null, $_trigger = '') {
