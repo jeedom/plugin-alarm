@@ -1,4 +1,7 @@
 
+# 12/02/2018
+
+- Correction d'un bug sur le déplacement des actions dans déclenchement
 
 - Possibilité d'ajouter un délai de maintient d'un déclencheur avant activation de l'alarme
 
