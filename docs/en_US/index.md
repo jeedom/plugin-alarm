@@ -1,8 +1,11 @@
-The Alarm plugin allows Jeedom to have a real alarm system for its automation, easy to use and configure.
+The Alarm plugin allows Jeedom to have a real alarm system for
+its home automation, very simple to use and configure.
 
-== Plugin configuration
+Plugin configuration
+=======================
 
-After downloading the plugin, you just have to activate it, there is no additional configuration at this level.
+After downloading the plugin, you just have to activate it,
+there is no additional configuration at this level.
 
 Immediate concept
 ================
@@ -34,12 +37,12 @@ Plugin &gt; Security.
 
 Once an alarm is added you are left with:
 
--   **Alarm Name** : Choose a name for your alarm
+-   **Name of alarm equipment**: name of your alarm,
 
--   **Parent Object** : means the parent object the equipment depend
+-   **Parent Object**: Specifies the parent object to which belongs
     equipment,
 
--   **Category** : This is the category of the equipment (generally "security" for alarms
+-   **Category**: the category of equipment (general safety
     for an alarm),
 
 -   **Enable**: to make your equipment active,
@@ -63,7 +66,7 @@ Once an alarm is added you are left with:
 > For each action it is possible to specify the mode in which
 > it must be executed or in all modes
 
-Areas
+areas
 =====
 
 Main part of the alarm. This is where you set up
@@ -84,7 +87,7 @@ want.
 A zone consists of different elements: - trigger, - action
 immediate, - action.
 
-Trigger
+trigger
 -----------
 
 A trigger is a binary command, which when it is worth 1 will
@@ -96,7 +99,7 @@ go below the minute). This delay allows for example, if you
 activate the alarm before leaving your home, not to trigger
 the alarm before one minute (the time to let you out). Other case,
 some motion detectors remain in triggered mode (value 1)
-for a while although there is no detection for example
+for a while although there is no detection, for example
 4 minutes, so it's good to shift the activation of these sensors 4
 or 5 min so that the alarm does not sound immediately after
 activation. Then you have the trigger time, at the
@@ -109,7 +112,7 @@ immediately but will wait until the activation delay is over before
 to unearth the actions. Finally you have the "invert" button that allows
 reverse the trigger state of the sensor (0 instead of 1).
 
-Vous avez aussi un paramètre **Maintient** qui permet de spécifier un délai de maintient du déclencheur avant de déclencher l'alarme. Ex si vous avez un detecteur de fumer qui remonte desfois des fausses alarmes vous pouvez specifier un délai de 2s. Lors du declenchement de l'alarme Jeedom va attendre 2s et verifier que le detecteur de fumée est toujours en alerte si c'est pas le cas il ne déclenchera pas l'alarme.  
+You also have a **Hold** setting that allows you to specify a trigger hold delay before triggering the alarm. Ex if you have a smoke detector that goes back false alarms sometimes you can specify a delay of 2s. When triggering the alarm Jeedom will wait 2s and check that the smoke detector is still alert if it is not the case it will not trigger the alarm.
 
 Small example to understand: on the first trigger
 (* \ [Salon \] \ [Eye \] \ [Presence \] *) Here I have an activation time of 5
@@ -134,10 +137,10 @@ fill in the execution parameters.
 
 > **Note**
 >
-> When more than one zone is triggered successively, only the
+> When several zones are triggered successively, only the
 > immediate actions of the 1st triggered zone are executed.
 
-Modes
+modes
 =====
 
 The modes are simple enough to configure, just indicate
@@ -186,7 +189,7 @@ KO activation
 These actions are executed if a sensor is triggered and this one is triggered
 has no activation time.
 
-Release
+release
 =============
 
 Allows you to configure the global actions to be performed during a trigger
@@ -204,7 +207,7 @@ delay, the OK deactivation actions will be executed. If however
 you had stopped the alarm after the end of the triggering time this
 would not have been the case.
 
-Reset
+reset
 ================
 
 This part allows you to define the actions to be done when the alarm

@@ -1,32 +1,35 @@
 
+# 12/02/2018
 
-- Possibilité d'ajouter un délai de maintient d'un déclencheur avant activation de l'alarme
+- Correction d'un bug sur le déplacement des actions dans déclenchement
+
+- Posibilidad de añadir una demora mantiene un disparador de activación de alarma antes
 
 # 01/12/2017
 
--   Correction d’un bug sur la désactivation des détecteurs
+-   Corregido un fallo sobre detectores incapacitantes
 
--   Gestion des secondes sur le delai d’activatio (JEED-63)
+-   segundos de gestión sobre el retraso de activatio (JEED-63)
 
--   Retour en arriere sur le non déclenchement des actions immédiates si
-    le délai d’activation est vide ou nul
+-   Espalda con espalda en la no-disparador de la acción inmediata si
+    el tiempo de activación está vacía o nula
 
--   Si lors de l’activation un capteur est en alerte et n’a pas de délai
-    d’activation alors l’alarme s’arme quand meme en ignorant ce capteur
-    (a moins qu’il revienne au repos)
+-   Si al activar un sensor está alerta y no tiene tiempo
+    activación entonces la alarma está armado cuando incluso ignorando este sensor
+    (A menos que llegue al ralentí)
 
--   Ajout d’action de déclenchement globale (plus filtrée par zone, il
-    est conseillé d’utiliser celle-ci plutot que les actions de
-    déclenchement par zone)
+-   Adición de una acción global gatillo (área más filtrada,
+    es recomendable utilizarlo en lugar de acciones
+    activación por área)
 
--   Optimisation du code
+-   optimización de código
 
--   ATTENTION : l’alarme n’execute plus les actions immediates si il n’y
-    a pas de délai de déclenchement !!!!!! ⇒ Annulé
+-   ADVERTENCIA: la alarma ejecutar más acciones si hay immediates
+    sin retardo de disparo !!!!!! ⇒ Cancelar
 
--   Possibilité de filtrer la réalisation des actions par rapport au
-    mode de l’alarme
+-   Filtrar la realización de las acciones con respecto a la
+    modo de alarma
 
--   Ajout commande pause/reprise
+-   Adición de pausa comando / recuperación
 
--   Amélioration de l’interface de configuration
+-   interfaz de configuración mejorada

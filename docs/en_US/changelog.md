@@ -1,6 +1,9 @@
 
+# 12/02/2018
 
-- Possibilité d'ajouter un délai de maintient d'un déclencheur avant activation de l'alarme
+- Correction d'un bug sur le déplacement des actions dans déclenchement
+
+- Ability to add a trigger hold delay before activating the alarm
 
 # 01/12/2017
 
