@@ -22,14 +22,13 @@
  $("#div_activationImmediateOk").sortable({axis: "y", cursor: "move", items: ".activationImmediateOk", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
  $("#div_releaseImmediate").sortable({axis: "y", cursor: "move", items: ".activationKo", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
  $("#div_release").sortable({axis: "y", cursor: "move", items: ".release", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
-
-
+ $("#div_outbreakImmediate").sortable({axis: "y", cursor: "move", items: ".outbreakImmediate", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
+ $("#div_outbreak").sortable({axis: "y", cursor: "move", items: ".outbreak", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
 
  $('#tab_alarm a').click(function (e) {
     e.preventDefault()
     $(this).tab('show')
 })
-
 
  $('#bt_addZone').on('click', function () {
     bootbox.prompt("{{Nom de la zone ?}}", function (result) {
