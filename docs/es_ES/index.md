@@ -10,21 +10,21 @@ no hay ninguna configuración adicional a este nivel.
 concepto inmediata
 ================
 
-Este es un concepto muy importante en el plugin de alarma y es
-importante entender bien. Esquemáticamente es como
-2 Es la primera alarmas: alarma inmediata que no lo hace
-tiempo de activación de cuenta (ten en cuenta que toma en consideración
-tiempo de activación) y una segunda alarma, que en sí mismo tiene en cuenta
-retrasos gatillo.
+C’est une notion très importante sur le plugin alarme et il est
+important de très bien la comprendre. Pour schématiser c’est comme si
+vous aviez 2 alarmes, la première : l’alarme immédiate qui ne tient pas
+compte des délais de déclenchement (attention elle prend bien en compte
+les délais d’activation) et une 2ème alarme qui elle, prend en compte
+les délais de déclenchement.
 
 **¿Por qué esta noción inmediata?**
 
-Este concepto permite también acciones de activación inmediata
-específico. Por ejemplo: si se va a casa y no tiene
-desactivar la alarma, antes de activar la sirena puede ser bueno
-difundir un mensaje recordando así activar la alarma y si
-no se hace 1 minuto más tarde (tiempo de activación de 1 minuto de modo)
-activar la sirena.
+Cette notion immédiate permet de déclencher des actions bien
+spécifiques. Par exemple : vous rentrez chez vous et vous n’avez pas
+désactivé l’alarme, avant de déclencher la sirène il peut être bon de
+diffuser un message rappellant de bien désactiver l’alarme et si ce
+n’est pas fait 1 minute plus tard (délai d’activation de 1 minute donc)
+d’activer la sirène.
 
 Este concepto se encuentra en diferentes tipos de acciones, cada vez
 principio se detallará.
@@ -112,7 +112,7 @@ inmediata sino que esperar a que el tiempo de activación es más antes
 déchencher acciones. Finalmente usted tiene el botón "atrás" que
 para revertir la condición de activación del sensor (0 en vez de 1).
 
-También tiene una ** ** Mantiene parámetro para especificar un período de mantener el gatillo antes de activar la alarma. Por ejemplo, si usted tiene un detector de humo que va a desfois falsa alarma puede especificar un período de 2 s. Cuando el disparo de alarma 2s Jeedom va a esperar y comprobar el detector de humo está siempre alerta, si este no es el caso, no se disparará la alarma.
+Vous avez aussi un paramètre **Maintient** qui permet de spécifier un délai de maintient du déclencheur avant de déclencher l'alarme. Ex si vous avez un détecteur de fumée qui remonte parfois de fausses alarmes vous pouvez spécifier un délai de 2s. Lors du déclenchement de l'alarme Jeedom va attendre 2s et vérifier que le détecteur de fumée est toujours en alerte si ce n'est pas le cas il ne déclenchera pas l'alarme.  
 
 Pequeño ejemplo para comprender: el primer disparo
 (* \ [Salón \] \ [Eye \] \ [Presencia \] *) He aquí un periodo de activación de 5
