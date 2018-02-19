@@ -106,6 +106,52 @@ class alarm extends eqLogic {
 			}
 		}
 	}
+	
+	public static function deadCmd() {
+		$return = array();
+		foreach (eqLogic::byType('alarm') as $alarm) {
+			foreach ($alarm->getConfiguration('zones',array()) as $zone){
+				$name = isset($zone['name']) ? $zone['name'] : '';
+				foreach ($zone['actions'] as $action){
+					if (isset($action['cmd'])) {
+						preg_match_all("/#([0-9]*)#/", $action['cmd'], $matches);
+						foreach ($matches[1] as $cmd_id) {
+							if (is_numeric($cmd_id)) {
+								if (!cmd::byId(str_replace('#', '', $cmd_id))) {
+									$return[] = array('detail' => 'Alarme ' . $alarm->getHumanName(), 'help' => 'Zone ' . $name . ' - Action', 'who' => '#' . $cmd_id . '#');
+								}
+							}
+						}
+					}
+				}
+				foreach ($zone['actionsImmediate'] as $action){
+					if (isset($action['cmd'])) {
+						preg_match_all("/#([0-9]*)#/", $action['cmd'], $matches);
+						foreach ($matches[1] as $cmd_id) {
+							if (is_numeric($cmd_id)) {
+								if (!cmd::byId(str_replace('#', '', $cmd_id))) {
+									$return[] = array('detail' => 'Alarme ' . $alarm->getHumanName(), 'help' => 'Zone ' . $name . ' - Action Immédiate', 'who' => '#' . $cmd_id . '#');
+								}
+							}
+						}
+					}
+				}
+				foreach ($zone['triggers'] as $trigger){
+					if (isset($trigger['cmd'])) {
+						preg_match_all("/#([0-9]*)#/", $trigger['cmd'], $matches);
+						foreach ($matches[1] as $cmd_id) {
+							if (is_numeric($cmd_id)) {
+								if (!cmd::byId(str_replace('#', '', $cmd_id))) {
+									$return[] = array('detail' => 'Alarme ' . $alarm->getHumanName(), 'help' => 'Zone ' . $name . ' - Déclencheur', 'who' => '#' . $cmd_id . '#');
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		return $return;
+	}
 
 	/*     * *********************Methode d'instance************************* */
 
