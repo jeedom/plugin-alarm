@@ -33,13 +33,13 @@
         "Statut pause": "Pause status",
         "Pause": "Pause",
         "Reprise": "Recovery",
-        "Non déclenchement car la valeur n'est pas une alerte : ": "Non déclenchement car la valeur n'est pas une alerte :",
+        "Non déclenchement car la valeur n'est pas une alerte : ": "Not triggered because the value is not an alert :",
         "Trigger désactivé : ": "Trigger Disabled :",
-        "Activation de l'alarme réussie": "Activation de l'alarme réussie",
+        "Activation de l'alarme réussie": "Alarm activation successfull",
         "Zones : ": "Zones :",
-        "Lancement des actions d'activation ko": "Lancement des actions d'activation ko",
-        "Non déclenchement car le capteur est inactif (car il était en alerte à l'activation) : ": "Non déclenchement car le capteur est inactif (car il était en alerte à l'activation) :",
-        "Supression du capteur de la liste de capteur inactif à l'activation": "Supression du capteur de la liste de capteur inactif à l'activation"
+        "Lancement des actions d'activation ko": "Launch activation actions ko",
+        "Non déclenchement car le capteur est inactif (car il était en alerte à l'activation) : ": "Not triggered because the sensor is inactive (because it was in alerting state at the time of the activation):",
+        "Supression du capteur de la liste de capteur inactif à l'activation": "Sensor deletion from inactive sensor list upon activation"
     },
     "plugins/alarm/desktop/php/alarm.php": {
         "Ajouter une alarme": "Add alarm",
@@ -89,13 +89,13 @@
         "Equipement": "Device",
         "Mes Alarmes": "My Alarms",
         "Déclenchement": "Trigger",
-        "C'est ici que vous devez mettre les actions à faire lorsque l'alarme se déclenche (à noter que vous pouvez aussi le faire par zone dans l'onglet zone)": "C'est ici que vous devez mettre les actions à faire lorsque l'alarme se déclenche (à noter que vous pouvez aussi le faire par zone dans l'onglet zone)",
-        "Ajouter action lors du déclechement": "Ajouter action lors du déclechement",
-        "Ajouter action immediate lors du déclenchement": "Ajouter action immediate lors du déclenchement",
-        "Ajouter action de déclechement": "Ajouter action de déclechement",
-        "Ajouter action immediate de déclenchement": "Ajouter action immediate de déclenchement",
-        "C'est ici que vous devez mettre les actions à faire lorsque l'alarme se déclenche (à noter que vous pouvez aussi le faire par zone)": "C'est ici que vous devez mettre les actions à faire lorsque l'alarme se déclenche (à noter que vous pouvez aussi le faire par zone)",
-        "Une zone décrit les capteurs que l'alarme doit surveiller ainsi que les actions à faire en cas de déclenchement.": "Une zone décrit les capteurs que l'alarme doit surveiller ainsi que les actions à faire en cas de déclenchement.",
+        "C'est ici que vous devez mettre les actions à faire lorsque l'alarme se déclenche (à noter que vous pouvez aussi le faire par zone dans l'onglet zone)": "This is where you have to put the actions to be done when the alarm is triggered (note that you can also do it by zone in the zone tab)",
+        "Ajouter action lors du déclechement": "Add action when triggered",
+        "Ajouter action immediate lors du déclenchement": "Add immediate action when triggered",
+        "Ajouter action de déclechement": "Add triggered action",
+        "Ajouter action immediate de déclenchement": "Add immediate triggered action",
+        "C'est ici que vous devez mettre les actions à faire lorsque l'alarme se déclenche (à noter que vous pouvez aussi le faire par zone)": "This is where you have to put the actions to be done when the alarm is triggered (note that you can also do it by zone)",
+        "Une zone décrit les capteurs que l'alarme doit surveiller ainsi que les actions à faire en cas de déclenchement.": "A zone describes the sensors that the alarm must monitor and the actions to be taken if the alarm is triggered.",
         "Gestion": "Management"
     },
     "plugins/alarm/plugin_info/info.xml": {
@@ -124,7 +124,7 @@
         "Activation (min pleine)": "Activation (integer - in minutes)",
         "Déclenchement (min, décimal possible)": "Trigger (in minutes, floating number allowed)",
         "Sélectionner un mot-clé": "Select a keyword",
-        "Tous les modes": "Tous les modes",
+        "Tous les modes": "All modes",
         "Décocher pour desactiver l\\'action": "Uncheck to disable the action",
         "Cocher pour que la commande s\\'éxecute en parrallele des autres actions": "Check for the order to be executed in parallel with other actions"
     },
