@@ -186,8 +186,7 @@ périmètre de l’alarme, sinon ça la déclenche).
 Activation KO 
 =============
 
-Ces actions sont exécutées si un capteur est déclenché et que celui-ci
-n’a pas de délai d’activation.
+Ces actions sont exécutées si un capteur est déclenché suite à l'activation de l'alarme ou après le delai d'activation d'un capteur si celui-ci est en alerte
 
 Déclenchement 
 =============

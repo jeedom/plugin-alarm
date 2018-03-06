@@ -37,58 +37,71 @@ class alarm extends eqLogic {
 	public static function checkDetector($_params) {
 		log::add('alarm', 'debug', __('Lancement de la vérification des detecteurs post activation', __FILE__));
 		$eqLogic = eqLogic::byId($_params['alarm_id']);
-		if (is_object($eqLogic)) {
-			$cmd_armed = $eqLogic->getCmd(null, 'enable');
-			$cmd_state = $eqLogic->getCmd(null, 'state');
-			if (is_object($cmd_armed) && is_object($cmd_state) && $cmd_armed->execCmd() == 1 && ($cmd_state->execCmd() == 0 || $eqLogic->getConfiguration('autorearm', 0) == 1)) {
-				$cmd = cmd::byId($_params['cmd_id']);
-				if (!is_object($cmd)) {
-					return;
+		if (!is_object($eqLogic)) {
+			return;
+		}
+		$cmd_armed = $eqLogic->getCmd(null, 'enable');
+		$cmd_state = $eqLogic->getCmd(null, 'state');
+		if (!is_object($cmd_armed) || !is_object($cmd_state) || $cmd_armed->execCmd() != 1 || ($cmd_state->execCmd() != 0 && $eqLogic->getConfiguration('autorearm', 0) != 1)) {
+			return;
+		}
+		$cmd = cmd::byId($_params['cmd_id']);
+		if (!is_object($cmd)) {
+			return;
+		}
+		if (isset($_params['delay']) && $_params['delay'] > 0) {
+			sleep($_params['delay']);
+		}
+		$cmd_mode = $eqLogic->getCmd(null, 'mode');
+		$select_mode = $cmd_mode->execCmd();
+		$zones = $eqLogic->getZoneOfMode($select_mode);
+		$disable_trigger = $eqLogic->getCache('disable_trigger', array());
+		foreach ($zones as $zone) {
+			log::add('alarm', 'debug', __('[checkDetector] Vérification de la zone : ', __FILE__) . $zone['name']);
+			foreach ($zone['triggers'] as $trigger) {
+				if ($trigger['cmd'] != '#' . $cmd->getId() . '#') {
+					continue;
 				}
-				if (isset($_params['delay']) && $_params['delay'] > 0) {
-					sleep($_params['delay']);
+				if (isset($trigger['enable']) && $trigger['enable'] == 0) {
+					continue;
 				}
-				$cmd_mode = $eqLogic->getCmd(null, 'mode');
-				$select_mode = $cmd_mode->execCmd();
-				$modes = $eqLogic->getConfiguration('modes');
-				foreach ($modes as $mode) {
-					if ($mode['name'] == $select_mode) {
-						$zones = $eqLogic->getConfiguration('zones');
-						foreach ($zones as $zone) {
-							if ((!is_array($mode['zone']) && $zone['name'] == $mode['zone']) || (is_array($mode['zone']) && in_array($zone['name'], $mode['zone']))) {
-								foreach ($zone['triggers'] as $trigger) {
-									if ($trigger['cmd'] == '#' . $cmd->getId() . '#') {
-										if (isset($trigger['enable']) && $trigger['enable'] == 0) {
-											continue;
-										}
-										log::add('alarm', 'debug', __('Verification de ', __FILE__) . $cmd->getHumanName());
-										$result = $cmd->execCmd();
-										if (isset($trigger['invert']) && $trigger['invert'] == 1) {
-											$result = ($result == 1 || $result) ? 0 : 1;
-										}
-										if ($result == 1) {
-											if (isset($trigger['armedDelay']) && $trigger['armedDelay'] !== '' && is_numeric(intval($trigger['armedDelay'])) && $trigger['armedDelay'] > 0) {
-												if (strtotime('now') < (strtotime($cmd_armed->getCollectDate()) + $trigger['armedDelay'] * 60)) {
-													sleep((strtotime($cmd_armed->getCollectDate()) + $trigger['armedDelay'] * 60) - strtotime('now'));
-													$result = $cmd->execCmd();
-													if (isset($trigger['invert']) && $trigger['invert'] == 1) {
-														$result = ($result == 1 || $result) ? 0 : 1;
-													}
-													if ($result == 0) {
-														return;
-													}
-												}
-											}
-											$eqLogic->execute($cmd->getId(), $result);
-										}
-										return;
-									}
-								}
-							}
-						}
-					}
+				log::add('alarm', 'debug', __('[checkDetector] Verification de ', __FILE__) . $cmd->getHumanName());
+				$result = $cmd->execCmd();
+				if (isset($trigger['invert']) && $trigger['invert'] == 1) {
+					$result = ($result == 1 || $result) ? 0 : 1;
 				}
+				log::add('alarm', 'debug', __('[checkDetector] Valeur ', __FILE__) . $result);
+				if ($result != 1) {
+					log::add('alarm', 'debug', __('[checkDetector] Aucune alerte, rien à faire', __FILE__));
+					continue;
+				}
+				if (!isset($trigger['armedDelay']) || $trigger['armedDelay'] === '' || !is_numeric(intval($trigger['armedDelay'])) || $trigger['armedDelay'] == 0) {
+					log::add('alarm', 'debug', __('[checkDetector] Delai vide ou non valide, rien à faire', __FILE__));
+					continue;
+				}
+				if (strtotime('now') > (strtotime($cmd_armed->getCollectDate()) + $trigger['armedDelay'] * 60 + 60)) {
+					log::add('alarm', 'debug', __('[checkDetector] Delai depassé, rien à faire', __FILE__));
+					continue;
+				}
+				sleep((strtotime($cmd_armed->getCollectDate()) + $trigger['armedDelay'] * 60) - strtotime('now'));
+				$result = $cmd->execCmd();
+				if (isset($trigger['invert']) && $trigger['invert'] == 1) {
+					$result = ($result == 1 || $result) ? 0 : 1;
+				}
+				log::add('alarm', 'debug', __('[checkDetector] Valeur ', __FILE__) . $result);
+				if ($result == 0) {
+					log::add('alarm', 'debug', __('[checkDetector] Plus d\'alerte, rien à faire', __FILE__));
+					continue;
+				}
+				$disable_trigger[$cmd->getId()] = $cmd->getHumanName();
+				log::add('alarm', 'debug', __('[checkDetector] Commande active, j\'ai du boulot', __FILE__));
 			}
+		}
+		$eqLogic->setCache('disable_trigger', $disable_trigger);
+		if (count($disable_trigger) > 0) {
+			log::add('alarm', 'debug', __('Trigger désactivé : ', __FILE__) . print_r($disable_trigger, true));
+			log::add('alarm', 'debug', __('Lancement des actions d\'activation ko', __FILE__));
+			$eqLogic->doAction('activationKo', $select_mode, implode(',', $disable_trigger));
 		}
 	}
 
@@ -474,9 +487,11 @@ class alarm extends eqLogic {
 				if ($trigger['cmd'] != '#' . $_trigger_id . '#') {
 					continue;
 				}
+				log::add('alarm', 'debug', __('Déclencheur id : ', __FILE__) . $_trigger_id);
 				if (isset($trigger['invert']) && $trigger['invert'] == 1) {
 					$_value = ($_value == 1 || $_value) ? 0 : 1;
 				}
+				log::add('alarm', 'debug', __('Déclencheur inactif : ', __FILE__) . print_r($disable_trigger, true));
 				if (in_array($_trigger_id, $disable_trigger)) {
 					log::add('alarm', 'debug', __('Non déclenchement car le capteur est inactif (car il était en alerte à l\'activation) : ', __FILE__) . print_r($disable_trigger, true));
 					if ($_value != 1 && !$_value) {

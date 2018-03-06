@@ -1,3 +1,6 @@
+# 06/03/2018
+
+- Les detecteurs ayant des délais d'activation et étant toujours actif après ce délai ne déclenche plus l'alarme, mais lance une activation KO, avec surveillance de ce detecteur exclu jusqu'à un retour à la normal
 
 # 12/02/2018
 
