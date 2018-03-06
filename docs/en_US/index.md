@@ -186,8 +186,7 @@ perimeter of the alarm, otherwise it triggers it).
 KO activation
 =============
 
-These actions are executed if a sensor is triggered and this one is triggered
-has no activation time.
+Ces actions sont exécutées si un capteur est déclenché suite à l'activation de l'alarme ou après le delai d'activation d'un capteur si celui-ci est en alerte
 
 release
 =============

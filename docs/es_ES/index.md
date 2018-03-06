@@ -186,8 +186,7 @@ alarma de perímetro, de lo contrario se dispara).
 la activación KO
 =============
 
-Estas acciones se ejecutan si se activa un sensor y que
-no tiene tiempo de activación.
+Ces actions sont exécutées si un capteur est déclenché suite à l'activation de l'alarme ou après le delai d'activation d'un capteur si celui-ci est en alerte
 
 liberación
 =============
