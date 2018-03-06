@@ -10,21 +10,21 @@ there is no additional configuration at this level.
 Immediate concept
 ================
 
-This is a very important notion about the alarm plugin and it is
-important to understand it well. To schematize it is as if
-you had 2 alarms, the first one: the immediate alarm that does not fit
-account of the triggering delays (be careful it takes into account
-activation times) and a second alarm which, in turn, takes into account
-the trigger times.
+C’est une notion très importante sur le plugin alarme et il est
+important de très bien la comprendre. Pour schématiser c’est comme si
+vous aviez 2 alarmes, la première : l’alarme immédiate qui ne tient pas
+compte des délais de déclenchement (attention elle prend bien en compte
+les délais d’activation) et une 2ème alarme qui elle, prend en compte
+les délais de déclenchement.
 
 **Why this immediate notion?**
 
-This immediate notion allows triggering actions well
-specific. For example: you go home and you do not have
-disable the alarm, before triggering the siren it can be good to
-broadcast a message reminding of well disable the alarm and if this
-is not done 1 minute later (activation time of 1 minute therefore)
-activate the siren.
+Cette notion immédiate permet de déclencher des actions bien
+spécifiques. Par exemple : vous rentrez chez vous et vous n’avez pas
+désactivé l’alarme, avant de déclencher la sirène il peut être bon de
+diffuser un message rappellant de bien désactiver l’alarme et si ce
+n’est pas fait 1 minute plus tard (délai d’activation de 1 minute donc)
+d’activer la sirène.
 
 This notion is found in different types of actions, each time
 its principle will be detailed.
@@ -112,7 +112,7 @@ immediately but will wait until the activation delay is over before
 to unearth the actions. Finally you have the "invert" button that allows
 reverse the trigger state of the sensor (0 instead of 1).
 
-You also have a **Hold** setting that allows you to specify a trigger hold delay before triggering the alarm. Ex if you have a smoke detector that goes back false alarms sometimes you can specify a delay of 2s. When triggering the alarm Jeedom will wait 2s and check that the smoke detector is still alert if it is not the case it will not trigger the alarm.
+Vous avez aussi un paramètre **Maintient** qui permet de spécifier un délai de maintient du déclencheur avant de déclencher l'alarme. Ex si vous avez un détecteur de fumée qui remonte parfois de fausses alarmes vous pouvez spécifier un délai de 2s. Lors du déclenchement de l'alarme Jeedom va attendre 2s et vérifier que le détecteur de fumée est toujours en alerte si ce n'est pas le cas il ne déclenchera pas l'alarme.  
 
 Small example to understand: on the first trigger
 (* \ [Salon \] \ [Eye \] \ [Presence \] *) Here I have an activation time of 5

@@ -11,17 +11,17 @@ Notion immédiate
 ================
 
 C’est une notion très importante sur le plugin alarme et il est
-important de bien la bien comprendre. Pour schématiser c’est comme si
+important de très bien la comprendre. Pour schématiser c’est comme si
 vous aviez 2 alarmes, la première : l’alarme immédiate qui ne tient pas
 compte des délais de déclenchement (attention elle prend bien en compte
-les délais d’activation) et une 2ème alarme qui, elle, prend en compte
+les délais d’activation) et une 2ème alarme qui elle, prend en compte
 les délais de déclenchement.
 
 **Pourquoi cette notion immédiate ?**
 
 Cette notion immédiate permet de déclencher des actions bien
 spécifiques. Par exemple : vous rentrez chez vous et vous n’avez pas
-désactiver l’alarme, avant de déclencher la sirène il peut être bon de
+désactivé l’alarme, avant de déclencher la sirène il peut être bon de
 diffuser un message rappellant de bien désactiver l’alarme et si ce
 n’est pas fait 1 minute plus tard (délai d’activation de 1 minute donc)
 d’activer la sirène.
@@ -112,7 +112,7 @@ immédiates mais va attendre que le délai d’activation soit fini avant de
 déchencher les actions. Enfin vous avez le bouton "inverser" qui permet
 d’inverser l’état déclencheur du capteur (0 au lieu de 1).
 
-Vous avez aussi un paramètre **Maintient** qui permet de spécifier un délai de maintient du déclencheur avant de déclencher l'alarme. Ex si vous avez un detecteur de fumer qui remonte desfois des fausses alarmes vous pouvez specifier un délai de 2s. Lors du declenchement de l'alarme Jeedom va attendre 2s et verifier que le detecteur de fumée est toujours en alerte si c'est pas le cas il ne déclenchera pas l'alarme.  
+Vous avez aussi un paramètre **Maintient** qui permet de spécifier un délai de maintient du déclencheur avant de déclencher l'alarme. Ex si vous avez un détecteur de fumée qui remonte parfois de fausses alarmes vous pouvez spécifier un délai de 2s. Lors du déclenchement de l'alarme Jeedom va attendre 2s et vérifier que le détecteur de fumée est toujours en alerte si ce n'est pas le cas il ne déclenchera pas l'alarme.  
 
 Petit exemple pour bien comprendre : sur le premier déclencheur
 (*\[Salon\]\[Oeil\]\[Présence\]*) j’ai ici un délai d’activation de 5
