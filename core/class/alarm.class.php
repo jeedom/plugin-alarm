@@ -538,7 +538,7 @@ class alarm extends eqLogic {
 					$_value = ($_value == 1 || $_value) ? 0 : 1;
 				}
 				log::add('alarm', 'debug', __('Déclencheur inactif : ', __FILE__) . print_r($disable_trigger, true));
-				if (in_array($_trigger_id, $disable_trigger)) {
+				if (isset($disable_trigger[$_trigger_id])) {
 					log::add('alarm', 'debug', __('Non déclenchement car le capteur est inactif (car il était en alerte à l\'activation) : ', __FILE__) . print_r($disable_trigger, true));
 					if ($_value != 1 && !$_value) {
 						unset($disable_trigger[$_trigger_id]);
