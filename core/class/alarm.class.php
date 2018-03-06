@@ -110,13 +110,18 @@ class alarm extends eqLogic {
 		if (is_object($eqLogic)) {
 			$cmd_armed = $eqLogic->getCmd(null, 'enable');
 			$cmd_state = $eqLogic->getCmd(null, 'state');
-			if (is_object($cmd_armed) && is_object($cmd_state) && $cmd_armed->execCmd() == 1 && $cmd_state->execCmd() == 0) {
-				if (isset($_params['delay']) && $_params['delay'] > 0) {
-					sleep($_params['delay']);
-				}
-				log::add('alarm', 'debug', __('Activation OK éxécution des actions', __FILE__));
-				$eqLogic->doAction('activationOk');
+			if (!is_object($cmd_armed) || !is_object($cmd_state) || $cmd_armed->execCmd() != 1 || $cmd_state->execCmd() != 0) {
+				return;
 			}
+			if (isset($_params['delay']) && $_params['delay'] > 0) {
+				sleep($_params['delay']);
+			}
+			$disable_trigger = $eqLogic->getCache('disable_trigger', array());
+			if (count($disable_trigger) > 0) {
+				return;
+			}
+			log::add('alarm', 'debug', __('Activation OK éxécution des actions', __FILE__));
+			$eqLogic->doAction('activationOk');
 		}
 	}
 
@@ -830,7 +835,7 @@ class alarmCmd extends cmd {
 				$cron->setOnce(1);
 				$cron->setSchedule(cron::convertDateToCron($armedCompleteDatetime));
 				$cron->save();
-			} else {
+			} else if (count($disable_trigger) == 0) {
 				log::add('alarm', 'debug', __('Activation OK éxécution des actions', __FILE__));
 				$eqLogic->doAction('activationOk', $select_mode);
 			}
