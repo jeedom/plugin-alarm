@@ -99,7 +99,7 @@ class alarm extends eqLogic {
 		}
 		$eqLogic->setCache('disable_trigger', $disable_trigger);
 		if (count($disable_trigger) > 0) {
-			log::add('alarm', 'debug', __('Trigger désactivé : ', __FILE__) . print_r($disable_trigger, true));
+			log::add('alarm', 'debug', __('Déclencheur désactivé : ', __FILE__) . print_r($disable_trigger, true));
 			log::add('alarm', 'debug', __('Lancement des actions d\'activation ko', __FILE__));
 			$eqLogic->doAction('activationKo', $select_mode, implode(',', $disable_trigger));
 		}
@@ -119,13 +119,13 @@ class alarm extends eqLogic {
 			}
 		}
 	}
-	
+
 	public static function deadCmd() {
 		$return = array();
 		foreach (eqLogic::byType('alarm') as $alarm) {
-			foreach ($alarm->getConfiguration('zones',array()) as $zone){
+			foreach ($alarm->getConfiguration('zones', array()) as $zone) {
 				$name = isset($zone['name']) ? $zone['name'] : '';
-				foreach ($zone['actions'] as $action){
+				foreach ($zone['actions'] as $action) {
 					if (isset($action['cmd'])) {
 						preg_match_all("/#([0-9]*)#/", $action['cmd'], $matches);
 						foreach ($matches[1] as $cmd_id) {
@@ -137,7 +137,7 @@ class alarm extends eqLogic {
 						}
 					}
 				}
-				foreach ($zone['actionsImmediate'] as $action){
+				foreach ($zone['actionsImmediate'] as $action) {
 					if (isset($action['cmd'])) {
 						preg_match_all("/#([0-9]*)#/", $action['cmd'], $matches);
 						foreach ($matches[1] as $cmd_id) {
@@ -149,7 +149,7 @@ class alarm extends eqLogic {
 						}
 					}
 				}
-				foreach ($zone['triggers'] as $trigger){
+				foreach ($zone['triggers'] as $trigger) {
 					if (isset($trigger['cmd'])) {
 						preg_match_all("/#([0-9]*)#/", $trigger['cmd'], $matches);
 						foreach ($matches[1] as $cmd_id) {
@@ -553,7 +553,6 @@ class alarm extends eqLogic {
 					if (isset($trigger['invert']) && $trigger['invert'] == 1) {
 						$_value = ($_value == 1 || $_value) ? 0 : 1;
 					}
-
 				}
 				if ($_value != 1 && !$_value) {
 					log::add('alarm', 'debug', __('Non déclenchement car la valeur n\'est pas une alerte : ', __FILE__) . print_r($_value, true));
@@ -814,7 +813,7 @@ class alarmCmd extends cmd {
 			}
 			$eqLogic->setCache('disable_trigger', $disable_trigger);
 			if (count($disable_trigger) > 0) {
-				log::add('alarm', 'debug', __('Trigger désactivé : ', __FILE__) . print_r($disable_trigger, true));
+				log::add('alarm', 'debug', __('Déclencheur désactivé : ', __FILE__) . print_r($disable_trigger, true));
 				log::add('alarm', 'debug', __('Lancement des actions d\'activation ko', __FILE__));
 				$eqLogic->doAction('activationKo', $select_mode, implode(',', $disable_trigger));
 			}
