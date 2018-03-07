@@ -197,17 +197,22 @@ foreach (jeedom::getConfiguration('eqLogic:category') as $key => $value) {
 </div>
 <div class="tab-pane" id="tab_activeKo">
   <br/>
-  <div class="alert alert-info">{{C'est ici que vous devez mettre les actions à faire lorsque l'activation de l'alarme à échouée}}
-    <a class='btn btn-success btn-xs pull-right' id="btn_addActionActivationKo"><i class="fa fa-plus-circle"></i> {{Ajouter action lors de l'echec d'activation}}</a>
+  <div class="alert alert-info">{{C'est ici que vous devez mettre les actions à faire lorsque l'activation de l'alarme à échouée ou est partielle ainsi que celle lors de la reprise de surveillance d'un capteur}}
+    <a class='btn btn-warning btn-xs pull-right' id="btn_addActionActivationKo"><i class="fa fa-plus-circle"></i> {{Ajouter action lors de l'echec d'activation}}</a>
+    <a class='btn btn-success btn-xs pull-right' id="btn_addActionReenableTrigger"><i class="fa fa-plus-circle"></i> {{Ajouter action lors de la reprise de la surveillance}}</a>
   </div>
   <form class="form-horizontal">
     <div id="div_activationKo"></div>
+  </form>
+  <hr/>
+  <br/>
+  <form class="form-horizontal">
+    <div id="div_reenableTrigger"></div>
   </form>
 </div>
 </div>
 </div>
 </div>
-
 
 <div class="modal fade" id="md_addZoneMode">
   <div class="modal-dialog">

@@ -24,6 +24,7 @@
  $("#div_release").sortable({axis: "y", cursor: "move", items: ".release", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
  $("#div_outbreakImmediate").sortable({axis: "y", cursor: "move", items: ".outbreakImmediate", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
  $("#div_outbreak").sortable({axis: "y", cursor: "move", items: ".outbreak", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
+ $("#div_reenableTrigger").sortable({axis: "y", cursor: "move", items: ".reenableTrigger", placeholder: "ui-state-highlight", tolerance: "intersect", forcePlaceholderSize: true});
 
  $('#tab_alarm a').click(function (e) {
     e.preventDefault()
@@ -159,6 +160,11 @@
     addAction({}, 'activationKo', '{{Action}}');
 });
 
+
+ $('#btn_addActionReenableTrigger').on('click', function () {
+    addAction({}, 'reenableTrigger', '{{Action}}');
+});
+
  $('#btn_addActionActivationImmediateOk').on('click', function () {
     addAction({}, 'activationImmediateOk', '{{Action Immediate}}');
 });
@@ -214,10 +220,10 @@
 });
 
  $('.nav-tabs li a').on('click',function(){
-     setTimeout(function(){ 
-        taAutosize();
-    }, 50);
- })
+   setTimeout(function(){ 
+    taAutosize();
+}, 50);
+})
 
  function saveEqLogic(_eqLogic) {
     if (!isset(_eqLogic.configuration)) {
@@ -246,6 +252,7 @@
     _eqLogic.configuration.activationImmediateOk = $('#div_activationImmediateOk .activationImmediateOk').getValues('.expressionAttr');
     _eqLogic.configuration.outbreak = $('#div_outbreak .outbreak').getValues('.expressionAttr');
     _eqLogic.configuration.outbreakImmediate = $('#div_outbreakImmediate .outbreakImmediate').getValues('.expressionAttr');
+    _eqLogic.configuration.reenableTrigger = $('#div_reenableTrigger .reenableTrigger').getValues('.expressionAttr');
 
     return _eqLogic;
 }
@@ -262,6 +269,7 @@ function printEqLogic(_eqLogic) {
     $('#div_activationKo').empty();
     $('#div_outbreak').empty();
     $('#div_outbreakImmediate').empty();
+    $('#div_reenableTrigger').empty();
     if (isset(_eqLogic.configuration)) {
         if (isset(_eqLogic.configuration.modes)) {
             for (var i in _eqLogic.configuration.modes) {
@@ -303,6 +311,11 @@ function printEqLogic(_eqLogic) {
                 addAction(_eqLogic.configuration.activationKo[i], 'activationKo', '{{Action}}');
             }
         }
+        if (isset(_eqLogic.configuration.reenableTrigger)) {
+            for (var i in _eqLogic.configuration.reenableTrigger) {
+                addAction(_eqLogic.configuration.reenableTrigger[i], 'reenableTrigger', '{{Action}}');
+            }
+        }
         if (isset(_eqLogic.configuration.outbreak)) {
             for (var i in _eqLogic.configuration.outbreak) {
                 addAction(_eqLogic.configuration.outbreak[i], 'outbreak', '{{Action}}');
@@ -341,40 +354,34 @@ function addAction(_action, _type, _name, _el) {
     if (_type == 'action') {
         input = 'has-error';
         button = 'btn-danger';
-    }
-    if (_type == 'actionImmediate') {
+    }else if (_type == 'actionImmediate') {
         input = 'has-warning';
         button = 'btn-warning';
-    }
-    if (_type == 'raz') {
+    }else if (_type == 'raz') {
         input = 'has-success';
         button = 'btn-success';
-    }
-    if (_type == 'razImmediate') {
+    }else if (_type == 'razImmediate') {
         input = 'has-warning';
         button = 'btn-warning';
-    }
-    if (_type == 'activationOk') {
+    }else if (_type == 'activationOk') {
         input = 'has-success';
         button = 'btn-success';
-    }
-    if (_type == 'activationKo') {
-        input = 'has-success';
-        button = 'btn-success';
-    }
-    if (_type == 'activationImmediateOk') {
+    }else if (_type == 'activationKo') {
         input = 'has-warning';
         button = 'btn-warning';
-    }
-    if (_type == 'outbreak') {
+    }else if (_type == 'activationImmediateOk') {
+        input = 'has-warning';
+        button = 'btn-warning';
+    }else if (_type == 'outbreak') {
         input = 'has-error';
         button = 'btn-danger';
-    }
-    if (_type == 'outbreakImmediate') {
+    }else if (_type == 'outbreakImmediate') {
         input = 'has-warning';
         button = 'btn-warning';
-    }
-    if (_type == 'release') {
+    }else if (_type == 'release') {
+        input = 'has-success';
+        button = 'btn-success';
+    }else if (_type == 'reenableTrigger') {
         input = 'has-success';
         button = 'btn-success';
     }
