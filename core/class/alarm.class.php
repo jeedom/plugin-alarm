@@ -777,6 +777,10 @@ class alarmCmd extends cmd {
 		}
 		if ($this->getLogicalId() == 'armed') {
 			$cmd_state_pause->event(0);
+			if ($cmd_armed->execCmd() == 1) {
+				log::add('alarm', 'debug', __('Alarme déjà active', __FILE__));
+				return;
+			}
 			$cmd_armed->event(1);
 			$select_mode = $cmd_mode->execCmd();
 			if ($select_mode == '') {
