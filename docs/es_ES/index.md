@@ -188,6 +188,8 @@ la activación KO
 
 Ces actions sont exécutées si un capteur est déclenché suite à l'activation de l'alarme ou après le delai d'activation d'un capteur si celui-ci est en alerte
 
+Vous pouvez aussi ici ajouter des action lors de la reprise de surveillance d'un capteur
+
 liberación
 =============
 

@@ -1,3 +1,8 @@
+- Ajout d'une option pour un déclenchement multi-zone (si une autre zone rentre en alert alors l'alarme se declenche)
+- Ajout d'action lors de la reprise de surveillance d'un capteur
+- Ajout du tag #zone#
+
+
 # 06/03/2018
 
 - Ajout de la gestion des commandes orphelines
