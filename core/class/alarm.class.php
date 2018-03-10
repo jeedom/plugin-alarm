@@ -766,6 +766,7 @@ class alarmCmd extends cmd {
 				$eqLogic->doAction('raz', array('#mode#' => $cmd_mode->execCmd()));
 			}
 			$eqLogic->setCache('trigger_zone', array());
+			$eqLogic->setCache('trigger_zone_immediate', array());
 			$eqLogic->cleanArmedCompleted();
 			return;
 		}
