@@ -1,5 +1,5 @@
 - Si l'alarme est déjà active l'armement ne la réactive pas
-- Ajout d'une option pour un déclenchement multi-zone (si une autre zone rentre en alert alors l'alarme se declenche)
+- Ajout d'une option pour un déclenchement multi-zones (si une autre zone rentre en alerte alors l'alarme se déclenche)
 - Ajout d'action lors de la reprise de surveillance d'un capteur
 - Ajout du tag #zone#
 
@@ -7,9 +7,9 @@
 # 06/03/2018
 
 - Ajout de la gestion des commandes orphelines
-- Si des capteurs sont désactiver alors les actions d'activation ok ne sont plus déclenchées
+- Si des capteurs sont désactivés alors les actions d'activation ok ne sont plus déclenchées
 - Correction de bugs
-- Les detecteurs ayant des délais d'activation et étant toujours actif après ce délai ne déclenche plus l'alarme, mais lance une activation KO, avec surveillance de ce detecteur exclu jusqu'à un retour à la normal
+- Les détecteurs ayant des délais d'activation et étant toujours actif après ce délai ne déclenchent plus l'alarme, mais lancent une activation KO, avec surveillance de ce détecteur exclu jusqu'à un retour à la normale
 
 # 12/02/2018
 
@@ -21,14 +21,14 @@
 
 -   Fixed a bug on disabling detectors
 
--   Management of seconds on the activation delay (JEED-63)
+-   Gestion des secondes sur le delai d’activation (JEED-63)
 
--   Back on the non triggering of immediate actions if
+-   Retour en arrière sur le non déclenchement des actions immédiates si
     the activation time is empty or null
 
 -   If during activation a sensor is on alert and has no delay
-    activation then the alarm goes off even when ignoring this sensor
-    (unless he comes back to rest)
+    d’activation alors l’alarme s’arme quand même en ignorant ce capteur
+    (à moins qu’il revienne au repos)
 
 -   Added global trigger action (plus filtered by zone, it
     is advisable to use this one rather than the actions of
