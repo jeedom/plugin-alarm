@@ -1,3 +1,4 @@
+- Correction de bug sur le renommage des modes
 - Si l'alarme est déjà active l'armement ne la réactive pas
 - Ajout d'une option pour un déclenchement multi-zone (si une autre zone rentre en alert alors l'alarme se declenche)
 - Ajout d'action lors de la reprise de surveillance d'un capteur

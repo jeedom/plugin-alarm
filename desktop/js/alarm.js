@@ -31,7 +31,7 @@
     $(this).tab('show')
 })
 
- $('#bt_addZone').on('click', function () {
+ $('#bt_addZone').off('click').on('click', function () {
     bootbox.prompt("{{Nom de la zone ?}}", function (result) {
         if (result !== null && result != '') {
             addZone({name: result});
@@ -39,7 +39,7 @@
     });
 });
 
- $('body').delegate('.rename', 'click', function () {
+ $('body').off('click','.rename').on('click','.rename',  function () {
     var el = $(this);
     bootbox.prompt("{{Nouveau nom ?}}", function (result) {
         if (result !== null && result != '') {
@@ -57,11 +57,11 @@
     });
 });
 
- $("#div_zones").delegate('.bt_removeZone', 'click', function () {
+ $("#div_zones").off('click','.bt_removeZone').on('click','.bt_removeZone', function () {
     $(this).closest('.zone').remove();
 });
 
- $('#bt_addMode').on('click', function () {
+ $('#bt_addMode').off('click').on('click', function () {
     bootbox.prompt("{{Nom du mode ?}}", function (result) {
         if (result !== null && result != '') {
             addMode({name: result});
@@ -69,11 +69,11 @@
     });
 });
 
- $("#div_modes").delegate('.bt_removeZoneMode', 'click', function () {
+ $("#div_modes").off('click','.bt_removeZoneMode').on('click','.bt_removeZoneMode',  function () {
     $(this).closest('.zoneMode').remove();
 });
 
- $("#div_modes").delegate('.bt_addZoneMode', 'click', function () {
+ $("#div_modes").off('click','.bt_addZoneMode').on('click','.bt_addZoneMode',  function () {
     var el = $(this);
     var select = '<select class="form-control">';
     $('#div_zones .zone').each(function () {
@@ -92,34 +92,34 @@
 });
 
 
- $("#div_modes").delegate('.bt_removeMode', 'click', function () {
+ $("#div_modes").off('click','.bt_removeMode').on('click','.bt_removeMode',  function () {
     $(this).closest('.mode').remove();
 });
 
- $("#div_zones").delegate('.bt_addAction', 'click', function () {
+ $("#div_zones").off('click','.bt_addAction').on('click','.bt_addAction',  function () {
     addAction({}, 'action', '{{Action}}', $(this).closest('.zone'));
 });
 
- $("#div_zones").delegate('.bt_addActionImmediate', 'click', function () {
+ $("#div_zones").off('click','.bt_addActionImmediate').on('click','.bt_addActionImmediate',  function () {
     addAction({}, 'actionImmediate', '{{Action immédiate}}', $(this).closest('.zone'));
 });
 
- $("#div_zones").delegate('.bt_addTrigger', 'click', function () {
+ $("#div_zones").off('click','.bt_addTrigger').on('click','.bt_addTrigger',  function () {
     addTrigger($(this).closest('.zone'), '');
 });
 
- $("#div_zones").delegate('.bt_removeTrigger', 'click', function () {
+ $("#div_zones").off('click','.bt_removeTrigger').on('click','.bt_removeTrigger',  function () {
     $(this).closest('.trigger').remove();
 });
 
- $("#div_zones").delegate(".listCmdInfo", 'click', function () {
+ $("#div_zones").off('click','.listCmdInfo').on('click','.listCmdInfo',  function () {
     var el = $(this).closest('.trigger').find('.triggerAttr[data-l1key=cmd]');
     jeedom.cmd.getSelectModal({cmd: {type: 'info', subType: 'binary'}}, function (result) {
         el.value(result.human);
     });
 });
 
- $('#div_zones').delegate('.bt_duplicateZone', 'click', function () {
+ $('#div_zones').off('click','.bt_duplicateZone').on('click','.bt_duplicateZone',  function () {
     var zone = $(this).closest('.zone').clone();
     bootbox.prompt("{{Nom de la zone ?}}", function (result) {
         if (result !== null) {
@@ -136,51 +136,51 @@
 
  /**************** RAZ Alarm ***********/
 
- $('#btn_addRazAlarm').on('click', function () {
+ $('#btn_addRazAlarm').off('click').on('click', function () {
     addAction({}, 'raz', '{{Réinitialisation}}');
 });
 
- $('#btn_addRazImmediateAlarm').on('click', function () {
+ $('#btn_addRazImmediateAlarm').off('click').on('click', function () {
     addAction({}, 'razImmediate', '{{Réinitialisation immédiate}}');
 });
 
  /**************** Release Alarm ***********/
- $('#btn_addReleaseAlarm').on('click', function () {
+ $('#btn_addReleaseAlarm').off('click').on('click', function () {
     addAction({}, 'release', '{{Libération}}');
 });
 
 
  /**************Activation OK/KO**********************/
 
- $('#btn_addActionActivationOk').on('click', function () {
+ $('#btn_addActionActivationOk').off('click').on('click', function () {
     addAction({}, 'activationOk', '{{Action}}');
 });
 
- $('#btn_addActionActivationKo').on('click', function () {
+ $('#btn_addActionActivationKo').off('click').on('click', function () {
     addAction({}, 'activationKo', '{{Action}}');
 });
 
 
- $('#btn_addActionReenableTrigger').on('click', function () {
+ $('#btn_addActionReenableTrigger').off('click').on('click', function () {
     addAction({}, 'reenableTrigger', '{{Action}}');
 });
 
- $('#btn_addActionActivationImmediateOk').on('click', function () {
+ $('#btn_addActionActivationImmediateOk').off('click').on('click', function () {
     addAction({}, 'activationImmediateOk', '{{Action Immediate}}');
 });
 
  /**************outbreak**********************/
 
- $('#btn_addActionOutbreak').on('click', function () {
+ $('#btn_addActionOutbreak').off('click').on('click', function () {
     addAction({}, 'outbreak', '{{Action}}');
 });
 
- $('#btn_addActionOutbreakImmediate').on('click', function () {
+ $('#btn_addActionOutbreakImmediate').off('click').on('click', function () {
     addAction({}, 'outbreakImmediate', '{{Action}}');
 });
 
  /**************** Commun ***********/
- $("body").delegate(".listCmdAction", 'click', function () {
+ $("body").off('click', '.listCmdAction').on('click', '.listCmdAction', function () {
     var type = $(this).attr('data-type');
     var el = $(this).closest('.' + type).find('.expressionAttr[data-l1key=cmd]');
     jeedom.cmd.getSelectModal({cmd: {type: 'action'}}, function (result) {
@@ -192,7 +192,7 @@
     });
 });
 
- $("body").delegate(".listAction", 'click', function () {
+ $("body").off('click','.listAction').on('click','.listAction',  function () {
   var type = $(this).attr('data-type');
   var el = $(this).closest('.' + type).find('.expressionAttr[data-l1key=cmd]');
   jeedom.getSelectActionModal({}, function (result) {
@@ -204,12 +204,12 @@
 });
 });
 
- $("body").delegate('.bt_removeAction', 'click', function () {
+ $("body").off('click', '.bt_removeAction').on('click', '.bt_removeAction', function () {
     var type = $(this).attr('data-type');
     $(this).closest('.' + type).remove();
 });
 
- $('body').delegate('.cmdAction.expressionAttr[data-l1key=cmd]', 'focusout', function (event) {
+ $('body').off('focusout','.cmdAction.expressionAttr[data-l1key=cmd]').on('focusout','.cmdAction.expressionAttr[data-l1key=cmd]',  function (event) {
     var type = $(this).attr('data-type')
     var expression = $(this).closest('.' + type).getValues('.expressionAttr');
     var el = $(this);
@@ -219,7 +219,7 @@
     })
 });
 
- $('.nav-tabs li a').on('click',function(){
+ $('.nav-tabs li a').off('click').on('click',function(){
    setTimeout(function(){ 
     taAutosize();
 }, 50);
