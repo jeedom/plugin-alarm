@@ -13,35 +13,35 @@
 
 # 12/02/2018
 
-- Correction d'un bug sur le déplacement des actions dans déclenchement
+- Es wurde ein Fehler beim Verschieben von Aktionen beim Auslösen behoben
 
-- Ability to add a trigger hold delay before activating the alarm
+- Die Möglichkeit, eine Verzögerung hinzuzufügen, führt einen Alarmaktivierungsauslöser vor
 
-# 01/12/2017
+# 2017.01.12
 
--   Fixed a bug on disabling detectors
+-   Fehler behoben, zum Deaktivieren von Detektoren
 
 -   Gestion des secondes sur le delai d’activation (JEED-63)
 
 -   Retour en arrière sur le non déclenchement des actions immédiates si
-    the activation time is empty or null
+    die Aktivierungszeit ist leer oder null
 
--   If during activation a sensor is on alert and has no delay
+-   Wenn, wenn ein Sensor aktiviert ist ansprechbar und hat keine Zeit
     d’activation alors l’alarme s’arme quand même en ignorant ce capteur
     (à moins qu’il revienne au repos)
 
--   Added global trigger action (plus filtered by zone, it
-    is advisable to use this one rather than the actions of
-    zone triggering)
+-   Hinzufügen globale Trigger-Aktion (mehr gefilterten Bereich,
+    ratsam ist es als Aktionen eher zu verwenden
+    Auslösung durch Fläche)
 
--   Code optimization
+-   Code-Optimierung
 
--   ATTENTION: the alarm no longer executes immediate actions if there is no
-    has no trigger time !!!!!! ⇒ Canceled
+-   ACHTUNG: Der Alarm mehr Aktien ausgeführt werden, wenn immediates
+    keine Triggerverzögerung !!!!!! ⇒ Abbrechen
 
--   Possibility of filtering the achievement of actions in relation to
-    alarm mode
+-   Die Fähigkeit zu filtern, um die Maßnahmen in Bezug auf die Durchführung
+    Alarmmodus
 
--   Add pause / resume command
+-   Hinzufügen Pause Befehl / Erholung
 
--   Improved configuration interface
+-   Verbesserte Konfigurationsschnittstelle

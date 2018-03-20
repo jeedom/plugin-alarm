@@ -1,6 +1,6 @@
 - Correction de bug sur le renommage des modes
 - Si l'alarme est déjà active l'armement ne la réactive pas
-- Ajout d'une option pour un déclenchement multi-zone (si une autre zone rentre en alert alors l'alarme se declenche)
+- Ajout d'une option pour un déclenchement multi-zones (si une autre zone rentre en alerte alors l'alarme se déclenche)
 - Ajout d'action lors de la reprise de surveillance d'un capteur
 - Ajout du tag #zone#
 
@@ -8,9 +8,9 @@
 # 06/03/2018
 
 - Ajout de la gestion des commandes orphelines
-- Si des capteurs sont désactiver alors les actions d'activation ok ne sont plus déclenchées
+- Si des capteurs sont désactivés alors les actions d'activation ok ne sont plus déclenchées
 - Correction de bugs
-- Les detecteurs ayant des délais d'activation et étant toujours actif après ce délai ne déclenche plus l'alarme, mais lance une activation KO, avec surveillance de ce detecteur exclu jusqu'à un retour à la normal
+- Les détecteurs ayant des délais d'activation et étant toujours actif après ce délai ne déclenchent plus l'alarme, mais lancent une activation KO, avec surveillance de ce détecteur exclu jusqu'à un retour à la normale
 
 # 12/02/2018
 
@@ -22,14 +22,14 @@
 
 -   Correction d’un bug sur la désactivation des détecteurs
 
--   Gestion des secondes sur le delai d’activatio (JEED-63)
+-   Gestion des secondes sur le delai d’activation (JEED-63)
 
--   Retour en arriere sur le non déclenchement des actions immédiates si
+-   Retour en arrière sur le non déclenchement des actions immédiates si
     le délai d’activation est vide ou nul
 
 -   Si lors de l’activation un capteur est en alerte et n’a pas de délai
-    d’activation alors l’alarme s’arme quand meme en ignorant ce capteur
-    (a moins qu’il revienne au repos)
+    d’activation alors l’alarme s’arme quand même en ignorant ce capteur
+    (à moins qu’il revienne au repos)
 
 -   Ajout d’action de déclenchement globale (plus filtrée par zone, il
     est conseillé d’utiliser celle-ci plutot que les actions de

@@ -1,5 +1,5 @@
 - Si l'alarme est déjà active l'armement ne la réactive pas
-- Ajout d'une option pour un déclenchement multi-zone (si une autre zone rentre en alert alors l'alarme se declenche)
+- Ajout d'une option pour un déclenchement multi-zones (si une autre zone rentre en alerte alors l'alarme se déclenche)
 - Ajout d'action lors de la reprise de surveillance d'un capteur
 - Ajout du tag #zone#
 
@@ -7,9 +7,9 @@
 # 06/03/2018
 
 - Ajout de la gestion des commandes orphelines
-- Si des capteurs sont désactiver alors les actions d'activation ok ne sont plus déclenchées
+- Si des capteurs sont désactivés alors les actions d'activation ok ne sont plus déclenchées
 - Correction de bugs
-- Les detecteurs ayant des délais d'activation et étant toujours actif après ce délai ne déclenche plus l'alarme, mais lance une activation KO, avec surveillance de ce detecteur exclu jusqu'à un retour à la normal
+- Les détecteurs ayant des délais d'activation et étant toujours actif après ce délai ne déclenchent plus l'alarme, mais lancent une activation KO, avec surveillance de ce détecteur exclu jusqu'à un retour à la normale
 
 # 12/02/2018
 
@@ -21,14 +21,14 @@
 
 -   Corregido un fallo sobre detectores incapacitantes
 
--   segundos de gestión sobre el retraso de activatio (JEED-63)
+-   Gestion des secondes sur le delai d’activation (JEED-63)
 
--   Espalda con espalda en la no-disparador de la acción inmediata si
+-   Retour en arrière sur le non déclenchement des actions immédiates si
     el tiempo de activación está vacía o nula
 
 -   Si al activar un sensor está alerta y no tiene tiempo
-    activación entonces la alarma está armado cuando incluso ignorando este sensor
-    (A menos que llegue al ralentí)
+    d’activation alors l’alarme s’arme quand même en ignorant ce capteur
+    (à moins qu’il revienne au repos)
 
 -   Adición de una acción global gatillo (área más filtrada,
     es recomendable utilizarlo en lugar de acciones
