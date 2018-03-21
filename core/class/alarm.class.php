@@ -576,9 +576,9 @@ class alarm extends eqLogic {
 				$this->cleanArmedCompleted();
 				$trigger_zone_immediate = $this->getCache('trigger_zone_immediate', array());
 				if ($this->getConfiguration('autorearm', 0) == 1 || $cmd_immediatState->execCmd() != 1 || ($this->getConfiguration('splitZone', 0) == 1 && !isset($trigger_zone_immediate[$zone['name']]))) {
+					$this->setCache('trigger_zone_immediate', $trigger_zone_immediate + array($zone['name'] => $zone['name']));
 					log::add('alarm', 'debug', __('Exécution des actions immédiates', __FILE__));
 					$cmd_immediatState->event(1);
-					$this->setCache('trigger_zone_immediate', $trigger_zone_immediate + array($zone['name'] => $zone['name']));
 					if ($this->getConfiguration('ignoreImmediatIfNoDelay', 0) == 0 || (isset($trigger['waitDelay']) && $trigger['waitDelay'] !== '' && is_numeric(intval($trigger['waitDelay'])) && $trigger['waitDelay'] > 0)) {
 						$this->doAction('outbreakImmediate', array('#mode#' => $select_mode, '#trigger#' => $triggerStr, '#zone#' => $zone['name']));
 						$this->doZoneAction($zone['actionsImmediate'], array('#mode#' => $select_mode, '#trigger#' => $triggerStr, '#zone#' => $zone['name']));
@@ -595,9 +595,9 @@ class alarm extends eqLogic {
 				log::add('alarm', 'debug', __('Status de l\'alarme (2) : ', __FILE__) . $cmd_state->execCmd() . __(' , armement : ', __FILE__) . $cmd_armed->execCmd());
 				$trigger_zone = $this->getCache('trigger_zone', array());
 				if ($this->getConfiguration('autorearm', 0) == 1 || $cmd_state->execCmd() != 1 || ($this->getConfiguration('splitZone', 0) == 1 && !isset($trigger_zone[$zone['name']]))) {
+					$this->setCache('trigger_zone', $trigger_zone + array($zone['name'] => $zone['name']));
 					log::add('alarm', 'debug', __('Déclenchement de l\'alarme', __FILE__));
 					$cmd_state->event(1);
-					$this->setCache('trigger_zone', $trigger_zone + array($zone['name'] => $zone['name']));
 					$this->doAction('outbreak', array('#mode#' => $select_mode, '#trigger#' => $triggerStr, '#zone#' => $zone['name']));
 					$this->doZoneAction($zone['actions'], array('#mode#' => $select_mode, '#trigger#' => $triggerStr, '#zone#' => $zone['name']));
 				}
