@@ -23,7 +23,7 @@ foreach ($eqLogics as $eqLogic) {
  </div>
 
  <div class="col-lg-10 col-md-9 col-sm-8 eqLogicThumbnailDisplay" style="border-left: solid 1px #EEE; padding-left: 25px;">
-  <legend><i class="fa fa-cog"></i>  {{Gestion}}</legend>
+  <legend><i class="fa fa-cog"></i> {{Gestion}}</legend>
 
   <div class="eqLogicThumbnailContainer">
     <div class="cursor eqLogicAction" data-action="add" style="background-color : #ffffff; height : 120px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;" >
@@ -34,7 +34,7 @@ foreach ($eqLogics as $eqLogic) {
   </div>
 </div>
 
-<legend><i class="icon jeedom-alerte"></i>  {{Mes Alarmes}}</legend>
+<legend><i class="icon jeedom-alerte"></i> {{Mes Alarmes}}</legend>
 <input class="form-control" placeholder="{{Rechercher}}" style="margin-bottom:4px;" id="in_searchEqlogic" />
 <div class="eqLogicThumbnailContainer">
   <?php
@@ -194,7 +194,7 @@ foreach (jeedom::getConfiguration('eqLogic:category') as $key => $value) {
 <div class="tab-pane" id="tab_outbreak">
   <br/>
   <div class="alert alert-info">{{C'est ici que vous devez mettre les actions à faire lorsque l'alarme se déclenche (à noter que vous pouvez aussi le faire par zone)}}<br/>
-    <a class='btn btn-danger btn-xs pull-right' id="btn_addActionOutbreak"><i class="fa fa-plus-circle"></i> {{Ajouter action de déclechement}}</a>
+    <a class='btn btn-danger btn-xs pull-right' id="btn_addActionOutbreak"><i class="fa fa-plus-circle"></i> {{Ajouter action de déclenchement}}</a>
     <a class='btn btn-warning btn-xs pull-right' id="btn_addActionOutbreakImmediate"><i class="fa fa-plus-circle"></i> {{Ajouter action immediate de déclenchement}}</a>
     <br/>
   </div>
