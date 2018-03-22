@@ -224,22 +224,20 @@ et normale seront exécutées.
 FAQ 
 ===
 
-Comment réarmer une alarme permanente ?
+>**Comment réarmer une alarme permanente ?**
+>
+>Il suffit de cliquer sur un des modes de l’alarme (même
+>celui actif).
 
-:   Il suffit de cliquer sur un des modes de l’alarme (même
-    celui actif).
+>**Peut-on mettre les délais en secondes ?**
+>
+>C’est possible pour le "Délai de déclenchement" (il faut mettre des
+>nombres à virgule, ex : 0.5 pour 30 secondes) mais pas pour le
+>"Délai d’activation" (ne pas mettre de chiffres à virgule pour
+>ce paramètre).
 
-<!-- -->
-
-Peut-on mettre les délais en secondes ?
-
-:   C’est possible pour le "Délai de déclenchement" (il faut mettre des
-    nombres à virgule, ex : 0.5 pour 30 secondes) mais pas pour le
-    "Délai d’activation" (ne pas mettre de chiffres à virgule pour
-    ce paramètre).
-
-Je ne comprends pas mon alarme ne fait rien
-
-:   Vérifiez que l’alarme a bien un mode d’actif
+>**Je ne comprends pas mon alarme ne fait rien**
+>
+>Vérifiez que l’alarme a bien un mode d’actif
 
 
