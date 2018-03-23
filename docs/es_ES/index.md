@@ -224,22 +224,20 @@ normal y será ejecutado.
 Preguntas frecuentes
 ===
 
-Cómo restablecer una alarma permanente?
+>**Comment réarmer une alarme permanente ?**
+>
+>Il suffit de cliquer sur un des modes de l’alarme (même
+>celui actif).
 
-: Simplemente haga clic en uno de los modos de alarma (incluso
-    uno activo).
+>**Peut-on mettre les délais en secondes ?**
+>
+>C’est possible pour le "Délai de déclenchement" (il faut mettre des
+>nombres à virgule, ex : 0.5 pour 30 secondes) mais pas pour le
+>"Délai d’activation" (ne pas mettre de chiffres à virgule pour
+>ce paramètre).
 
-<! - ->
-
-Podemos poner el tiempo en segundos?
-
-: Es posible que el "tiempo de activación" (poner el
-    números de punto, por ejemplo, 0,5 a 30 segundos) pero no para el
-    "Tiempo de activación" (no poner cifras puntuales
-    este parámetro).
-
-No entiendo mi alarma no hace nada
-
-: Asegúrese de que la alarma tiene un modo activo
+>**Je ne comprends pas mon alarme ne fait rien**
+>
+>Vérifiez que l’alarme a bien un mode d’actif
 
 

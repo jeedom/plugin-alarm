@@ -224,22 +224,20 @@ and normal will be executed.
 FAQ
 ===
 
-How to reset a permanent alarm?
+>**Comment réarmer une alarme permanente ?**
+>
+>Il suffit de cliquer sur un des modes de l’alarme (même
+>celui actif).
 
-: Just click on one of the alarm modes (even
-    the active one).
+>**Peut-on mettre les délais en secondes ?**
+>
+>C’est possible pour le "Délai de déclenchement" (il faut mettre des
+>nombres à virgule, ex : 0.5 pour 30 secondes) mais pas pour le
+>"Délai d’activation" (ne pas mettre de chiffres à virgule pour
+>ce paramètre).
 
-<! - ->
-
-Can we put deadlines in seconds?
-
-: It is possible for the "Trigger delay" (it is necessary to put
-    decimal numbers, eg 0.5 for 30 seconds) but not for the
-    "Activation timeout" (do not put any decimal digits for
-    this parameter).
-
-I do not understand my alarm does not do anything
-
-: Check that the alarm has an active mode
+>**Je ne comprends pas mon alarme ne fait rien**
+>
+>Vérifiez que l’alarme a bien un mode d’actif
 
 

@@ -224,22 +224,20 @@ normal und wird ausgeführt.
 FAQ
 ===
 
-Wie ein Daueralarm zurücksetzen?
+>**Comment réarmer une alarme permanente ?**
+>
+>Il suffit de cliquer sur un des modes de l’alarme (même
+>celui actif).
 
-Klicken Sie einfach auf einen der Alarmarten (auch:
-    aktiv eins).
+>**Peut-on mettre les délais en secondes ?**
+>
+>C’est possible pour le "Délai de déclenchement" (il faut mettre des
+>nombres à virgule, ex : 0.5 pour 30 secondes) mais pas pour le
+>"Délai d’activation" (ne pas mettre de chiffres à virgule pour
+>ce paramètre).
 
-<! - ->
-
-Können wir die Zeit in Sekunden setzen?
-
-: Es ist die für die „Auslösezeit“ (put möglich
-    Punktzahl, zum Beispiel 0,5 bis 30 Sekunden), aber nicht für die
-    „Aktivierungszeit“ (nicht Kommazahlen setzen
-    diese Parameter).
-
-Ich verstehe nicht, mein Wecker tut nichts
-
-Stellen Sie sicher, dass der Alarm hat einen aktiven Modus:
+>**Je ne comprends pas mon alarme ne fait rien**
+>
+>Vérifiez que l’alarme a bien un mode d’actif
 
 
