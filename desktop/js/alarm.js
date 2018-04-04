@@ -464,7 +464,7 @@ function addTrigger(_el, _trigger) {
     div += '</span>';
     div += '</div>';
     div += '</div>';
-    div += '<div class="col-sm-2 has-success">';
+    div += '<div class="col-sm-1 has-success">';
     div += '<label><input type="checkbox" class="triggerAttr checkbox-inline" data-l1key="invert" />{{Inverser}}</label>';
     div += '</div>';
     div += '<label class="col-sm-1 control-label">{{Maintient (s)}}</label>';
