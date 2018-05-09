@@ -3,6 +3,7 @@
 - Ajout d'une option pour un déclenchement multi-zones (si une autre zone rentre en alerte alors l'alarme se déclenche)
 - Ajout d'action lors de la reprise de surveillance d'un capteur
 - Ajout du tag #zone#
+- Ajout d'un bouton pour dupliquer une alarme
 
 
 # 06/03/2018
