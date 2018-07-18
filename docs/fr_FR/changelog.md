@@ -1,10 +1,12 @@
+# 18/07/2018
+
+- Mise à jour de la doc
 - Correction de bug sur le renommage des modes
 - Si l'alarme est déjà active l'armement ne la réactive pas
 - Ajout d'une option pour un déclenchement multi-zones (si une autre zone rentre en alerte alors l'alarme se déclenche)
 - Ajout d'action lors de la reprise de surveillance d'un capteur
 - Ajout du tag #zone#
 - Ajout d'un bouton pour dupliquer une alarme
-
 
 # 06/03/2018
 
