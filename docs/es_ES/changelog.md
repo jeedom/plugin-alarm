@@ -1,10 +1,12 @@
+# 18/07/2018
+
+- Actualización de la documentación
 - Se corrigió el error al renombrar los modos
 - Si la alarma ya está activa, el armado no la reactiva
 - Se agregó una opción para un disparador multizona (si otra zona entra en alerta, se activa la alarma)
 - Se agregó la acción de reanudar la monitorización de un sensor
 - Agregar etiqueta # zona #
 - Agregar un botón para duplicar una alarma
-
 
 # 06/03/2018
 

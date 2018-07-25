@@ -224,6 +224,14 @@ normal und wird ausgeführt.
 FAQ
 ===
 
+>**Quels sont les tags possible ?**
+>
+> Les tags possible sont : 
+>
+> - #mode# : nom du mode en cours
+> - #trigger# : nom de la commande qui a déclenché l'alerte
+> - #zone# : nom de la zone de la commande qui a déclenché l'alerte
+
 >**Comment réarmer une alarme permanente ?**
 >
 >Il suffit de cliquer sur un des modes de l’alarme (même
