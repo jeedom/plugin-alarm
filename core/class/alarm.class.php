@@ -76,16 +76,19 @@ class alarm extends eqLogic {
 					log::add('alarm', 'debug', __('[checkDetector] Aucune alerte, rien à faire', __FILE__));
 					continue;
 				}
-				if (!isset($trigger['armedDelay']) || $trigger['armedDelay'] === '' || !is_numeric(intval($trigger['armedDelay'])) || $trigger['armedDelay'] == 0) {
+				if (isset($trigger['armedDelay'])) {
+					$armedDelay = jeedom::evaluateExpression($trigger['armedDelay']);
+				}
+				if (!isset($trigger['armedDelay']) || $trigger['armedDelay'] === '' || !is_numeric(intval($armedDelay)) || $armedDelay == 0) {
 					log::add('alarm', 'debug', __('[checkDetector] Delai vide ou non valide, rien à faire', __FILE__));
 					continue;
 				}
-				if (strtotime('now') > (strtotime($cmd_armed->getCollectDate()) + $trigger['armedDelay'] * 60 + 60)) {
+				if (strtotime('now') > (strtotime($cmd_armed->getCollectDate()) + $armedDelay * 60 + 60)) {
 					log::add('alarm', 'debug', __('[checkDetector] Delai depassé, rien à faire', __FILE__));
 					continue;
 				}
-				if ((strtotime($cmd_armed->getCollectDate()) + $trigger['armedDelay'] * 60) - strtotime('now') > 0) {
-					sleep((strtotime($cmd_armed->getCollectDate()) + $trigger['armedDelay'] * 60) - strtotime('now'));
+				if ((strtotime($cmd_armed->getCollectDate()) + $armedDelay * 60) - strtotime('now') > 0) {
+					sleep((strtotime($cmd_armed->getCollectDate()) + $armedDelay * 60) - strtotime('now'));
 				}
 				$result = $cmd->execCmd();
 				if (isset($trigger['invert']) && $trigger['invert'] == 1) {
@@ -414,24 +417,6 @@ class alarm extends eqLogic {
 		}
 	}
 
-	public function preSave() {
-		$zones = $this->getConfiguration('zones');
-		if (is_array($zones)) {
-			foreach ($zones as $zone) {
-				if (is_array($zone['triggers'])) {
-					foreach ($zone['triggers'] as $trigger) {
-						if (isset($trigger['armedDelay']) && $trigger['armedDelay'] !== '' && (!is_numeric(intval($trigger['armedDelay'])) || $trigger['armedDelay'] < 0)) {
-							throw new Exception('Le délai d\'armement doit etre un entier supérieur à 0  : ' . $trigger['armedDelay']);
-						}
-						if (isset($trigger['waitDelay']) && $trigger['armedDelay'] !== '' && (!is_numeric(intval($trigger['waitDelay'])) || $trigger['waitDelay'] < 0)) {
-							throw new Exception('Le délai d\'activation doit etre un entier supérieur à 0 : ' . $trigger['waitDelay']);
-						}
-					}
-				}
-			}
-		}
-	}
-
 	public function preRemove() {
 		$listener = listener::byClassAndFunction('alarm', 'pull', array('alarm_id' => intval($this->getId())));
 		if (is_object($listener)) {
@@ -554,11 +539,14 @@ class alarm extends eqLogic {
 					}
 					continue;
 				}
-				if (isset($trigger['triggerHold']) && $trigger['triggerHold'] != '' && $trigger['triggerHold'] > 0) {
-					sleep($trigger['triggerHold']);
-					$_value = $cmd_trigger->execCmd();
-					if (isset($trigger['invert']) && $trigger['invert'] == 1) {
-						$_value = ($_value == 1 || $_value) ? 0 : 1;
+				if (isset($trigger['triggerHold'])) {
+					$triggerHold = jeedom::evaluateExpression($trigger['triggerHold']);
+					if ($triggerHold != '' && is_numeric(intval($triggerHold)) && $triggerHold > 0) {
+						sleep($triggerHold);
+						$_value = $cmd_trigger->execCmd();
+						if (isset($trigger['invert']) && $trigger['invert'] == 1) {
+							$_value = ($_value == 1 || $_value) ? 0 : 1;
+						}
 					}
 				}
 				if ($_value != 1 && !$_value) {
@@ -567,10 +555,13 @@ class alarm extends eqLogic {
 				}
 				$triggerStr = $cmd_trigger->getHumanName();
 				log::add('alarm', 'debug', __('Evenement valide, mise en alerte de l\'alarme sur declencheur : ', __FILE__) . $cmd_trigger->getHumanName() . __(' valeur : ', __FILE__) . $_value);
-				if (isset($trigger['armedDelay']) && $trigger['armedDelay'] !== '' && is_numeric(intval($trigger['armedDelay'])) && $trigger['armedDelay'] > 0) {
-					if (strtotime('now') < (strtotime($cmd_armed->getCollectDate()) + $trigger['armedDelay'] * 60)) {
-						log::add('alarm', 'debug', __('Non déclenchement de l\'alarme car hors delai d\'armement : ', __FILE__) . $cmd_armed->getCollectDate() . ' +' . $trigger['armedDelay'] . 'min');
-						return;
+				if (isset($trigger['armedDelay'])) {
+					$armedDelay = jeedom::evaluateExpression($trigger['armedDelay']);
+					if ($armedDelay !== '' && is_numeric(intval($armedDelay)) && $armedDelay > 0) {
+						if (strtotime('now') < (strtotime($cmd_armed->getCollectDate()) + $armedDelay * 60)) {
+							log::add('alarm', 'debug', __('Non déclenchement de l\'alarme car hors delai d\'armement : ', __FILE__) . $cmd_armed->getCollectDate() . ' +' . $armedDelay . 'min');
+							return;
+						}
 					}
 				}
 				$this->cleanArmedCompleted();
@@ -579,17 +570,21 @@ class alarm extends eqLogic {
 					$this->setCache('trigger_zone_immediate', $trigger_zone_immediate + array($zone['name'] => $zone['name']));
 					log::add('alarm', 'debug', __('Exécution des actions immédiates', __FILE__));
 					$cmd_immediatState->event(1);
-					if ($this->getConfiguration('ignoreImmediatIfNoDelay', 0) == 0 || (isset($trigger['waitDelay']) && $trigger['waitDelay'] !== '' && is_numeric(intval($trigger['waitDelay'])) && $trigger['waitDelay'] > 0)) {
+					if ($this->getConfiguration('ignoreImmediatIfNoDelay', 0) == 0 || (isset($trigger['waitDelay']) && $trigger['waitDelay'] !== '')) {
 						$this->doAction('outbreakImmediate', array('#mode#' => $select_mode, '#trigger#' => $triggerStr, '#zone#' => $zone['name']));
 						$this->doZoneAction($zone['actionsImmediate'], array('#mode#' => $select_mode, '#trigger#' => $triggerStr, '#zone#' => $zone['name']));
 					}
 				}
-				if (isset($trigger['waitDelay']) && $trigger['waitDelay'] !== '' && is_numeric(intval($trigger['waitDelay'])) && $trigger['waitDelay'] > 0) {
-					log::add('alarm', 'debug', __('Attente de ' . $trigger['waitDelay'] . ' min avant déclenchement', __FILE__));
-					sleep($trigger['waitDelay'] * 60);
-					if ($cmd_armed->execCmd() == 0 || $cmd_immediatState->execCmd() == 0) {
-						log::add('alarm', 'debug', __('L\'alarme a été désarmé avant déclenchement', __FILE__));
-						return;
+
+				if (isset($trigger['waitDelay'])) {
+					$waitDelay = jeedom::evaluateExpression($trigger['waitDelay']);
+					if ($waitDelay !== '' && is_numeric(intval($waitDelay)) && $waitDelay > 0) {
+						log::add('alarm', 'debug', __('Attente de ' . $waitDelay . ' min avant déclenchement', __FILE__));
+						sleep($waitDelay * 60);
+						if ($cmd_armed->execCmd() == 0 || $cmd_immediatState->execCmd() == 0) {
+							log::add('alarm', 'debug', __('L\'alarme a été désarmé avant déclenchement', __FILE__));
+							return;
+						}
 					}
 				}
 				log::add('alarm', 'debug', __('Status de l\'alarme (2) : ', __FILE__) . $cmd_state->execCmd() . __(' , armement : ', __FILE__) . $cmd_armed->execCmd());
@@ -809,20 +804,23 @@ class alarmCmd extends cmd {
 						continue;
 					}
 					log::add('alarm', 'debug', __('Vérification de la commande : ', __FILE__) . $cmd->getHumanName());
-					if (isset($trigger['armedDelay']) && is_numeric($trigger['armedDelay']) && $trigger['armedDelay'] > 0) {
-						$armedCompleteDatetimeTemp = strtotime('now') + $trigger['armedDelay'] * 60;
-						if ($armedCompleteDatetime < $armedCompleteDatetimeTemp) {
-							$armedCompleteDatetime = $armedCompleteDatetimeTemp;
+					if (isset($trigger['armedDelay'])) {
+						$armedDelay = jeedom::evaluateExpression($trigger['armedDelay']);
+						if (is_numeric(intval($armedDelay)) && $armedDelay > 0) {
+							$armedCompleteDatetimeTemp = strtotime('now') + $armedDelay * 60;
+							if ($armedCompleteDatetime < $armedCompleteDatetimeTemp) {
+								$armedCompleteDatetime = $armedCompleteDatetimeTemp;
+							}
+							$cron = new cron();
+							$cron->setClass('alarm');
+							$cron->setFunction('checkDetector');
+							$cron->setOption(array('alarm_id' => intval($eqLogic->getId()), 'cmd_id' => intval($cmd->getId()), 'delay' => date('s', $armedCompleteDatetime)));
+							$cron->setLastRun(date('Y-m-d H:i:s'));
+							$cron->setOnce(1);
+							$cron->setSchedule(cron::convertDateToCron($armedCompleteDatetimeTemp));
+							$cron->save();
+							continue;
 						}
-						$cron = new cron();
-						$cron->setClass('alarm');
-						$cron->setFunction('checkDetector');
-						$cron->setOption(array('alarm_id' => intval($eqLogic->getId()), 'cmd_id' => intval($cmd->getId()), 'delay' => date('s', $armedCompleteDatetime)));
-						$cron->setLastRun(date('Y-m-d H:i:s'));
-						$cron->setOnce(1);
-						$cron->setSchedule(cron::convertDateToCron($armedCompleteDatetimeTemp));
-						$cron->save();
-						continue;
 					}
 					$result = $cmd->execCmd();
 					if (isset($trigger['invert']) && $trigger['invert'] == 1) {
