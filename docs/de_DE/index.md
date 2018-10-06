@@ -1,5 +1,5 @@
-Die Alarm-Plugin ermöglicht es Jeedom ein echtes Alarmsystem zu haben,
-seine Automatisierung, einfach zu bedienen und zu konfigurieren.
+Das Alarm Plugin ermöglicht Jeedom ein echtes Alarmsystem für seine
+Hausautomatisierung zu habe, was einfach zu bedienen und zu konfigurieren ist.
 
 Plugin-Konfiguration
 =======================
@@ -32,39 +32,39 @@ Prinzip wird ausführlich beschrieben.
 Einrichtungen
 ===========
 
-Alarmanlagen-Konfiguration aus dem Menü verfügbar
-Plugin &gt; Sicherheit.
+Die Konfiguration der Alarmanlage ist über das Menü 
+Plugin > Sicherheit zugänglich 
 
-Nach dem Hinzufügen Alarm Sie am Ende mit:
+Nach dem Hinzufügen eines Alarms erscheint folgendes :
 
--   **Name der Alarmanlage** Name Ihres Alarmes
+-   **Alarm Gerätename** : Name Ihres Alarmes,
 
--   **Übergeordnete Objekt** zeigt das übergeordnete Objekt gehört
-    Ausrüstung,
+-   **Eltern Objekt** : gibt das übergeordnete Objekt an, zu dem das
+    Gerät gehört,
 
--   ** ** Kategorie: die Kategorie der Ausrüstung (Sicherheit im Allgemeinen
-    für einen Alarm)
+-   **Kategorie** : die Geräte Kategorie (Sicherheit, im Allgemeinen
+    für einen Alarm),
 
--   **Aktivieren**: auf Ihre aktive Ausrüstung zu machen,
+-   **Aktivieren** : ermöglicht es Ihnen, Ihr Gerät zu aktivieren
 
--   Visible ** ** macht Ihr Gerät sichtbar auf dem Armaturenbrett,
+-   **Visible** : macht Ihr Gerät auf dem Armaturenbrett sichtbar,
 
--   Dauerhaft aktiv ** ** Zeigt an, dass der Alarm dauerhaft sein
-    aktiv ist (zum Beispiel Alarm einer Brandmelde)
+-   **Dauerhaft aktiv ** : gibt an, dass der Alarm ständig aktiv sein soll
+    (z. B. für einen Brandmeldealarm),
 
--   ** ** sichtbar Waffe: Damit kann sichtbar oder nicht den Befehl machen
-    Aktivierung der Alarmfunktion auf das Widget,
+-   **Scharfschaltung sichtbar** : ermöglicht es Ihnen, den Befehl zum Scharfschalten
+    von Alarmen auf dem Widget sichtbar zu machen oder nicht,
 
--   **Der Status** sofort sichtbar: auf den sofortigen Status machen
-    der sichtbare Alarm (unten, um Erläuterungen sehen),
+-   **Sofort sichtbarer Status** : Ermöglicht es Ihnen, den sofortigen Status des
+    Alarms sichtbar zu machen (Erklärung siehe unten),
 
--   **historisieren Status- und Alarmstatus** wird verwendet, um zu generieren oder
-    nicht der Staat und der Status des Alarms.
+-   **Zustand und Alarmstatus archivieren** : ermöglicht es, dem Zustand oder
+    den Status des Alarms zu archivieren.
 
 > **Tipp**
 >
-> Für jede Aktion ist es möglich, die Betriebsart angeben
-> Es muss allen Modi ausführen oder in
+> Für jede Aktion ist es möglich, den Modus festzulegen, in dem sie
+> ausgeführt werden soll, oder in allen Modi. 
 
 Bereiche
 =====
