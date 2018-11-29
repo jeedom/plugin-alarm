@@ -837,7 +837,7 @@ class alarmCmd extends cmd {
 			if (count($disable_trigger) > 0) {
 				log::add('alarm', 'debug', __('Déclencheur désactivé : ', __FILE__) . print_r($disable_trigger, true));
 				log::add('alarm', 'debug', __('Lancement des actions d\'activation ko', __FILE__));
-				$eqLogic->doAction('activationKo', array('#mode#' => $select_mod, '#trigger#' => implode(',', $disable_trigger), '#zone#' => implode(',', $disable_zone_trigger)));
+				$eqLogic->doAction('activationKo', array('#mode#' => $select_mode, '#trigger#' => implode(',', $disable_trigger), '#zone#' => implode(',', $disable_zone_trigger)));
 			}
 
 			/*             * *****************Activation reussi***************** */
