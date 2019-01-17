@@ -1,13 +1,13 @@
 Le plugin Alarme permet à Jeedom d’avoir un vrai système d’alarme pour
 sa domotique, très simple à utiliser et à configurer.
 
-Configuration du plugin 
+Configuration du plugin
 =======================
 
 Après téléchargement du plugin, il vous suffit juste d’activer celui-ci,
 il n’y a aucune configuration supplémentaire à ce niveau là.
 
-Notion immédiate 
+Notion immédiate
 ================
 
 C’est une notion très importante sur le plugin alarme et il est
@@ -29,7 +29,7 @@ d’activer la sirène.
 Cette notion se retrouve dans différents types d’actions, à chaque fois
 son principe sera détaillé.
 
-Equipements 
+Equipements
 ===========
 
 La configuration des équipements Alarme est accessible à partir du menu
@@ -61,12 +61,18 @@ Une fois une alarme ajoutée vous vous retrouvez avec :
 -   **Historiser état et statut de l’alarme** : permet d’historiser ou
     non l’état et le statut de l’alarme.
 
+-   **Séparer les zones** : permet de rendre les zones independantes en terme d'alerte. En temps normal si une zone est en alerte le plugin va ignorer les autres zones. En séparant les zones il répetera les actions pour les autres zone qui entreraient en alerte
+
+-   **Réarmement automatique** : lors d'un déclenchement l'alarme complete se réarme pour prevenir des déclenchements suivant (en temps normal elle ne se réarme pas tant qu'il n'y a pas eu une action scénario/humaine pour le faire)
+
+-   **Ne pas faire les actions immediate si le capteur n'a pas de délai** : indique à l'alarme de ne pas faire les actions immediate si le capteur n'a pas de délai de déclenchement, l'alarme ne fera donc que les actions
+
 > **Tip**
 >
 > Pour chaque action il est possible de spécifier le mode dans lequel
 > elle doit s’executer ou dans tous les modes
 
-Zones 
+Zones
 =====
 
 Partie principale de l’alarme. C’est ici que vous configurez les
@@ -87,7 +93,7 @@ voulez.
 Une zone est constituée de différents éléments : - déclencheur, - action
 immédiate, - action.
 
-Déclencheur 
+Déclencheur
 -----------
 
 Un déclencheur est une commande binaire, qui lorsqu’elle vaut 1 va
@@ -126,7 +132,7 @@ se seraient déclenchées immédiatement sans attendre la fin du délai
 d’activation, les actions non immédiates auraient eu lieu après (1
 minute après les actions immédiates).
 
-Action immédiate 
+Action immédiate
 ----------------
 
 Comme décrit plus haut, ce sont des actions qui se déclenchent dès le
@@ -140,7 +146,7 @@ remplir les paramètres d’exécution.
 > Lorsque plusieures zones sont déclenchées successivement, seules les
 > actions immédiates de la 1ere zone déclenchée sont exécutées.
 
-Modes 
+Modes
 =====
 
 Les modes sont assez simples à configurer, il suffit juste d’indiquer
@@ -162,7 +168,7 @@ les zones actives en fonction du mode.
 > Il faut absolument creer au moins un mode et lui affecter des zones
 > sinon votre alarme ne marchera pas.
 
-Activation OK 
+Activation OK
 =============
 
 Cette partie permet de définir les actions à faire suite à une
@@ -183,21 +189,21 @@ périmètre de l’alarme, sinon ça la déclenche).
 > d’ouverture, même si votre porte est ouverte les actions d’activation
 > seront exécutées.
 
-Activation KO 
+Activation KO
 =============
 
 Ces actions sont exécutées si un capteur est déclenché suite à l'activation de l'alarme ou après le delai d'activation d'un capteur si celui-ci est en alerte
 
 Vous pouvez aussi ici ajouter des action lors de la reprise de surveillance d'un capteur
 
-Déclenchement 
+Déclenchement
 =============
 
 Permet de configurer les actions globals à faire lors d’un déclenchement
 de l’alarme. Vous n’etes pas obliger d’en ajouter si vous avez
 configurez des actions spécifique par zone.
 
-Désactivation OK 
+Désactivation OK
 ================
 
 Ces actions sont exécutées lorsque l’alarme est désactivée et qu’elle
@@ -208,7 +214,7 @@ délai, les actions de désactivation OK seront exécutées. Si par contre
 vous aviez arrêté l’alarme après la fin de délai de déclenchement cela
 n’aurait pas été le cas.
 
-Réinitialisation 
+Réinitialisation
 ================
 
 Cette partie vous permet de définir les actions à faire lorsque l’alarme
@@ -221,12 +227,12 @@ pas celles de réinitialisation normale. Si vous la désactivez après les
 délais de déclenchement, alors les actions de réinitialisation immédiate
 et normale seront exécutées.
 
-FAQ 
+FAQ
 ===
 
 >**Quels sont les tags possible ?**
 >
-> Les tags possible sont : 
+> Les tags possible sont :
 >
 > - #mode# : nom du mode en cours
 > - #trigger# : nom de la commande qui a déclenché l'alerte
@@ -247,5 +253,3 @@ FAQ
 >**Je ne comprends pas mon alarme ne fait rien**
 >
 >Vérifiez que l’alarme a bien un mode d’actif
-
-
