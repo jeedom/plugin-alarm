@@ -1,13 +1,13 @@
 Das Alarm Plugin ermöglicht Jeedom ein echtes Alarmsystem für seine
 Hausautomatisierung zu habe, was einfach zu bedienen und zu konfigurieren ist.
 
-Plugin-Konfiguration
+Configuration du plugin
 =======================
 
 Nachdem das Plugin herunterzuladen, müssen Sie nur um es zu aktivieren,
 gibt es keine zusätzliche Konfiguration auf dieser Ebene.
 
-sofort Konzept
+Notion immédiate
 ================
 
 C’est une notion très importante sur le plugin alarme et il est
@@ -29,7 +29,7 @@ d’activer la sirène.
 Dieses Konzept in verschiedenen Arten von Maßnahmen gefunden wird, jedes Mal,
 Prinzip wird ausführlich beschrieben.
 
-Einrichtungen
+Equipements
 ===========
 
 Die Konfiguration der Alarmanlage ist über das Menü 
@@ -61,12 +61,18 @@ Nach dem Hinzufügen eines Alarms erscheint folgendes :
 -   **Zustand und Alarmstatus archivieren** : ermöglicht es, dem Zustand oder
     den Status des Alarms zu archivieren.
 
+-   **Séparer les zones** : permet de rendre les zones independantes en terme d'alerte. En temps normal si une zone est en alerte le plugin va ignorer les autres zones. En séparant les zones il répetera les actions pour les autres zone qui entreraient en alerte
+
+-   **Réarmement automatique** : lors d'un déclenchement l'alarme complete se réarme pour prevenir des déclenchements suivant (en temps normal elle ne se réarme pas tant qu'il n'y a pas eu une action scénario/humaine pour le faire)
+
+-   **Ne pas faire les actions immediate si le capteur n'a pas de délai** : indique à l'alarme de ne pas faire les actions immediate si le capteur n'a pas de délai de déclenchement, l'alarme ne fera donc que les actions
+
 > **Tipp**
 >
 > Für jede Aktion ist es möglich, den Modus festzulegen, in dem sie
 > ausgeführt werden soll, oder in allen Modi. 
 
-Bereiche
+Zones
 =====
 
 Hauptteil des Alarms. Hier können Sie konfigurieren
@@ -87,7 +93,7 @@ möchten.
 Eine Zone besteht aus verschiedenen Elementen: - Auslöser, - Aktion
 sofort - Aktion.
 
-Auslöser
+Déclencheur
 -----------
 
 Ein Auslöser ist ein binärer Befehl, der 1 ist, wenn es
@@ -126,7 +132,7 @@ beginnen würde sofort für die Frist, ohne warten
 Aktivierung, nicht sofortige Maßnahmen stattgefunden haben, nach (1
 Minute nach den unmittelbaren Aktionen).
 
-sofortiges Handeln
+Action immédiate
 ----------------
 
 Wie oben beschrieben, sind diese Aktionen, die von der ausgelöst werden
@@ -140,7 +146,7 @@ komplette Ausführungsparameter.
 > Wenn mehrere Zonen nacheinander ausgelöst, nur
 > Sofortige Aktionen werden zuerst ausgelöst Zone ausgeführt.
 
-Modi
+Modes
 =====
 
 Die Modi sind recht einfach einzurichten, müssen Sie nur angeben,
@@ -162,7 +168,7 @@ die aktiven Bereiche in Abhängigkeit von der Betriebsart.
 > Achten Sie darauf, mindestens einen Modus und weisen Bereiche zu schaffen
 > Wenn Ihr Alarm nicht funktioniert.
 
-OK Aktivierung
+Activation OK
 =============
 
 In diesem Abschnitt werden die Aktionen a folgen
@@ -183,21 +189,21 @@ Perimeter-Alarm, sonst löst sie).
 > Öffnen, auch wenn Ihre Tür ist offen Aktivierungsmaßnahmen
 > Wird ausgeführt werden.
 
-KO-Aktivierung
+Activation KO
 =============
 
 Ces actions sont exécutées si un capteur est déclenché suite à l'activation de l'alarme ou après le delai d'activation d'un capteur si celui-ci est en alerte
 
 Vous pouvez aussi ici ajouter des action lors de la reprise de surveillance d'un capteur
 
-Veröffentlichung
+Déclenchement
 =============
 
 Konfigurieren Sie die Globals Aktionen zu tun, wenn sie ausgelöst
 Alarm. Sie sind nicht hinzuzufügen gezwungen, wenn Sie
 konfigurieren, dass bestimmte Maßnahmen Bereich.
 
-OK Deaktivierung
+Désactivation OK
 ================
 
 Diese Aktionen werden ausgeführt, wenn der Alarm deaktiviert und sie
@@ -208,7 +214,7 @@ Frist, OK Deaktivierung Aktionen werden ausgeführt. Wenn durch Nachteile
 Sie stoppte den Alarm nach dem Ende dieser Reise Verzögerung
 wäre nicht der Fall gewesen.
 
-rücksetzen
+Réinitialisation
 ================
 
 In diesem Abschnitt können Sie Aktionen definieren, wenn der Alarm zu tun
@@ -226,7 +232,7 @@ FAQ
 
 >**Quels sont les tags possible ?**
 >
-> Les tags possible sont : 
+> Les tags possible sont :
 >
 > - #mode# : nom du mode en cours
 > - #trigger# : nom de la commande qui a déclenché l'alerte
@@ -247,5 +253,3 @@ FAQ
 >**Je ne comprends pas mon alarme ne fait rien**
 >
 >Vérifiez que l’alarme a bien un mode d’actif
-
-

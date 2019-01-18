@@ -1,13 +1,13 @@
 The Alarm plugin allows Jeedom to have a real alarm system for
 its home automation, very simple to use and configure.
 
-Plugin configuration
+Configuration du plugin
 =======================
 
 After downloading the plugin, you just have to activate it,
 there is no additional configuration at this level.
 
-Immediate concept
+Notion immédiate
 ================
 
 C’est une notion très importante sur le plugin alarme et il est
@@ -29,7 +29,7 @@ d’activer la sirène.
 This notion is found in different types of actions, each time
 its principle will be detailed.
 
-Facilities
+Equipements
 ===========
 
 The alarm equipment configuration is accessible from the menu
@@ -61,12 +61,18 @@ Once an alarm is added you are left with:
 -   **History and status of the alarm**: allows you to log or
     not the state and status of the alarm.
 
+-   **Séparer les zones** : permet de rendre les zones independantes en terme d'alerte. En temps normal si une zone est en alerte le plugin va ignorer les autres zones. En séparant les zones il répetera les actions pour les autres zone qui entreraient en alerte
+
+-   **Réarmement automatique** : lors d'un déclenchement l'alarme complete se réarme pour prevenir des déclenchements suivant (en temps normal elle ne se réarme pas tant qu'il n'y a pas eu une action scénario/humaine pour le faire)
+
+-   **Ne pas faire les actions immediate si le capteur n'a pas de délai** : indique à l'alarme de ne pas faire les actions immediate si le capteur n'a pas de délai de déclenchement, l'alarme ne fera donc que les actions
+
 > **Tip**
 >
 > For each action it is possible to specify the mode in which
 > it must be executed or in all modes
 
-areas
+Zones
 =====
 
 Main part of the alarm. This is where you set up
@@ -87,7 +93,7 @@ want.
 A zone consists of different elements: - trigger, - action
 immediate, - action.
 
-trigger
+Déclencheur
 -----------
 
 A trigger is a binary command, which when it is worth 1 will
@@ -126,7 +132,7 @@ would have started immediately without waiting for the end of
 activation, non-immediate actions would have taken place after (1
 minute after the immediate actions).
 
-Immediate action
+Action immédiate
 ----------------
 
 As described above, these are actions that are triggered as soon as
@@ -140,7 +146,7 @@ fill in the execution parameters.
 > When several zones are triggered successively, only the
 > immediate actions of the 1st triggered zone are executed.
 
-modes
+Modes
 =====
 
 The modes are simple enough to configure, just indicate
@@ -162,7 +168,7 @@ active zones according to the mode.
 > You must create at least one mode and assign zones
 > otherwise your alarm will not work.
 
-OK activation
+Activation OK
 =============
 
 This part defines the actions to be taken following a
@@ -183,21 +189,21 @@ perimeter of the alarm, otherwise it triggers it).
 > opening, even if your door is open activation actions
 > will be executed.
 
-KO activation
+Activation KO
 =============
 
 Ces actions sont exécutées si un capteur est déclenché suite à l'activation de l'alarme ou après le delai d'activation d'un capteur si celui-ci est en alerte
 
 Vous pouvez aussi ici ajouter des action lors de la reprise de surveillance d'un capteur
 
-release
+Déclenchement
 =============
 
 Allows you to configure the global actions to be performed during a trigger
 of the alarm. You do not have to add any if you have
 configure specific actions by zone.
 
-Disabling OK
+Désactivation OK
 ================
 
 These actions are executed when the alarm is disabled and
@@ -208,7 +214,7 @@ delay, the OK deactivation actions will be executed. If however
 you had stopped the alarm after the end of the triggering time this
 would not have been the case.
 
-reset
+Réinitialisation
 ================
 
 This part allows you to define the actions to be done when the alarm
@@ -226,7 +232,7 @@ FAQ
 
 >**Quels sont les tags possible ?**
 >
-> Les tags possible sont : 
+> Les tags possible sont :
 >
 > - #mode# : nom du mode en cours
 > - #trigger# : nom de la commande qui a déclenché l'alerte
@@ -247,5 +253,3 @@ FAQ
 >**Je ne comprends pas mon alarme ne fait rien**
 >
 >Vérifiez que l’alarme a bien un mode d’actif
-
-
