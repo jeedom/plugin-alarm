@@ -1,7 +1,7 @@
 The Alarm plugin allows Jeedom to have a real alarm system for
 its home automation, very simple to use and configure.
 
-Configuration du plugin
+Plugin configuration
 =======================
 
 After downloading the plugin, you just have to activate it,
