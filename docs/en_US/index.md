@@ -7,7 +7,7 @@ Plugin configuration
 After downloading the plugin, you just have to activate it,
 there is no additional configuration at this level.
 
-Notion immédiate
+Immediate concept
 ================
 
 C’est une notion très importante sur le plugin alarme et il est
@@ -29,7 +29,7 @@ d’activer la sirène.
 This notion is found in different types of actions, each time
 its principle will be detailed.
 
-Equipements
+Devices
 ===========
 
 The alarm equipment configuration is accessible from the menu
@@ -72,7 +72,7 @@ Once an alarm is added you are left with:
 > For each action it is possible to specify the mode in which
 > it must be executed or in all modes
 
-Zones
+Areas
 =====
 
 Main part of the alarm. This is where you set up
@@ -93,7 +93,7 @@ want.
 A zone consists of different elements: - trigger, - action
 immediate, - action.
 
-Déclencheur
+Trigger
 -----------
 
 A trigger is a binary command, which when it is worth 1 will
@@ -132,7 +132,7 @@ would have started immediately without waiting for the end of
 activation, non-immediate actions would have taken place after (1
 minute after the immediate actions).
 
-Action immédiate
+Immediate action
 ----------------
 
 As described above, these are actions that are triggered as soon as
@@ -214,8 +214,8 @@ delay, the OK deactivation actions will be executed. If however
 you had stopped the alarm after the end of the triggering time this
 would not have been the case.
 
-Réinitialisation
-================
+Reset
+=======
 
 This part allows you to define the actions to be done when the alarm
 is triggered and deactivated. Here too there are immediate actions
