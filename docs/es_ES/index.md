@@ -1,13 +1,13 @@
 El plug-in de alarma permite Jeedom que tiene un sistema de alarma reales
 su automatización, fácil de utilizar y configurar.
 
-configuración del plugin
+Configuration du plugin
 =======================
 
 Después de descargar el plugin, sólo hay que activarlo,
 no hay ninguna configuración adicional a este nivel.
 
-concepto inmediata
+Notion immédiate
 ================
 
 C’est une notion très importante sur le plugin alarme et il est
@@ -29,7 +29,7 @@ d’activer la sirène.
 Este concepto se encuentra en diferentes tipos de acciones, cada vez
 principio se detallará.
 
-comodidades
+Equipements
 ===========
 
 configuración de un sistema de alarma está disponible en el menú
@@ -61,12 +61,18 @@ Una vez añadido alarma se termina con:
 -   **estado historizar y estado de alarma** se utiliza para generar o
     no el estado y el estado de la alarma.
 
+-   **Séparer les zones** : permet de rendre les zones independantes en terme d'alerte. En temps normal si une zone est en alerte le plugin va ignorer les autres zones. En séparant les zones il répetera les actions pour les autres zone qui entreraient en alerte
+
+-   **Réarmement automatique** : lors d'un déclenchement l'alarme complete se réarme pour prevenir des déclenchements suivant (en temps normal elle ne se réarme pas tant qu'il n'y a pas eu une action scénario/humaine pour le faire)
+
+-   **Ne pas faire les actions immediate si le capteur n'a pas de délai** : indique à l'alarme de ne pas faire les actions immediate si le capteur n'a pas de délai de déclenchement, l'alarme ne fera donc que les actions
+
 > **Tip**
 >
 > Para cada acción, es posible especificar el modo de
 > Se debe ejecutar o en todos los modos
 
-áreas
+Zones
 =====
 
 parte principal de la alarma. Aquí es donde se configura
@@ -87,7 +93,7 @@ desee.
 Una zona consiste en diferentes elementos: - gatillo, - Acción
 inmediata - acción.
 
-gatillo
+Déclencheur
 -----------
 
 Un disparador es un comando binario, que es 1 cuando está
@@ -126,7 +132,7 @@ comenzaría inmediatamente sin esperar a la fecha límite
 activación, acciones inmediatas no han tenido lugar después de (1
 minutos después de que las acciones inmediatas).
 
-acción inmediata
+Action immédiate
 ----------------
 
 Como se describió anteriormente, se trata de acciones que se desencadenan a partir de la
@@ -140,7 +146,7 @@ Parámetros de ejecución completos.
 > Cuando varias zonas se activan sucesivamente, sólo se
 > Las acciones inmediatas de la primera zona desencadenado se ejecutan.
 
-modos
+Modes
 =====
 
 Los modos son bastante fácil de configurar, sólo hay que indicar
@@ -162,7 +168,7 @@ las áreas activas en función del modo.
 > Asegúrese de crear al menos un modo y asignar áreas
 > Si la alarma no funciona.
 
-Aceptar la activación
+Activation OK
 =============
 
 Esta sección define las acciones a seguir una
@@ -183,21 +189,21 @@ alarma de perímetro, de lo contrario se dispara).
 > de apertura, incluso si su puerta está abierta medidas de activación
 > Será ejecutado.
 
-la activación KO
+Activation KO
 =============
 
 Ces actions sont exécutées si un capteur est déclenché suite à l'activation de l'alarme ou après le delai d'activation d'un capteur si celui-ci est en alerte
 
 Vous pouvez aussi ici ajouter des action lors de la reprise de surveillance d'un capteur
 
-liberación
+Déclenchement
 =============
 
 Configurar las acciones globals que hacer cuando se activa
 alarma. Usted no está obligado a añadir si tiene
 configurar una acción específica por área.
 
-Aceptar la desactivación
+Désactivation OK
 ================
 
 Estas acciones se ejecutan cuando se desactiva la alarma y ella
@@ -208,7 +214,7 @@ plazo, se ejecutará acciones de desactivación OK. Si por contra
 de detener la alarma después del final de este retardo de ida
 no habría sido el caso.
 
-reajustar
+Réinitialisation
 ================
 
 Esta sección le permite definir acciones para hacer cuando la alarma
@@ -221,12 +227,12 @@ no los de restablecimiento normal. Si lo apaga después
 retardo de disparo, entonces las acciones de restablecimiento inmediato
 normal y será ejecutado.
 
-Preguntas frecuentes
+FAQ
 ===
 
 >**Quels sont les tags possible ?**
 >
-> Les tags possible sont : 
+> Les tags possible sont :
 >
 > - #mode# : nom du mode en cours
 > - #trigger# : nom de la commande qui a déclenché l'alerte
@@ -247,5 +253,3 @@ Preguntas frecuentes
 >**Je ne comprends pas mon alarme ne fait rien**
 >
 >Vérifiez que l’alarme a bien un mode d’actif
-
-

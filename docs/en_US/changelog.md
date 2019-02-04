@@ -1,4 +1,7 @@
+# 17/01/2019
+
 - Possibilité d'utiliser des variables ou calcul pour les délais de Maintient (s), Activation et Déclenchement
+- Mise à jour de la doc
 
 # 18/07/2018
 
