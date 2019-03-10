@@ -5,13 +5,13 @@ Configuration du plugin
 =======================
 
 Après téléchargement du plugin, il vous suffit juste d’activer celui-ci,
-il n’y a aucune configuration supplémentaire à ce niveau là.
+il n’y a aucune configuration supplémentaire à ce niveau.
 
 Notion immédiate
 ================
 
-C’est une notion très importante sur le plugin alarme et il est
-important de très bien la comprendre. Pour schématiser c’est comme si
+C’est une notion très importante du plugin Alarme et il est
+très important de bien la comprendre. Pour schématiser c’est comme si
 vous aviez 2 alarmes, la première : l’alarme immédiate qui ne tient pas
 compte des délais de déclenchement (attention elle prend bien en compte
 les délais d’activation) et une 2ème alarme qui elle, prend en compte
@@ -61,16 +61,16 @@ Une fois une alarme ajoutée vous vous retrouvez avec :
 -   **Historiser état et statut de l’alarme** : permet d’historiser ou
     non l’état et le statut de l’alarme.
 
--   **Séparer les zones** : permet de rendre les zones independantes en terme d'alerte. En temps normal si une zone est en alerte le plugin va ignorer les autres zones. En séparant les zones il répetera les actions pour les autres zone qui entreraient en alerte
+-   **Séparer les zones** : permet de rendre les zones indépendantes en terme d'alerte. En temps normal si une zone est en alerte le plugin va ignorer les autres zones. En séparant les zones il répetera les actions pour les autres zones qui entreraient en alerte
 
--   **Réarmement automatique** : lors d'un déclenchement l'alarme complete se réarme pour prevenir des déclenchements suivant (en temps normal elle ne se réarme pas tant qu'il n'y a pas eu une action scénario/humaine pour le faire)
+-   **Réarmement automatique** : lors d'un déclenchement l'alarme complète se réarme pour prévenir des déclenchements suivants (en temps normal elle ne se réarme pas tant qu'il n'y a pas eu une action scénario/humaine pour le faire)
 
--   **Ne pas faire les actions immediate si le capteur n'a pas de délai** : indique à l'alarme de ne pas faire les actions immediate si le capteur n'a pas de délai de déclenchement, l'alarme ne fera donc que les actions
+-   **Ne pas faire les actions immédiates si le capteur n'a pas de délai** : indique à l'alarme de ne pas faire les actions immédiates si le capteur n'a pas de délai de déclenchement, l'alarme ne fera donc que les actions
 
 > **Tip**
 >
 > Pour chaque action il est possible de spécifier le mode dans lequel
-> elle doit s’executer ou dans tous les modes
+> elle doit s’exécuter ou dans tous les modes
 
 Zones
 =====
@@ -102,14 +102,14 @@ déclencher l’alarme. Il est possible d’inverser le déclencheur, pour que
 "inverser" sur OUI. Une fois votre déclencheur choisi, vous pouvez
 spécifier un délai d’activiation en minute (il n’est pas possible de
 descendre en-dessous de la minute). Ce délai permet par exemple, si vous
-activer l’alarme avant de sortir de chez vous, de ne pas déclencher
+activez l’alarme avant de sortir de chez vous, de ne pas déclencher
 l’alarme avant une minute (le temps de vous laisser sortir). Autre cas,
 certains détecteurs de mouvement restent en mode déclenché (valeur 1)
 pendant un certain temps même si il n’y a aucune détection, par exemple
 4 minutes, il est donc bon de décaler l’activation de ces capteurs de 4
 ou 5 min pour que l’alarme ne se déclenche pas immédiatement après
 l’activation. Ensuite vous avez le délai de déclenchement, à la
-difference du délai d’activation qui n’a lieu que une fois lors de
+différence du délai d’activation qui n’a lieu que une fois lors de
 l’activation de l’alarme, celui-ci est mis en place après chaque
 déclenchement d’un capteur. La cinématique est la suivante lors du
 déclenchement du capteur (ouverture de porte, détection de présence), si
@@ -143,7 +143,7 @@ remplir les paramètres d’exécution.
 
 > **Note**
 >
-> Lorsque plusieures zones sont déclenchées successivement, seules les
+> Lorsque plusieurs zones sont déclenchées successivement, seules les
 > actions immédiates de la 1ere zone déclenchée sont exécutées.
 
 Modes
@@ -160,12 +160,12 @@ les zones actives en fonction du mode.
 > **Note**
 >
 > Lors du renommage d’un mode, il faut sur le widget de l’alarme
-> recliquer sur le mode en question pour une prise en compte complete
-> (sinon jeedom reste sur l’ancien mode)
+> recliquer sur le mode en question pour une prise en compte complète
+> (sinon Jeedom reste sur l’ancien mode)
 
 > **Important**
 >
-> Il faut absolument creer au moins un mode et lui affecter des zones
+> Il faut absolument créer au moins un mode et lui affecter des zones
 > sinon votre alarme ne marchera pas.
 
 Activation OK
@@ -173,12 +173,12 @@ Activation OK
 
 Cette partie permet de définir les actions à faire suite à une
 activation de l’alarme. Ici encore, vous retrouverez la notion immédiate
-qui représente les actions à faire toute de suite après armement de
+qui représente les actions à faire tout de suite après armement de
 l’alarme, ensuite viennent les actions d’activation qui elles sont
 exécutées après les délais de déclenchement.
 
 Dans l’exemple, ici j’allume par exemple une lampe en rouge pour
-signaler que l’armement a bien été pris en compte et je l’éteinds une
+signaler que l’armement a bien été pris en compte et je l’éteins une
 fois l’armement complet (car normalement il n’y a plus personne dans le
 périmètre de l’alarme, sinon ça la déclenche).
 
@@ -194,14 +194,14 @@ Activation KO
 
 Ces actions sont exécutées si un capteur est déclenché suite à l'activation de l'alarme ou après le delai d'activation d'un capteur si celui-ci est en alerte
 
-Vous pouvez aussi ici ajouter des action lors de la reprise de surveillance d'un capteur
+Vous pouvez aussi ici ajouter des actions lors de la reprise de surveillance d'un capteur
 
 Déclenchement
 =============
 
-Permet de configurer les actions globals à faire lors d’un déclenchement
-de l’alarme. Vous n’etes pas obliger d’en ajouter si vous avez
-configurez des actions spécifique par zone.
+Permet de configurer les actions globales à faire lors d’un déclenchement
+de l’alarme. Vous n’êtes pas obligé d’en ajouter si vous avez
+configuré des actions spécifiques par zone.
 
 Désactivation OK
 ================
@@ -221,7 +221,7 @@ Cette partie vous permet de définir les actions à faire lorsque l’alarme
 est déclenchée puis désactivée. Ici aussi il y a des actions immédiates
 et différées. Voici un exemple : vous rentrez chez vous, les délais
 d’activation sont passés, mais en ouvrant la porte cela déclenche
-l’alarme. Si vous la désactiver (avant les délais de déclenchement)
+l’alarme. Si vous la désactivez (avant les délais de déclenchement)
 alors les actions de réinitialisation immédiate seront exécutées, mais
 pas celles de réinitialisation normale. Si vous la désactivez après les
 délais de déclenchement, alors les actions de réinitialisation immédiate
