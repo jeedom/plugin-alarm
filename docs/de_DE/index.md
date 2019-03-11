@@ -4,14 +4,14 @@ Hausautomatisierung zu habe, was einfach zu bedienen und zu konfigurieren ist.
 Configuration du plugin
 =======================
 
-Nachdem das Plugin herunterzuladen, müssen Sie nur um es zu aktivieren,
-gibt es keine zusätzliche Konfiguration auf dieser Ebene.
+Après téléchargement du plugin, il vous suffit juste d’activer celui-ci,
+il n’y a aucune configuration supplémentaire à ce niveau.
 
 Notion immédiate
 ================
 
-C’est une notion très importante sur le plugin alarme et il est
-important de très bien la comprendre. Pour schématiser c’est comme si
+C’est une notion très importante du plugin Alarme et il est
+très important de bien la comprendre. Pour schématiser c’est comme si
 vous aviez 2 alarmes, la première : l’alarme immédiate qui ne tient pas
 compte des délais de déclenchement (attention elle prend bien en compte
 les délais d’activation) et une 2ème alarme qui elle, prend en compte
@@ -61,16 +61,16 @@ Nach dem Hinzufügen eines Alarms erscheint folgendes :
 -   **Zustand und Alarmstatus archivieren** : ermöglicht es, dem Zustand oder
     den Status des Alarms zu archivieren.
 
--   **Séparer les zones** : permet de rendre les zones independantes en terme d'alerte. En temps normal si une zone est en alerte le plugin va ignorer les autres zones. En séparant les zones il répetera les actions pour les autres zone qui entreraient en alerte
+-   **Séparer les zones** : permet de rendre les zones indépendantes en terme d'alerte. En temps normal si une zone est en alerte le plugin va ignorer les autres zones. En séparant les zones il répetera les actions pour les autres zones qui entreraient en alerte
 
--   **Réarmement automatique** : lors d'un déclenchement l'alarme complete se réarme pour prevenir des déclenchements suivant (en temps normal elle ne se réarme pas tant qu'il n'y a pas eu une action scénario/humaine pour le faire)
+-   **Réarmement automatique** : lors d'un déclenchement l'alarme complète se réarme pour prévenir des déclenchements suivants (en temps normal elle ne se réarme pas tant qu'il n'y a pas eu une action scénario/humaine pour le faire)
 
--   **Ne pas faire les actions immediate si le capteur n'a pas de délai** : indique à l'alarme de ne pas faire les actions immediate si le capteur n'a pas de délai de déclenchement, l'alarme ne fera donc que les actions
+-   **Ne pas faire les actions immédiates si le capteur n'a pas de délai** : indique à l'alarme de ne pas faire les actions immédiates si le capteur n'a pas de délai de déclenchement, l'alarme ne fera donc que les actions
 
-> **Tipp**
+> **Tip**
 >
-> Für jede Aktion ist es möglich, den Modus festzulegen, in dem sie
-> ausgeführt werden soll, oder in allen Modi. 
+> Pour chaque action il est possible de spécifier le mode dans lequel
+> elle doit s’exécuter ou dans tous les modes
 
 Zones
 =====
@@ -96,27 +96,27 @@ sofort - Aktion.
 Déclencheur
 -----------
 
-Ein Auslöser ist ein binärer Befehl, der 1 ist, wenn es
-den Alarm auslösen. Es ist möglich, den Auslöser zu umkehren für
-es ist der Zustand 0 des Sensors, der einen Alarm auslöst, mit
-"Invertieren" YES. Sobald Ihre gewählte Trigger, können Sie
-Geben Sie einen Zeitraum von activiation in Minuten (es nicht möglich ist,
-unterhalb einer Minute nach unten). Dies ermöglicht es Zeit zum Beispiel, wenn Sie
-den Alarm aktivieren, bevor das Haus zu verlassen, nicht zu triggern
-der Alarm vor 1 Minute (Zeit, Sie zu lassen). andere Fälle
-einige Bewegungsmelder-Modus (Wert 1) bleiben ausgelöst
-seit einiger Zeit, auch wenn kein Nachweis ist beispiel
-4 Minuten, so ist es gut, die Aktivierung dieser Sensoren staffeln 4
-oder 5 Minuten vor dem Alarm nicht sofort ausgelöst, nachdem
-Aktivierung. Dann haben Sie die Trigger-Verzögerung, die
-Differenz der Aktivierungsverzögerung, die nur einmal auftritt, in
-Aktivierung des Alarms wird nach jedem Set up
-Auslösen eines Sensors. Die Kinematik ist wie folgt, wenn
-Auslösen des Sensors (Toröffnung, Anwesenheitserfassung), wenn
-Aktivierungszeit vergangen, wird der Alarm ausgelöst Aktionen
-sofort, sondern wird für die Aktivierungszeit warten ist vorbei, bevor
-déchencher Aktionen. Schließlich haben Sie die „reverse“ Knopf,
-umzukehren, die Sensor Triggerbedingung (0 statt 1).
+Un déclencheur est une commande binaire, qui lorsqu’elle vaut 1 va
+déclencher l’alarme. Il est possible d’inverser le déclencheur, pour que
+ça soit l’état 0 du capteur qui déclenche l’alarme, en mettant
+"inverser" sur OUI. Une fois votre déclencheur choisi, vous pouvez
+spécifier un délai d’activiation en minute (il n’est pas possible de
+descendre en-dessous de la minute). Ce délai permet par exemple, si vous
+activez l’alarme avant de sortir de chez vous, de ne pas déclencher
+l’alarme avant une minute (le temps de vous laisser sortir). Autre cas,
+certains détecteurs de mouvement restent en mode déclenché (valeur 1)
+pendant un certain temps même si il n’y a aucune détection, par exemple
+4 minutes, il est donc bon de décaler l’activation de ces capteurs de 4
+ou 5 min pour que l’alarme ne se déclenche pas immédiatement après
+l’activation. Ensuite vous avez le délai de déclenchement, à la
+différence du délai d’activation qui n’a lieu que une fois lors de
+l’activation de l’alarme, celui-ci est mis en place après chaque
+déclenchement d’un capteur. La cinématique est la suivante lors du
+déclenchement du capteur (ouverture de porte, détection de présence), si
+les délais d’activation sont passés, l’alarme va déclencher les actions
+immédiates mais va attendre que le délai d’activation soit fini avant de
+déchencher les actions. Enfin vous avez le bouton "inverser" qui permet
+d’inverser l’état déclencheur du capteur (0 au lieu de 1).
 
 Vous avez aussi un paramètre **Maintient** qui permet de spécifier un délai de maintient du déclencheur avant de déclencher l'alarme. Ex si vous avez un détecteur de fumée qui remonte parfois de fausses alarmes vous pouvez spécifier un délai de 2s. Lors du déclenchement de l'alarme Jeedom va attendre 2s et vérifier que le détecteur de fumée est toujours en alerte si ce n'est pas le cas il ne déclenchera pas l'alarme.  
 
@@ -141,10 +141,10 @@ selbst wenn unter Berücksichtigung der Aktivierungszeit). Sie müssen nur
 wählen die gewünschte Aktionssteuer dann davon funktionieren
 komplette Ausführungsparameter.
 
-> **Hinweis**
+> **Note**
 >
-> Wenn mehrere Zonen nacheinander ausgelöst, nur
-> Sofortige Aktionen werden zuerst ausgelöst Zone ausgeführt.
+> Lorsque plusieurs zones sont déclenchées successivement, seules les
+> actions immédiates de la 1ere zone déclenchée sont exécutées.
 
 Modes
 =====
@@ -152,35 +152,35 @@ Modes
 Die Modi sind recht einfach einzurichten, müssen Sie nur angeben,
 die aktiven Bereiche in Abhängigkeit von der Betriebsart.
 
-> **Tipp**
+> **Tip**
 >
-> Es ist möglich, den Modus, indem Sie auf den Namen es umbenennen
-> (Gegenüber der Bezeichnung „Modellname“).
+> Il est possible de renommer le mode en cliquant sur le nom de celui-ci
+> (en face du label "Nom du mode").
 
-> **Hinweis**
+> **Note**
 >
-> Beim Umbenennen eine Art und Weise in dem Alarm Widget muss
-> Klicken Sie erneut auf die Frage Modus für die vollständige Berücksichtigung
-> (Wenn jeedom auf dem alten Weg bleibt)
+> Lors du renommage d’un mode, il faut sur le widget de l’alarme
+> recliquer sur le mode en question pour une prise en compte complète
+> (sinon Jeedom reste sur l’ancien mode)
 
-> **Wichtig**
+> **Important**
 >
-> Achten Sie darauf, mindestens einen Modus und weisen Bereiche zu schaffen
-> Wenn Ihr Alarm nicht funktioniert.
+> Il faut absolument créer au moins un mode et lui affecter des zones
+> sinon votre alarme ne marchera pas.
 
 Activation OK
 =============
 
-In diesem Abschnitt werden die Aktionen a folgen
-Alarmaktivierung. Auch hier werden Sie den sofortigen Begriff finden
-die Aktien vertreten zu Unmittelbar nach Bewaffnung
-Alarm, gefolgt von der Aktivierung Aktionen
-nach der Triggerverzögerung ausgeführt.
+Cette partie permet de définir les actions à faire suite à une
+activation de l’alarme. Ici encore, vous retrouverez la notion immédiate
+qui représente les actions à faire tout de suite après armement de
+l’alarme, ensuite viennent les actions d’activation qui elles sont
+exécutées après les délais de déclenchement.
 
-Im Beispiel drehe ich hier zum Beispiel eine rote Lampe
-berichten, dass Bewaffnung berücksichtigt wurde und ich éteinds ein
-Sobald die volle Bewaffnung (denn normalerweise gibt es niemand in der
-Perimeter-Alarm, sonst löst sie).
+Dans l’exemple, ici j’allume par exemple une lampe en rouge pour
+signaler que l’armement a bien été pris en compte et je l’éteins une
+fois l’armement complet (car normalement il n’y a plus personne dans le
+périmètre de l’alarme, sinon ça la déclenche).
 
 > **Wichtig**
 >
@@ -194,14 +194,14 @@ Activation KO
 
 Ces actions sont exécutées si un capteur est déclenché suite à l'activation de l'alarme ou après le delai d'activation d'un capteur si celui-ci est en alerte
 
-Vous pouvez aussi ici ajouter des action lors de la reprise de surveillance d'un capteur
+Vous pouvez aussi ici ajouter des actions lors de la reprise de surveillance d'un capteur
 
 Déclenchement
 =============
 
-Konfigurieren Sie die Globals Aktionen zu tun, wenn sie ausgelöst
-Alarm. Sie sind nicht hinzuzufügen gezwungen, wenn Sie
-konfigurieren, dass bestimmte Maßnahmen Bereich.
+Permet de configurer les actions globales à faire lors d’un déclenchement
+de l’alarme. Vous n’êtes pas obligé d’en ajouter si vous avez
+configuré des actions spécifiques par zone.
 
 Désactivation OK
 ================
@@ -217,15 +217,15 @@ wäre nicht der Fall gewesen.
 Réinitialisation
 ================
 
-In diesem Abschnitt können Sie Aktionen definieren, wenn der Alarm zu tun
-aktiviert und deaktiviert wird. Auch hier gibt es Sofortmaßnahmen
-und abgegrenzt. Hier ein Beispiel: Sie gehen nach Hause, Zeit
-Die Aktivierung vergangen, aber das Öffnen der Tür löst dies
-der Alarm. Wenn Sie deaktivieren (vor dem Triggerzeitpunkt)
-dann sofort zurückgesetzt Aktionen ausgeführt wird, aber
-diejenigen, die nicht von normalen zurückgesetzt. Wenn Sie sie ausschalten nach
-Trigger-Verzögerung, dann die Aktionen der sofortigen Reset
-normal und wird ausgeführt.
+Cette partie vous permet de définir les actions à faire lorsque l’alarme
+est déclenchée puis désactivée. Ici aussi il y a des actions immédiates
+et différées. Voici un exemple : vous rentrez chez vous, les délais
+d’activation sont passés, mais en ouvrant la porte cela déclenche
+l’alarme. Si vous la désactivez (avant les délais de déclenchement)
+alors les actions de réinitialisation immédiate seront exécutées, mais
+pas celles de réinitialisation normale. Si vous la désactivez après les
+délais de déclenchement, alors les actions de réinitialisation immédiate
+et normale seront exécutées.
 
 FAQ
 ===
