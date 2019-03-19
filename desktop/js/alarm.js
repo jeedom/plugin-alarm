@@ -404,12 +404,12 @@ function addAction(_action, _type, _name, _el) {
   div += '<div class="input-group">';
   div += '<span class="input-group-btn">';
   
-  div += '<a class="btn btn-default bt_removeAction btn-sm" data-type="' + _type + '"><i class="fa fa-minus-circle"></i></a>';
+  div += '<a class="btn btn-default bt_removeAction btn-sm" data-type="' + _type + '"><i class="fas fa-minus-circle"></i></a>';
   div += '</span>';
   div += '<input class="expressionAttr form-control input-sm cmdAction" data-l1key="cmd" data-type="' + _type + '" />';
   div += '<span class="input-group-btn">';
   div += '<a class="btn ' + button + ' btn-sm listAction" data-type="' + _type + '" title="{{Sélectionner un mot-clé}}"><i class="fa fa-tasks"></i></a>';
-  div += '<a class="btn ' + button + ' btn-sm listCmdAction" data-type="' + _type + '"><i class="fa fa-list-alt"></i></a>';
+  div += '<a class="btn ' + button + ' btn-sm listCmdAction" data-type="' + _type + '"><i class="fas fa-list-alt"></i></a>';
   div += '</span>';
   div += '</div>';
   div += '</div>';
@@ -456,11 +456,11 @@ function addTrigger(_el, _trigger) {
   div += '<div class="input-group">';
   div += '<span class="input-group-btn">';
   div += '<input type="checkbox" class="triggerAttr" data-l1key="enable" checked />';
-  div += '<a class="btn btn-default bt_removeTrigger btn-sm"><i class="fa fa-minus-circle"></i></a>';
+  div += '<a class="btn btn-default bt_removeTrigger btn-sm"><i class="fas fa-minus-circle"></i></a>';
   div += '</span>';
   div += '<input class="triggerAttr form-control input-sm" data-l1key="cmd" />';
   div += '<span class="input-group-btn">';
-  div += '<a class="btn btn-sm listCmdInfo btn-success"><i class="fa fa-list-alt"></i></a>';
+  div += '<a class="btn btn-sm listCmdInfo btn-success"><i class="fas fa-list-alt"></i></a>';
   div += '</span>';
   div += '</div>';
   div += '</div>';
@@ -511,7 +511,7 @@ function addZone(_zone) {
   div += '<div class="col-sm-9">';
   div += '<div class="input-group pull-right" style="display:inline-flex">';
   div += '<span class="input-group-btn">';
-  div += '<a class="btn btn-sm bt_removeZone btn-primary roundedLeft"><i class="fa fa-minus-circle"></i> {{Supprimer}}</a>';
+  div += '<a class="btn btn-sm bt_removeZone btn-primary roundedLeft"><i class="fas fa-minus-circle"></i> {{Supprimer}}</a>';
   div += '<a class="btn btn-sm bt_addAction btn-danger"><i class="fas fa-plus-circle"></i> {{Action}}</a>';
   div += '<a class="btn btn-warning btn-sm bt_addActionImmediate"><i class="fas fa-plus-circle"></i> {{Action immédiate}}</a>';
   div += '<a class="btn btn-sm bt_addTrigger btn-success"><i class="fas fa-plus-circle"></i> {{Déclencheur}}</a>';

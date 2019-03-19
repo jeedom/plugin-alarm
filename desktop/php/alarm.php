@@ -8,7 +8,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 ?>
 <div class="row row-overflow">
 	<div class="col-xs-12 eqLogicThumbnailDisplay">
-		<legend><i class="fa fa-cog"></i> {{Gestion}}</legend>
+		<legend><i class="fas fa-cog"></i> {{Gestion}}</legend>
 		<div class="eqLogicThumbnailContainer">
 			<div class="cursor eqLogicAction logoPrimary" data-action="add" style="background-color : #ffffff; height : 120px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;" >
 				<center>
@@ -37,19 +37,19 @@ $eqLogics = eqLogic::byType($plugin->getId());
 	<div class="col-xs-12 eqLogic" style="display: none;">
 		<div class="input-group pull-right" style="display:inline-flex">
 			<span class="input-group-btn">
-				<a class="btn btn-default btn-sm eqLogicAction roundedLeft" data-action="configure"><i class="fa fa-cogs"></i> {{Configuration avancée}}</a><a class="btn btn-default btn-sm eqLogicAction" data-action="copy"><i class="fa fa-copy"></i> {{Dupliquer}}</a><a class="btn btn-sm btn-success eqLogicAction" data-action="save"><i class="fa fa-check-circle"></i> {{Sauvegarder}}</a><a class="btn btn-danger btn-sm eqLogicAction roundedRight" data-action="remove"><i class="fa fa-minus-circle"></i> {{Supprimer}}</a>
+				<a class="btn btn-default btn-sm eqLogicAction roundedLeft" data-action="configure"><i class="fa fa-cogs"></i> {{Configuration avancée}}</a><a class="btn btn-default btn-sm eqLogicAction" data-action="copy"><i class="fas fa-copy"></i> {{Dupliquer}}</a><a class="btn btn-sm btn-success eqLogicAction" data-action="save"><i class="fas fa-check-circle"></i> {{Sauvegarder}}</a><a class="btn btn-danger btn-sm eqLogicAction roundedRight" data-action="remove"><i class="fas fa-minus-circle"></i> {{Supprimer}}</a>
 			</span>
 		</div>
 		<ul class="nav nav-tabs" id="tab_alarm">
-			<li role="presentation"><a class="eqLogicAction cursor" aria-controls="home" role="tab" data-action="returnToThumbnailDisplay"><i class="fa fa-arrow-circle-left"></i></a></li>
-			<li class="active"><a href="#eqlogictab" aria-controls="home" role="tab" data-toggle="tab" style="padding:10px 5px !important"><i class="fa fa-tachometer"></i> {{Equipement}}</a></li>
+			<li role="presentation"><a class="eqLogicAction cursor" aria-controls="home" role="tab" data-action="returnToThumbnailDisplay"><i class="fas fa-arrow-circle-left"></i></a></li>
+			<li class="active"><a href="#eqlogictab" aria-controls="home" role="tab" data-toggle="tab" style="padding:10px 5px !important"><i class="fas fa-tachometer-alt"></i> {{Equipement}}</a></li>
 			<li><a href="#tab_zones" aria-controls="home" role="tab" data-toggle="tab" style="padding:10px 5px !important"><i class="fa fa-th-list" aria-hidden="true"></i> {{Zones}}</a></li>
 			<li><a href="#tab_modes" aria-controls="home" role="tab" data-toggle="tab" style="padding:10px 5px !important"><i class="fa fa-modx" aria-hidden="true"></i> {{Modes}}</a></li>
 			<li><a href="#tab_activeOk" aria-controls="home" role="tab" data-toggle="tab" style="padding:10px 5px !important"><i class="fa fa-check" aria-hidden="true"></i> {{Activation OK}}</a></li>
 			<li><a href="#tab_activeKo" aria-controls="home" role="tab" data-toggle="tab" style="padding:10px 5px !important"><i class="fa fa-exclamation" aria-hidden="true"></i> {{Activation KO}}</a></li>
 			<li><a href="#tab_outbreak" aria-controls="home" role="tab" data-toggle="tab" style="padding:10px 5px !important"><i class="fa fa-bell" aria-hidden="true"></i> {{Déclenchement}}</a></li>
 			<li><a href="#tab_release" aria-controls="home" role="tab" data-toggle="tab" style="padding:10px 5px !important"><i class="fa fa-times" aria-hidden="true"></i> {{Désactivation OK}}</a></li>
-			<li><a href="#tab_raz" aria-controls="home" role="tab" data-toggle="tab" style="padding:10px 5px !important"><i class="fa fa-refresh" aria-hidden="true"></i> {{Réinitialisation}}</a></li>
+			<li><a href="#tab_raz" aria-controls="home" role="tab" data-toggle="tab" style="padding:10px 5px !important"><i class="fas fa-sync-alt" aria-hidden="true"></i> {{Réinitialisation}}</a></li>
 		</ul>
 		<div class="tab-content">
 			<div role="tabpanel" class="tab-pane active" id="eqlogictab">
@@ -235,8 +235,8 @@ $eqLogics = eqLogic::byType($plugin->getId());
 				</form>
 			</div>
 			<div class="modal-footer">
-				<a class="btn btn-danger" data-dismiss="modal"><i class="fa fa-minus-circle"></i> {{Annuler}}</a>
-				<a class="btn btn-success" id="bt_addZoneModeOk"><i class="fa fa-check-circle"></i> {{Valider}}</a>
+				<a class="btn btn-danger" data-dismiss="modal"><i class="fas fa-minus-circle"></i> {{Annuler}}</a>
+				<a class="btn btn-success" id="bt_addZoneModeOk"><i class="fas fa-check-circle"></i> {{Valider}}</a>
 			</div>
 		</div>
 	</div>
