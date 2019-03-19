@@ -512,9 +512,9 @@ function addZone(_zone) {
   div += '<div class="input-group pull-right" style="display:inline-flex">';
   div += '<span class="input-group-btn">';
   div += '<a class="btn btn-sm bt_removeZone btn-primary roundedLeft"><i class="fa fa-minus-circle"></i> {{Supprimer}}</a>';
-  div += '<a class="btn btn-sm bt_addAction btn-danger"><i class="fa fa-plus-circle"></i> {{Action}}</a>';
-  div += '<a class="btn btn-warning btn-sm bt_addActionImmediate"><i class="fa fa-plus-circle"></i> {{Action immédiate}}</a>';
-  div += '<a class="btn btn-sm bt_addTrigger btn-success"><i class="fa fa-plus-circle"></i> {{Déclencheur}}</a>';
+  div += '<a class="btn btn-sm bt_addAction btn-danger"><i class="fas fa-plus-circle"></i> {{Action}}</a>';
+  div += '<a class="btn btn-warning btn-sm bt_addActionImmediate"><i class="fas fa-plus-circle"></i> {{Action immédiate}}</a>';
+  div += '<a class="btn btn-sm bt_addTrigger btn-success"><i class="fas fa-plus-circle"></i> {{Déclencheur}}</a>';
   div += '<a class="btn btn-sm bt_duplicateZone btn-default roundedRight"><i class="fa fa-files-o"></i> {{Dupliquer}}</a>';
   div += '</span>';
   div += '</div>';
@@ -579,7 +579,7 @@ function addMode(_mode) {
   div += '</div>';
   div += '<div class="col-sm-2 col-sm-offset-7">';
   div += '<i class="fa fa-minus-circle pull-right cursor bt_removeMode"></i>';
-  div += '<a class="btn btn-default btn-sm bt_addZoneMode pull-right"><i class="fa fa-plus-circle"></i> {{Zone}}</a>';
+  div += '<a class="btn btn-default btn-sm bt_addZoneMode pull-right"><i class="fas fa-plus-circle"></i> {{Zone}}</a>';
   
   div += '</div>';
   div += '</div>';

@@ -12,7 +12,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 		<div class="eqLogicThumbnailContainer">
 			<div class="cursor eqLogicAction logoPrimary" data-action="add" style="background-color : #ffffff; height : 120px;margin-bottom : 10px;padding : 5px;border-radius: 2px;width : 160px;margin-left : 10px;" >
 				<center>
-					<i class="fa fa-plus-circle"></i>
+					<i class="fas fa-plus-circle"></i>
 				</center>
 				<span style="font-size : 1.1em;position:relative; top : 23px;word-break: break-all;white-space: pre-wrap;word-wrap: break-word;color:#94ca02"><center>Ajouter</center></span>
 			</div>
@@ -116,7 +116,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 			<div class="tab-pane" id="tab_zones">
 				<br/>
 				<div class="alert alert-info">{{Une zone décrit les capteurs que l'alarme doit surveiller ainsi que les actions à faire en cas de déclenchement.}}
-					<a class="btn btn-success btn-xs pull-right" id="bt_addZone"><i class="fa fa-plus-circle"></i> {{Ajouter zone}}</a>
+					<a class="btn btn-success btn-xs pull-right" id="bt_addZone"><i class="fas fa-plus-circle"></i> {{Ajouter zone}}</a>
 					<br/>
 				</div>
 				<div class="panel-group" id="div_zones"></div>
@@ -125,7 +125,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 			<div class="tab-pane" id="tab_modes">
 				<br/>
 				<div class="alert alert-info">{{Les modes permettent d'activer les zones. Il vous en faut absolument un.}}
-					<a class="btn btn-success btn-xs pull-right" id="bt_addMode"><i class="fa fa-plus-circle"></i> {{Ajouter mode}}</a>
+					<a class="btn btn-success btn-xs pull-right" id="bt_addMode"><i class="fas fa-plus-circle"></i> {{Ajouter mode}}</a>
 				</div>
 				<div id="div_modes"></div>
 			</div>
@@ -135,7 +135,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 				<div class="alert alert-info">{{C'est ici que vous devez mettre les actions à faire lorsque l’alarme est déclenchée puis désactivée}}
 					<div class="input-group pull-right" style="display:inline-flex">
 						<span class="input-group-btn">
-							<a class='btn btn-warning btn-xs roundedLeft' id="btn_addRazImmediateAlarm"><i class="fa fa-plus-circle"></i> {{Ajouter réinitialisation immédiate}}</a><a class='btn btn-success btn-xs roundedRight' id="btn_addRazAlarm"><i class="fa fa-plus-circle"></i> {{Ajouter réinitialisation}}</a>
+							<a class='btn btn-warning btn-xs roundedLeft' id="btn_addRazImmediateAlarm"><i class="fas fa-plus-circle"></i> {{Ajouter réinitialisation immédiate}}</a><a class='btn btn-success btn-xs roundedRight' id="btn_addRazAlarm"><i class="fas fa-plus-circle"></i> {{Ajouter réinitialisation}}</a>
 						</span>
 					</div>
 				</div>
@@ -152,7 +152,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 			<div class="tab-pane" id="tab_release">
 				<br/>
 				<div class="alert alert-info">{{C'est ici que vous devez mettre les actions à faire lorsque l’alarme est désactivée et qu’elle n’est pas déclenchée}}
-					<a class='btn btn-success btn-xs pull-right' id="btn_addReleaseAlarm"><i class="fa fa-plus-circle"></i> {{Ajouter action de désactivation OK}}</a>
+					<a class='btn btn-success btn-xs pull-right' id="btn_addReleaseAlarm"><i class="fas fa-plus-circle"></i> {{Ajouter action de désactivation OK}}</a>
 				</div>
 				<form class="form-horizontal">
 					<div id="div_release"></div>
@@ -164,7 +164,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 				<div class="alert alert-info">{{C'est ici que vous devez mettre les actions à faire lors d'une activation réussie de l'alarme}}
 					<div class="input-group pull-right" style="display:inline-flex">
 						<span class="input-group-btn">
-							<a class='btn btn-warning btn-xs roundedLeft' id="btn_addActionActivationImmediateOk"><i class="fa fa-plus-circle"></i> {{Ajouter action immediate lors de l'activation}}</a><a class='btn btn-success btn-xs roundedRight' id="btn_addActionActivationOk"><i class="fa fa-plus-circle"></i> {{Ajouter action lors de l'activation}}</a>
+							<a class='btn btn-warning btn-xs roundedLeft' id="btn_addActionActivationImmediateOk"><i class="fas fa-plus-circle"></i> {{Ajouter action immediate lors de l'activation}}</a><a class='btn btn-success btn-xs roundedRight' id="btn_addActionActivationOk"><i class="fas fa-plus-circle"></i> {{Ajouter action lors de l'activation}}</a>
 						</span>
 					</div>
 				</div>
@@ -182,7 +182,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 				<div class="alert alert-info">{{C'est ici que vous devez mettre les actions à faire lorsque l'alarme se déclenche (à noter que vous pouvez aussi le faire par zone)}}
 					<div class="input-group pull-right" style="display:inline-flex">
 						<span class="input-group-btn">
-							<a class='btn btn-warning btn-xs roundedLeft' id="btn_addActionOutbreakImmediate"><i class="fa fa-plus-circle"></i> {{Ajouter action immediate de déclenchement}}</a><a class='btn btn-danger btn-xs roundedRight' id="btn_addActionOutbreak"><i class="fa fa-plus-circle"></i> {{Ajouter action de déclenchement}}</a>
+							<a class='btn btn-warning btn-xs roundedLeft' id="btn_addActionOutbreakImmediate"><i class="fas fa-plus-circle"></i> {{Ajouter action immediate de déclenchement}}</a><a class='btn btn-danger btn-xs roundedRight' id="btn_addActionOutbreak"><i class="fas fa-plus-circle"></i> {{Ajouter action de déclenchement}}</a>
 						</span>
 					</div>
 				</div>
@@ -200,7 +200,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 				<div class="alert alert-info">{{Ici que vous devez mettre les actions à faire lorsque l'activation de l'alarme a échoué ou est partielle}}
 					<div class="input-group pull-right" style="display:inline-flex">
 						<span class="input-group-btn">
-							<a class='btn btn-success btn-xs roundedLeft' id="btn_addActionReenableTrigger"><i class="fa fa-plus-circle"></i> {{Ajouter action lors de la reprise de la surveillance}}</a><a class='btn btn-warning btn-xs roundedRight' id="btn_addActionActivationKo"><i class="fa fa-plus-circle"></i> {{Ajouter action lors de l'echec d'activation}}</a>
+							<a class='btn btn-success btn-xs roundedLeft' id="btn_addActionReenableTrigger"><i class="fas fa-plus-circle"></i> {{Ajouter action lors de la reprise de la surveillance}}</a><a class='btn btn-warning btn-xs roundedRight' id="btn_addActionActivationKo"><i class="fas fa-plus-circle"></i> {{Ajouter action lors de l'echec d'activation}}</a>
 						</span>
 					</div>
 				</div>
