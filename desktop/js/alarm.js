@@ -578,7 +578,7 @@ function addMode(_mode) {
   div += '<span class="modeAttr label label-info rename cursor" data-l1key="name" style="font-size : 1em;"></span>';
   div += '</div>';
   div += '<div class="col-sm-2 col-sm-offset-7">';
-  div += '<i class="fa fa-minus-circle pull-right cursor bt_removeMode"></i>';
+  div += '<i class="fas fa-minus-circle pull-right cursor bt_removeMode"></i>';
   div += '<a class="btn btn-default btn-sm bt_addZoneMode pull-right"><i class="fas fa-plus-circle"></i> {{Zone}}</a>';
   
   div += '</div>';
@@ -615,7 +615,7 @@ function addZoneMode(_el, _mode) {
   div += '<span class="modeAttr label label-primary" data-l1key="zone" style="font-size : 1em;"></span>';
   div += '</div>';
   div += '<div class="col-sm-1 col-sm-offset-7">';
-  div += '<i class="fa fa-minus-circle pull-right cursor bt_removeZoneMode"></i>';
+  div += '<i class="fas fa-minus-circle pull-right cursor bt_removeZoneMode"></i>';
   div += '</div>';
   div += '</div>';
   
