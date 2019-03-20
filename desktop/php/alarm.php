@@ -41,13 +41,13 @@ $eqLogics = eqLogic::byType($plugin->getId());
 		<ul class="nav nav-tabs" id="tab_alarm">
 			<li role="presentation"><a class="eqLogicAction cursor" aria-controls="home" role="tab" data-action="returnToThumbnailDisplay"><i class="fas fa-arrow-circle-left"></i></a></li>
 			<li class="active"><a href="#eqlogictab" aria-controls="home" role="tab" data-toggle="tab" style="padding:10px 5px !important"><i class="fas fa-tachometer-alt"></i> {{Equipement}}</a></li>
-			<li><a href="#tab_zones" aria-controls="home" role="tab" data-toggle="tab" style="padding:10px 5px !important"><i class="fa fa-th-list" aria-hidden="true"></i> {{Zones}}</a></li>
-			<li><a href="#tab_modes" aria-controls="home" role="tab" data-toggle="tab" style="padding:10px 5px !important"><i class="fa fa-modx" aria-hidden="true"></i> {{Modes}}</a></li>
-			<li><a href="#tab_activeOk" aria-controls="home" role="tab" data-toggle="tab" style="padding:10px 5px !important"><i class="fa fa-check" aria-hidden="true"></i> {{Activation OK}}</a></li>
-			<li><a href="#tab_activeKo" aria-controls="home" role="tab" data-toggle="tab" style="padding:10px 5px !important"><i class="fa fa-exclamation" aria-hidden="true"></i> {{Activation KO}}</a></li>
-			<li><a href="#tab_outbreak" aria-controls="home" role="tab" data-toggle="tab" style="padding:10px 5px !important"><i class="fa fa-bell" aria-hidden="true"></i> {{Déclenchement}}</a></li>
-			<li><a href="#tab_release" aria-controls="home" role="tab" data-toggle="tab" style="padding:10px 5px !important"><i class="fa fa-times" aria-hidden="true"></i> {{Désactivation OK}}</a></li>
-			<li><a href="#tab_raz" aria-controls="home" role="tab" data-toggle="tab" style="padding:10px 5px !important"><i class="fas fa-sync-alt" aria-hidden="true"></i> {{Réinitialisation}}</a></li>
+			<li><a href="#tab_zones" aria-controls="home" role="tab" data-toggle="tab" style="padding:10px 5px !important"><i class="fas fa-th-list"></i> {{Zones}}</a></li>
+			<li><a href="#tab_modes" aria-controls="home" role="tab" data-toggle="tab" style="padding:10px 5px !important"><i class="fab fa-modx"></i> {{Modes}}</a></li>
+			<li><a href="#tab_activeOk" aria-controls="home" role="tab" data-toggle="tab" style="padding:10px 5px !important"><i class="fas fa-check"></i> {{Activation OK}}</a></li>
+			<li><a href="#tab_activeKo" aria-controls="home" role="tab" data-toggle="tab" style="padding:10px 5px !important"><i class="fas fa-exclamation"></i> {{Activation KO}}</a></li>
+			<li><a href="#tab_outbreak" aria-controls="home" role="tab" data-toggle="tab" style="padding:10px 5px !important"><i class="fas fa-bell"></i> {{Déclenchement}}</a></li>
+			<li><a href="#tab_release" aria-controls="home" role="tab" data-toggle="tab" style="padding:10px 5px !important"><i class="fas fa-times"></i> {{Désactivation OK}}</a></li>
+			<li><a href="#tab_raz" aria-controls="home" role="tab" data-toggle="tab" style="padding:10px 5px !important"><i class="fas fa-sync-alt"></i> {{Réinitialisation}}</a></li>
 		</ul>
 		<div class="tab-content">
 			<div role="tabpanel" class="tab-pane active" id="eqlogictab">
@@ -219,7 +219,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
 				<h4 class="modal-title">{{Ajouter zone}}</h4>
 			</div>
 			<div class="modal-body">
