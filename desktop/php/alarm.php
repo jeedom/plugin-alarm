@@ -13,7 +13,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 			<div class="cursor eqLogicAction logoPrimary" data-action="add"  >
 				<i class="fas fa-plus-circle"></i>
 				<br/>
-				<span ><center>Ajouter</center></span>
+				<span ><center>{{Ajouter}}</center></span>
 			</div>
 		</div>
 		<legend><i class="icon jeedom-alerte"></i> {{Mes Alarmes}}</legend>
