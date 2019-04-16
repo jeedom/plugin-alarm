@@ -419,10 +419,10 @@ function addAction(_action, _type, _name, _el) {
   div += '</div>';
   if (isset(_el)) {
     _el.find('.div_' + _type).append(div);
-    _el.find('.' + _type + ':last').setValues(_action, '.expressionAttr');
+    _el.find('.' + _type + '').last().setValues(_action, '.expressionAttr');
   } else {
     $('#div_' + _type).append(div);
-    $('#div_' + _type + ' .' + _type + ':last').setValues(_action, '.expressionAttr');
+    $('#div_' + _type + ' .' + _type + '').last().setValues(_action, '.expressionAttr');
   }
   actionOptions.push({
     expression : init(_action.cmd, ''),
@@ -482,7 +482,7 @@ function addTrigger(_el, _trigger) {
   
   div += '</div>';
   _el.find('.div_triggers').append(div);
-  _el.find('.trigger:last').setValues(_trigger, '.triggerAttr');
+  _el.find('.trigger').last().setValues(_trigger, '.triggerAttr');
 }
 
 function addZone(_zone) {
@@ -533,34 +533,34 @@ function addZone(_zone) {
   div += '</div>';
   
   $('#div_zones').append(div);
-  $('#div_zones .zone:last').setValues(_zone, '.zoneAttr');
+  $('#div_zones .zone').last().setValues(_zone, '.zoneAttr');
   if (is_array(_zone.actions)) {
     for (var i in _zone.actions) {
-      addAction(_zone.actions[i], 'action', '{{Action}}', $('#div_zones .zone:last'));
+      addAction(_zone.actions[i], 'action', '{{Action}}', $('#div_zones .zone').last());
     }
   } else {
     if ($.trim(_zone.actions) != '') {
-      addAction(_zone.actions[i], 'action', '{{Action}}', $('#div_zones .zone:last'));
+      addAction(_zone.actions[i], 'action', '{{Action}}', $('#div_zones .zone').last());
     }
   }
   
   if (is_array(_zone.actionsImmediate)) {
     for (var i in _zone.actionsImmediate) {
-      addAction(_zone.actionsImmediate[i], 'actionImmediate', '{{Action immédiate}}', $('#div_zones .zone:last'));
+      addAction(_zone.actionsImmediate[i], 'actionImmediate', '{{Action immédiate}}', $('#div_zones .zone').last());
     }
   } else {
     if ($.trim(_zone.actionsImmediate) != '') {
-      addAction(_zone.actionsImmediate, 'actionImmediate', '{{Action immédiate}}', $('#div_zones .zone:last'));
+      addAction(_zone.actionsImmediate, 'actionImmediate', '{{Action immédiate}}', $('#div_zones .zone').last());
     }
   }
   
   if (is_array(_zone.triggers)) {
     for (var i in _zone.triggers) {
-      addTrigger($('#div_zones .zone:last'), _zone.triggers[i]);
+      addTrigger($('#div_zones .zone').last(), _zone.triggers[i]);
     }
   } else {
     if ($.trim(_zone.triggers) != '') {
-      addTrigger($('#div_zones .zone:last'), _zone.triggers);
+      addTrigger($('#div_zones .zone').last(), _zone.triggers);
     }
   }
   
@@ -588,17 +588,17 @@ function addMode(_mode) {
   div += '</form>';
   div += '</div>';
   $('#div_modes').append(div);
-  $('#div_modes .mode:last').setValues(_mode, '.modeAttr');
+  $('#div_modes .mode').last().setValues(_mode, '.modeAttr');
   
   if (is_array(_mode.zone)) {
     for (var i in _mode.zone) {
       if (_mode.zone[i] != '') {
-        addZoneMode($('#div_modes .mode:last'), {zone: _mode.zone[i]});
+        addZoneMode($('#div_modes .mode').last(), {zone: _mode.zone[i]});
       }
     }
   } else {
     if ($.trim(_mode.zone) != '') {
-      addZoneMode($('#div_modes .mode:last'), {zone: _mode.zone});
+      addZoneMode($('#div_modes .mode').last(), {zone: _mode.zone});
     }
   }
   updateSelectMode();
@@ -620,5 +620,5 @@ function addZoneMode(_el, _mode) {
   div += '</div>';
   
   _el.find('.div_zonesMode').append(div);
-  _el.find('.zoneMode:last').setValues(_mode, '.modeAttr');
+  _el.find('.zoneMode').last().setValues(_mode, '.modeAttr');
 }
