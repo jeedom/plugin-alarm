@@ -1,29 +1,29 @@
 <?php
 
 /* This file is part of Jeedom.
- *
- * Jeedom is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * Jeedom is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with Jeedom. If not, see <http://www.gnu.org/licenses/>.
- */
+*
+* Jeedom is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
+*
+* Jeedom is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with Jeedom. If not, see <http://www.gnu.org/licenses/>.
+*/
 
 /* * ***************************Includes********************************* */
 require_once dirname(__FILE__) . '/../../../../core/php/core.inc.php';
 
 class alarm extends eqLogic {
 	/*     * *************************Attributs****************************** */
-
+	
 	/*     * ***********************Methode static*************************** */
-
+	
 	public static function pull($_option) {
 		$alarm = alarm::byId($_option['alarm_id']);
 		if (is_object($alarm) && $alarm->getIsEnable() == 1) {
@@ -33,7 +33,7 @@ class alarm extends eqLogic {
 			}
 		}
 	}
-
+	
 	public static function checkDetector($_params) {
 		log::add('alarm', 'debug', __('Lancement de la vérification des detecteurs post activation', __FILE__));
 		$eqLogic = eqLogic::byId($_params['alarm_id']);
@@ -111,7 +111,7 @@ class alarm extends eqLogic {
 			$eqLogic->doAction('activationKo', array('#mode' => $select_mode, '#trigger#' => implode(',', $disable_trigger), '#zone#' => implode(',', $disable_zone_trigger)));
 		}
 	}
-
+	
 	public static function armedComplete($_params) {
 		$eqLogic = eqLogic::byId($_params['alarm_id']);
 		if (is_object($eqLogic)) {
@@ -131,7 +131,7 @@ class alarm extends eqLogic {
 			$eqLogic->doAction('activationOk');
 		}
 	}
-
+	
 	public static function deadCmd() {
 		$return = array();
 		foreach (eqLogic::byType('alarm') as $alarm) {
@@ -177,13 +177,13 @@ class alarm extends eqLogic {
 		}
 		return $return;
 	}
-
+	
 	/*     * *********************Methode d'instance************************* */
-
+	
 	public function preInsert() {
 		$this->setCategory('security', 1);
 	}
-
+	
 	public function postSave() {
 		$cmdArmed = $this->getCmd(null, 'enable');
 		if (!is_object($cmdArmed)) {
@@ -201,7 +201,7 @@ class alarm extends eqLogic {
 		$cmdArmed->setIsHistorized($this->getConfiguration('historizedState'));
 		$cmdArmed->setDisplay('generic_type', 'ALARM_ENABLE_STATE');
 		$cmdArmed->save();
-
+		
 		$statePause = $this->getCmd(null, 'statePause');
 		if (!is_object($statePause)) {
 			$statePause = new alarmCmd();
@@ -215,7 +215,7 @@ class alarm extends eqLogic {
 		$statePause->setSubType('binary');
 		$statePause->setIsHistorized($this->getConfiguration('historizedState'));
 		$statePause->save();
-
+		
 		$cmdPauseOn = $this->getCmd(null, 'pauseOn');
 		if (!is_object($cmdPauseOn)) {
 			$cmdPauseOn = new alarmCmd();
@@ -229,7 +229,7 @@ class alarm extends eqLogic {
 		$cmdPauseOn->setSubType('other');
 		$cmdPauseOn->setValue($statePause->getId());
 		$cmdPauseOn->save();
-
+		
 		$cmdPauseOff = $this->getCmd(null, 'pauseOff');
 		if (!is_object($cmdPauseOff)) {
 			$cmdPauseOff = new alarmCmd();
@@ -243,7 +243,7 @@ class alarm extends eqLogic {
 		$cmdPauseOff->setSubType('other');
 		$cmdPauseOff->setValue($statePause->getId());
 		$cmdPauseOff->save();
-
+		
 		$cmdState = $this->getCmd(null, 'state');
 		if (!is_object($cmdState)) {
 			$cmdState = new alarmCmd();
@@ -260,7 +260,7 @@ class alarm extends eqLogic {
 		$cmdState->setDisplay('generic_type', 'ALARM_STATE');
 		$cmdState->setIsHistorized($this->getConfiguration('historizedState'));
 		$cmdState->save();
-
+		
 		$cmdImmediatState = $this->getCmd(null, 'immediatState');
 		if (!is_object($cmdImmediatState)) {
 			$cmdImmediatState = new alarmCmd();
@@ -277,7 +277,7 @@ class alarm extends eqLogic {
 		$cmdImmediatState->setDisplay('invertBinary', 1);
 		$cmdImmediatState->setIsHistorized($this->getConfiguration('historizedState'));
 		$cmdImmediatState->save();
-
+		
 		$mode = $this->getCmd(null, 'mode');
 		if (!is_object($mode)) {
 			$mode = new alarmCmd();
@@ -294,7 +294,7 @@ class alarm extends eqLogic {
 		$mode->setSubType('string');
 		$mode->setorder(3);
 		$mode->save();
-
+		
 		$existing_mode = array();
 		if (is_array($this->getConfiguration('modes'))) {
 			foreach ($this->getConfiguration('modes') as $key => $value) {
@@ -328,7 +328,7 @@ class alarm extends eqLogic {
 				$mode->event($value['name']);
 			}
 		}
-
+		
 		$armed = $this->getCmd(null, 'armed');
 		if (!is_object($armed)) {
 			$armed = new alarmCmd();
@@ -351,7 +351,7 @@ class alarm extends eqLogic {
 			$armed->setIsVisible($this->getConfiguration('armed_visible', 1));
 		}
 		$armed->save();
-
+		
 		$released = $this->getCmd(null, 'released');
 		if (!is_object($released)) {
 			$released = new alarmCmd();
@@ -374,18 +374,18 @@ class alarm extends eqLogic {
 			$released->setIsVisible($this->getConfiguration('armed_visible', 1));
 		}
 		$released->save();
-
+		
 		foreach ($this->getCmd() as $cmd) {
 			if ($cmd->getType() == 'action' && !in_array($cmd->getName(), $existing_mode) &&
-				$cmd->getLogicalId() != 'mode' && $cmd->getLogicalId() != 'released' && $cmd->getLogicalId() != 'armed' && $cmd->getLogicalId() != 'pauseOn' && $cmd->getLogicalId() != 'pauseOff') {
+			$cmd->getLogicalId() != 'mode' && $cmd->getLogicalId() != 'released' && $cmd->getLogicalId() != 'armed' && $cmd->getLogicalId() != 'pauseOn' && $cmd->getLogicalId() != 'pauseOff') {
 				$cmd->remove();
 			}
 		}
-
+		
 		if ($this->getConfiguration('always_active') == 1) {
 			$this->getCmd(null, 'enable')->event(1);
 		}
-
+		
 		if ($this->getIsEnable() == 1) {
 			$listener = listener::byClassAndFunction('alarm', 'pull', array('alarm_id' => intval($this->getId())));
 			if (!is_object($listener)) {
@@ -416,14 +416,14 @@ class alarm extends eqLogic {
 			}
 		}
 	}
-
+	
 	public function preRemove() {
 		$listener = listener::byClassAndFunction('alarm', 'pull', array('alarm_id' => intval($this->getId())));
 		if (is_object($listener)) {
 			$listener->remove();
 		}
 	}
-
+	
 	public function postUpdate() {
 		if ($this->getIsEnable() == 1) {
 			$cmd_state = $this->getCmd(null, 'state');
@@ -440,13 +440,16 @@ class alarm extends eqLogic {
 			}
 		}
 	}
-
+	
 	public function getZoneOfMode($_select_mode) {
 		$modes = $this->getConfiguration('modes');
 		$zones = $this->getConfiguration('zones');
 		$return = array();
 		foreach ($modes as $mode) {
 			if ($mode['name'] == $_select_mode) {
+				if(!isset($mode['zone'])){
+					return $return;
+				}
 				foreach ($zones as $zone) {
 					if (!is_array($mode['zone'])) {
 						if (trim($zone['name']) == trim($mode['zone'])) {
@@ -464,7 +467,7 @@ class alarm extends eqLogic {
 		}
 		return $return;
 	}
-
+	
 	public function listCmdTrigger($_trigger_id = null) {
 		$result = array();
 		if ($_trigger_id !== null) {
@@ -493,7 +496,7 @@ class alarm extends eqLogic {
 		}
 		return $result;
 	}
-
+	
 	public function execute($_trigger_id, $_value) {
 		log::add('alarm', 'debug', __('Lancement de l\'alarme : ', __FILE__) . $this->getHumanName());
 		$cmd_state_pause = $this->getCmd(null, 'statePause');
@@ -575,7 +578,7 @@ class alarm extends eqLogic {
 						$this->doZoneAction($zone['actionsImmediate'], array('#mode#' => $select_mode, '#trigger#' => $triggerStr, '#zone#' => $zone['name']));
 					}
 				}
-
+				
 				if (isset($trigger['waitDelay'])) {
 					$waitDelay = jeedom::evaluateExpression($trigger['waitDelay']);
 					if ($waitDelay !== '' && is_numeric(intval($waitDelay)) && $waitDelay > 0) {
@@ -600,7 +603,7 @@ class alarm extends eqLogic {
 			}
 		}
 	}
-
+	
 	public function doZoneAction($_actions, $_replace = array()) {
 		if (!isset($_replace['#mode#'])) {
 			$_replace['#mode#'] = $this->getCmd(null, 'mode')->execCmd();
@@ -626,7 +629,7 @@ class alarm extends eqLogic {
 			}
 		}
 	}
-
+	
 	public function doAction($_action, $_replace = array()) {
 		if (!isset($_replace['#mode#'])) {
 			$_replace['#mode#'] = $this->getCmd(null, 'mode')->execCmd();
@@ -656,7 +659,7 @@ class alarm extends eqLogic {
 			}
 		}
 	}
-
+	
 	public function cleanArmedCompleted() {
 		$crons = cron::searchClassAndFunction('alarm', 'armedComplete', '"alarm_id":' . $this->getId());
 		if (is_array($crons) && count($crons) > 0) {
@@ -667,12 +670,12 @@ class alarm extends eqLogic {
 			}
 		}
 	}
-
+	
 }
 
 class alarmCmd extends cmd {
 	/*     * *************************Attributs****************************** */
-
+	
 	public function imperihomeGenerate($ISSStructure) {
 		$eqLogic = $this->getEqLogic();
 		$object = $eqLogic->getObject();
@@ -702,7 +705,7 @@ class alarmCmd extends cmd {
 		$info_device['params'][3]['value'] = '#' . $eqLogic->getCmd('info', 'state')->getId() . '#';
 		return $info_device;
 	}
-
+	
 	public function imperihomeAction($_action, $_value) {
 		$eqLogic = $this->getEqLogic();
 		if ($_action == 'setArmed') {
@@ -720,7 +723,7 @@ class alarmCmd extends cmd {
 			}
 		}
 	}
-
+	
 	public function imperihomeCmd() {
 		if ($this->getLogicalId() == 'mode') {
 			$eqLogic = $this->getEqLogic();
@@ -734,11 +737,11 @@ class alarmCmd extends cmd {
 		}
 		return false;
 	}
-
+	
 	public function dontRemoveCmd() {
 		return true;
 	}
-
+	
 	public function execute($_options = array()) {
 		$eqLogic = $this->getEqLogic();
 		$cmd_armed = $eqLogic->getCmd(null, 'enable');
@@ -790,7 +793,7 @@ class alarmCmd extends cmd {
 			$zones = $eqLogic->getZoneOfMode($select_mode);
 			log::add('alarm', 'debug', __('Activation de l\'alarme réussie', __FILE__));
 			$eqLogic->doAction('activationImmediateOk', array('#mode#' => $select_mode));
-
+			
 			$disable_trigger = array();
 			$disable_zone_trigger = array();
 			foreach ($zones as $zone) {
@@ -839,7 +842,7 @@ class alarmCmd extends cmd {
 				log::add('alarm', 'debug', __('Lancement des actions d\'activation ko', __FILE__));
 				$eqLogic->doAction('activationKo', array('#mode#' => $select_mode, '#trigger#' => implode(',', $disable_trigger), '#zone#' => implode(',', $disable_zone_trigger)));
 			}
-
+			
 			/*             * *****************Activation reussi***************** */
 			if ($armedCompleteDatetime > 0) {
 				$cron = new cron();
@@ -872,9 +875,9 @@ class alarmCmd extends cmd {
 			$eqLogic->getCmd(null, 'armed')->execCmd();
 		}
 	}
-
+	
 	/*     * ***********************Methode static*************************** */
-
+	
 	/*     * *********************Methode d'instance************************* */
 }
 
