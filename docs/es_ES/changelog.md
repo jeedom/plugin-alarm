@@ -1,3 +1,7 @@
+# 23/04/2019
+
+- Corrección de errores
+
 # 17/01/2019
 
 - Posibilidad de utilizar variables o cálculos para los períodos de mantenimiento(s), activación y disparo.
