@@ -1,4 +1,11 @@
-- Possibilité d'utiliser des variables ou calcul pour les délais de Maintient (s), Activation et Déclenchement
+# 23/04/2019
+
+- Corrección de errores
+
+# 17/01/2019
+
+- Posibilidad de utilizar variables o cálculos para los períodos de mantenimiento(s), activación y disparo.
+- Actualización de la documentación
 
 # 18/07/2018
 

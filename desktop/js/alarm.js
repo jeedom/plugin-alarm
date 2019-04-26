@@ -404,12 +404,20 @@ function addAction(_action, _type, _name, _el) {
   div += '<div class="input-group">';
   div += '<span class="input-group-btn">';
   
+  <<<<<<< HEAD
   div += '<a class="btn btn-default bt_removeAction btn-sm roundedLeft" data-type="' + _type + '"><i class="fa fa-minus-circle"></i></a>';
+  =======
+  div += '<a class="btn btn-default bt_removeAction btn-sm" data-type="' + _type + '"><i class="fas fa-minus-circle"></i></a>';
+  >>>>>>> c92b3af49a8066d22f9b0b10ef9edcb505296782
   div += '</span>';
   div += '<input class="expressionAttr form-control input-sm cmdAction" data-l1key="cmd" data-type="' + _type + '" />';
   div += '<span class="input-group-btn">';
   div += '<a class="btn ' + button + ' btn-sm listAction" data-type="' + _type + '" title="{{Sélectionner un mot-clé}}"><i class="fa fa-tasks"></i></a>';
+  <<<<<<< HEAD
   div += '<a class="btn ' + button + ' btn-sm listCmdAction roundedRight" data-type="' + _type + '"><i class="fa fa-list-alt"></i></a>';
+  =======
+  div += '<a class="btn ' + button + ' btn-sm listCmdAction" data-type="' + _type + '"><i class="fas fa-list-alt"></i></a>';
+  >>>>>>> c92b3af49a8066d22f9b0b10ef9edcb505296782
   div += '</span>';
   div += '</div>';
   div += '</div>';
@@ -419,10 +427,10 @@ function addAction(_action, _type, _name, _el) {
   div += '</div>';
   if (isset(_el)) {
     _el.find('.div_' + _type).append(div);
-    _el.find('.' + _type + ':last').setValues(_action, '.expressionAttr');
+    _el.find('.' + _type + '').last().setValues(_action, '.expressionAttr');
   } else {
     $('#div_' + _type).append(div);
-    $('#div_' + _type + ' .' + _type + ':last').setValues(_action, '.expressionAttr');
+    $('#div_' + _type + ' .' + _type + '').last().setValues(_action, '.expressionAttr');
   }
   actionOptions.push({
     expression : init(_action.cmd, ''),
@@ -482,7 +490,7 @@ function addTrigger(_el, _trigger) {
   
   div += '</div>';
   _el.find('.div_triggers').append(div);
-  _el.find('.trigger:last').setValues(_trigger, '.triggerAttr');
+  _el.find('.trigger').last().setValues(_trigger, '.triggerAttr');
 }
 
 function addZone(_zone) {
@@ -509,12 +517,14 @@ function addZone(_zone) {
   div += '<span class="zoneAttr label label-info rename cursor" data-l1key="name" style="font-size : 1em;" ></span>';
   div += '</div>';
   div += '<div class="col-sm-9">';
-  div += '<div class="btn-group pull-right" role="group">';
-  div += '<a class="btn btn-sm bt_removeZone btn-primary"><i class="fa fa-minus-circle"></i> {{Supprimer}}</a>';
-  div += '<a class="btn btn-sm bt_addAction btn-danger"><i class="fa fa-plus-circle"></i> {{Action}}</a>';
-  div += '<a class="btn btn-warning btn-sm bt_addActionImmediate"><i class="fa fa-plus-circle"></i> {{Action immédiate}}</a>';
-  div += '<a class="btn btn-sm bt_addTrigger btn-success"><i class="fa fa-plus-circle"></i> {{Déclencheur}}</a>';
-  div += '<a class="btn btn-sm bt_duplicateZone btn-default"><i class="fa fa-files-o"></i> {{Dupliquer}}</a>';
+  div += '<div class="input-group pull-right" style="display:inline-flex">';
+  div += '<span class="input-group-btn">';
+  div += '<a class="btn btn-sm bt_removeZone btn-primary roundedLeft"><i class="fas fa-minus-circle"></i> {{Supprimer}}</a>';
+  div += '<a class="btn btn-sm bt_addAction btn-danger"><i class="fas fa-plus-circle"></i> {{Action}}</a>';
+  div += '<a class="btn btn-warning btn-sm bt_addActionImmediate"><i class="fas fa-plus-circle"></i> {{Action immédiate}}</a>';
+  div += '<a class="btn btn-sm bt_addTrigger btn-success"><i class="fas fa-plus-circle"></i> {{Déclencheur}}</a>';
+  div += '<a class="btn btn-sm bt_duplicateZone btn-default roundedRight"><i class="fa fa-files-o"></i> {{Dupliquer}}</a>';
+  div += '</span>';
   div += '</div>';
   div += '</div>';
   div += '</div>';
@@ -531,34 +541,34 @@ function addZone(_zone) {
   div += '</div>';
   
   $('#div_zones').append(div);
-  $('#div_zones .zone:last').setValues(_zone, '.zoneAttr');
+  $('#div_zones .zone').last().setValues(_zone, '.zoneAttr');
   if (is_array(_zone.actions)) {
     for (var i in _zone.actions) {
-      addAction(_zone.actions[i], 'action', '{{Action}}', $('#div_zones .zone:last'));
+      addAction(_zone.actions[i], 'action', '{{Action}}', $('#div_zones .zone').last());
     }
   } else {
     if ($.trim(_zone.actions) != '') {
-      addAction(_zone.actions[i], 'action', '{{Action}}', $('#div_zones .zone:last'));
+      addAction(_zone.actions[i], 'action', '{{Action}}', $('#div_zones .zone').last());
     }
   }
   
   if (is_array(_zone.actionsImmediate)) {
     for (var i in _zone.actionsImmediate) {
-      addAction(_zone.actionsImmediate[i], 'actionImmediate', '{{Action immédiate}}', $('#div_zones .zone:last'));
+      addAction(_zone.actionsImmediate[i], 'actionImmediate', '{{Action immédiate}}', $('#div_zones .zone').last());
     }
   } else {
     if ($.trim(_zone.actionsImmediate) != '') {
-      addAction(_zone.actionsImmediate, 'actionImmediate', '{{Action immédiate}}', $('#div_zones .zone:last'));
+      addAction(_zone.actionsImmediate, 'actionImmediate', '{{Action immédiate}}', $('#div_zones .zone').last());
     }
   }
   
   if (is_array(_zone.triggers)) {
     for (var i in _zone.triggers) {
-      addTrigger($('#div_zones .zone:last'), _zone.triggers[i]);
+      addTrigger($('#div_zones .zone').last(), _zone.triggers[i]);
     }
   } else {
     if ($.trim(_zone.triggers) != '') {
-      addTrigger($('#div_zones .zone:last'), _zone.triggers);
+      addTrigger($('#div_zones .zone').last(), _zone.triggers);
     }
   }
   
@@ -576,8 +586,8 @@ function addMode(_mode) {
   div += '<span class="modeAttr label label-info rename cursor" data-l1key="name" style="font-size : 1em;"></span>';
   div += '</div>';
   div += '<div class="col-sm-2 col-sm-offset-7">';
-  div += '<i class="fa fa-minus-circle pull-right cursor bt_removeMode"></i>';
-  div += '<a class="btn btn-default btn-sm bt_addZoneMode pull-right"><i class="fa fa-plus-circle"></i> {{Zone}}</a>';
+  div += '<i class="fas fa-minus-circle pull-right cursor bt_removeMode"></i>';
+  div += '<a class="btn btn-default btn-sm bt_addZoneMode pull-right"><i class="fas fa-plus-circle"></i> {{Zone}}</a>';
   
   div += '</div>';
   div += '</div>';
@@ -586,17 +596,17 @@ function addMode(_mode) {
   div += '</form>';
   div += '</div>';
   $('#div_modes').append(div);
-  $('#div_modes .mode:last').setValues(_mode, '.modeAttr');
+  $('#div_modes .mode').last().setValues(_mode, '.modeAttr');
   
   if (is_array(_mode.zone)) {
     for (var i in _mode.zone) {
       if (_mode.zone[i] != '') {
-        addZoneMode($('#div_modes .mode:last'), {zone: _mode.zone[i]});
+        addZoneMode($('#div_modes .mode').last(), {zone: _mode.zone[i]});
       }
     }
   } else {
     if ($.trim(_mode.zone) != '') {
-      addZoneMode($('#div_modes .mode:last'), {zone: _mode.zone});
+      addZoneMode($('#div_modes .mode').last(), {zone: _mode.zone});
     }
   }
   updateSelectMode();
@@ -613,10 +623,10 @@ function addZoneMode(_el, _mode) {
   div += '<span class="modeAttr label label-primary" data-l1key="zone" style="font-size : 1em;"></span>';
   div += '</div>';
   div += '<div class="col-sm-1 col-sm-offset-7">';
-  div += '<i class="fa fa-minus-circle pull-right cursor bt_removeZoneMode"></i>';
+  div += '<i class="fas fa-minus-circle pull-right cursor bt_removeZoneMode"></i>';
   div += '</div>';
   div += '</div>';
   
   _el.find('.div_zonesMode').append(div);
-  _el.find('.zoneMode:last').setValues(_mode, '.modeAttr');
+  _el.find('.zoneMode').last().setValues(_mode, '.modeAttr');
 }
