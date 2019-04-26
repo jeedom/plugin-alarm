@@ -2,11 +2,5 @@ nbproject/
 test.php
 core/config/common.config.php
 plugins
-<<<<<<< HEAD
-sftp-config.json
-.project
-.remote-sync.json
-=======
 .remote-sync.json
 .project
->>>>>>> c92b3af49a8066d22f9b0b10ef9edcb505296782
