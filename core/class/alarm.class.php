@@ -292,7 +292,6 @@ class alarm extends eqLogic {
 		$mode->setDisplay('generic_type', 'ALARM_MODE');
 		$mode->setLogicalId('mode');
 		$mode->setSubType('string');
-		$mode->setorder(3);
 		$mode->save();
 		
 		$existing_mode = array();
