@@ -493,7 +493,7 @@ function addZone(_zone) {
   var div = '<div class="zone panel panel-default">';
   div += '<div class="panel-heading">';
   div += '<h4 class="panel-title">';
-  div += '<a data-toggle="collapse" data-parent="#div_zones" href="#collapse' + random + '">';
+  div += '<a class="accordion-toggle" data-toggle="collapse" data-parent="#div_zones" href="#collapse' + random + '">';
   div += '<span class="name">' + _zone.name + '</span>';
   div += '</a>';
   div += '</h4>';
