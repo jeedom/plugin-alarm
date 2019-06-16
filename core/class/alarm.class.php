@@ -323,7 +323,7 @@ class alarm extends eqLogic {
 			}
 		}
 		if ($this->getIsEnable() == 1) {
-			if (is_object($mode) && $mode->execCmd() == '' && isset($value)) {
+			if (is_object($mode) && ($mode->execCmd() == '' || !in_array($mode->execCmd(),$existing_mode)) && isset($value)) {
 				$mode->event($value['name']);
 			}
 		}
