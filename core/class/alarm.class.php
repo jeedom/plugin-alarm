@@ -636,7 +636,11 @@ class alarm extends eqLogic {
 		if (!isset($_replace['#trigger#'])) {
 			$_replace['#trigger#'] = implode(" , ", $this->listCmdTrigger());
 		}
-		foreach ($this->getConfiguration($_action) as $action) {
+		$actions = $this->getConfiguration($_action);
+		if(!is_array($actions) || count($actions) == 0){
+			return;
+		}
+		foreach ($actions as $action) {
 			if (isset($action['onMode']) && $action['onMode'] != 'all' && $action['onMode'] != $_replace['#mode#']) {
 				continue;
 			}
