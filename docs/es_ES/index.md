@@ -137,21 +137,21 @@ Modos
 Los modos son bastante fáciles de configurar, sólo hay que indicar
 las zonas activas en función del modo.
 
-> **Consejo**
+> **Tip**
 >
-> Es posible cambiar el nombre del modo haciendo clic en su nombre
-> (frente a la etiqueta "Nombre del modo").
+> Il est possible de renommer le mode en cliquant sur le nom de celui-ci
+> (en face du label "Nom du mode"). Attention lors du renommage d'un mode il faut absoluement revoir les scénarios/équipement qui utiliser l'ancien nom pour les passer sur le nouveau
 
-> **Nota**
+> **Note**
 >
-> Al cambiar el nombre de un modo, en el widget de alarma
-> tiene que darle clic a este modo para una consideración completa
-> (de lo contrario, Jeedom permanece en el modo antiguo)
+> Lors du renommage d’un mode, il faut sur le widget de l’alarme
+> recliquer sur le mode en question pour une prise en compte complète
+> (sinon Jeedom reste sur l’ancien mode)
 
-> **Importante**
+> **Important**
 >
-> Debes crear al menos un modo y asignar zonas
-> de lo contrario su alarma no funcionará.
+> Il faut absolument créer au moins un mode et lui affecter des zones
+> sinon votre alarme ne marchera pas.
 
 Activacion OK
 =============

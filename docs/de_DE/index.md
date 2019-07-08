@@ -155,7 +155,7 @@ die aktiven Bereiche in Abhängigkeit von der Betriebsart.
 > **Tip**
 >
 > Il est possible de renommer le mode en cliquant sur le nom de celui-ci
-> (en face du label "Nom du mode").
+> (en face du label "Nom du mode"). Attention lors du renommage d'un mode il faut absoluement revoir les scénarios/équipement qui utiliser l'ancien nom pour les passer sur le nouveau
 
 > **Note**
 >
