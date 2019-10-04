@@ -297,6 +297,9 @@ class alarm extends eqLogic {
 		$existing_mode = array();
 		if (is_array($this->getConfiguration('modes'))) {
 			foreach ($this->getConfiguration('modes') as $key => $value) {
+				if(in_array($value['name'],array(__('Actif', __FILE__),__('Statut pause', __FILE__),__('Pause', __FILE__),__('Reprise', __FILE__),__('Statut', __FILE__),__('Immédiat', __FILE__),__('Mode', __FILE__),__('Activer', __FILE__),__('Désactiver', __FILE__)))){
+					throw new \Exception(__('Vous ne pouvez avoir un mode avec le nom : ',__FILE__).$value['name']);
+				}
 				$existing_mode[] = $value['name'];
 				$cmd = null;
 				foreach ($this->getCmd() as $cmd_list) {
@@ -335,7 +338,7 @@ class alarm extends eqLogic {
 			$armed->setTemplate('mobile', 'lock');
 			$armed->setorder(0);
 		}
-		$armed->setName('Activer');
+		$armed->setName(__('Activer', __FILE__));
 		$armed->setEqLogic_id($this->getId());
 		$armed->setType('action');
 		$armed->setLogicalId('armed');
@@ -358,7 +361,7 @@ class alarm extends eqLogic {
 			$released->setTemplate('mobile', 'lock');
 			$released->setorder(0);
 		}
-		$released->setName('Désactiver');
+		$released->setName(__('Désactiver', __FILE__));
 		$released->setEqLogic_id($this->getId());
 		$released->setType('action');
 		$released->setLogicalId('released');
