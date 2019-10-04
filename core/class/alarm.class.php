@@ -747,11 +747,11 @@ class alarmCmd extends cmd {
 	
 	public function execute($_options = array()) {
 		$eqLogic = $this->getEqLogic();
-		$cmd_armed = $eqLogic->getCmd(null, 'enable');
-		$cmd_state = $eqLogic->getCmd(null, 'state');
-		$cmd_state_pause = $eqLogic->getCmd(null, 'statePause');
-		$cmd_immediateState = $eqLogic->getCmd(null, 'immediatState');
-		$cmd_mode = $eqLogic->getCmd(null, 'mode');
+		$cmd_armed = $eqLogic->getCmd('info', 'enable');
+		$cmd_state = $eqLogic->getCmd('info', 'state');
+		$cmd_state_pause = $eqLogic->getCmd('info', 'statePause');
+		$cmd_immediateState = $eqLogic->getCmd('info', 'immediatState');
+		$cmd_mode = $eqLogic->getCmd('info', 'mode');
 		if ($this->getLogicalId() == 'released') {
 			$cmd_armed->event(0);
 			$cmd_mode->event($cmd_mode->execCmd());
