@@ -519,6 +519,10 @@ class alarm extends eqLogic {
 		$select_mode = $this->getCmd(null, 'mode')->execCmd();
 		log::add('alarm', 'debug', __('Mode actif : ', __FILE__) . $select_mode);
 		$zones = $this->getZoneOfMode($select_mode);
+		if(!is_array($zones) || count($zones) == 0){
+			log::add('alarm', 'debug', __('Aucune zone trouvée pour le mode actif', __FILE__));
+			return;
+		}
 		$disable_trigger = $this->getCache('disable_trigger', array());
 		foreach ($zones as $zone) {
 			log::add('alarm', 'debug', __('Vérification de la zone : ', __FILE__) . $zone['name']);
