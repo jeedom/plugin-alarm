@@ -197,7 +197,7 @@ class alarm extends eqLogic {
 		$cmdArmed->setLogicalId('enable');
 		$cmdArmed->setType('info');
 		$cmdArmed->setSubType('binary');
-		$cmdArmed->setIsVisible(1 - $this->getConfiguration('armed_visible'));
+		$cmdArmed->setIsVisible(1 - $this->getConfiguration('armed_visible',0));
 		$cmdArmed->setIsHistorized($this->getConfiguration('historizedState'));
 		$cmdArmed->setDisplay('generic_type', 'ALARM_ENABLE_STATE');
 		$cmdArmed->save();
@@ -273,7 +273,7 @@ class alarm extends eqLogic {
 		$cmdImmediatState->setEqLogic_id($this->getId());
 		$cmdImmediatState->setType('info');
 		$cmdImmediatState->setSubType('binary');
-		$cmdImmediatState->setIsVisible($this->getConfiguration('immediateState_visible'));
+		$cmdImmediatState->setIsVisible($this->getConfiguration('immediateState_visible',1));
 		$cmdImmediatState->setDisplay('invertBinary', 1);
 		$cmdImmediatState->setIsHistorized($this->getConfiguration('historizedState'));
 		$cmdImmediatState->save();
@@ -519,6 +519,10 @@ class alarm extends eqLogic {
 		$select_mode = $this->getCmd(null, 'mode')->execCmd();
 		log::add('alarm', 'debug', __('Mode actif : ', __FILE__) . $select_mode);
 		$zones = $this->getZoneOfMode($select_mode);
+		if(!is_array($zones) || count($zones) == 0){
+			log::add('alarm', 'debug', __('Aucune zone trouvée pour le mode actif', __FILE__));
+			return;
+		}
 		$disable_trigger = $this->getCache('disable_trigger', array());
 		foreach ($zones as $zone) {
 			log::add('alarm', 'debug','['.$this->getHumanName().']'. __('Vérification de la zone : ', __FILE__) . $zone['name']);
