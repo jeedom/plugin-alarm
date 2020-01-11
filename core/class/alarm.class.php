@@ -35,11 +35,11 @@ class alarm extends eqLogic {
 	}
 	
 	public static function checkDetector($_params) {
-		log::add('alarm', 'debug', __('Lancement de la vérification des detecteurs post activation', __FILE__));
 		$eqLogic = eqLogic::byId($_params['alarm_id']);
 		if (!is_object($eqLogic)) {
 			return;
 		}
+		log::add('alarm', 'debug','['.$eqLogic->getHumanName().']'. __('Lancement de la vérification des detecteurs post activation', __FILE__));
 		$cmd_armed = $eqLogic->getCmd(null, 'enable');
 		$cmd_state = $eqLogic->getCmd(null, 'state');
 		if (!is_object($cmd_armed) || !is_object($cmd_state) || $cmd_armed->execCmd() != 1 || ($cmd_state->execCmd() != 0 && $eqLogic->getConfiguration('autorearm', 0) != 1)) {
@@ -58,7 +58,7 @@ class alarm extends eqLogic {
 		$disable_trigger = array();
 		$disable_zone_trigger = array();
 		foreach ($zones as $zone) {
-			log::add('alarm', 'debug', __('[checkDetector] Vérification de la zone : ', __FILE__) . $zone['name']);
+			log::add('alarm', 'debug','['.$eqLogic->getHumanName().']'. __('[checkDetector] Vérification de la zone : ', __FILE__) . $zone['name']);
 			foreach ($zone['triggers'] as $trigger) {
 				if ($trigger['cmd'] != '#' . $cmd->getId() . '#') {
 					continue;
@@ -66,25 +66,25 @@ class alarm extends eqLogic {
 				if (isset($trigger['enable']) && $trigger['enable'] == 0) {
 					continue;
 				}
-				log::add('alarm', 'debug', __('[checkDetector] Verification de ', __FILE__) . $cmd->getHumanName());
+				log::add('alarm', 'debug','['.$eqLogic->getHumanName().']'. __('[checkDetector] Verification de ', __FILE__) . $cmd->getHumanName());
 				$result = $cmd->execCmd();
 				if (isset($trigger['invert']) && $trigger['invert'] == 1) {
 					$result = ($result == 1 || $result) ? 0 : 1;
 				}
-				log::add('alarm', 'debug', __('[checkDetector] Valeur ', __FILE__) . $result);
+				log::add('alarm', 'debug', '['.$eqLogic->getHumanName().']'.__('[checkDetector] Valeur ', __FILE__) . $result);
 				if ($result != 1) {
-					log::add('alarm', 'debug', __('[checkDetector] Aucune alerte, rien à faire', __FILE__));
+					log::add('alarm', 'debug','['.$eqLogic->getHumanName().']'. __('[checkDetector] Aucune alerte, rien à faire', __FILE__));
 					continue;
 				}
 				if (isset($trigger['armedDelay'])) {
 					$armedDelay = jeedom::evaluateExpression($trigger['armedDelay']);
 				}
 				if (!isset($trigger['armedDelay']) || $trigger['armedDelay'] === '' || !is_numeric(intval($armedDelay)) || $armedDelay == 0) {
-					log::add('alarm', 'debug', __('[checkDetector] Delai vide ou non valide, rien à faire', __FILE__));
+					log::add('alarm', 'debug','['.$eqLogic->getHumanName().']'. __('[checkDetector] Delai vide ou non valide, rien à faire', __FILE__));
 					continue;
 				}
 				if (strtotime('now') > (strtotime($cmd_armed->getCollectDate()) + $armedDelay * 60 + 60)) {
-					log::add('alarm', 'debug', __('[checkDetector] Delai depassé, rien à faire', __FILE__));
+					log::add('alarm', 'debug','['.$eqLogic->getHumanName().']'. __('[checkDetector] Delai depassé, rien à faire', __FILE__));
 					continue;
 				}
 				if ((strtotime($cmd_armed->getCollectDate()) + $armedDelay * 60) - strtotime('now') > 0) {
@@ -94,20 +94,20 @@ class alarm extends eqLogic {
 				if (isset($trigger['invert']) && $trigger['invert'] == 1) {
 					$result = ($result == 1 || $result) ? 0 : 1;
 				}
-				log::add('alarm', 'debug', __('[checkDetector] Valeur ', __FILE__) . $result);
+				log::add('alarm', 'debug','['.$eqLogic->getHumanName().']'. __('[checkDetector] Valeur ', __FILE__) . $result);
 				if ($result == 0) {
-					log::add('alarm', 'debug', __('[checkDetector] Plus d\'alerte, rien à faire', __FILE__));
+					log::add('alarm', 'debug','['.$eqLogic->getHumanName().']'. __('[checkDetector] Plus d\'alerte, rien à faire', __FILE__));
 					continue;
 				}
 				$disable_trigger[$cmd->getId()] = $cmd->getHumanName();
 				$disable_zone_trigger[$zone['name']] = $zone['name'];
-				log::add('alarm', 'debug', __('[checkDetector] Commande active, j\'ai du boulot', __FILE__));
+				log::add('alarm', 'debug','['.$eqLogic->getHumanName().']'. __('[checkDetector] Commande active, j\'ai du boulot', __FILE__));
 			}
 		}
 		$eqLogic->setCache('disable_trigger', $eqLogic->getCache('disable_trigger', array()) + $disable_trigger);
 		if (count($disable_trigger) > 0) {
-			log::add('alarm', 'debug', __('Déclencheur désactivé : ', __FILE__) . print_r($disable_trigger, true));
-			log::add('alarm', 'debug', __('Lancement des actions d\'activation ko', __FILE__));
+			log::add('alarm', 'debug','['.$eqLogic->getHumanName().']'. __('Déclencheur désactivé : ', __FILE__) . print_r($disable_trigger, true));
+			log::add('alarm', 'debug','['.$eqLogic->getHumanName().']'. __('Lancement des actions d\'activation ko', __FILE__));
 			$eqLogic->doAction('activationKo', array('#mode' => $select_mode, '#trigger#' => implode(',', $disable_trigger), '#zone#' => implode(',', $disable_zone_trigger)));
 		}
 	}
@@ -127,7 +127,7 @@ class alarm extends eqLogic {
 			if (count($disable_trigger) > 0) {
 				return;
 			}
-			log::add('alarm', 'debug', __('Activation OK éxécution des actions', __FILE__));
+			log::add('alarm', 'debug','['.$eqLogic->getHumanName().']'. __('Activation OK éxécution des actions', __FILE__));
 			$eqLogic->doAction('activationOk');
 		}
 	}
@@ -500,28 +500,28 @@ class alarm extends eqLogic {
 	}
 	
 	public function execute($_trigger_id, $_value) {
-		log::add('alarm', 'debug', __('Lancement de l\'alarme : ', __FILE__) . $this->getHumanName());
+		log::add('alarm', 'debug','['.$this->getHumanName().']'. __('Lancement de l\'alarme : ', __FILE__) . $this->getHumanName());
 		$cmd_state_pause = $this->getCmd(null, 'statePause');
 		if ($cmd_state_pause->execCmd() == 1) {
-			log::add('alarm', 'debug', __('L\'alarme est en pause', __FILE__) . $this->getHumanName());
+			log::add('alarm', 'debug','['.$this->getHumanName().']'. __('L\'alarme est en pause', __FILE__) . $this->getHumanName());
 			return;
 		}
 		$cmd_armed = $this->getCmd(null, 'enable');
 		$cmd_state = $this->getCmd(null, 'state');
-		log::add('alarm', 'debug', __('Status de l\'alarme : ', __FILE__) . $cmd_state->execCmd() . __(' , armement : ', __FILE__) . $cmd_armed->execCmd());
+		log::add('alarm', 'debug','['.$this->getHumanName().']'. __('Status de l\'alarme : ', __FILE__) . $cmd_state->execCmd() . __(' , armement : ', __FILE__) . $cmd_armed->execCmd());
 		$cmd_immediatState = $this->getCmd(null, 'immediatState');
 		$cmd_trigger = cmd::byId($_trigger_id);
 		if (!is_object($cmd_trigger)) {
-			log::add('alarm', 'error', __('Commande déclencheur de l\'alarme non trouvé : ', __FILE__) . $_trigger_id);
+			log::add('alarm', 'error','['.$this->getHumanName().']'. __('Commande déclencheur de l\'alarme non trouvé : ', __FILE__) . $_trigger_id);
 			return;
 		}
-		log::add('alarm', 'debug', __('Déclenchement de l\'alarme sur évenement : ', __FILE__) . $cmd_trigger->getHumanName() . __(' valeur : ', __FILE__) . $_value);
+		log::add('alarm', 'debug','['.$this->getHumanName().']'. __('Déclenchement de l\'alarme sur évenement : ', __FILE__) . $cmd_trigger->getHumanName() . __(' valeur : ', __FILE__) . $_value);
 		$select_mode = $this->getCmd(null, 'mode')->execCmd();
 		log::add('alarm', 'debug', __('Mode actif : ', __FILE__) . $select_mode);
 		$zones = $this->getZoneOfMode($select_mode);
 		$disable_trigger = $this->getCache('disable_trigger', array());
 		foreach ($zones as $zone) {
-			log::add('alarm', 'debug', __('Vérification de la zone : ', __FILE__) . $zone['name']);
+			log::add('alarm', 'debug','['.$this->getHumanName().']'. __('Vérification de la zone : ', __FILE__) . $zone['name']);
 			foreach ($zone['triggers'] as $trigger) {
 				if (isset($trigger['enable']) && $trigger['enable'] == 0) {
 					continue;
@@ -529,17 +529,17 @@ class alarm extends eqLogic {
 				if ($trigger['cmd'] != '#' . $_trigger_id . '#') {
 					continue;
 				}
-				log::add('alarm', 'debug', __('Déclencheur id : ', __FILE__) . $_trigger_id);
+				log::add('alarm', 'debug','['.$this->getHumanName().']'. __('Déclencheur id : ', __FILE__) . $_trigger_id);
 				if (isset($trigger['invert']) && $trigger['invert'] == 1) {
 					$_value = ($_value == 1 || $_value) ? 0 : 1;
 				}
-				log::add('alarm', 'debug', __('Déclencheur inactif : ', __FILE__) . print_r($disable_trigger, true));
+				log::add('alarm', 'debug','['.$this->getHumanName().']'. __('Déclencheur inactif : ', __FILE__) . print_r($disable_trigger, true));
 				if (isset($disable_trigger[$_trigger_id])) {
-					log::add('alarm', 'debug', __('Non déclenchement car le capteur est inactif (car il était en alerte à l\'activation) : ', __FILE__) . print_r($disable_trigger, true));
+					log::add('alarm', 'debug','['.$this->getHumanName().']'. __('Non déclenchement car le capteur est inactif (car il était en alerte à l\'activation) : ', __FILE__) . print_r($disable_trigger, true));
 					if ($_value != 1 && !$_value) {
 						unset($disable_trigger[$_trigger_id]);
 						$this->setCache('disable_trigger', $disable_trigger);
-						log::add('alarm', 'debug', __('Supression du capteur de la liste de capteur inactif à l\'activation', __FILE__));
+						log::add('alarm', 'debug','['.$this->getHumanName().']'. __('Supression du capteur de la liste de capteur inactif à l\'activation', __FILE__));
 						$this->doAction('reenableTrigger', array('#mode#' => $select_mode, '#trigger#' => $cmd_trigger->getHumanName(), '#zone#' => $zone['name']));
 					}
 					continue;
@@ -555,16 +555,16 @@ class alarm extends eqLogic {
 					}
 				}
 				if ($_value != 1 && !$_value) {
-					log::add('alarm', 'debug', __('Non déclenchement car la valeur n\'est pas une alerte : ', __FILE__) . print_r($_value, true));
+					log::add('alarm', 'debug','['.$this->getHumanName().']'. __('Non déclenchement car la valeur n\'est pas une alerte : ', __FILE__) . print_r($_value, true));
 					continue;
 				}
 				$triggerStr = $cmd_trigger->getHumanName();
-				log::add('alarm', 'debug', __('Evenement valide, mise en alerte de l\'alarme sur declencheur : ', __FILE__) . $cmd_trigger->getHumanName() . __(' valeur : ', __FILE__) . $_value);
+				log::add('alarm', 'debug','['.$this->getHumanName().']'. __('Evenement valide, mise en alerte de l\'alarme sur declencheur : ', __FILE__) . $cmd_trigger->getHumanName() . __(' valeur : ', __FILE__) . $_value);
 				if (isset($trigger['armedDelay'])) {
 					$armedDelay = jeedom::evaluateExpression($trigger['armedDelay']);
 					if ($armedDelay !== '' && is_numeric(intval($armedDelay)) && $armedDelay > 0) {
 						if (strtotime('now') < (strtotime($cmd_armed->getCollectDate()) + $armedDelay * 60)) {
-							log::add('alarm', 'debug', __('Non déclenchement de l\'alarme car hors delai d\'armement : ', __FILE__) . $cmd_armed->getCollectDate() . ' +' . $armedDelay . 'min');
+							log::add('alarm', 'debug','['.$this->getHumanName().']'. __('Non déclenchement de l\'alarme car hors delai d\'armement : ', __FILE__) . $cmd_armed->getCollectDate() . ' +' . $armedDelay . 'min');
 							return;
 						}
 					}
@@ -573,7 +573,7 @@ class alarm extends eqLogic {
 				$trigger_zone_immediate = $this->getCache('trigger_zone_immediate', array());
 				if ($this->getConfiguration('autorearm', 0) == 1 || $cmd_immediatState->execCmd() != 1 || ($this->getConfiguration('splitZone', 0) == 1 && !isset($trigger_zone_immediate[$zone['name']]))) {
 					$this->setCache('trigger_zone_immediate', $trigger_zone_immediate + array($zone['name'] => $zone['name']));
-					log::add('alarm', 'debug', __('Exécution des actions immédiates', __FILE__));
+					log::add('alarm', 'debug','['.$this->getHumanName().']'. __('Exécution des actions immédiates', __FILE__));
 					$cmd_immediatState->event(1);
 					if ($this->getConfiguration('ignoreImmediatIfNoDelay', 0) == 0 || (isset($trigger['waitDelay']) && $trigger['waitDelay'] !== '')) {
 						$this->doAction('outbreakImmediate', array('#mode#' => $select_mode, '#trigger#' => $triggerStr, '#zone#' => $zone['name']));
@@ -584,19 +584,19 @@ class alarm extends eqLogic {
 				if (isset($trigger['waitDelay'])) {
 					$waitDelay = jeedom::evaluateExpression($trigger['waitDelay']);
 					if ($waitDelay !== '' && is_numeric(intval($waitDelay)) && $waitDelay > 0) {
-						log::add('alarm', 'debug', __('Attente de ' . $waitDelay . ' min avant déclenchement', __FILE__));
+						log::add('alarm', 'debug','['.$this->getHumanName().']'. __('Attente de ' . $waitDelay . ' min avant déclenchement', __FILE__));
 						sleep($waitDelay * 60);
 						if ($cmd_armed->execCmd() == 0 || $cmd_immediatState->execCmd() == 0) {
-							log::add('alarm', 'debug', __('L\'alarme a été désarmé avant déclenchement', __FILE__));
+							log::add('alarm', 'debug','['.$this->getHumanName().']'. __('L\'alarme a été désarmé avant déclenchement', __FILE__));
 							return;
 						}
 					}
 				}
-				log::add('alarm', 'debug', __('Status de l\'alarme (2) : ', __FILE__) . $cmd_state->execCmd() . __(' , armement : ', __FILE__) . $cmd_armed->execCmd());
+				log::add('alarm', 'debug','['.$this->getHumanName().']'. __('Status de l\'alarme (2) : ', __FILE__) . $cmd_state->execCmd() . __(' , armement : ', __FILE__) . $cmd_armed->execCmd());
 				$trigger_zone = $this->getCache('trigger_zone', array());
 				if ($this->getConfiguration('autorearm', 0) == 1 || $cmd_state->execCmd() != 1 || ($this->getConfiguration('splitZone', 0) == 1 && !isset($trigger_zone[$zone['name']]))) {
 					$this->setCache('trigger_zone', $trigger_zone + array($zone['name'] => $zone['name']));
-					log::add('alarm', 'debug', __('Déclenchement de l\'alarme', __FILE__));
+					log::add('alarm', 'debug','['.$this->getHumanName().']'. __('Déclenchement de l\'alarme', __FILE__));
 					$cmd_state->event(1);
 					$this->doAction('outbreak', array('#mode#' => $select_mode, '#trigger#' => $triggerStr, '#zone#' => $zone['name']));
 					$this->doZoneAction($zone['actions'], array('#mode#' => $select_mode, '#trigger#' => $triggerStr, '#zone#' => $zone['name']));
@@ -624,10 +624,10 @@ class alarm extends eqLogic {
 						$options[$key] = str_replace(array_keys($_replace), $_replace, $value);
 					}
 				}
-				log::add('alarm', 'debug', __('Execution de ', __FILE__) . $action['cmd'] . ' => ' . print_r($options, true));
+				log::add('alarm', 'debug','['.$this->getHumanName().']'. __('Execution de ', __FILE__) . $action['cmd'] . ' => ' . print_r($options, true));
 				scenarioExpression::createAndExec('action', $action['cmd'], $options);
 			} catch (Exception $e) {
-				log::add('alarm', 'error', __('Erreur lors de l\'éxecution de ', __FILE__) . $action['cmd'] . __('. Détails : ', __FILE__) . $e->getMessage());
+				log::add('alarm', 'error','['.$this->getHumanName().']'. __('Erreur lors de l\'éxecution de ', __FILE__) . $action['cmd'] . __('. Détails : ', __FILE__) . $e->getMessage());
 			}
 		}
 	}
@@ -661,7 +661,7 @@ class alarm extends eqLogic {
 				}
 				scenarioExpression::createAndExec('action', $action['cmd'], $options);
 			} catch (Exception $e) {
-				log::add('alarm', 'error', __('Erreur lors de l\'éxecution de ', __FILE__) . $action['cmd'] . __('. Détails : ', __FILE__) . $e->getMessage());
+				log::add('alarm', 'error','['.$this->getHumanName().']'. __('Erreur lors de l\'éxecution de ', __FILE__) . $action['cmd'] . __('. Détails : ', __FILE__) . $e->getMessage());
 			}
 		}
 	}
