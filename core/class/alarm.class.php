@@ -517,10 +517,10 @@ class alarm extends eqLogic {
 		}
 		log::add('alarm', 'debug','['.$this->getHumanName().']'. __('Déclenchement de l\'alarme sur évenement : ', __FILE__) . $cmd_trigger->getHumanName() . __(' valeur : ', __FILE__) . $_value);
 		$select_mode = $this->getCmd(null, 'mode')->execCmd();
-		log::add('alarm', 'debug', __('Mode actif : ', __FILE__) . $select_mode);
+		log::add('alarm', 'debug','['.$this->getHumanName().']'. __('Mode actif : ', __FILE__) . $select_mode);
 		$zones = $this->getZoneOfMode($select_mode);
 		if(!is_array($zones) || count($zones) == 0){
-			log::add('alarm', 'debug', __('Aucune zone trouvée pour le mode actif', __FILE__));
+			log::add('alarm', 'debug','['.$this->getHumanName().']'. __('Aucune zone trouvée pour le mode actif', __FILE__));
 			return;
 		}
 		$disable_trigger = $this->getCache('disable_trigger', array());
