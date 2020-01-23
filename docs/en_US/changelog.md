@@ -1,3 +1,7 @@
+# 22/01/2020
+
+- Amélioration des logs en cas de multiple alarme
+
 # 21/10/2019
 
 - Correction d'un bug lors de la création de l'équipement
