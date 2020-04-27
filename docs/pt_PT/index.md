@@ -1,10 +1,10 @@
 
 .
 
-Configuración del plugin
+Configuração do plugin
 =======================
 
-Después de descargar el complemento, solo necesita activarlo,
+,
 .
 
 
@@ -29,7 +29,7 @@ Después de descargar el complemento, solo necesita activarlo,
 
 .
 
-Dispositivos
+Instalações
 ===========
 
 
@@ -39,15 +39,15 @@ Plugin &gt; Sécurité.
 
 -   **** : ,
 
--   **Objeto padre** : indica el objeto padre al que pertenece
-    equipo,
-
--   **Categoría** : 
+-   **Objeto pai** : 
     ,
 
--   **Activar** : activa su equipo,
+-   **Categoria** : 
+    ,
 
--   **Visible** : hace que su equipo sea visible en el tablero,
+-   **Ativar** : ,
+
+-   **Visivél** : ,
 
 -   **** : 
     ,
@@ -67,7 +67,7 @@ Plugin &gt; Sécurité.
 
 -   **** : 
 
-> **Punta**
+> ****
 >
 > 
 > 
@@ -85,7 +85,7 @@ Plugin &gt; Sécurité.
 
 .
 
-> **Punta**
+> ****
 >
 > 
 > .
@@ -93,7 +93,7 @@ Plugin &gt; Sécurité.
  : - 
 .
 
-Disparador
+Gatilho
 -----------
 
 
@@ -141,7 +141,7 @@ Disparador
 
 .
 
-> **Nota**
+> ****
 >
 > 
 > .
@@ -152,18 +152,18 @@ Modos
 
 .
 
-> **Punta**
+> ****
 >
 > 
-> . Atención durante el cambio de nombre de un modo es absolutamente necesario revisar los escenarios / equipos que usan el nombre antiguo para pasarlos al nuevo
+> . 
 
-> **Nota**
+> ****
 >
 > 
 > 
 > 
 
-> **Importante**
+> ****
 >
 > 
 > .
@@ -182,7 +182,7 @@ Modos
 
 .
 
-> **Importante**
+> ****
 >
 > 
 > . 
@@ -196,7 +196,7 @@ Modos
 
 
 
-Liberación
+
 =============
 
 
@@ -227,16 +227,16 @@ Liberación
 
 .
 
-Preguntas frecuentes
+
 ===
 
 >** ?**
 >
 >  :
 >
-> - #modo# : 
-> - #gatillo# : 
-> - #Zona# : 
+> - ## : 
+> - ## : 
+> - ## : 
 
 >** ?**
 >

@@ -6,26 +6,26 @@
 
 - 
 
-# 10/14/2019
+# 
 
 - 
 
-# 28/04/2019
-
-- Bugfix
-
 # 
-
-- Bugfix
-
-# 01/17/2019
 
 - 
-- Updating the doc
 
 # 
 
-- Updating the doc
+- 
+
+# 
+
+- 
+- 
+
+# 
+
+- 
 - 
 - 
 - 
@@ -37,10 +37,10 @@
 
 - 
 - 
-- Bugfix
+- 
 - 
 
-# 02/12/2018
+# 
 
 - 
 
@@ -63,9 +63,9 @@
     
     
 
--   Code optimization
+-   
 
--   Be careful : 
+-   Atenção : 
      !!!!!! 
 
 -   
