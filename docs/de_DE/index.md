@@ -23,27 +23,16 @@ Die Konfiguration der Alarmausrüstung ist über das Menü Plugin => Sicherheit 
 Sobald ein Alarm hinzugefügt wurde, erhalten Sie :
 
 -   **Name der Alarmausrüstung** : Name Ihres Alarms,
-
 -   **Übergeordnetes Objekt** : Gibt das übergeordnete Objekt an, zu dem das Gerät gehört,
-
 -   **Kategorie** : die Kategorie der Ausrüstung (Sicherheit im Allgemeinen für einen Alarm),
-
 -   **Activer** : macht Ihre Ausrüstung aktiv,
-
 -   **Visible** : macht Ihre Ausrüstung auf dem Armaturenbrett sichtbar,
-
 -   **Immer aktiv** : zeigt an, dass der Alarm permanent aktiv ist (z. B. für einen Branderkennungsalarm),
-
 -   **Sichtbare Waffen** : Ermöglicht es, den Alarmaktivierungsbefehl im Widget sichtbar zu machen oder nicht,
-
 -   **Sofort sichtbarer Status** : ermöglicht es Ihnen, den sofortigen Status des Alarms sichtbar zu machen (Erklärung siehe unten),
-
 -   **Alarmstatus und -status protokollieren** : Ermöglicht das Protokollieren oder Nicht-Protokollieren des Status und des Status des Alarms.
-
 -   **Separate Zonen** : macht die Zonen in Bezug auf Warnungen unabhängig. Normalerweise ignoriert das Plugin die anderen Zonen, wenn eine Zone in Alarmbereitschaft ist. Durch Trennen der Zonen werden die Aktionen für die anderen Zonen wiederholt, die in Alarmbereitschaft eintreten würden
-
 -   **Automatischer Reset** : Bei Auslösung wird der vollständige Alarm erneut aktiviert, um nachfolgende Auslöser zu verhindern (in normalen Zeiten wird er erst wieder aktiviert, wenn ein Szenario / eine menschliche Aktion dazu durchgeführt wurde).
-
 -   **Ergreifen Sie keine sofortigen Maßnahmen, wenn der Sensor keine Verzögerung aufweist** : Weist den Alarm an, keine sofortigen Maßnahmen zu ergreifen, wenn der Sensor keine Auslöseverzögerung hat. Der Alarm führt daher nur die Aktionen aus
 
 > **Tip**
@@ -68,7 +57,7 @@ Ein Trigger ist ein binärer Befehl, der bei Einstellung auf 1 den Alarm auslös
 
 Sie haben auch einen Parameter **Maintient** Hier können Sie eine Trigger-Haltezeit festlegen, bevor Sie den Alarm auslösen. Wenn Sie beispielsweise einen Rauchmelder haben, der manchmal Fehlalarme auslöst, können Sie eine Verzögerung von 2 Sekunden angeben. Wenn der Alarm ausgelöst wird, wartet Jeedom 2 Sekunden und überprüft, ob der Rauchmelder immer noch in Alarmbereitschaft ist, wenn dies nicht der Fall ist, löst er den Alarm nicht aus.  
 
-Kleines Beispiel zu verstehen : Beim ersten Auslöser (* \ [Salon \] \ [Auge \] \ [Präsenz \] *) habe ich hier eine Aktivierungszeit von 5 Minuten und eine Auslösezeit von 1 Minute. Das heißt, wenn ich den Alarm aktiviere, kann in den ersten 5 Minuten aufgrund dieses Sensors kein Alarm ausgelöst werden. Wenn nach dieser Verzögerung von 5 Minuten eine Bewegung vom Sensor erkannt wird, wartet der Alarm 1 Minute (die Zeit, in der ich den Alarm deaktivieren kann), bevor die Aktionen ausgelöst werden. Wenn ich sofortige Aktionen gehabt hätte, wären diese sofort ausgelöst worden, ohne auf das Ende des Aktivierungszeitraums zu warten. Die nicht sofortigen Aktionen hätten nach (1 Minute nach den sofortigen Aktionen) stattgefunden..
+Kleines Beispiel zu verstehen : beim ersten Auslöser (*\ [Salon \] \ [Auge \] \ [Präsenz \]*) hier habe ich eine Aktivierungszeit von 5 Minuten und eine Auslösezeit von 1 Minute. Das heißt, wenn ich den Alarm aktiviere, kann in den ersten 5 Minuten aufgrund dieses Sensors kein Alarm ausgelöst werden. Wenn nach dieser Verzögerung von 5 Minuten eine Bewegung vom Sensor erkannt wird, wartet der Alarm 1 Minute (die Zeit, in der ich den Alarm deaktivieren kann), bevor die Aktionen ausgelöst werden. Wenn ich sofortige Aktionen gehabt hätte, wären diese sofort ausgelöst worden, ohne auf das Ende des Aktivierungszeitraums zu warten. Die nicht sofortigen Aktionen hätten nach (1 Minute nach den sofortigen Aktionen) stattgefunden..
 
 ### Sofortige Aktion
 
@@ -134,8 +123,7 @@ In diesem Teil können Sie die Aktionen definieren, die ausgeführt werden solle
 
 >**So setzen Sie einen permanenten Alarm zurück ?**
 >
->Klicken Sie einfach auf einen der Alarmmodi (gerade)
->der aktive).
+>Klicken Sie einfach auf einen der Alarmmodi (auch den aktiven)..
 
 >**Können wir die Verzögerungen in Sekunden setzen? ?**
 >

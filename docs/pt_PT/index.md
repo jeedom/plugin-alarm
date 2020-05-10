@@ -23,27 +23,16 @@ A configuração do equipamento de alarme pode ser acessada no menu Plugin => Se
 Depois que um alarme é adicionado, você acaba com :
 
 -   **Nome do equipamento de alarme** : nome do seu alarme,
-
 -   **Objeto pai** : indica o objeto pai ao qual o equipamento pertence,
-
 -   **Categoria** : a categoria do equipamento (segurança em geral para um alarme),
-
 -   **Activer** : torna seu equipamento ativo,
-
 -   **Visible** : torna seu equipamento visível no painel,
-
 -   **Ativo o tempo todo** : indica que o alarme estará permanentemente ativo (por exemplo, para um alarme de detecção de incêndio),
-
 -   **Armamento visível** : permite tornar visível ou não o comando de ativação do alarme no widget,
-
 -   **Status visível imediato** : permite tornar visível o status imediato do alarme (veja abaixo a explicação),
-
 -   **Status e status do alarme de log** : permite registrar ou não o estado e o status do alarme.
-
 -   **Zonas separadas** : torna as zonas independentes em termos de alertas. Normalmente, se uma zona estiver em alerta, o plug-in ignorará as outras zonas.. Ao separar as zonas, ele repetirá as ações para as outras zonas que entrariam em alerta
-
 -   **Reset automático** : Quando acionado, o alarme completo é rearmado para evitar disparos subseqüentes (em tempos normais, ele não será rearmado até que exista um cenário / ação humana para fazer isso)
-
 -   **Não tome medidas imediatas se o sensor não tiver atraso** : diz ao alarme para não executar ações imediatas se o sensor não tiver um atraso no gatilho, o alarme executará apenas as ações
 
 > **Tip**
@@ -68,7 +57,7 @@ Um gatilho é um comando binário que, quando definido como 1, dispara o alarme.
 
 Você também tem um parâmetro **Maintient** que permite especificar um tempo de espera do gatilho antes de disparar o alarme. Por exemplo, se você possui um detector de fumaça que, às vezes, gera alarmes falsos, pode especificar um atraso de 2s. Quando o alarme é acionado, o Jeedom espera 2s e verifica se o detector de fumaça ainda está em alerta, se não for o caso, não acionará o alarme..  
 
-Pequeno exemplo para entender : no primeiro gatilho (* \ [Salon \] \ [Eye \] \ [Presence \] *) tenho aqui um tempo de ativação de 5 minutos e um tempo de gatilho de 1 minuto. Isso significa que, quando eu ativo o alarme, durante os primeiros 5 minutos, nenhum acionamento do alarme pode ocorrer devido a esse sensor.. Após esse atraso de 5 minutos, se um movimento for detectado pelo sensor, o alarme aguardará 1 minuto (o tempo para permitir que eu desative o alarme) antes de acionar as ações. Se eu tivesse ações imediatas, elas teriam sido acionadas imediatamente sem esperar o final do período de ativação, as ações não imediatas teriam ocorrido após (1 minuto após as ações imediatas).
+Pequeno exemplo para entender : no primeiro gatilho (*\ [Salão \] \ [Olho \] \ [Presença \]*) aqui eu tenho um tempo de ativação de 5 minutos e um tempo de disparo de 1 minuto. Isso significa que, quando eu ativo o alarme, durante os primeiros 5 minutos, nenhum acionamento do alarme pode ocorrer devido a esse sensor.. Após esse atraso de 5 minutos, se um movimento for detectado pelo sensor, o alarme aguardará 1 minuto (o tempo para permitir que eu desative o alarme) antes de acionar as ações. Se eu tivesse ações imediatas, elas teriam sido acionadas imediatamente sem esperar o final do período de ativação, as ações não imediatas teriam ocorrido após (1 minuto após as ações imediatas).
 
 ### Ação imediata
 
@@ -134,8 +123,7 @@ Esta parte permite definir as ações a serem executadas quando o alarme é acio
 
 >**Como redefinir um alarme permanente ?**
 >
->Basta clicar em um dos modos de alarme (mesmo
->o ativo).
+>Basta clicar em um dos modos de alarme (até o ativo).
 
 >**Podemos colocar os atrasos em segundos ?**
 >

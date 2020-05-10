@@ -1,3 +1,8 @@
+>**IMPORTANT**
+>
+>Como lembrete, se não houver informações sobre a atualização, isso significa que se trata apenas da atualização da documentação, tradução ou texto.
+
+
 # 22/01/2020
 
 - Logs aprimorados em caso de vários alarmes
@@ -30,7 +35,7 @@
 - Se o alarme já estiver ativo, o armamento não o reativará
 - Adição de uma opção para uma viagem de várias zonas (se outra zona entrar em alerta, o alarme será acionado)
 - Adição de ação ao retomar o monitoramento de um sensor
-- Adição da tag #zone#
+- Adicionando a tag #zone#
 - Adicione um botão para duplicar um alarme
 
 # 06/06/2018
