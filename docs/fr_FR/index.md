@@ -23,27 +23,16 @@ La configuration des équipements Alarme est accessible à partir du menu Plugin
 Une fois une alarme ajoutée vous vous retrouvez avec :
 
 -   **Nom de l’équipement alarme** : nom de votre alarme,
-
 -   **Objet parent** : indique l’objet parent auquel appartient l’équipement,
-
 -   **Catégorie** : la catégorie de l’équipement (sécurité en général pour une alarme),
-
 -   **Activer** : permet de rendre votre équipement actif,
-
 -   **Visible** : rend votre équipement visible sur le dashboard,
-
 -   **Actif en permanence** : indique que l’alarme sera en permanence active (par exemple pour une alarme de détection d’incendie),
-
 -   **Armement visible** : permet de rendre visible ou non la commande d’armement de l’alarme sur le widget,
-
 -   **Statut immédiat visible** : permet de rendre le statut immédiat de l’alarme visible (voir plus bas pour l’explication),
-
 -   **Historiser état et statut de l’alarme** : permet d’historiser ou non l’état et le statut de l’alarme.
-
 -   **Séparer les zones** : permet de rendre les zones indépendantes en terme d'alerte. En temps normal si une zone est en alerte le plugin va ignorer les autres zones. En séparant les zones il répetera les actions pour les autres zones qui entreraient en alerte
-
 -   **Réarmement automatique** : lors d'un déclenchement l'alarme complète se réarme pour prévenir des déclenchements suivants (en temps normal elle ne se réarme pas tant qu'il n'y a pas eu une action scénario/humaine pour le faire)
-
 -   **Ne pas faire les actions immédiates si le capteur n'a pas de délai** : indique à l'alarme de ne pas faire les actions immédiates si le capteur n'a pas de délai de déclenchement, l'alarme ne fera donc que les actions
 
 > **Tip**
@@ -134,8 +123,7 @@ Cette partie vous permet de définir les actions à faire lorsque l’alarme est
 
 >**Comment réarmer une alarme permanente ?**
 >
->Il suffit de cliquer sur un des modes de l’alarme (même
->celui actif).
+>Il suffit de cliquer sur un des modes de l’alarme (même celui actif).
 
 >**Peut-on mettre les délais en secondes ?**
 >
