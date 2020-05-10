@@ -1,3 +1,8 @@
+>**IMPORTANT**
+>
+>Como recordatorio si no hay información sobre la actualización, significa que solo se refiere a la actualización de documentación, traducción o texto.
+
+
 # 22/01/2020
 
 - Registros mejorados en caso de alarmas múltiples
@@ -30,7 +35,7 @@
 - Si la alarma ya está activa, el armado no la reactiva
 - Adición de una opción para un viaje de varias zonas (si otra zona entra en alerta, entonces se activa la alarma)
 - Adición de acción al reanudar el monitoreo de un sensor
-- Adición de la etiqueta #zone#
+- Agregar la etiqueta #zone#
 - Agregar un botón para duplicar una alarma
 
 # 06/03/2018

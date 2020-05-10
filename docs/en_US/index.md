@@ -23,27 +23,16 @@ The configuration of the Alarm equipment is accessible from the Plugin => Securi
 Once an alarm is added you end up with :
 
 -   **Name of the alarm equipment** : name of your alarm,
-
 -   **Parent object** : indicates the parent object to which the equipment belongs,
-
 -   **Category** : the category of the equipment (security in general for an alarm),
-
 -   **Activer** : makes your equipment active,
-
 -   **Visible** : makes your equipment visible on the dashboard,
-
 -   **Active all the time** : indicates that the alarm will be permanently active (for example for a fire detection alarm),
-
 -   **Arming Visible** : allows to make visible or not the alarm arming command on the widget,
-
 -   **Immediate Status Visible** : allows you to make the immediate status of the alarm visible (see below for the explanation),
-
 -   **Historize alarm status and status** : allows to log or not the state and the status of the alarm.
-
--   **Separate zones** : makes the zones independent in terms of alerts. Normally if a Zone is on alert the plugin will ignore the other zones. By separating the zones it will repeat the actions for the other zones which would enter in alert
-
+-   **Separate zones** : makes the zones independent in terms of alerts. Normally if a zone is on alert the plugin will ignore the other zones. By separating the zones it will repeat the actions for the other zones which would enter in alert
 -   **Automatic reset** : when triggered, the full alarm is rearmed to prevent subsequent triggers (in normal times it will not rearm until there has been a scenario / human action to do so)
-
 -   **Do not take immediate actions if the sensor has no delay** : tells the alarm not to do immediate actions if the sensor does not have a trigger delay, the alarm will therefore only do the actions
 
 > **Tip**
@@ -58,9 +47,9 @@ A button at the top right allows you to add as many as you want.
 
 > **Tip**
 >
-> It is possible to edit the name of the Zone by clicking on the name of the Zone (in front of the label "Name of the zone").
+> It is possible to edit the name of the zone by clicking on the name of the zone (in front of the label "Name of the zone").
 
-A Zone is made up of different elements : - trigger, - immediate action, - action.
+A zone is made up of different elements : - trigger, - immediate action, - action.
 
 ## Trigger
 
@@ -68,7 +57,7 @@ A trigger is a binary command, which when set to 1 will trigger the alarm. It is
 
 You also have a parameter **Maintient** which allows you to specify a trigger hold time before triggering the alarm. Ex if you have a smoke detector which sometimes raises false alarms you can specify a delay of 2s. When the alarm is triggered Jeedom will wait 2s and check that the smoke detector is still on alert if it is not the case it will not trigger the alarm.  
 
-Little example to understand : on the first trigger (* \ [Salon \] \ [Eye \] \ [Presence \] *) I have here an activation time of 5 minutes and a trigger time of 1 minute. This means that when I activate the alarm, during the first 5 minutes no triggering of the alarm can take place because of this sensor. After this delay of 5 minutes, if a movement is detected by the sensor, the alarm will wait 1 minute (the time to let me deactivate the alarm) before triggering the actions. If I had had immediate actions these would have been triggered immediately without waiting for the end of the activation period, the non-immediate actions would have taken place after (1 minute after the immediate actions).
+Little example to understand : on the first trigger (*\ [Salon \] \ [Eye \] \ [Presence \]*) here I have an activation time of 5 minutes and a trigger time of 1 minute. This means that when I activate the alarm, during the first 5 minutes no triggering of the alarm can take place because of this sensor. After this delay of 5 minutes, if a movement is detected by the sensor, the alarm will wait 1 minute (the time to let me deactivate the alarm) before triggering the actions. If I had had immediate actions these would have been triggered immediately without waiting for the end of the activation period, the non-immediate actions would have taken place after (1 minute after the immediate actions).
 
 ### Immediate action
 
@@ -76,7 +65,7 @@ As described above, these are actions that are triggered upon triggering without
 
 > **Note**
 >
-> When several zones are triggered successively, only the immediate actions of the 1st Zone triggered are executed.
+> When several zones are triggered successively, only the immediate actions of the 1st zone triggered are executed.
 
 ## Modes
 
@@ -112,7 +101,7 @@ Here you can also add actions when resuming a sensor monitoring
 
 ## Trigger
 
-Allows you to configure the global actions to be taken when an alarm is triggered. You do not have to add more if you have configured specific actions by Zone.
+Allows you to configure the global actions to be taken when an alarm is triggered. You do not have to add more if you have configured specific actions by zone.
 
 ## Deactivation OK
 
@@ -132,13 +121,12 @@ Possible tags are
 >
 > - #mode# : name of the current mode
 > - #trigger# : name of the command that triggered the alert
-> - #zone# : name of the Zone of ​​the command that triggered the alert
+> - #zone# : name of the zone of ​​the command that triggered the alert
 
 
 >**How to rearm a permanent alarm ?**
 >
->Just click on one of the alarm modes (even
->the active one).
+>Just click on one of the alarm modes (even the active one).
 
 >**Can we put the delays in seconds ?**
 >

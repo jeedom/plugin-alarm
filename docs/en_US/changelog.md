@@ -1,3 +1,8 @@
+>**IMPORTANT**
+>
+>As a reminder if there is no information on the update, it means that it only concerns the updating of documentation, translation or text.
+
+
 # 22/01/2020
 
 - Improved logs in case of multiple alarms
@@ -31,7 +36,7 @@
 - If the alarm is already active the arming does not reactivate it
 - Addition of an option for a multi-zone trip (if another zone goes into alert then the alarm is triggered)
 - Addition of action when resuming monitoring of a sensor
-- Addition of the tag #zone#
+- Adding the tag #zone#
 - Ad a button to duplicate an alarm
 
 

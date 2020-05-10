@@ -23,27 +23,16 @@ Se puede acceder a la configuración del equipo de alarma desde el menú Complem
 Una vez que se agrega una alarma, terminas con :
 
 -   **Nombre del equipo de alarma.** : nombre de tu alarma,
-
 -   **Objeto padre** : indica el objeto padre al que pertenece el equipo,
-
 -   **Categoría** : La categoría del equipo (seguridad en general para una alarma),
-
 -   **Activer** : activa su equipo,
-
 -   **Visible** : hace que su equipo sea visible en el tablero,
-
 -   **Activo todo el tiempo** : indica que la alarma estará activa permanentemente (por ejemplo, para una alarma de detección de incendios),
-
 -   **Armamento visible** : permite hacer visible o no el comando de armado de alarma en el widget,
-
 -   **Estado visible inmediato** : le permite hacer visible el estado inmediato de la alarma (consulte la explicación a continuación),
-
 -   **Registrar estado de alarma y estado** : permite registrar o no el estado y el estado de la alarma.
-
 -   **Zonas separadas** : hace que las zonas sean independientes en términos de alertas. Normalmente, si una zona está en alerta, el complemento ignorará las otras zonas. Al separar las zonas, repetirá las acciones para las otras zonas que entrarían en alerta
-
 -   **Reinicio automático** : cuando se activa, la alarma completa se rearma para evitar disparadores posteriores (en tiempos normales no se rearmará hasta que haya habido un escenario / acción humana para hacerlo)
-
 -   **No tome medidas inmediatas si el sensor no tiene retraso** : le dice a la alarma que no tome acciones inmediatas si el sensor no tiene un retraso de activación, por lo tanto, la alarma solo realizará las acciones
 
 > **Tip**
@@ -68,7 +57,7 @@ Un activador es un comando binario que, cuando se establece en 1, activará la a
 
 También tienes un parámetro **Maintient** que le permite especificar un tiempo de espera de activación antes de activar la alarma. Por ejemplo, si tiene un detector de humo que a veces genera falsas alarmas, puede especificar un retraso de 2 segundos. Cuando se activa la alarma, Jeedom esperará 2 segundos y comprobará que el detector de humo todavía está alerta si no es el caso, no activará la alarma..  
 
-Pequeño ejemplo para entender : en el primer disparador (* \ [Salon \] \ [Eye \] \ [Presence \] *) Tengo aquí un tiempo de activación de 5 minutos y un tiempo de disparo de 1 minuto. Esto significa que cuando activo la alarma, durante los primeros 5 minutos no se puede activar la alarma debido a este sensor. Después de este retraso de 5 minutos, si el sensor detecta un movimiento, la alarma esperará 1 minuto (el tiempo para permitirme desactivar la alarma) antes de activar las acciones.. Si hubiera tenido acciones inmediatas, estas se habrían disparado inmediatamente sin esperar el final del período de activación, las acciones no inmediatas habrían tenido lugar después (1 minuto después de las acciones inmediatas).
+Pequeño ejemplo para entender : en el primer disparador (*\ [Salon \] \ [Eye \] \ [Presence \]*) aquí tengo un tiempo de activación de 5 minutos y un tiempo de activación de 1 minuto. Esto significa que cuando activo la alarma, durante los primeros 5 minutos no se puede activar la alarma debido a este sensor. Después de este retraso de 5 minutos, si el sensor detecta un movimiento, la alarma esperará 1 minuto (el tiempo para permitirme desactivar la alarma) antes de activar las acciones.. Si hubiera tenido acciones inmediatas, estas se habrían disparado inmediatamente sin esperar el final del período de activación, las acciones no inmediatas habrían tenido lugar después (1 minuto después de las acciones inmediatas).
 
 ### Acción inmediata
 
@@ -134,8 +123,7 @@ Esta parte le permite definir las acciones que se realizarán cuando se active l
 
 >**Cómo restablecer una alarma permanente ?**
 >
->Simplemente haga clic en uno de los modos de alarma (incluso
->el activo).
+>Simplemente haga clic en uno de los modos de alarma (incluso el activo).
 
 >**¿Podemos poner los retrasos en segundos? ?**
 >
