@@ -16,7 +16,7 @@ Essa noção imediata permite desencadear ações muito específicas. Por exempl
 
 Essa noção é encontrada em diferentes tipos de ações, cada vez que seu princípio for detalhado.
 
-## Instalações
+## Equipements
 
 A configuração do equipamento de alarme pode ser acessada no menu Plugin => Security.
 
@@ -31,7 +31,7 @@ Depois que um alarme é adicionado, você acaba com :
 -   **Armamento visível** : permite tornar visível ou não o comando de ativação do alarme no widget,
 -   **Status visível imediato** : permite tornar visível o status imediato do alarme (veja abaixo a explicação),
 -   **Status e status do alarme de log** : permite registrar ou não o estado e o status do alarme.
--   **Zonas separadas** : torna as zonas independentes em termos de alertas. Normalmente, se uma zona estiver em alerta, o plug-in ignorará as outras zonas.. Ao separar as zonas, ele repetirá as ações para as outras zonas que entrariam em alerta
+-   **Zonas separadas** : torna as zonas independentes em termos de alertas. Normalmente, se uma zona estiver em alerta, o plug-in ignorará as outras zonas. Ao separar as zonas, ele repetirá as ações para as outras zonas que entrariam em alerta
 -   **Reset automático** : Quando acionado, o alarme completo é rearmado para evitar disparos subseqüentes (em tempos normais, ele não será rearmado até que exista um cenário / ação humana para fazer isso)
 -   **Não tome medidas imediatas se o sensor não tiver atraso** : diz ao alarme para não executar ações imediatas se o sensor não tiver um atraso no gatilho, o alarme executará apenas as ações
 
@@ -39,9 +39,9 @@ Depois que um alarme é adicionado, você acaba com :
 >
 > Para cada ação, é possível especificar o modo em que deve ser executado ou em todos os modos
 
-## Zonas
+## Zones
 
-Parte principal do alarme. É aqui que você configura as diferentes zonas e as ações (imediatas e diferidas por zona, observe que também é possível configurá-las globalmente) a serem executadas no caso de acionamento.. Uma área pode ser volumétrica (para o dia, por exemplo) ou perímetro (para a noite) ou também áreas da casa (garagem, quarto, dependências, etc.).
+Parte principal do alarme. É aqui que você configura as diferentes zonas e as ações (imediatas e diferidas por zona, observe que também é possível configurá-las globalmente) a serem executadas no caso de acionamento. Uma área pode ser volumétrica (para o dia, por exemplo) ou perímetro (para a noite) ou também áreas da casa (garagem, quarto, dependências, etc.).
 
 Um botão no canto superior direito permite adicionar quantos você quiser.
 
@@ -53,11 +53,11 @@ Uma área é composta de diferentes elementos : - gatilho, - ação imediata, - 
 
 ## Gatilho
 
-Um gatilho é um comando binário que, quando definido como 1, dispara o alarme. É possível reverter o gatilho, de modo que seja o estado 0 do sensor que aciona o alarme, colocando "reverso" em SIM. Depois de escolher seu gatilho, você pode especificar um atraso de ativação em minutos (não é possível descer abaixo do minuto). Esse atraso permite, por exemplo, se você ativar o alarme antes de sair de casa, para não acioná-lo por um minuto (tempo para deixá-lo sair). Em outros casos, alguns detectores de movimento permanecem no modo acionado (valor 1) por um certo tempo, mesmo que não haja detecção, por exemplo, 4 minutos; portanto, é bom adiar a ativação desses sensores em 4 ou 5 min para que o alarme não toque imediatamente após a ativação. Então você tem o atraso de disparo, ao contrário do atraso de ativação que ocorre apenas uma vez quando o alarme é ativado, ele é configurado após cada disparo de um sensor.. A cinemática é a seguinte quando o sensor é acionado (abertura da porta, detecção de presença); se os tempos de ativação tiverem passado, o alarme acionará as ações imediatas, mas aguardará até que o tempo de ativação termine antes acionar ações. Finalmente, você tem o botão "reverso", que permite reverter o estado de disparo do sensor (0 em vez de 1).
+Um gatilho é um comando binário que, quando definido como 1, dispara o alarme. É possível reverter o gatilho, de modo que seja o estado 0 do sensor que aciona o alarme, colocando "reverso" em SIM. Depois de escolher seu gatilho, você pode especificar um atraso de ativação em minutos (não é possível descer abaixo do minuto). Esse atraso permite, por exemplo, se você ativar o alarme antes de sair de casa, para não acioná-lo por um minuto (tempo para deixá-lo sair). Em outros casos, alguns detectores de movimento permanecem no modo acionado (valor 1) por um certo tempo, mesmo que não haja detecção, por exemplo, 4 minutos; portanto, é bom adiar a ativação desses sensores em 4 ou 5 min para que o alarme não toque imediatamente após a ativação. Então você tem o atraso de disparo, ao contrário do atraso de ativação que ocorre apenas uma vez quando o alarme é ativado, ele é configurado após cada disparo de um sensor. A cinemática é a seguinte quando o sensor é acionado (abertura da porta, detecção de presença); se os tempos de ativação tiverem passado, o alarme acionará as ações imediatas, mas aguardará até que o tempo de ativação termine antes acionar ações. Finalmente, você tem o botão "reverso", que permite reverter o estado de disparo do sensor (0 em vez de 1).
 
-Você também tem um parâmetro **Mantém** que permite especificar um tempo de espera do gatilho antes de disparar o alarme. Por exemplo, se você possui um detector de fumaça que, às vezes, gera alarmes falsos, pode especificar um atraso de 2s. Quando o alarme é acionado, o Jeedom espera 2s e verifica se o detector de fumaça ainda está em alerta, se não for o caso, não acionará o alarme..  
+Você também tem um parâmetro **Mantém** que permite especificar um tempo de espera do gatilho antes de disparar o alarme. Por exemplo, se você possui um detector de fumaça que, às vezes, gera alarmes falsos, pode especificar um atraso de 2s. Quando o alarme é acionado, o Jeedom espera 2s e verifica se o detector de fumaça ainda está em alerta, se não for o caso, não acionará o alarme.  
 
-Pequeno exemplo para entender : no primeiro gatilho (*\ [Salão \] \ [Olho \] \ [Presença \]*) aqui eu tenho um tempo de ativação de 5 minutos e um tempo de disparo de 1 minuto. Isso significa que, quando eu ativo o alarme, durante os primeiros 5 minutos, nenhum acionamento do alarme pode ocorrer devido a esse sensor.. Após esse atraso de 5 minutos, se um movimento for detectado pelo sensor, o alarme aguardará 1 minuto (o tempo para permitir que eu desative o alarme) antes de acionar as ações. Se eu tivesse ações imediatas, elas teriam sido acionadas imediatamente sem esperar o final do período de ativação, as ações não imediatas teriam ocorrido após (1 minuto após as ações imediatas).
+Pequeno exemplo para entender : no primeiro gatilho (*\ [Salão \] \ [Olho \] \ [Presença \]*) aqui eu tenho um tempo de ativação de 5 minutos e um tempo de disparo de 1 minuto. Isso significa que, quando eu ativo o alarme, durante os primeiros 5 minutos, nenhum acionamento do alarme pode ocorrer devido a esse sensor. Após esse atraso de 5 minutos, se um movimento for detectado pelo sensor, o alarme aguardará 1 minuto (o tempo para permitir que eu desative o alarme) antes de acionar as ações. Se eu tivesse ações imediatas, elas teriam sido acionadas imediatamente sem esperar o final do período de ativação, as ações não imediatas teriam ocorrido após (1 minuto após as ações imediatas).
 
 ### Ação imediata
 
@@ -67,7 +67,7 @@ Como descrito acima, são ações que são acionadas após o acionamento sem lev
 >
 > Quando várias zonas são acionadas sucessivamente, apenas as ações imediatas da 1ª zona acionada são executadas.
 
-## Modos
+## Modes
 
 Os modos são bem simples de configurar, basta indicar as zonas ativas de acordo com o modo.
 
@@ -85,7 +85,7 @@ Os modos são bem simples de configurar, basta indicar as zonas ativas de acordo
 
 ## Ativação OK
 
-Esta parte define as ações a serem executadas após a ativação do alarme.. Aqui, novamente, você encontrará a noção imediata que representa as ações a serem executadas imediatamente após o acionamento do alarme e, em seguida, as ações de ativação que são executadas após os tempos de disparo..
+Esta parte define as ações a serem executadas após a ativação do alarme. Aqui, novamente, você encontrará a noção imediata que representa as ações a serem executadas imediatamente após o acionamento do alarme e, em seguida, as ações de ativação que são executadas após os tempos de disparo.
 
 No exemplo, acendo aqui, por exemplo, uma lâmpada vermelha para indicar que o armamento foi levado em consideração e apago quando o armamento estiver concluído (porque normalmente não há mais ninguém no perímetro do alarme, caso contrário ele o aciona).
 
@@ -105,13 +105,13 @@ Permite configurar as ações globais a serem executadas quando um alarme é aci
 
 ## Desativação OK
 
-Essas ações são executadas quando o alarme é desativado e não é acionado. Exemplo: quando você vai para casa, ao abrir a porta, o alarme é acionado, mas você definiu um atraso no sensor e disparou o alarme antes do final do atraso, as ações de desativação OK serão executadas.. Se, por outro lado, você tivesse interrompido o alarme após o final do atraso do disparo, esse não seria o caso..
+Essas ações são executadas quando o alarme é desativado e não é acionado. Exemplo: quando você vai para casa, ao abrir a porta, o alarme é acionado, mas você definiu um atraso no sensor e disparou o alarme antes do final do atraso, as ações de desativação OK serão executadas. Se, por outro lado, você tivesse interrompido o alarme após o final do atraso do disparo, esse não seria o caso.
 
 ## Reset
 
-Esta parte permite definir as ações a serem executadas quando o alarme é acionado e, em seguida, desativado.. Aqui também existem ações imediatas e diferidas. Aqui está um exemplo : você vai para casa, os tempos de ativação já passaram, mas abrir a porta aciona o alarme. Se você desativá-lo (antes dos tempos de disparo), as ações de redefinição imediata serão executadas, mas não as ações de redefinição normais. Se você desativá-lo após o tempo de disparo, as ações de redefinição imediata e normal serão executadas.
+Esta parte permite definir as ações a serem executadas quando o alarme é acionado e, em seguida, desativado. Aqui também existem ações imediatas e diferidas. Aqui está um exemplo : você vai para casa, os tempos de ativação já passaram, mas abrir a porta aciona o alarme. Se você desativá-lo (antes dos tempos de disparo), as ações de redefinição imediata serão executadas, mas não as ações de redefinição normais. Se você desativá-lo após o tempo de disparo, as ações de redefinição imediata e normal serão executadas.
 
-## Faq
+## FAQ
 
 >**Quais são as possíveis tags ?**
 >

@@ -16,7 +16,7 @@ This immediate notion makes it possible to trigger very specific actions. For ex
 
 This notion is found in different types of actions, each time its principle will be detailed.
 
-## Equipments
+## Equipements
 
 The configuration of the Alarm equipment is accessible from the Plugin => Security menu.
 
@@ -41,7 +41,7 @@ Once an alarm is added you end up with :
 
 ## Zones
 
-Main part of the alarm. This is where you configure the different zones and the actions (immediate and deferred by zone, note that it is also possible to configure them globally) to be done in the event of triggering.. An area can either be volumetric (for the day for example) or perimeter (for the night) or also areas of the house (garage, bedroom, outbuildings, etc.).
+Main part of the alarm. This is where you configure the different zones and the actions (immediate and deferred by zone, note that it is also possible to configure them globally) to be done in the event of triggering. An area can either be volumetric (for the day for example) or perimeter (for the night) or also areas of the house (garage, bedroom, outbuildings, etc.).
 
 A button at the top right allows you to add as many as you want.
 
@@ -85,7 +85,7 @@ The modes are quite simple to configure, you just have to indicate the active zo
 
 ## Activation OK
 
-This part defines the actions to be taken following an activation of the alarm.. Here again, you will find the immediate notion which represents the actions to be done immediately after arming the alarm, then come the activation actions which are executed after the triggering times.
+This part defines the actions to be taken following an activation of the alarm. Here again, you will find the immediate notion which represents the actions to be done immediately after arming the alarm, then come the activation actions which are executed after the triggering times.
 
 In the example, here I light a red lamp for example to indicate that the arming has been taken into account and I turn it off once the arming is complete (because normally there is no one left in the perimeter of the alarm, otherwise it triggers it).
 
@@ -105,24 +105,21 @@ Allows you to configure the global actions to be taken when an alarm is triggere
 
 ## Deactivation OK
 
-These actions are executed when the alarm is deactivated and it is not triggered. Example you go home, by opening the door it triggers the alarm, but you have set a trigger delay on the sensor and you cut the alarm before the end of the delay, the deactivation actions OK will be executed. If, on the other hand, you had stopped the alarm after the end of the triggering delay, this would not have been the case..
+These actions are executed when the alarm is deactivated and it is not triggered. Example you go home, by opening the door it triggers the alarm, but you have set a trigger delay on the sensor and you cut the alarm before the end of the delay, the deactivation actions OK will be executed. If, on the other hand, you had stopped the alarm after the end of the triggering delay, this would not have been the case.
 
 ## Reset
 
-This part allows you to define the actions to be done when the alarm is triggered and then deactivated.. Here too there are immediate and deferred actions. Here is an example : you go home, the activation times have passed, but opening the door triggers the alarm. If you disable it (before trigger times) then immediate reset actions will be executed, but not normal reset actions. If you deactivate it after the trigger times, then the immediate and normal reset actions will be executed.
+This part allows you to define the actions to be done when the alarm is triggered and then deactivated. Here too there are immediate and deferred actions. Here is an example : you go home, the activation times have passed, but opening the door triggers the alarm. If you disable it (before trigger times) then immediate reset actions will be executed, but not normal reset actions. If you deactivate it after the trigger times, then the immediate and normal reset actions will be executed.
 
 ## FAQ
 
 >**What are the possible tags ?**
 >
-> 
-Possible tags are
- :
+> Possible tags are :
 >
 > - #mode# : name of the current mode
 > - #trigger# : name of the command that triggered the alert
 > - #zone# : name of the zone of ​​the command that triggered the alert
-
 
 >**How to rearm a permanent alarm ?**
 >

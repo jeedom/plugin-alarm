@@ -1,6 +1,6 @@
 >**IMPORTANTE**
 >
->Como lembrete, se não houver informações sobre a atualização, isso significa que se trata apenas da atualização da documentação, tradução ou texto.
+>Como lembrete, se não houver informações sobre a atualização, isso significa que se trata apenas da atualização da documentação, tradução ou texto
 
 
 # 22/01/2020
@@ -43,7 +43,7 @@
 - Adição de gerenciamento de pedidos órfãos
 - Se os sensores estiverem desativados, as ações de ativação ok não serão mais acionadas
 - Correções de bugs
-- Detectores com atrasos na ativação e sempre ativos após esse atraso não acionam mais o alarme, mas iniciam uma ativação KO, com o monitoramento desse detector excluído até o retorno ao normal.
+- Detectores com atrasos na ativação e sempre ativos após esse atraso não acionam mais o alarme, mas iniciam uma ativação KO, com o monitoramento desse detector excluído até o retorno ao normal
 
 # 12/12/2018
 

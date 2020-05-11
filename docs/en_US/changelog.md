@@ -1,6 +1,6 @@
 >**Important**
 >
->As a reminder if there is no information on the update, it means that it only concerns the updating of documentation, translation or text.
+>As a reminder if there is no information on the update, it means that it only concerns the updating of documentation, translation or text
 
 
 # 22/01/2020
@@ -14,7 +14,6 @@
 # 10/14/2019
 
 - Fixed a bug when renaming a mode
-
 
 # 28/04/2019
 
@@ -38,7 +37,6 @@
 - Addition of action when resuming monitoring of a sensor
 - Adding the tag #zone#
 - Ad a button to duplicate an alarm
-
 
 # 06/03/2018
 
