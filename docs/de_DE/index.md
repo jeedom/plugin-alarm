@@ -1,4 +1,4 @@
-# Alarme
+# Alarm Plugin
 
 Mit dem Alarm-Plugin verfügt Jeedom über ein echtes Alarmsystem für die Heimautomation, das sehr einfach zu bedienen und zu konfigurieren ist.
 

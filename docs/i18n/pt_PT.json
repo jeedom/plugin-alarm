@@ -58,6 +58,7 @@
         "ATTENTION]": "Atenção]"
     },
     "index.md": {
+        "Plugin Alarme": "Plugin de alarme",
         "Le plugin Alarme permet à Jeedom d'avoir un vrai système d'alarme pour sa domotique, très simple à utiliser et à configurer": "O plugin Alarme permite à Jeedom ter um sistema de alarme real para automação residencial, muito simples de usar e configurar",
         "Configuration du plugin": "Configuração do plugin",
         "Après téléchargement du plugin, il vous suffit juste d'activer celui-ci, il n'y a aucune configuration supplémentaire à ce niveau": "Depois de baixar o plugin, você só precisa ativá-lo, não há configuração adicional nesse nível",
@@ -168,11 +169,6 @@
         "5 pour 30 secondes) mais pas pour le \"Délai d'activation\" (ne pas mettre de chiffres à virgule pour ce paramètre)": "5 por 30 segundos), mas não para o \"atraso de ativação\" (não use dígitos decimais para este parâmetro)",
         "Je ne comprends pas mon alarme ne fait rien": "Eu não entendo meu alarme não faz nada",
         "Vérifiez que l'alarme a bien un mode d'actif": "Verifique se o alarme está no modo ativo",
-        " Alarme.": " Alarme.",
-        " Alarme?": " Alarme?",
-        "Alarme ": "Alarme ",
-        "[Alarme": "[Alarme",
-        "Alarme]": "Alarme]",
         " Equipements.": " Instalações.",
         " Equipements?": " Instalações?",
         "Equipements ": "Instalações ",

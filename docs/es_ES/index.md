@@ -1,4 +1,4 @@
-# Alarme
+# Plugin de alarma
 
 El complemento de alarma le permite a Jeedom tener un sistema de alarma real para su domótica, muy fácil de usar y configurar.
 

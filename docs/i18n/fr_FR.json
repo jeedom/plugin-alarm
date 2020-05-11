@@ -50,7 +50,7 @@
         "Amélioration de l'interface de configuration": "Amélioration de l'interface de configuration"
     },
     "index.md": {
-        "Alarme": "Alarme",
+        "Plugin Alarme": "Plugin Alarme",
         "Le plugin Alarme permet à Jeedom d'avoir un vrai système d'alarme pour sa domotique, très simple à utiliser et à configurer": "Le plugin Alarme permet à Jeedom d'avoir un vrai système d'alarme pour sa domotique, très simple à utiliser et à configurer",
         "Configuration du plugin": "Configuration du plugin",
         "Après téléchargement du plugin, il vous suffit juste d'activer celui-ci, il n'y a aucune configuration supplémentaire à ce niveau": "Après téléchargement du plugin, il vous suffit juste d'activer celui-ci, il n'y a aucune configuration supplémentaire à ce niveau",

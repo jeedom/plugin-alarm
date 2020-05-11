@@ -1,4 +1,4 @@
-# Alarme
+# Plugin de alarme
 
 O plugin Alarme permite à Jeedom ter um sistema de alarme real para automação residencial, muito simples de usar e configurar.
 
