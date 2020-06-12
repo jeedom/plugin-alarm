@@ -64,11 +64,11 @@
 
 -   Si durante la activación un sensor está en alerta y no tiene retraso
     de activación, entonces la alarma se activa ignorando este sensor
-    (a menos que vuelva a descansar)
+    (a menos que regrese a descansar)
 
 -   Además de la acción de activación global (ya no se filtra por zona, se
     se recomienda usar esto en lugar de las acciones de
-    zona de activación)
+    disparador de zona)
 
 -   Optimización de código
 
