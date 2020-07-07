@@ -1,6 +1,8 @@
->**IMPORTANT**
+# Changelog Alarm
+
+>**IMPORTANTE**
 >
->Como lembrete, se não houver informações sobre a atualização, isso significa que se trata apenas da atualização da documentação, tradução ou texto.
+>Como lembrete, se não houver informações sobre a atualização, isso significa que se trata apenas da atualização da documentação, tradução ou texto
 
 
 # 22/01/2020
@@ -33,7 +35,7 @@
 - Atualizando o documento
 - Correção de bug nos modos de renomeação
 - Se o alarme já estiver ativo, o armamento não o reativará
-- Adição de uma opção para uma viagem de várias zonas (se outra zona entrar em alerta, o alarme será acionado)
+- Adição de uma opção para o disparo de várias zonas (se outra zona entrar em alerta, o alarme será disparado)
 - Adição de ação ao retomar o monitoramento de um sensor
 - Adicionando a tag #zone#
 - Adicione um botão para duplicar um alarme
@@ -43,7 +45,7 @@
 - Adição de gerenciamento de pedidos órfãos
 - Se os sensores estiverem desativados, as ações de ativação ok não serão mais acionadas
 - Correções de bugs
-- Detectores com atrasos na ativação e sempre ativos após esse atraso não acionam mais o alarme, mas iniciam uma ativação KO, com o monitoramento desse detector excluído até o retorno ao normal.
+- Detectores com atrasos na ativação e sempre ativos após esse atraso não acionam mais o alarme, mas iniciam uma ativação KO, com o monitoramento desse detector excluído até o retorno ao normal
 
 # 12/12/2018
 
@@ -62,11 +64,11 @@
 
 -   Se durante a ativação um sensor estiver em alerta e não tiver atraso
     ativação, o alarme é acionado, ignorando esse sensor
-    (a menos que ele volte a descansar)
+    (a menos que ele volte para descansar)
 
 -   Adição de ação de acionamento global (não filtrada mais por zona,
     é aconselhável usar isso em vez das ações de
-    zona de disparo)
+    gatilho de zona)
 
 -   Otimização de código
 

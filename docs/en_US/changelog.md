@@ -1,6 +1,8 @@
->**IMPORTANT**
+# Changelog Alarm
+
+>**Important**
 >
->As a reminder if there is no information on the update, it means that it only concerns the updating of documentation, translation or text.
+>As a reminder if there is no information on the update, it means that it only concerns the updating of documentation, translation or text
 
 
 # 22/01/2020
@@ -14,7 +16,6 @@
 # 10/14/2019
 
 - Fixed a bug when renaming a mode
-
 
 # 28/04/2019
 
@@ -38,7 +39,6 @@
 - Addition of action when resuming monitoring of a sensor
 - Adding the tag #zone#
 - Ad a button to duplicate an alarm
-
 
 # 06/03/2018
 
@@ -64,11 +64,11 @@
 
 -   If during activation a sensor is on alert and has no delay
     of activation then the alarm is armed nevertheless by ignoring this sensor
-    (unless he comes back to no alert state)
+    (unless he comes back to rest)
 
 -   Addition of global trigger action (no longer filtered by zone, it
     is recommended to use this rather than the actions of
-    zone triggering)
+    zone trigger)
 
 -   Code optimization
 

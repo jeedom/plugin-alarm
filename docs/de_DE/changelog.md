@@ -1,6 +1,8 @@
->**IMPORTANT**
+# Änderungsalarm
+
+>**Wichtig**
 >
->Zur Erinnerung: Wenn keine Informationen zum Update vorhanden sind, bedeutet dies, dass es sich nur um die Aktualisierung von Dokumentation, Übersetzung oder Text handelt.
+>Zur Erinnerung: Wenn keine Informationen zum Update vorhanden sind, bedeutet dies, dass es sich nur um die Aktualisierung von Dokumentation, Übersetzung oder Text handelt
 
 
 # 22.01.2020
@@ -33,7 +35,7 @@
 - Aktualisieren des Dokuments
 - Fehlerbehebung beim Umbenennen von Modi
 - Wenn der Alarm bereits aktiv ist, wird er durch die Scharfschaltung nicht wieder aktiviert
-- Hinzufügen einer Option für eine Mehrzonenauslösung (wenn eine andere Zone alarmiert wird, wird der Alarm ausgelöst)
+- Hinzufügen einer Option für eine Mehrzonenauslösung (wenn eine andere Zone in Alarmbereitschaft versetzt wird, wird der Alarm ausgelöst)
 - Hinzufügung von Maßnahmen bei Wiederaufnahme der Überwachung eines Sensors
 - Tag hinzufügen #zone#
 - Fügen Sie eine Schaltfläche hinzu, um einen Alarm zu duplizieren
@@ -66,7 +68,7 @@
 
 -   Hinzufügen einer globalen Triggeraktion (nicht mehr nach Zone gefiltert, es
     wird empfohlen, dies anstelle der Aktionen von zu verwenden
-    Zonenauslösung)
+    Zonenauslöser)
 
 -   Codeoptimierung
 

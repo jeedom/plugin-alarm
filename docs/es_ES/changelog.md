@@ -1,6 +1,8 @@
->**IMPORTANT**
+# Alarma de registro de cambios
+
+>**Importante**
 >
->Como recordatorio si no hay información sobre la actualización, significa que solo se refiere a la actualización de documentación, traducción o texto.
+>Como recordatorio si no hay información sobre la actualización, significa que solo se refiere a la actualización de documentación, traducción o texto
 
 
 # 22/01/2020
@@ -9,7 +11,7 @@
 
 # 21/10/2019
 
-- Corrección de un error durante la creación del equipo.
+- Corrección de un error durante la creación del equipo
 
 # 10/14/2019
 
@@ -43,7 +45,7 @@
 - Adición de gestión de pedidos huérfanos
 - Si los sensores están deshabilitados, las acciones de activación correctas ya no se activan
 - Correcciones de errores
-- Los detectores con demoras de activación y aún activos después de esta demora ya no activan la alarma, pero inician la activación de KO, con monitoreo de este detector excluido hasta que vuelva a la normalidad.
+- Los detectores con demoras de activación y aún activos después de esta demora ya no activan la alarma, pero inician la activación de KO, con monitoreo de este detector excluido hasta que vuelva a la normalidad
 
 # 02/12/2018
 
@@ -53,7 +55,7 @@
 
 # 12/01/2017
 
--   Corrección de un error en la desactivación de detectores.
+-   Corrección de un error en la desactivación de detectores
 
 -   Gestión de segundos en el retraso de activación (JEED-63)
 
@@ -62,11 +64,11 @@
 
 -   Si durante la activación un sensor está en alerta y no tiene retraso
     de activación, entonces la alarma se activa ignorando este sensor
-    (a menos que vuelva a descansar)
+    (a menos que regrese a descansar)
 
 -   Además de la acción de activación global (ya no se filtra por zona, se
     se recomienda usar esto en lugar de las acciones de
-    zona de activación)
+    disparador de zona)
 
 -   Optimización de código
 
@@ -78,4 +80,4 @@
 
 -   Agregar comando de pausa / reanudar
 
--   Mejora de la interfaz de configuración.
+-   Mejora de la interfaz de configuración
