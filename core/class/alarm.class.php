@@ -586,7 +586,7 @@ class alarm extends eqLogic {
 				}
 				
 				if (isset($trigger['waitDelay'])) {
-					$waitDelay = jeedom::evaluateExpression($trigger['waitDelay']);
+					$waitDelay = jeedom::evaluateExpression(str_replace(',','.',$trigger['waitDelay']));
 					if ($waitDelay !== '' && is_numeric(intval($waitDelay)) && $waitDelay > 0) {
 						log::add('alarm', 'debug',$this->getHumanName().' '. __('Attente de ' . $waitDelay . ' min avant déclenchement', __FILE__));
 						sleep($waitDelay * 60);
