@@ -134,5 +134,8 @@
         "Vérification de la commande : ": "Überprüfung der Bestellung:",
         "La commande est active : ": "Der Befehl ist aktiv:",
         "Envoi etat alarm ok": "Alarmstatus senden ok"
+    },
+    "info.json": {
+        "Plugin pour la gestion de la sécurité. Constituez votre alarme facilement (sans programmation), complète et personnalisable.": "Plugin für das Sicherheitsmanagement. Erstellen Sie Ihren Alarm einfach (ohne Programmierung), vollständig und anpassbar"
     }
 }

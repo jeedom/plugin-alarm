@@ -134,5 +134,8 @@
         "Vérification de la commande : ": "Checking command :",
         "La commande est active : ": "Command is active",
         "Envoi etat alarm ok": "Send alarm status ok"
+    },
+    "info.json": {
+        "Plugin pour la gestion de la sécurité. Constituez votre alarme facilement (sans programmation), complète et personnalisable.": "Plugin for security management. Constitute your alarm easily (without programming), complete and customizable"
     }
 }
