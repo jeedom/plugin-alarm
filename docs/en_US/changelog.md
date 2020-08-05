@@ -4,6 +4,7 @@
 >
 >As a reminder if there is no information on the update, it means that it only concerns the updating of documentation, translation or text
 
+- Fixed a problem with the "separate zones" option when changing mode
 
 # 22/01/2020
 

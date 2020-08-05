@@ -4,6 +4,7 @@
 >
 >Como recordatorio si no hay información sobre la actualización, significa que solo se refiere a la actualización de documentación, traducción o texto
 
+- Se solucionó un problema con la opción "zonas separadas" al cambiar de modo
 
 # 22/01/2020
 

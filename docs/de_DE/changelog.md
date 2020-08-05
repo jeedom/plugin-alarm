@@ -4,6 +4,7 @@
 >
 >Zur Erinnerung: Wenn keine Informationen zum Update vorhanden sind, bedeutet dies, dass es sich nur um die Aktualisierung von Dokumentation, Übersetzung oder Text handelt
 
+- Es wurde ein Problem mit der Option "Separate Zonen" beim Ändern des Modus behoben
 
 # 22.01.2020
 
