@@ -250,13 +250,13 @@ class alarm extends eqLogic {
 			$cmdState->setTemplate('dashboard', 'alert');
 			$cmdState->setTemplate('mobile', 'alert');
 			$cmdState->setOrder(2);
+			$cmdState->setDisplay('parameters',array('invert'=>1));
 		}
 		$cmdState->setName(__('Statut', __FILE__));
 		$cmdState->setEqLogic_id($this->getId());
 		$cmdState->setLogicalId('state');
 		$cmdState->setType('info');
 		$cmdState->setSubType('binary');
-		$cmdState->setDisplay('invertBinary', 1);
 		$cmdState->setDisplay('generic_type', 'ALARM_STATE');
 		$cmdState->setIsHistorized($this->getConfiguration('historizedState'));
 		$cmdState->save();
@@ -267,6 +267,7 @@ class alarm extends eqLogic {
 			$cmdImmediatState->setTemplate('dashboard', 'alert');
 			$cmdImmediatState->setTemplate('mobile', 'alert');
 			$cmdImmediatState->setorder(2);
+			$cmdImmediatState->setDisplay('parameters',array('invert'=>1));
 		}
 		$cmdImmediatState->setName(__('Immédiat', __FILE__));
 		$cmdImmediatState->setLogicalId('immediatState');
@@ -274,7 +275,6 @@ class alarm extends eqLogic {
 		$cmdImmediatState->setType('info');
 		$cmdImmediatState->setSubType('binary');
 		$cmdImmediatState->setIsVisible($this->getConfiguration('immediateState_visible',1));
-		$cmdImmediatState->setDisplay('invertBinary', 1);
 		$cmdImmediatState->setIsHistorized($this->getConfiguration('historizedState'));
 		$cmdImmediatState->save();
 		
