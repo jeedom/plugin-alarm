@@ -405,7 +405,7 @@ class alarm extends eqLogic {
 					}
 					$cmd = cmd::byId(str_replace('#', '', $trigger['cmd']));
 					if (!is_object($cmd)) {
-						throw new Exception(__('Commande déclencheur inconnue : ' . $trigger['cmd'], __FILE__));
+						continue;
 					}
 					$listener->addEvent($trigger['cmd']);
 				}
