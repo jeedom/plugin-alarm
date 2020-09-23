@@ -100,7 +100,6 @@
         "Activer": "Ativar",
         "Désactiver": "Desativar",
         "Vous ne pouvez avoir un mode avec le nom : ": "Você não pode ter um modo com o nome:",
-        "Commande déclencheur inconnue : ' . $trigger['cmd']": "Comando de disparo desconhecido: '. $ trigger ['cmd']",
         "Lancement de l\\'alarme : ": "Lançamento de alarme:",
         "L\\'alarme est en pause": "O alarme está em pausa",
         "Status de l\\'alarme : ": "Status do alarme:",

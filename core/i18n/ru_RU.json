@@ -100,7 +100,6 @@
         "Activer": "активировать",
         "Désactiver": "деактивировать",
         "Vous ne pouvez avoir un mode avec le nom : ": "",
-        "Commande déclencheur inconnue : ' . $trigger['cmd']": "",
         "Lancement de l\\'alarme : ": "",
         "L\\'alarme est en pause": "",
         "Status de l\\'alarme : ": "",
