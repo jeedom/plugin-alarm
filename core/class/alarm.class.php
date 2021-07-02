@@ -796,7 +796,7 @@ class alarmCmd extends cmd {
 				$cron = new cron();
 				$cron->setClass('alarm');
 				$cron->setFunction('armedComplete');
-				$cron->setOption(array('alarm_id' => intval($eqLogic->getId()), 'delay' => date('s', $armedCompleteDatetime + 30)));
+				$cron->setOption(array('alarm_id' => intval($eqLogic->getId()), 'delay' => date('s', $armedCompleteDatetime + 5)));
 				$cron->setLastRun(date('Y-m-d H:i:s'));
 				$cron->setOnce(1);
 				$cron->setSchedule(cron::convertDateToCron($armedCompleteDatetime));
