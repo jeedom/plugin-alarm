@@ -10,19 +10,27 @@ $eqLogics = eqLogic::byType($plugin->getId());
 	<div class="col-xs-12 eqLogicThumbnailDisplay">
 		<legend><i class="fas fa-cog"></i> {{Gestion}}</legend>
 		<div class="eqLogicThumbnailContainer">
-			<div class="cursor eqLogicAction logoPrimary" data-action="add"  >
+			<div class="cursor eqLogicAction logoPrimary" data-action="add">
 				<i class="fas fa-plus-circle"></i>
-				<br/>
-				<span ><center>{{Ajouter}}</center></span>
+				<br />
+				<span>
+					<center>{{Ajouter}}</center>
+				</span>
 			</div>
 		</div>
 		<legend><i class="icon jeedom-alerte"></i> {{Mes Alarmes}}</legend>
-		<input class="form-control" placeholder="{{Rechercher}}" id="in_searchEqlogic" />
+		<div class="input-group" style="margin:5px;">
+			<input class="form-control roundedLeft" placeholder="{{Rechercher}}" id="in_searchEqlogic" />
+			<div class="input-group-btn">
+				<a id="bt_resetSearch" class="btn roundedRight" style="width:30px"><i class="fas fa-times"></i></a>
+				<a class="btn roundedRight hidden" id="bt_pluginDisplayAsTable" data-coreSupport="1" data-state="0"><i class="fas fa-grip-lines"></i></a>
+			</div>
+		</div>
 		<div class="eqLogicThumbnailContainer">
 			<?php
 			foreach ($eqLogics as $eqLogic) {
 				$opacity = ($eqLogic->getIsEnable()) ? '' : 'disableCard';
-				echo '<div class="eqLogicDisplayCard cursor '.$opacity.'" data-eqLogic_id="' . $eqLogic->getId() . '">';
+				echo '<div class="eqLogicDisplayCard cursor ' . $opacity . '" data-eqLogic_id="' . $eqLogic->getId() . '">';
 				echo '<img src="' . $plugin->getPathImgIcon() . '"/>';
 				echo '<br/>';
 				echo '<span class="name">' . $eqLogic->getHumanName(true, true) . '</span>';
@@ -31,7 +39,7 @@ $eqLogics = eqLogic::byType($plugin->getId());
 			?>
 		</div>
 	</div>
-	
+
 	<div class="col-xs-12 eqLogic" style="display: none;">
 		<div class="input-group pull-right" style="display:inline-flex">
 			<span class="input-group-btn">
@@ -51,18 +59,18 @@ $eqLogics = eqLogic::byType($plugin->getId());
 		</ul>
 		<div class="tab-content">
 			<div role="tabpanel" class="tab-pane active" id="eqlogictab">
-				<br/>
+				<br />
 				<form class="form-horizontal">
 					<fieldset>
 						<div class="form-group">
 							<label class="col-sm-2 control-label">{{Nom de l'alarme}}</label>
 							<div class="col-sm-3">
 								<input type="text" class="eqLogicAttr form-control" data-l1key="id" style="display : none;" />
-								<input type="text" class="eqLogicAttr form-control" data-l1key="name" placeholder="Nom de la zone"/>
+								<input type="text" class="eqLogicAttr form-control" data-l1key="name" placeholder="Nom de la zone" />
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-sm-2 control-label" >{{Objet parent}}</label>
+							<label class="col-sm-2 control-label">{{Objet parent}}</label>
 							<div class="col-sm-3">
 								<select id="sel_object" class="eqLogicAttr form-control" data-l1key="object_id">
 									<option value="">{{Aucun}}</option>
@@ -86,52 +94,52 @@ $eqLogics = eqLogic::byType($plugin->getId());
 									echo '</label>';
 								}
 								?>
-								
+
 							</div>
 						</div>
 						<div class="form-group">
 							<label class="col-sm-2 control-label"></label>
 							<div class="col-sm-10">
-								<label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="isEnable" checked/>{{Activer}}</label>
-								<label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="isVisible" checked/>{{Visible}}</label>
+								<label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="isEnable" checked />{{Activer}}</label>
+								<label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="isVisible" checked />{{Visible}}</label>
 							</div>
 						</div>
-						
+
 						<div class="form-group">
 							<label class="col-sm-2 control-label"></label>
 							<div class="col-sm-10">
-								<label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="configuration" data-l2key="always_active"/>{{Actif en permanence}}</label><br/>
-								<label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="configuration" data-l2key="armed_visible" checked/>{{Armement visible}} </label><br/>
-								<label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="configuration" data-l2key="immediateState_visible"/>{{Statuts immédiat visible}}</label><br/>
-								<label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="configuration" data-l2key="autorearm"/>{{Réarmement automatique}}</label><br/>
-								<label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="configuration" data-l2key="historizedState"/>{{Historiser état et statuts de l'alarme}}</label><br/>
-								<label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="configuration" data-l2key="splitZone"/>{{Séparer les zones}}</label><br/>
-								<label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="configuration" data-l2key="ignoreImmediatIfNoDelay"/>{{Ne pas faire les actions immédiates si le capteur n'a pas de délai}}</label>
+								<label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="configuration" data-l2key="always_active" />{{Actif en permanence}}</label><br />
+								<label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="configuration" data-l2key="armed_visible" checked />{{Armement visible}} </label><br />
+								<label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="configuration" data-l2key="immediateState_visible" />{{Statuts immédiat visible}}</label><br />
+								<label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="configuration" data-l2key="autorearm" />{{Réarmement automatique}}</label><br />
+								<label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="configuration" data-l2key="historizedState" />{{Historiser état et statuts de l'alarme}}</label><br />
+								<label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="configuration" data-l2key="splitZone" />{{Séparer les zones}}</label><br />
+								<label class="checkbox-inline"><input type="checkbox" class="eqLogicAttr" data-l1key="configuration" data-l2key="ignoreImmediatIfNoDelay" />{{Ne pas faire les actions immédiates si le capteur n'a pas de délai}}</label>
 							</div>
 						</div>
 					</fieldset>
 				</form>
 			</div>
-			
+
 			<div class="tab-pane" id="tab_zones">
-				<br/>
+				<br />
 				<div class="alert alert-info">{{Une zone décrit les capteurs que l'alarme doit surveiller ainsi que les actions à faire en cas de déclenchement.}}
 					<a class="btn btn-success btn-xs pull-right" id="bt_addZone"><i class="fas fa-plus-circle"></i> {{Ajouter zone}}</a>
-					<br/>
+					<br />
 				</div>
 				<div class="panel-group" id="div_zones"></div>
 			</div>
-			
+
 			<div class="tab-pane" id="tab_modes">
-				<br/>
+				<br />
 				<div class="alert alert-info">{{Les modes permettent d'activer les zones. Il vous en faut absolument un.}}
 					<a class="btn btn-success btn-xs pull-right" id="bt_addMode"><i class="fas fa-plus-circle"></i> {{Ajouter mode}}</a>
 				</div>
 				<div id="div_modes"></div>
 			</div>
-			
+
 			<div class="tab-pane" id="tab_raz">
-				<br/>
+				<br />
 				<div class="alert alert-info">{{C'est ici que vous devez mettre les actions à faire lorsque l’alarme est déclenchée puis désactivée}}
 					<div class="input-group pull-right" style="display:inline-flex">
 						<span class="input-group-btn">
@@ -142,15 +150,15 @@ $eqLogics = eqLogic::byType($plugin->getId());
 				<form class="form-horizontal">
 					<div id="div_razImmediate"></div>
 				</form>
-				<hr/>
-				<br/>
+				<hr />
+				<br />
 				<form class="form-horizontal">
 					<div id="div_raz"></div>
 				</form>
 			</div>
-			
+
 			<div class="tab-pane" id="tab_release">
-				<br/>
+				<br />
 				<div class="alert alert-info">{{C'est ici que vous devez mettre les actions à faire lorsque l’alarme est désactivée et qu’elle n’est pas déclenchée}}
 					<a class='btn btn-success btn-xs pull-right' id="btn_addReleaseAlarm"><i class="fas fa-plus-circle"></i> {{Ajouter action de désactivation OK}}</a>
 				</div>
@@ -158,9 +166,9 @@ $eqLogics = eqLogic::byType($plugin->getId());
 					<div id="div_release"></div>
 				</form>
 			</div>
-			
+
 			<div class="tab-pane" id="tab_activeOk">
-				<br/>
+				<br />
 				<div class="alert alert-info">{{C'est ici que vous devez mettre les actions à faire lors d'une activation réussie de l'alarme}}
 					<div class="input-group pull-right" style="display:inline-flex">
 						<span class="input-group-btn">
@@ -171,14 +179,14 @@ $eqLogics = eqLogic::byType($plugin->getId());
 				<form class="form-horizontal">
 					<div id="div_activationImmediateOk"></div>
 				</form>
-				<hr/>
-				<br/>
+				<hr />
+				<br />
 				<form class="form-horizontal">
 					<div id="div_activationOk"></div>
 				</form>
 			</div>
 			<div class="tab-pane" id="tab_outbreak">
-				<br/>
+				<br />
 				<div class="alert alert-info">{{C'est ici que vous devez mettre les actions à faire lorsque l'alarme se déclenche (à noter que vous pouvez aussi le faire par zone)}}
 					<div class="input-group pull-right" style="display:inline-flex">
 						<span class="input-group-btn">
@@ -189,14 +197,14 @@ $eqLogics = eqLogic::byType($plugin->getId());
 				<form class="form-horizontal">
 					<div id="div_outbreakImmediate"></div>
 				</form>
-				<hr/>
-				<br/>
+				<hr />
+				<br />
 				<form class="form-horizontal">
 					<div id="div_outbreak"></div>
 				</form>
 			</div>
 			<div class="tab-pane" id="tab_activeKo">
-				<br/>
+				<br />
 				<div class="alert alert-info">{{Ici que vous devez mettre les actions à faire lorsque l'activation de l'alarme a échoué ou est partielle}}
 					<div class="input-group pull-right" style="display:inline-flex">
 						<span class="input-group-btn">
@@ -207,8 +215,8 @@ $eqLogics = eqLogic::byType($plugin->getId());
 				<form class="form-horizontal">
 					<div id="div_activationKo"></div>
 				</form>
-				<hr/>
-				<br/>
+				<hr />
+				<br />
 				<form class="form-horizontal">
 					<div id="div_reenableTrigger"></div>
 				</form>
@@ -227,9 +235,9 @@ $eqLogics = eqLogic::byType($plugin->getId());
 			<div class="modal-body">
 				<form class="form-horizontal">
 					<div class="form-group">
-						<label class="col-sm-4 control-label" >{{Zone}}</label>
+						<label class="col-sm-4 control-label">{{Zone}}</label>
 						<div class="col-sm-8" id="md_addZoneModeSelect">
-							
+
 						</div>
 					</div>
 				</form>
@@ -242,5 +250,5 @@ $eqLogics = eqLogic::byType($plugin->getId());
 	</div>
 </div>
 
-<?php include_file('desktop', 'alarm', 'js', 'alarm');?>
-<?php include_file('core', 'plugin.template', 'js');?>
+<?php include_file('desktop', 'alarm', 'js', 'alarm'); ?>
+<?php include_file('core', 'plugin.template', 'js'); ?>
