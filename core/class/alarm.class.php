@@ -108,7 +108,7 @@ class alarm extends eqLogic {
 		if (count($disable_trigger) > 0) {
 			log::add('alarm', 'debug',$eqLogic->getHumanName(). __('Déclencheur désactivé : ', __FILE__) . print_r($disable_trigger, true));
 			log::add('alarm', 'debug',$eqLogic->getHumanName(). __('Lancement des actions d\'activation ko', __FILE__));
-			$eqLogic->doAction('activationKo', array('#mode' => $select_mode, '#trigger#' => implode(',', $disable_trigger), '#zone#' => implode(',', $disable_zone_trigger)));
+			$eqLogic->doAction('activationKo', array('#mode#' => $select_mode, '#trigger#' => implode(',', $disable_trigger), '#zone#' => implode(',', $disable_zone_trigger)));
 		}
 	}
 
