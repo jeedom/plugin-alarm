@@ -125,14 +125,19 @@
         "Execution de ": "Execution of",
         "Erreur lors de l\\'éxecution de ": "Error while executing",
         ". Détails : ": "Details:",
-        "Remise à zero immédiate de l\\'alarme": "Immediate reset of the alarm",
-        "Remise à zero de l\\'alarme": "Reset of the alarm",
-        "Alarme déjà active": "Alarm already active",
+        " Remise à zero immédiate de l\\'alarme": "Immediate alarm reset",
+        " Remise à zero de l\\'alarme": "Alarm reset",
+        " Alarme déjà active": "Alarm already active",
         "Aucun mode sélectionné": "No mode selected",
-        "Activation de l\\'alarme réussie": "Alarm activation successful",
-        "Vérification de la commande : ": "Checking command :",
-        "La commande est active : ": "Command is active",
-        "Envoi etat alarm ok": "Send alarm status ok"
+        " Activation de l\\'alarme réussie dans le mode : ": "Successful alarm activation in the mode:",
+        " Attention je ne trouve aucune zone pour le mode sélectionnée": "Please note that I cannot find any zone for the selected mode",
+        " Vérification de la zone : ": "Checking the area:",
+        " Vérification de la commande : ": "Checking the order:",
+        " La commande est active : ": "The command is active:",
+        " Déclencheur désactivé : ": "Trigger disabled:",
+        " Lancement des actions d\\'activation ko": "Launch of activation actions ko",
+        " Activation OK éxécution des actions": "Activation OK execution of actions",
+        " Envoi etat alarm ok": "Send alarm status ok"
     },
     "info.json": {
         "Plugin pour la gestion de la sécurité. Constituez votre alarme facilement (sans programmation), complète et personnalisable.": "Plugin for security management. Constitute your alarm easily (without programming), complete and customizable"

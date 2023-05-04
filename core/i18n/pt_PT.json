@@ -125,14 +125,19 @@
         "Execution de ": "Execução de",
         "Erreur lors de l\\'éxecution de ": "Erro ao executar",
         ". Détails : ": "Detalhes:",
-        "Remise à zero immédiate de l\\'alarme": "Reinicialização imediata do alarme",
-        "Remise à zero de l\\'alarme": "Redefinindo o alarme",
-        "Alarme déjà active": "Alarme já ativo",
+        " Remise à zero immédiate de l\\'alarme": "Reinicialização imediata do alarme",
+        " Remise à zero de l\\'alarme": "Redefinição de alarme",
+        " Alarme déjà active": "Alarme já ativo",
         "Aucun mode sélectionné": "Nenhum modo selecionado",
-        "Activation de l\\'alarme réussie": "Ativação de alarme bem-sucedida",
-        "Vérification de la commande : ": "Verificação do pedido:",
-        "La commande est active : ": "O comando está ativo:",
-        "Envoi etat alarm ok": "Enviar status de alarme ok"
+        " Activation de l\\'alarme réussie dans le mode : ": "Ativação bem-sucedida do alarme no modo:",
+        " Attention je ne trouve aucune zone pour le mode sélectionnée": "Observe que não consigo encontrar nenhuma zona para o modo selecionado",
+        " Vérification de la zone : ": "Verificando a área:",
+        " Vérification de la commande : ": "Verificando o pedido:",
+        " La commande est active : ": "O comando está ativo:",
+        " Déclencheur désactivé : ": "Gatilho desativado:",
+        " Lancement des actions d\\'activation ko": "Lançamento de ações de ativação ko",
+        " Activation OK éxécution des actions": "Ativação OK execução de ações",
+        " Envoi etat alarm ok": "Enviar status de alarme ok"
     },
     "info.json": {
         "Plugin pour la gestion de la sécurité. Constituez votre alarme facilement (sans programmation), complète et personnalisable.": "Plugin para gerenciamento de segurança. Constitua seu alarme com facilidade (sem programação), completo e personalizável"
