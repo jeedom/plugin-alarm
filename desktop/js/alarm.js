@@ -514,8 +514,8 @@ function addZone(_zone) {
   div += '<a class="btn btn-sm bt_addTrigger btn-success"><i class="fas fa-plus-circle"></i> {{Déclencheur}}</a>';
   div += '<a class="btn btn-sm bt_addAction btn-danger"><i class="fas fa-plus-circle"></i> {{Action}}</a>';
   div += '<a class="btn btn-warning btn-sm bt_addActionImmediate"><i class="fas fa-plus-circle"></i> {{Action immédiate}}</a>';
-  div += '<a class="btn btn-sm bt_removeZone btn-primary roundedLeft"><i class="fas fa-minus-circle"></i> {{Supprimer}}</a>';
   div += '<a class="btn btn-sm bt_duplicateZone btn-default roundedRight"><i class="fa fa-files-o"></i> {{Dupliquer}}</a>';
+  div += '<a class="btn btn-sm bt_removeZone btn-primary roundedLeft"><i class="fas fa-minus-circle"></i> {{Supprimer}}</a>';
   div += '</span>';
   div += '</div>';
   div += '</div>';
