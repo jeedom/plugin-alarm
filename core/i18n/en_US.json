@@ -72,8 +72,8 @@
         "Activation (min pleine)": "Activation (full min)",
         "Déclenchement (min, décimal possible)": "Trigger (min, decimal possible)",
         "Nom de la zone": "Zone name",
-        "Supprimer": "Delete",
         "Dupliquer": "Duplicate",
+        "Supprimer": "Delete",
         "Nom du mode": "Mode name",
         "Zone": "Zone"
     },
