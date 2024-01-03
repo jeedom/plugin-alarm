@@ -187,7 +187,7 @@ $("body").off('click', '.listCmdAction').on('click', '.listCmdAction', function 
     el.value(result.human);
     jeedom.cmd.displayActionOption(el.value(), '', function (html) {
       el.closest('.' + type).find('.actionOptions').html(html);
-      taAutosize();
+      jeedomUtils.taAutosize();
     });
   });
 });
@@ -199,7 +199,7 @@ $("body").off('click','.listAction').on('click','.listAction',  function () {
     el.value(result.human);
     jeedom.cmd.displayActionOption(el.value(), '', function (html) {
       el.closest('.' + type).find('.actionOptions').html(html);
-      taAutosize();
+      jeedomUtils.taAutosize();
     });
   });
 });
@@ -215,13 +215,13 @@ $('body').off('focusout','.cmdAction.expressionAttr[data-l1key=cmd]').on('focuso
   var el = $(this);
   jeedom.cmd.displayActionOption($(this).value(), init(expression[0].options), function (html) {
     el.closest('.' + type).find('.actionOptions').html(html);
-    taAutosize();
+    jeedomUtils.taAutosize();
   })
 });
 
 $('.nav-tabs li a').off('click').on('click',function(){
   setTimeout(function(){
-    taAutosize();
+    jeedomUtils.taAutosize();
   }, 50);
 })
 
@@ -337,7 +337,7 @@ function printEqLogic(_eqLogic) {
       for(var i in data){
         $('#'+data[i].id).append(data[i].html.html);
       }
-      taAutosize();
+      jeedomUtils.taAutosize();
     }
   });
 }
@@ -413,7 +413,7 @@ function addAction(_action, _type, _name, _el) {
   div += '</span>';
   div += '</div>';
   div += '</div>';
-  var actionOption_id = uniqId();
+  var actionOption_id = jeedomUtils.uniqId();
   div += '<div class="col-sm-5 actionOptions" id="'+actionOption_id+'">';
   div += '</div>';
   div += '</div>';
@@ -511,11 +511,11 @@ function addZone(_zone) {
   div += '<div class="col-sm-9">';
   div += '<div class="input-group pull-right" style="display:inline-flex">';
   div += '<span class="input-group-btn">';
-  div += '<a class="btn btn-sm bt_removeZone btn-primary roundedLeft"><i class="fas fa-minus-circle"></i> {{Supprimer}}</a>';
+  div += '<a class="btn btn-sm bt_addTrigger btn-success"><i class="fas fa-plus-circle"></i> {{Déclencheur}}</a>';
   div += '<a class="btn btn-sm bt_addAction btn-danger"><i class="fas fa-plus-circle"></i> {{Action}}</a>';
   div += '<a class="btn btn-warning btn-sm bt_addActionImmediate"><i class="fas fa-plus-circle"></i> {{Action immédiate}}</a>';
-  div += '<a class="btn btn-sm bt_addTrigger btn-success"><i class="fas fa-plus-circle"></i> {{Déclencheur}}</a>';
   div += '<a class="btn btn-sm bt_duplicateZone btn-default roundedRight"><i class="fa fa-files-o"></i> {{Dupliquer}}</a>';
+  div += '<a class="btn btn-sm bt_removeZone btn-primary roundedLeft"><i class="fas fa-minus-circle"></i> {{Supprimer}}</a>';
   div += '</span>';
   div += '</div>';
   div += '</div>';

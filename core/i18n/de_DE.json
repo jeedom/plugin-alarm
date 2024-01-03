@@ -72,8 +72,8 @@
         "Activation (min pleine)": "Aktivierung (min voll)",
         "Déclenchement (min, décimal possible)": "Auslösen (min, dezimal möglich)",
         "Nom de la zone": "Zonenname",
-        "Supprimer": "Löschen",
         "Dupliquer": "Duplikat",
+        "Supprimer": "Löschen",
         "Nom du mode": "Modusname",
         "Zone": "Bereich"
     },
@@ -125,14 +125,19 @@
         "Execution de ": "Ausführung von",
         "Erreur lors de l\\'éxecution de ": "Fehler beim Ausführen",
         ". Détails : ": "Details:",
-        "Remise à zero immédiate de l\\'alarme": "Sofortiges Zurücksetzen des Alarms",
-        "Remise à zero de l\\'alarme": "Alarm zurücksetzen",
-        "Alarme déjà active": "Alarm bereits aktiv",
+        " Remise à zero immédiate de l\\'alarme": "Sofortiger Alarm-Reset",
+        " Remise à zero de l\\'alarme": "Alarm zurücksetzen",
+        " Alarme déjà active": "Wecker bereits aktiv",
         "Aucun mode sélectionné": "Kein Modus ausgewählt",
-        "Activation de l\\'alarme réussie": "Alarmaktivierung erfolgreich",
-        "Vérification de la commande : ": "Überprüfung der Bestellung:",
-        "La commande est active : ": "Der Befehl ist aktiv:",
-        "Envoi etat alarm ok": "Alarmstatus senden ok"
+        " Activation de l\\'alarme réussie dans le mode : ": "Erfolgreiche Alarmaktivierung im Modus:",
+        " Attention je ne trouve aucune zone pour le mode sélectionnée": "Bitte beachten Sie, dass ich für den ausgewählten Modus keine Zone finden kann",
+        " Vérification de la zone : ": "Überprüfung des Bereichs:",
+        " Vérification de la commande : ": "Überprüfung der Bestellung:",
+        " La commande est active : ": "Der Befehl ist aktiv:",
+        " Déclencheur désactivé : ": "Auslöser deaktiviert:",
+        " Lancement des actions d\\'activation ko": "Start von Aktivierungsaktionen ko",
+        " Activation OK éxécution des actions": "Aktivierung OK Ausführung von Aktionen",
+        " Envoi etat alarm ok": "Alarmstatus senden ok"
     },
     "info.json": {
         "Plugin pour la gestion de la sécurité. Constituez votre alarme facilement (sans programmation), complète et personnalisable.": "Plugin für das Sicherheitsmanagement. Erstellen Sie Ihren Alarm einfach (ohne Programmierung), vollständig und anpassbar"

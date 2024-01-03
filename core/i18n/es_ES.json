@@ -72,8 +72,8 @@
         "Activation (min pleine)": "Activación (min completo)",
         "Déclenchement (min, décimal possible)": "Disparo (min, decimal posible)",
         "Nom de la zone": "Nombre de zona",
-        "Supprimer": "Borrar",
         "Dupliquer": "Duplicar",
+        "Supprimer": "Borrar",
         "Nom du mode": "Nombre del modo",
         "Zone": "Zona"
     },
@@ -125,14 +125,19 @@
         "Execution de ": "Ejecución de",
         "Erreur lors de l\\'éxecution de ": "Error al ejecutar",
         ". Détails : ": "Detalles:",
-        "Remise à zero immédiate de l\\'alarme": "Restablecimiento inmediato de la alarma",
-        "Remise à zero de l\\'alarme": "Restablecer la alarma",
-        "Alarme déjà active": "Alarma ya activa",
+        " Remise à zero immédiate de l\\'alarme": "Restablecimiento inmediato de alarma",
+        " Remise à zero de l\\'alarme": "Reiniciar alarma",
+        " Alarme déjà active": "Alarma ya activa",
         "Aucun mode sélectionné": "Ningún modo seleccionado",
-        "Activation de l\\'alarme réussie": "Activación de alarma exitosa",
-        "Vérification de la commande : ": "Verificación del pedido:",
-        "La commande est active : ": "El comando está activo:",
-        "Envoi etat alarm ok": "Enviar estado de alarma ok"
+        " Activation de l\\'alarme réussie dans le mode : ": "Activación exitosa de alarma en el modo:",
+        " Attention je ne trouve aucune zone pour le mode sélectionnée": "Tenga en cuenta que no puedo encontrar ninguna zona para el modo seleccionado",
+        " Vérification de la zone : ": "Comprobación de la zona:",
+        " Vérification de la commande : ": "Comprobando el pedido:",
+        " La commande est active : ": "El comando está activo:",
+        " Déclencheur désactivé : ": "Disparador deshabilitado:",
+        " Lancement des actions d\\'activation ko": "Lanzamiento de acciones de activación ko",
+        " Activation OK éxécution des actions": "Activación OK ejecución de acciones",
+        " Envoi etat alarm ok": "Enviar estado de alarma ok"
     },
     "info.json": {
         "Plugin pour la gestion de la sécurité. Constituez votre alarme facilement (sans programmation), complète et personnalisable.": "Complemento para la gestión de seguridad. Constituya su alarma fácilmente (sin programación), completa y personalizable"

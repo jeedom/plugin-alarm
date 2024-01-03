@@ -72,8 +72,8 @@
         "Activation (min pleine)": "Activation (min pleine)",
         "Déclenchement (min, décimal possible)": "Déclenchement (min, décimal possible)",
         "Nom de la zone": "Nom de la zone",
-        "Supprimer": "Menghapus",
         "Dupliquer": "Duplikat",
+        "Supprimer": "Menghapus",
         "Nom du mode": "Nom du mode",
         "Zone": "Zone"
     },
@@ -125,14 +125,19 @@
         "Execution de ": "Execution de",
         "Erreur lors de l\\'éxecution de ": "Erreur lors de l\\'éxecution de",
         ". Détails : ": "Détails :",
-        "Remise à zero immédiate de l\\'alarme": "Remise à zero immédiate de l\\'alarme",
-        "Remise à zero de l\\'alarme": "Remise à zero de l\\'alarme",
-        "Alarme déjà active": "Alarme déjà active",
+        " Remise à zero immédiate de l\\'alarme": "Remise à zero immédiate de l\\'alarme",
+        " Remise à zero de l\\'alarme": "Remise à zero de l\\'alarme",
+        " Alarme déjà active": "Alarme déjà active",
         "Aucun mode sélectionné": "Aucun mode sélectionné",
-        "Activation de l\\'alarme réussie": "Activation de l\\'alarme réussie",
-        "Vérification de la commande : ": "Vérification de la commande :",
-        "La commande est active : ": "La commande est active :",
-        "Envoi etat alarm ok": "Envoi etat alarm ok"
+        " Activation de l\\'alarme réussie dans le mode : ": "Activation de l\\'alarme réussie dans le mode :",
+        " Attention je ne trouve aucune zone pour le mode sélectionnée": "Attention je ne trouve aucune zone pour le mode sélectionnée",
+        " Vérification de la zone : ": "Vérification de la zone :",
+        " Vérification de la commande : ": "Vérification de la commande :",
+        " La commande est active : ": "La commande est active :",
+        " Déclencheur désactivé : ": "Déclencheur désactivé :",
+        " Lancement des actions d\\'activation ko": "Lancement des actions d\\'activation ko",
+        " Activation OK éxécution des actions": "Activation OK éxécution des actions",
+        " Envoi etat alarm ok": "Envoi etat alarm ok"
     },
     "info.json": {
         "Plugin pour la gestion de la sécurité. Constituez votre alarme facilement (sans programmation), complète et personnalisable.": "Plugin pour la gestion de la sécurité. Constituez votre alarme facilement (sans programmation), complète et personnalisable"
