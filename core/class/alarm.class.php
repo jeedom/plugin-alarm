@@ -108,7 +108,7 @@ class alarm extends eqLogic {
 		if (count($disable_trigger) > 0) {
 			log::add('alarm', 'debug',$eqLogic->getHumanName(). __('Déclencheur désactivé : ', __FILE__) . print_r($disable_trigger, true));
 			log::add('alarm', 'debug',$eqLogic->getHumanName(). __('Lancement des actions d\'activation ko', __FILE__));
-			$eqLogic->doAction('activationKo', array('#mode#' => $select_mode, '#trigger#' => implode(',', $disable_trigger), '#zone#' => implode(',', $disable_zone_trigger)));
+			$eqLogic->doAction('activationKo', array('#mode#' => $select_mode, '#alarm_trigger#' => implode(',', $disable_trigger), '#zone#' => implode(',', $disable_zone_trigger)));
 		}
 	}
 
@@ -544,7 +544,7 @@ class alarm extends eqLogic {
 						unset($disable_trigger[$_trigger_id]);
 						$this->setCache('disable_trigger', $disable_trigger);
 						log::add('alarm', 'debug',$this->getHumanName().' '. __('Supression du capteur de la liste de capteur inactif à l\'activation', __FILE__));
-						$this->doAction('reenableTrigger', array('#mode#' => $select_mode, '#trigger#' => $cmd_trigger->getHumanName(), '#zone#' => $zone['name']));
+						$this->doAction('reenableTrigger', array('#mode#' => $select_mode, '#alarm_trigger#' => $cmd_trigger->getHumanName(), '#zone#' => $zone['name']));
 					}
 					continue;
 				}
@@ -580,8 +580,8 @@ class alarm extends eqLogic {
 					log::add('alarm', 'debug',$this->getHumanName().' '. __('Exécution des actions immédiates', __FILE__));
 					$cmd_immediatState->event(1);
 					if ($this->getConfiguration('ignoreImmediatIfNoDelay', 0) == 0 || (isset($trigger['waitDelay']) && $trigger['waitDelay'] !== '')) {
-						$this->doAction('outbreakImmediate', array('#mode#' => $select_mode, '#trigger#' => $triggerStr, '#zone#' => $zone['name']));
-						$this->doZoneAction($zone['actionsImmediate'], array('#mode#' => $select_mode, '#trigger#' => $triggerStr, '#zone#' => $zone['name']));
+						$this->doAction('outbreakImmediate', array('#mode#' => $select_mode, '#alarm_trigger#' => $triggerStr, '#zone#' => $zone['name']));
+						$this->doZoneAction($zone['actionsImmediate'], array('#mode#' => $select_mode, '#alarm_trigger#' => $triggerStr, '#zone#' => $zone['name']));
 					}
 				}
 
@@ -602,8 +602,8 @@ class alarm extends eqLogic {
 					$this->setCache('trigger_zone', $trigger_zone + array($zone['name'] => $zone['name']));
 					log::add('alarm', 'debug',$this->getHumanName().' '. __('Déclenchement de l\'alarme', __FILE__));
 					$cmd_state->event(1);
-					$this->doAction('outbreak', array('#mode#' => $select_mode, '#trigger#' => $triggerStr, '#zone#' => $zone['name']));
-					$this->doZoneAction($zone['actions'], array('#mode#' => $select_mode, '#trigger#' => $triggerStr, '#zone#' => $zone['name']));
+					$this->doAction('outbreak', array('#mode#' => $select_mode, '#alarm_trigger#' => $triggerStr, '#zone#' => $zone['name']));
+					$this->doZoneAction($zone['actions'], array('#mode#' => $select_mode, '#alarm_trigger#' => $triggerStr, '#zone#' => $zone['name']));
 				}
 				return;
 			}
@@ -614,8 +614,8 @@ class alarm extends eqLogic {
 		if (!isset($_replace['#mode#'])) {
 			$_replace['#mode#'] = $this->getCmd(null, 'mode')->execCmd();
 		}
-		if (!isset($_replace['#trigger#'])) {
-			$_replace['#trigger#'] = implode(" , ", $this->listCmdTrigger());
+		if (!isset($_replace['#alarm_trigger#'])) {
+			$_replace['#alarm_trigger#'] = implode(" , ", $this->listCmdTrigger());
 		}
 		foreach ($_actions as $action) {
 			try {
@@ -640,8 +640,8 @@ class alarm extends eqLogic {
 		if (!isset($_replace['#mode#'])) {
 			$_replace['#mode#'] = $this->getCmd(null, 'mode')->execCmd();
 		}
-		if (!isset($_replace['#trigger#'])) {
-			$_replace['#trigger#'] = implode(" , ", $this->listCmdTrigger());
+		if (!isset($_replace['#alarm_trigger#'])) {
+			$_replace['#alarm_trigger#'] = implode(" , ", $this->listCmdTrigger());
 		}
 		$actions = $this->getConfiguration($_action);
 		if(!is_array($actions) || count($actions) == 0){
@@ -791,7 +791,7 @@ class alarmCmd extends cmd {
 			if (count($disable_trigger) > 0) {
 				log::add('alarm', 'debug', $eqLogic->getHumanName(). __(' Déclencheur désactivé : ', __FILE__) . print_r($disable_trigger, true));
 				log::add('alarm', 'debug',$eqLogic->getHumanName(). __(' Lancement des actions d\'activation ko', __FILE__));
-				$eqLogic->doAction('activationKo', array('#mode#' => $select_mode, '#trigger#' => implode(',', $disable_trigger), '#zone#' => implode(',', $disable_zone_trigger)));
+				$eqLogic->doAction('activationKo', array('#mode#' => $select_mode, '#alarm_trigger#' => implode(',', $disable_trigger), '#zone#' => implode(',', $disable_zone_trigger)));
 			}
 
 			/*             * *****************Activation reussi***************** */
