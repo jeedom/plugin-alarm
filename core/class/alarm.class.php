@@ -811,6 +811,7 @@ class alarmCmd extends cmd {
 			return;
 		}
 		if ($this->getConfiguration('mode') == '1') {
+			$select_mode = $cmd_mode->execCmd();
 			$cmd_mode->event($this->getConfiguration('state'));
 			if ($cmd_immediateState->execCmd() == 1) {
 				log::add('alarm', 'debug',$eqLogic->getHumanName(). __(' Remise à zero immédiate de l\'alarme', __FILE__));
@@ -823,10 +824,12 @@ class alarmCmd extends cmd {
 			log::add('alarm', 'debug',$eqLogic->getHumanName(). __(' Envoi etat alarm ok', __FILE__));
 			$cmd_state->event(0);
 			$cmd_immediateState->event(0);
-			$eqLogic->setCache('trigger_zone', array());
-			$eqLogic->setCache('trigger_zone_immediate', array());
-			$eqLogic->cleanArmedCompleted();
-			$eqLogic->getCmd(null, 'armed')->execCmd();
+			if($select_mode != $this->getConfiguration('state')){
+				$eqLogic->setCache('trigger_zone', array());
+				$eqLogic->setCache('trigger_zone_immediate', array());
+				$eqLogic->cleanArmedCompleted();
+				$eqLogic->getCmd(null, 'armed')->execCmd();
+			}
 		}
 	}
 
