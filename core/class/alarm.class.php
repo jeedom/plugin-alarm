@@ -824,7 +824,7 @@ class alarmCmd extends cmd {
 			log::add('alarm', 'debug',$eqLogic->getHumanName(). __(' Envoi etat alarm ok', __FILE__));
 			$cmd_state->event(0);
 			$cmd_immediateState->event(0);
-			if($select_mode != $this->getConfiguration('state')){
+			if($select_mode != $this->getConfiguration('state') || $cmd_armed->execCmd() == 0){
 				$eqLogic->setCache('trigger_zone', array());
 				$eqLogic->setCache('trigger_zone_immediate', array());
 				$eqLogic->cleanArmedCompleted();
