@@ -20,7 +20,10 @@ require_once dirname(__FILE__) . '/../../../core/php/core.inc.php';
 
 function alarm_update() {
 	foreach (eqLogic::byType('alarm') as $alarm) {
-		$alarm->save();
+		$json = json_encode(utils::o2a($alarm));
+		$json = str_replace('#trigger#','#alarm_trigger#',$json);
+		utils::a2o($alarm,json_decode($json,true));
+		$alarm->save(true);
 	}
 }
 
