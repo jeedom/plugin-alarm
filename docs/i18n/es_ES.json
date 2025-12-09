@@ -2,7 +2,9 @@
     "changelog.md": {
         "Changelog Alarme": "Alarma de registro de cambios",
         "Pour rappel s'il n'y a pas d'information sur la mise à jour, c'est que celle-ci concerne uniquement de la mise à jour de documentation, de traduction ou de texte": "Como recordatorio si no hay información sobre la actualización, significa que solo se refiere a la actualización de documentación, traducción o texto",
+        "08\/12\/2025": "",
         "Changement du tag": "Cambio de etiqueta",
+        "pour le rendre compatible avec Jeedom 4.5": "",
         "Attention il faut mettre a jour vos scénarios et les actions dans vos alarmes": "Tenga en cuenta que debe actualizar sus escenarios y las acciones en sus alarmas",
         "Ce changement est du a un conflit entre les tags des scénarios et les tags de l'alarme qui avaient le meme nom et donc s'écrasée": "Este cambio se debe a un conflicto entre las etiquetas de escenario y las etiquetas de alarma que tenían el mismo nombre y, por lo tanto, fallaron",
         "03\/01\/2024": "01\/03\/2024",
