@@ -698,6 +698,10 @@ class alarmCmd extends cmd {
 		$cmd_immediateState = $eqLogic->getCmd('info', 'immediatState');
 		$cmd_mode = $eqLogic->getCmd('info', 'mode');
 		if ($this->getLogicalId() == 'released') {
+			if ($cmd_armed->execCmd() == 0) {
+				log::add('alarm', 'debug',$eqLogic->getHumanName(). __(' Alarme déjà désactivée', __FILE__));
+				return;
+			}
 			$cmd_armed->event(0);
 			$cmd_mode->event($cmd_mode->execCmd());
 			$eqLogic->doAction('release', array('#mode#' => $cmd_mode->execCmd()));
